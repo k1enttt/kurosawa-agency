@@ -27,6 +27,7 @@ export const GalleryContentBlock: React.FC<GalleryContentBlockProps> = (props) =
             const subheading = card?.subheading
             return (
               <article
+                key={index}
                 className={cn(
                   'border border-border rounded-lg overflow-hidden bg-card hover:cursor-pointer',
                 )}

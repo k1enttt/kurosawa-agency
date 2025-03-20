@@ -8,11 +8,13 @@ import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { GalleryContentBlock } from './GalleryContent/Component'
+import { CallToActionWithImageBlock } from './CallToActionWithImage/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
   content: ContentBlock,
   cta: CallToActionBlock,
+  ctaWithImage: CallToActionWithImageBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   galleryContent: GalleryContentBlock,

@@ -21,6 +21,7 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { GalleryContent } from '@/blocks/GalleryContent/config'
+import { CallToActionWithImage } from '@/blocks/CallToActionWithImage/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -76,7 +77,15 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, GalleryContent],
+              blocks: [
+                CallToAction,
+                Content,
+                MediaBlock,
+                Archive,
+                FormBlock,
+                GalleryContent,
+                CallToActionWithImage,
+              ],
               required: true,
               admin: {
                 initCollapsed: true,
