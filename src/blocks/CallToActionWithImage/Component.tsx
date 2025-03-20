@@ -13,10 +13,14 @@ export const CallToActionWithImageBlock: React.FC<CTAWithImageBlockProps> = ({
   media,
 }) => {
   return (
-    <div className="bg-white dark:bg-gray-900 -mt-[4rem]">
+    <div className="bg-white dark:bg-gray-900">
       <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
-        <Media resource={media} imgClassName="w-full" />
-        <div className="mt-4 md:mt-0">
+        <Media
+          resource={media}
+          imgClassName="w-full"
+          className={direction == 'rtl' ? 'lg:order-2' : ''}
+        />
+        <div className={`mt-4 md:mt-0 ${direction == 'rtl' && 'lg:order-1 '}`}>
           {richText && (
             <RichText
               className="mb-0 cta-heading cta-description"
@@ -32,7 +36,7 @@ export const CallToActionWithImageBlock: React.FC<CTAWithImageBlockProps> = ({
                   key={i}
                   size="lg"
                   {...link}
-                  className="inline-flex items-center text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                  className="inline-flex items-center font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 />
               )
             })}

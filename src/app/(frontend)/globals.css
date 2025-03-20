@@ -50,6 +50,8 @@
     --success: 196 52% 74%;
     --warning: 34 89% 85%;
     --error: 10 100% 86%;
+
+    --greenBackground: 120 29% 56%
   }
 
   [data-theme='dark'] {
@@ -84,6 +86,8 @@
     --success: 196 100% 14%;
     --warning: 34 51% 25%;
     --error: 10 39% 43%;
+
+    --greenBackground: 120 29% 56%
   }
 }
 
@@ -114,9 +118,17 @@ html[data-theme='light'] {
 }
 
 .gallery-content-heading {
-  @apply [&_h1]:mb-4 [&_h1]:text-4xl [&_h1]:tracking-tight [&_h1]:font-extrabold [&_h1]:text-gray-900 [&_h1:dark]:text-white
+  @apply [&_h2]:mb-4 [&_h2]:text-4xl [&_h2]:tracking-tight [&_h2]:font-extrabold [&_h2]:text-gray-900 [&_h2:dark]:text-white
 }
 
 .gallery-content-subheading {
   @apply [&_p]:font-light [&_p]:text-gray-500 [&_p]:sm:text-lg [&_p]:md:px-20 [&_p]:lg:px-36 [&_p]:xl:px-48 [&_p:dark]:text-gray-400
+}
+
+.cta-heading {
+  @apply [&_h2]:mb-4 [&_h2]:text-4xl [&_h2]:tracking-tight [&_h2]:font-extrabold
+}
+
+.cta-description {
+  @apply [&_p]:mb-6 [&_p]:font-light [&_p]:md:text-lg
 }
