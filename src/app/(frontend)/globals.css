@@ -106,9 +106,17 @@ html[data-theme='light'] {
 }
 
 .hero-heading {
-  @apply [&_h1]:max-w-2xl [&_h1]:mb-4 [&_h1]:text-4xl [&_h1]:font-extrabold [&_h1]:tracking-tight [&_h1]:leading-none [&_h1]:md:text-5xl [&_h1]:xl:text-6xl [&_h1]:dark:text-white;
+  @apply [&_h1]:max-w-2xl [&_h1]:mb-4 [&_h1]:text-4xl [&_h1]:font-extrabold [&_h1]:tracking-tight [&_h1]:leading-none [&_h1]:md:text-5xl [&_h1]:xl:text-6xl [&_h1:dark]:text-white;
 }
 
 .hero-description {
-  @apply [&_p]:max-w-2xl [&_p]:mb-6 [&_p]:font-light [&_p]:text-gray-500 [&_p]:lg:mb-8 [&_p]:md:text-lg [&_p]:lg:text-xl [&_p]:dark:text-gray-400;
+  @apply [&_p]:max-w-2xl [&_p]:mb-6 [&_p]:font-light [&_p]:text-gray-500 [&_p]:lg:mb-8 [&_p]:md:text-lg [&_p]:lg:text-xl [&_p:dark]:text-gray-400;
+}
+
+.gallery-content-heading {
+  @apply [&_h1]:mb-4 [&_h1]:text-4xl [&_h1]:tracking-tight [&_h1]:font-extrabold [&_h1]:text-gray-900 [&_h1:dark]:text-white
+}
+
+.gallery-content-subheading {
+  @apply [&_p]:font-light [&_p]:text-gray-500 [&_p]:sm:text-lg [&_p]:md:px-20 [&_p]:lg:px-36 [&_p]:xl:px-48 [&_p:dark]:text-gray-400
 }
