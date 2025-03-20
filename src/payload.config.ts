@@ -16,6 +16,7 @@ import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
+import { defaultLocale } from './middleware'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -65,6 +66,24 @@ export default buildConfig({
     },
   }),
   collections: [Pages, Posts, Media, Categories, Users],
+  localization: {
+    locales: [
+      {
+        label: 'English',
+        code: 'en',
+      },
+      {
+        label: 'Vietnamese',
+        code: 'vi',
+      },
+      {
+        label: 'Japanese',
+        code: 'ja',
+      },
+    ],
+    fallback: true,
+    defaultLocale,
+  },
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins: [
