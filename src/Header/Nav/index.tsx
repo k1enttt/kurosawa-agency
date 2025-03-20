@@ -8,6 +8,7 @@ import { CMSLink } from '@/components/Link'
 import Link from 'next/link'
 import { SearchIcon } from 'lucide-react'
 import BurgerButton from '../BurgerButton'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
 
 export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   const navItems = data?.navItems || []
@@ -21,6 +22,10 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
     <>
       {/* action buttons */}
       <div className="flex items-center lg:order-2">
+        <div className="mr-2">
+          <LanguageSwitcher />
+        </div>
+
         <Link href="/search">
           <span className="sr-only">Search</span>
           <SearchIcon className="w-5 text-primary mr-2" />
