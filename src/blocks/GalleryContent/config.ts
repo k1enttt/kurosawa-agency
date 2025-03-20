@@ -27,12 +27,16 @@ export const GalleryContent: Block = {
       label: false,
     },
     {
-      name: 'images',
+      name: 'contentCards',
       type: 'array',
       admin: {
         initCollapsed: true,
       },
-      fields: [{ name: 'media', type: 'upload', relationTo: 'media' }],
+      fields: [
+        { name: 'media', type: 'upload', relationTo: 'media' },
+        { name: 'heading', type: 'text' },
+        { name: 'subheading', type: 'text' },
+      ],
       maxRows: 6,
     },
   ],

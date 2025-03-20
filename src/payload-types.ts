@@ -789,9 +789,11 @@ export interface GalleryContentBlock {
     };
     [k: string]: unknown;
   } | null;
-  images?:
+  contentCards?:
     | {
         media?: (number | null) | Media;
+        heading?: string | null;
+        subheading?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -1216,10 +1218,12 @@ export interface FormBlockSelect<T extends boolean = true> {
  */
 export interface GalleryContentBlockSelect<T extends boolean = true> {
   introText?: T;
-  images?:
+  contentCards?:
     | T
     | {
         media?: T;
+        heading?: T;
+        subheading?: T;
         id?: T;
       };
   id?: T;

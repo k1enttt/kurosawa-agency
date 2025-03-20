@@ -1,14 +1,12 @@
 import { cn } from '@/utilities/ui'
-import React, { Fragment } from 'react'
+import React from 'react'
 import RichText from '@/components/RichText'
 
 import type { GalleryContentBlock as GalleryContentBlockProps } from '@/payload-types'
-import { Card } from '@/components/Card'
 import { Media } from '@/components/Media'
-import Link from 'next/link'
 
 export const GalleryContentBlock: React.FC<GalleryContentBlockProps> = (props) => {
-  const { introText, images } = props
+  const { introText, contentCards } = props
 
   return (
     <div className="bg-white dark:bg-gray-900 -mt-[4rem]">
@@ -23,8 +21,10 @@ export const GalleryContentBlock: React.FC<GalleryContentBlockProps> = (props) =
           </div>
         )}
         <div className="grid gap-6 mt-12 lg:mt-14 lg:gap-12 md:grid-cols-3">
-          {images?.map((result, index) => {
-            const media = result?.media
+          {contentCards?.map((card, index) => {
+            const media = card?.media
+            const heading = card?.heading
+            const subheading = card?.subheading
             return (
               <article
                 className={cn(
@@ -36,12 +36,16 @@ export const GalleryContentBlock: React.FC<GalleryContentBlockProps> = (props) =
                   {media && <Media resource={media} size="33vw" />}
                 </div>
                 <div className="p-4">
-                  <div className="prose">
-                    <h3>This is title</h3>
-                  </div>
-                  <div className="mt-2">
-                    <p>This is description</p>
-                  </div>
+                  {heading && (
+                    <div className="prose">
+                      <h3>{heading}</h3>
+                    </div>
+                  )}
+                  {subheading && (
+                    <div className="mt-2">
+                      <p>{subheading}</p>
+                    </div>
+                  )}
                 </div>
               </article>
             )
