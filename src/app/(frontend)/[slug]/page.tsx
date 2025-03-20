@@ -13,6 +13,7 @@ import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { Config } from '@/payload-types'
+import { cn } from '@/utilities/ui'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -45,6 +46,14 @@ type Args = {
   searchParams: Promise<{
     locale?: Config['locale']
   }>
+}
+
+function updateFontFamily(locale: string) {
+  if (locale != 'ja') {
+    document.body.style.fontFamily = 'var(--font-tahoma)'
+  } else {
+    document.body.style.fontFamily = ''
+  }
 }
 
 export default async function Page({ params: paramsPromise, searchParams }: Args) {

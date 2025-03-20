@@ -96,6 +96,8 @@ const config = {
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
         sans: ['var(--font-geist-sans)'],
+        tahoma: ['var(--font-tahoma)'],
+        meiryo: ['var(--font-meiryo)'],
       },
       keyframes: {
         'accordion-down': {

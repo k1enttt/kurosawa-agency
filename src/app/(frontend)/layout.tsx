@@ -15,12 +15,27 @@ import { draftMode } from 'next/headers'
 
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
+import localFont from 'next/font/local'
+
+const Tahoma = localFont({
+  src: '../../../public/fonts/tahoma.ttf',
+  variable: '--font-tahoma',
+})
+
+const Meiryo = localFont({
+  src: '../../../public/fonts/meiryo.otf',
+  variable: '--font-meiryo',
+})
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
 
   return (
-    <html className={cn(GeistSans.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
+    <html
+      className={cn(Tahoma.variable, Meiryo.variable, GeistSans.variable, GeistMono.variable)}
+      lang="en"
+      suppressHydrationWarning
+    >
       <head>
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
