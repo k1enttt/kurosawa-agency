@@ -92,6 +92,7 @@ const config = {
         success: 'hsl(var(--success))',
         error: 'hsl(var(--error))',
         warning: 'hsl(var(--warning))',
+        green: '#0F6109',
       },
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
@@ -132,6 +133,9 @@ const config = {
                 fontSize: '1.25rem',
                 fontWeight: 600,
               },
+              h3: {
+                fontSize: '1.125rem',
+              },
             },
           ],
         },
@@ -142,7 +146,10 @@ const config = {
                 fontSize: '3.5rem',
               },
               h2: {
-                fontSize: '1.5rem',
+                fontSize: '2.25rem',
+              },
+              h3: {
+                fontSize: '1.125rem',
               },
             },
           ],

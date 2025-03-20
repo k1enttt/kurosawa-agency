@@ -39,7 +39,7 @@ const LanguageSwitcher = () => {
         document.cookie = `locale=${selectedLanguage}; path=/; max-age=31536000`
       }}
     >
-      <SelectTrigger className="w-36">
+      <SelectTrigger className="w-36 text-white">
         <SelectValue placeholder="Select language" />
       </SelectTrigger>
       <SelectContent>
