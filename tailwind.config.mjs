@@ -92,7 +92,7 @@ const config = {
         success: 'hsl(var(--success))',
         error: 'hsl(var(--error))',
         warning: 'hsl(var(--warning))',
-        green: '#0F6109',
+        button: '#0F6109',
       },
       fontFamily: {
         mono: ['var(--font-geist-mono)'],

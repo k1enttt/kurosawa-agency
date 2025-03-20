@@ -148,7 +148,7 @@ export interface Page {
   id: number;
   title: string;
   hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact' | 'flowbite';
     richText?: {
       root: {
         type: string;
@@ -189,6 +189,50 @@ export interface Page {
         }[]
       | null;
     media?: (number | null) | Media;
+    featureList?:
+      | {
+          richText?: {
+            root: {
+              type: string;
+              children: {
+                type: string;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          } | null;
+          links?:
+            | {
+                link: {
+                  type?: ('reference' | 'custom') | null;
+                  newTab?: boolean | null;
+                  reference?:
+                    | ({
+                        relationTo: 'pages';
+                        value: number | Page;
+                      } | null)
+                    | ({
+                        relationTo: 'posts';
+                        value: number | Post;
+                      } | null);
+                  url?: string | null;
+                  label: string;
+                  /**
+                   * Choose how the link should be rendered.
+                   */
+                  appearance?: ('default' | 'outline') | null;
+                };
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
   };
   layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
   meta?: {
@@ -1006,6 +1050,27 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
             };
         media?: T;
+        featureList?:
+          | T
+          | {
+              richText?: T;
+              links?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          reference?: T;
+                          url?: T;
+                          label?: T;
+                          appearance?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+            };
       };
   layout?:
     | T

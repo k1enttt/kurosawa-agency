@@ -35,6 +35,10 @@ export const hero: Field = {
           label: 'Low Impact',
           value: 'lowImpact',
         },
+        {
+          label: 'Flowbite',
+          value: 'flowbite',
+        },
       ],
       required: true,
     },
@@ -62,10 +66,40 @@ export const hero: Field = {
       name: 'media',
       type: 'upload',
       admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact', 'flowbite'].includes(type),
       },
       relationTo: 'media',
       required: true,
+    },
+    {
+      name: 'featureList',
+      type: 'array',
+      fields: [
+        {
+          name: 'richText',
+          type: 'richText',
+          editor: lexicalEditor({
+            features: ({ rootFeatures }) => {
+              return [
+                ...rootFeatures,
+                HeadingFeature({ enabledHeadingSizes: ['h4'] }),
+                FixedToolbarFeature(),
+                InlineToolbarFeature(),
+              ]
+            },
+          }),
+          label: false,
+        },
+        linkGroup({
+          overrides: {
+            maxRows: 1,
+          },
+        }),
+      ],
+      maxRows: 4,
+      admin: {
+        condition: (_, { type } = {}) => ['flowbite'].includes(type),
+      },
     },
   ],
   label: false,
