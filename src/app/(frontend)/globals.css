@@ -138,3 +138,19 @@ html[data-theme='light'] {
 .cta-button {
   @apply w-32 h-12 text-base
 }
+
+.blog-image {
+  @apply [&_img]:mb-5 [&_img]:rounded-lg
+}
+
+.blog-title {
+  @apply [&_h3]:my-2 [&_h3]:text-2xl [&_h3]:font-bold [&_h3]:tracking-tight [&_h3]:text-gray-900 [&_h3]:dark:text-white
+}
+
+.blog-subtitle {
+  @apply [&_p]:font-light [&_p]:text-gray-500 [&_p]:dark:text-gray-400
+}
+
+.blog-no-padding {
+  @apply [&_div:nth-child(2)]:p-0
+}
