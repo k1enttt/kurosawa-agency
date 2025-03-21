@@ -14,10 +14,10 @@ export const CallToActionWithImageBlock: React.FC<CTAWithImageBlockProps> = ({
 }) => {
   return (
     <div className="bg-white dark:bg-gray-900">
-      <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+      <div className="gap-8 items-center py-8 xl:gap-16 md:grid md:grid-cols-2 sm:py-16 container">
         <Media
           resource={media}
-          imgClassName="w-full"
+          imgClassName="w-full rounded-lg"
           className={direction == 'rtl' ? 'lg:order-2' : ''}
         />
         <div className={`mt-4 md:mt-0 ${direction == 'rtl' && 'lg:order-1 '}`}>
