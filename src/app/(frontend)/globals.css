@@ -140,7 +140,8 @@ html[data-theme='light'] {
 }
 
 .blog-image {
-  @apply [&_img]:mb-5 [&_img]:rounded-lg
+  @apply [&_img]:mb-5 [&_img]:rounded-lg [&_img]:object-cover [&_img]:w-full [&_img]:h-full [&_img]:absolute;
+  @apply [&>div:nth-child(1)]:lg:h-60 [&>div:nth-child(1)]:h-44   [&>div:nth-child(1)]:bg-blue-300 relative;
 }
 
 .blog-title {

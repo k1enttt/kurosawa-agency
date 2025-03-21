@@ -43,7 +43,7 @@ export const FlowbiteHero: React.FC<Page['hero']> = ({ links, media, richText })
         {/* image */}
         <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
           {media && typeof media === 'object' && (
-            <Media imgClassName="-z-10" size="100" priority resource={media} />
+            <Media imgClassName="-z-10 rounded-lg" size="100" priority resource={media} />
           )}
         </div>
       </div>
