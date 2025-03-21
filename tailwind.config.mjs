@@ -98,7 +98,7 @@ const config = {
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
         sans: ['var(--font-geist-sans)'],
-        tahoma: ['var(--font-tahoma)'],
+        tahoma: ['var(--font-tahoma)'], // TODO: Thêm backup fonts
         meiryo: ['var(--font-meiryo)'],
       },
       keyframes: {

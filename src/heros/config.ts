@@ -56,10 +56,12 @@ export const hero: Field = {
         },
       }),
       label: false,
+      localized: true,
     },
     linkGroup({
       overrides: {
         maxRows: 2,
+        localized: true,
       },
     }),
     {
@@ -89,10 +91,12 @@ export const hero: Field = {
             },
           }),
           label: false,
+          localized: true,
         },
         linkGroup({
           overrides: {
             maxRows: 1,
+            localized: true,
           },
         }),
       ],
@@ -102,5 +106,6 @@ export const hero: Field = {
       },
     },
   ],
+
   label: false,
 }
