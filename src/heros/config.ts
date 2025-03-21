@@ -73,38 +73,6 @@ export const hero: Field = {
       relationTo: 'media',
       required: true,
     },
-    {
-      name: 'featureList',
-      type: 'array',
-      fields: [
-        {
-          name: 'richText',
-          type: 'richText',
-          editor: lexicalEditor({
-            features: ({ rootFeatures }) => {
-              return [
-                ...rootFeatures,
-                HeadingFeature({ enabledHeadingSizes: ['h4'] }),
-                FixedToolbarFeature(),
-                InlineToolbarFeature(),
-              ]
-            },
-          }),
-          label: false,
-          localized: true,
-        },
-        linkGroup({
-          overrides: {
-            maxRows: 1,
-            localized: true,
-          },
-        }),
-      ],
-      maxRows: 4,
-      admin: {
-        condition: (_, { type } = {}) => ['flowbite'].includes(type),
-      },
-    },
   ],
 
   label: false,
