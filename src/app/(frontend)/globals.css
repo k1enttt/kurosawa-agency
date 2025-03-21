@@ -132,3 +132,7 @@ html[data-theme='light'] {
 .cta-description {
   @apply [&_p]:mb-6 [&_p]:font-light [&_p]:md:text-lg
 }
+
+.cta-button {
+  @apply w-32 h-12 text-base
+}

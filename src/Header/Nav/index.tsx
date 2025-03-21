@@ -22,7 +22,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
     <>
       {/* action buttons */}
       <div className="flex items-center lg:order-2">
-        <div className="mr-2">
+        <div className="mr-4">
           <LanguageSwitcher />
         </div>
 
