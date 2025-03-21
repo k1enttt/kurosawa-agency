@@ -10,7 +10,7 @@ export const GalleryContentBlock: React.FC<GalleryContentBlockProps> = (props) =
 
   return (
     <div className="bg-white dark:bg-gray-900">
-      <div className="container py-8 sm:text-center lg:py-16">
+      <div className="container py-8 md:text-center lg:py-16">
         {introText && (
           <div className="mb-16 text-center text-gray-900">
             <RichText
@@ -26,27 +26,26 @@ export const GalleryContentBlock: React.FC<GalleryContentBlockProps> = (props) =
             const heading = card?.heading
             const subheading = card?.subheading
             return (
-              <article
-                key={index}
-                className={cn(
-                  'border border-border rounded-lg overflow-hidden bg-card hover:cursor-pointer',
-                )}
-              >
-                <div className="relative w-full ">
+              <article key={index} className={cn('flex mb-2 md:flex-col md:mb-0')}>
+                <div className="mr-4">
                   {!media && <div className="">No image</div>}
-                  {media && <Media resource={media} size="33vw" />}
+                  {media && (
+                    <Media
+                      resource={media}
+                      size="33vw"
+                      fill
+                      className="relative w-36 h-44 md:w-full md:h-60"
+                      imgClassName="object-cover rounded-lg"
+                    />
+                  )}
                 </div>
                 <div className="p-4">
                   {heading && (
-                    <div className="prose">
-                      <h3>{heading}</h3>
-                    </div>
+                    <h3 className="text-xl font-bold md:mt-4 mb-2.5 text-gray-900 dark:text-white">
+                      {heading}
+                    </h3>
                   )}
-                  {subheading && (
-                    <div className="mt-2">
-                      <p>{subheading}</p>
-                    </div>
-                  )}
+                  {subheading && <p className="text-gray-500 dark:text-gray-400">{subheading}</p>}
                 </div>
               </article>
             )
