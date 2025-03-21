@@ -2,6 +2,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 import { locales } from '@/middleware'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
+import { cn } from '@/utilities/ui'
 
 const mapLanguageString: Record<string, string> = {
   en: 'English',
@@ -9,7 +10,7 @@ const mapLanguageString: Record<string, string> = {
   ja: 'Japanese',
 }
 
-const LanguageSwitcher = () => {
+const LanguageSwitcher = ({ theme }: { theme?: 'light' | 'dark' }) => {
   const router = useRouter()
   const searchParams = useSearchParams()
   const langSelectRef = useRef<HTMLSelectElement>(null)
@@ -39,7 +40,7 @@ const LanguageSwitcher = () => {
         document.cookie = `locale=${selectedLanguage}; path=/; max-age=31536000`
       }}
     >
-      <SelectTrigger className="w-36 text-white">
+      <SelectTrigger className={cn('w-36', theme == 'dark' ? 'text-black bg-white' : 'text-white')}>
         <SelectValue placeholder="Select language" />
       </SelectTrigger>
       <SelectContent>

@@ -94,6 +94,7 @@ const config = {
         warning: 'hsl(var(--warning))',
         button: '#0F6109',
         greenBg: 'hsl(var(--greenBackground))',
+        headerBg: 'hsl(var(--header-background))',
       },
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
