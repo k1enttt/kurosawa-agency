@@ -15,6 +15,7 @@ export const CollectionArchive: React.FC<Props> = (props) => {
       {posts?.map((result, index) => {
         if (typeof result === 'object' && result !== null) {
           return (
+            // TODO: Style the image when media is not uploaded
             <Card
               key={index}
               className={cn(
