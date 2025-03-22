@@ -8,9 +8,10 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+    './node_modules/flowbite/**/*.js',
   ],
   darkMode: ['selector', '[data-theme="dark"]'],
-  plugins: [tailwindcssAnimate, typography],
+  plugins: [tailwindcssAnimate, typography, require('flowbite/plugin')],
   prefix: '',
   safelist: [
     'lg:col-span-4',
@@ -99,10 +100,8 @@ const config = {
         },
       },
       fontFamily: {
-        mono: ['var(--font-geist-mono)'],
-        sans: ['var(--font-geist-sans)'],
-        tahoma: ['var(--font-tahoma)'], // TODO: Thêm backup fonts
         meiryo: ['var(--font-meiryo)'],
+        inter: ['var(--font-inter)'],
       },
       keyframes: {
         'accordion-down': {

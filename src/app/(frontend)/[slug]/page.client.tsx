@@ -15,9 +15,11 @@ const PageClient: React.FC = () => {
 
   useEffect(() => {
     if (locale != 'ja') {
-      document.body.style.fontFamily = 'var(--font-tahoma)'
+      document.body.classList.remove('font-meiryo')
+      document.body.classList.add('font-inter')
     } else {
-      document.body.style.fontFamily = 'var(--font-meiryo)'
+      document.body.classList.remove('font-inter')
+      document.body.classList.add('font-meiryo')
     }
   }, [searchParams])
   return <React.Fragment />

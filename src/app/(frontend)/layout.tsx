@@ -16,15 +16,35 @@ import { draftMode } from 'next/headers'
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 import localFont from 'next/font/local'
+import { Inter } from 'next/font/google'
 
-const Tahoma = localFont({
-  src: '../../../public/fonts/tahoma.ttf',
-  variable: '--font-tahoma',
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  fallback: [
+    'ui-sans-serif',
+    'system-ui',
+    '-apple-system',
+    'Segoe UI',
+    'Roboto',
+    'Helvetica Neue',
+    'Arial',
+    'Noto Sans',
+    'sans-serif',
+  ],
 })
 
 const Meiryo = localFont({
   src: '../../../public/fonts/meiryo.otf',
   variable: '--font-meiryo',
+  fallback: [
+    'hiragino kaku gothic pro',
+    'Noto Sans JP',
+    'ui-sans-serif',
+    'system-ui',
+    '-apple-system',
+    'sans-serif',
+  ],
 })
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -32,7 +52,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html
-      className={cn(Tahoma.variable, Meiryo.variable, GeistSans.variable, GeistMono.variable)}
+      className={cn(inter.variable, Meiryo.variable, GeistSans.variable, GeistMono.variable)}
       lang="en"
       suppressHydrationWarning
     >
