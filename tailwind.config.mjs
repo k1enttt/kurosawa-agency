@@ -172,7 +172,7 @@ const config = {
       textColor: {
         heading: 'hsl(var(--heading))',
         paragraph: 'hsl(var(--paragraph))',
-        link: 'hsl(var(--link)',
+        link: 'hsl(var(--link))',
       },
     },
   },

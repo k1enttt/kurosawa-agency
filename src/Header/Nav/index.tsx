@@ -28,7 +28,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
 
         <Link href="/search">
           <span className="sr-only">Search</span>
-          <SearchIcon className="w-5 text-primary mr-2" />
+          <SearchIcon className="w-5 text-gray-400 mr-2" />
         </Link>
         <BurgerButton onClick={toggleNav} />
       </div>
@@ -45,7 +45,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                 <CMSLink
                   {...link}
                   appearance="link"
-                  className="block py-2 pr-4 pl-3 rounded-none border-b hover:no-underline lg:border-0 lg:p-0 text-white lg:hover:text-white/70 hover:bg-gray-700 hover:text-white lg:hover:bg-transparent border-gray-700"
+                  className="block py-2 pr-4 pl-3 rounded-none border-b hover:no-underline lg:border-0 lg:p-0 !text-p-md text-white lg:hover:text-link hover:bg-gray-700 hover:text-white lg:hover:bg-transparent border-gray-700"
                 />
               </div>
             )

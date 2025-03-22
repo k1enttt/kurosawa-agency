@@ -55,9 +55,9 @@
     --paragraph: 220 9% 46%;
     --link: 224 76% 48%;
 
-    --flowbite-primary: 224 76% 48%
-    --flowbite-background: 0 0% 100%
-    --flowbite-container: 210 20% 98%
+    --flowbite-primary: 224 76% 48%;
+    --flowbite-background: 0 0% 100%;
+    --flowbite-container: 210 20% 98%;
   }
 
   [data-theme='dark'] {
@@ -97,9 +97,9 @@
     --paragraph:218 11% 65%;
     --link: 217 91% 60%;
     
-    --flowbite-primary: 221 83% 53%
-    --flowbite-background: 221 39% 11%
-    --flowbite-container: 215 28% 17%
+    --flowbite-primary: 221 83% 53%;
+    --flowbite-background: 221 39% 11%;
+    --flowbite-container: 215 28% 17%;
   }
 }
 
