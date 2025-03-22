@@ -23,7 +23,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
       {/* action buttons */}
       <div className="flex items-center lg:order-2">
         <div className="mr-4">
-          <LanguageSwitcher theme="dark" />
+          <LanguageSwitcher className="bg-black text-white dark:bg-white dark:text-black" />
         </div>
 
         <Link href="/search">
@@ -45,7 +45,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                 <CMSLink
                   {...link}
                   appearance="link"
-                  className="block py-2 pr-4 pl-3 rounded-none border-b hover:no-underline lg:border-0 lg:p-0 !text-p-md text-white lg:hover:text-link hover:bg-gray-700 hover:text-white lg:hover:bg-transparent border-gray-700"
+                  className="block py-2 pr-4 pl-3 rounded-none border-b hover:no-underline lg:border-0 lg:p-0 !text-p-md text-heading lg:hover:text-link hover:bg-gray-700 hover:text-white lg:hover:bg-transparent border-gray-700"
                 />
               </div>
             )

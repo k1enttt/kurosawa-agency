@@ -10,7 +10,7 @@ const mapLanguageString: Record<string, string> = {
   ja: 'Japanese',
 }
 
-const LanguageSwitcher = ({ theme }: { theme?: 'light' | 'dark' }) => {
+const LanguageSwitcher = ({ className }: { className?: string }) => {
   const router = useRouter()
   const searchParams = useSearchParams()
   const langSelectRef = useRef<HTMLSelectElement>(null)
@@ -40,7 +40,7 @@ const LanguageSwitcher = ({ theme }: { theme?: 'light' | 'dark' }) => {
         document.cookie = `locale=${selectedLanguage}; path=/; max-age=31536000`
       }}
     >
-      <SelectTrigger className={cn('w-36', theme == 'dark' ? 'text-black bg-white' : 'text-white')}>
+      <SelectTrigger className={cn('w-36', className)}>
         <SelectValue placeholder="Select language" />
       </SelectTrigger>
       <SelectContent>
