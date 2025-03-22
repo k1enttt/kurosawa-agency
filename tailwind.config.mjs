@@ -92,9 +92,11 @@ const config = {
         success: 'hsl(var(--success))',
         error: 'hsl(var(--error))',
         warning: 'hsl(var(--warning))',
-        button: '#0F6109',
-        greenBg: 'hsl(var(--greenBackground))',
-        headerBg: 'hsl(var(--header-background))',
+        flowbite: {
+          primary: 'hsl(var(--flowbite-primary))',
+          background: 'hsl(var(--flowbite-background))',
+          container: 'hsl(var(--flowbite-container))',
+        },
       },
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
@@ -157,6 +159,22 @@ const config = {
           ],
         },
       }),
+      fontSize: {
+        'p-sm': '14px',
+        'p-md': '16px',
+        'p-lg': '18px',
+        'p-xl': '20px',
+        'h3-sm': '18px',
+        'h3-md': '20px',
+        'h3-lg': '36px',
+        h2: '36px',
+        h1: '48px',
+      },
+      textColor: {
+        heading: 'hsl(var(--heading))',
+        paragraph: 'hsl(var(--paragraph))',
+        link: 'hsl(var(--link)',
+      },
     },
   },
 }
