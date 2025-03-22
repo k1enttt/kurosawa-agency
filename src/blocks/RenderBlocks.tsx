@@ -9,6 +9,7 @@ import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { GalleryContentBlock } from './GalleryContent/Component'
 import { CallToActionWithImageBlock } from './CallToActionWithImage/Component'
+import { FaqBlock } from './FAQ/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -18,6 +19,7 @@ const blockComponents = {
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   galleryContent: GalleryContentBlock,
+  faq: FaqBlock,
 }
 
 export const RenderBlocks: React.FC<{

@@ -22,6 +22,7 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 import { GalleryContent } from '@/blocks/GalleryContent/config'
 import { CallToActionWithImage } from '@/blocks/CallToActionWithImage/config'
+import { Faq } from '@/blocks/FAQ/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -85,6 +86,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 FormBlock,
                 GalleryContent,
                 CallToActionWithImage,
+                Faq,
               ],
               required: true,
               admin: {
