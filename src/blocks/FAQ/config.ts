@@ -7,40 +7,20 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 
-import { link } from '@/fields/link'
-
-const columnFields: Field[] = [
+const questionFields: Field[] = [
   {
-    name: 'size',
-    type: 'select',
-    defaultValue: 'oneThird',
-    options: [
-      {
-        label: 'One Third',
-        value: 'oneThird',
-      },
-      {
-        label: 'Half',
-        value: 'half',
-      },
-      {
-        label: 'Two Thirds',
-        value: 'twoThirds',
-      },
-      {
-        label: 'Full',
-        value: 'full',
-      },
-    ],
+    name: 'question',
+    type: 'text',
+    required: true,
   },
   {
-    name: 'richText',
+    name: 'answer',
     type: 'richText',
     editor: lexicalEditor({
       features: ({ rootFeatures }) => {
         return [
           ...rootFeatures,
-          HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
+          HeadingFeature({ enabledHeadingSizes: ['h3', 'h4'] }),
           FixedToolbarFeature(),
           InlineToolbarFeature(),
         ]
@@ -48,19 +28,6 @@ const columnFields: Field[] = [
     }),
     label: false,
   },
-  {
-    name: 'enableLink',
-    type: 'checkbox',
-  },
-  link({
-    overrides: {
-      admin: {
-        condition: (_data, siblingData) => {
-          return Boolean(siblingData?.enableLink)
-        },
-      },
-    },
-  }),
 ]
 
 export const Faq: Block = {
@@ -68,12 +35,27 @@ export const Faq: Block = {
   interfaceName: 'FaqBlock',
   fields: [
     {
-      name: 'columns',
+      name: 'introText',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => {
+          return [
+            ...rootFeatures,
+            HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          ]
+        },
+      }),
+      label: false,
+    },
+    {
+      name: 'questions',
       type: 'array',
       admin: {
         initCollapsed: true,
       },
-      fields: columnFields,
+      fields: questionFields,
     },
   ],
 }

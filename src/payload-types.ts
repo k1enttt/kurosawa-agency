@@ -821,10 +821,25 @@ export interface CallToActionWithImageBlock {
  * via the `definition` "FaqBlock".
  */
 export interface FaqBlock {
-  columns?:
+  introText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  questions?:
     | {
-        size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
-        richText?: {
+        question: string;
+        answer?: {
           root: {
             type: string;
             children: {
@@ -839,26 +854,6 @@ export interface FaqBlock {
           };
           [k: string]: unknown;
         } | null;
-        enableLink?: boolean | null;
-        link?: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('default' | 'outline') | null;
-        };
         id?: string | null;
       }[]
     | null;
@@ -1306,22 +1301,12 @@ export interface CallToActionWithImageBlockSelect<T extends boolean = true> {
  * via the `definition` "FaqBlock_select".
  */
 export interface FaqBlockSelect<T extends boolean = true> {
-  columns?:
+  introText?: T;
+  questions?:
     | T
     | {
-        size?: T;
-        richText?: T;
-        enableLink?: T;
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
+        question?: T;
+        answer?: T;
         id?: T;
       };
   id?: T;
