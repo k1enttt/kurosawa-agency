@@ -943,17 +943,26 @@ export interface TeamBlock {
     };
     [k: string]: unknown;
   } | null;
-  columns?:
+  members?:
     | {
+        avatar?: (number | null) | Media;
         name: string;
         role: string;
-        socialLinks?:
-          | {
-              platform?: string | null;
-              url?: string | null;
-              id?: string | null;
-            }[]
-          | null;
+        description?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
         id?: string | null;
       }[]
     | null;
@@ -1487,18 +1496,13 @@ export interface TwoColsContentBlockSelect<T extends boolean = true> {
  */
 export interface TeamBlockSelect<T extends boolean = true> {
   introText?: T;
-  columns?:
+  members?:
     | T
     | {
+        avatar?: T;
         name?: T;
         role?: T;
-        socialLinks?:
-          | T
-          | {
-              platform?: T;
-              url?: T;
-              id?: T;
-            };
+        description?: T;
         id?: T;
       };
   id?: T;

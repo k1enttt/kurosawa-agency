@@ -5,7 +5,6 @@ import RichText from '@/components/RichText'
 import type { TwoColsContentBlock as TwoColsContentBlockProps } from '@/payload-types'
 
 import { CMSLink } from '../../components/Link'
-import Link from 'next/link'
 
 export const TwoColsContentBlock: React.FC<TwoColsContentBlockProps> = (props) => {
   const { introText, enableLink, link, secondColumnContent } = props

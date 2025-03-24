@@ -9,6 +9,11 @@ import {
 
 const columnFields: Field[] = [
   {
+    name: 'avatar',
+    type: 'upload',
+    relationTo: 'media',
+  },
+  {
     name: 'name',
     type: 'text',
     required: true,
@@ -19,18 +24,13 @@ const columnFields: Field[] = [
     required: true,
   },
   {
-    name: 'socialLinks',
-    type: 'array',
-    fields: [
-      {
-        name: 'platform',
-        type: 'text',
+    name: 'description',
+    type: 'richText',
+    editor: lexicalEditor({
+      features: ({ rootFeatures }) => {
+        return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]
       },
-      {
-        name: 'url',
-        type: 'text',
-      },
-    ],
+    }),
   },
 ]
 
@@ -54,7 +54,7 @@ export const Team: Block = {
       label: false,
     },
     {
-      name: 'columns',
+      name: 'members',
       type: 'array',
       admin: {
         initCollapsed: true,
