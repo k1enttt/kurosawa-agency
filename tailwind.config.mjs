@@ -85,7 +85,7 @@ const config = {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
         },
-        flowbite: {
+        flowbiteText: {
           primary: {
             50: '#eff6ff',
             100: '#dbeafe',

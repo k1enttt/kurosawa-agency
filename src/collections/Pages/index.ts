@@ -23,6 +23,7 @@ import {
 import { GalleryContent } from '@/blocks/GalleryContent/config'
 import { CallToActionWithImage } from '@/blocks/CallToActionWithImage/config'
 import { Faq } from '@/blocks/FAQ/config'
+import { TwoColsContent } from '@/blocks/TwoColsContent/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -87,6 +88,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 GalleryContent,
                 CallToActionWithImage,
                 Faq,
+                TwoColsContent,
               ],
               required: true,
               admin: {

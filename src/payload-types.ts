@@ -199,6 +199,7 @@ export interface Page {
     | GalleryContentBlock
     | CallToActionWithImageBlock
     | FaqBlock
+    | TwoColsContentBlock
   )[];
   meta?: {
     title?: string | null;
@@ -863,6 +864,65 @@ export interface FaqBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TwoColsContentBlock".
+ */
+export interface TwoColsContentBlock {
+  introText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  enableLink?: boolean | null;
+  link?: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: number | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: number | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+    /**
+     * Choose how the link should be rendered.
+     */
+    appearance?: ('default' | 'outline') | null;
+  };
+  secondColumnContent?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'twoColsContent';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1154,6 +1214,7 @@ export interface PagesSelect<T extends boolean = true> {
         galleryContent?: T | GalleryContentBlockSelect<T>;
         ctaWithImage?: T | CallToActionWithImageBlockSelect<T>;
         faq?: T | FaqBlockSelect<T>;
+        twoColsContent?: T | TwoColsContentBlockSelect<T>;
       };
   meta?:
     | T
@@ -1309,6 +1370,27 @@ export interface FaqBlockSelect<T extends boolean = true> {
         answer?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TwoColsContentBlock_select".
+ */
+export interface TwoColsContentBlockSelect<T extends boolean = true> {
+  introText?: T;
+  enableLink?: T;
+  link?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+        appearance?: T;
+      };
+  secondColumnContent?: T;
   id?: T;
   blockName?: T;
 }

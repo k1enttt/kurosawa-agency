@@ -10,6 +10,7 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { GalleryContentBlock } from './GalleryContent/Component'
 import { CallToActionWithImageBlock } from './CallToActionWithImage/Component'
 import { FaqBlock } from './FAQ/Component'
+import { TwoColsContentBlock } from './TwoColsContent/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -20,6 +21,7 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   galleryContent: GalleryContentBlock,
   faq: FaqBlock,
+  twoColsContent: TwoColsContentBlock,
 }
 
 export const RenderBlocks: React.FC<{
