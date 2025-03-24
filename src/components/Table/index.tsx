@@ -3,7 +3,7 @@ import RichText from '@/components/RichText'
 const Table = ({ data }: { data: { header: string; value: any }[] }) => {
   return (
     <div className="relative overflow-x-auto">
-      <table className="container w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <table className="container w-full text-base text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <tbody>
           {/* {data.map((item, index) => (
             <tr

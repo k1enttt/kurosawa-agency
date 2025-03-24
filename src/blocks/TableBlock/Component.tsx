@@ -21,7 +21,10 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
           <RichText
             data={introText}
             enableGutter={false}
-            className="[&_h2]:text-xl [&_h2]:font-bold [&_h2]:md:mt-4 [&_h2]:mb-2.5 [&_h2]:text-gray-900 [&_h2]:dark:text-white"
+            className={cn(
+              '[&_h2]:mb-4 [&_h2]:text-4xl [&_h2]:tracking-tight [&_h2]:font-extrabold [&_h2]:text-gray-900 [&_h2]:dark:text-white',
+              'font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400',
+            )}
           />
         )}
         <Table data={tableData} />
