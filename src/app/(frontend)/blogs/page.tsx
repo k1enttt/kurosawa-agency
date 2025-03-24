@@ -14,7 +14,7 @@ export const revalidate = 600
 export default async function Page() {
   const payload = await getPayload({ config: configPromise })
 
-  const posts = await payload.find({
+  const blogs = await payload.find({
     collection: 'posts',
     depth: 1,
     limit: 12,
@@ -47,19 +47,19 @@ export default async function Page() {
       <div className="container mb-8">
         <PageRange
           collection="posts"
-          currentPage={posts.page}
+          currentPage={blogs.page}
           limit={12}
-          totalDocs={posts.totalDocs}
+          totalDocs={blogs.totalDocs}
         />
       </div>
 
       <div className="container">
-        <CollectionArchive posts={posts.docs} />
+        <CollectionArchive posts={blogs.docs} />
       </div>
 
       <div className="container">
-        {posts.totalPages > 1 && posts.page && (
-          <Pagination slug="posts" page={posts.page} totalPages={posts.totalPages} />
+        {blogs.totalPages > 1 && blogs.page && (
+          <Pagination slug="blogs" page={blogs.page} totalPages={blogs.totalPages} />
         )}
       </div>
     </div>
@@ -68,6 +68,6 @@ export default async function Page() {
 
 export function generateMetadata(): Metadata {
   return {
-    title: `Kurosawa Posts`,
+    title: `Kurosawa Blogs`,
   }
 }

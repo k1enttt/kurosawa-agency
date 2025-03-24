@@ -19,7 +19,7 @@ export const homeStatic: RequiredDataFromCollectionSlug<'pages'> = {
                 format: 0,
                 mode: 'normal',
                 style: '',
-                text: 'Website Template',
+                text: 'Kurosawa',
                 version: 1,
               },
             ],
@@ -81,7 +81,7 @@ export const homeStatic: RequiredDataFromCollectionSlug<'pages'> = {
   },
   meta: {
     description: 'An website built with Next.js.',
-    title: 'Website Template',
+    title: 'Kurosawa',
   },
   title: 'Home',
   layout: [],

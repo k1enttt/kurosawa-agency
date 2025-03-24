@@ -12,7 +12,7 @@ export const TeamBlock: React.FC<TeamBlockProps> = (props) => {
   return (
     <section className="bg-white dark:bg-gray-900">
       <div className="py-8 lg:py-16 container">
-        <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
+        <div className="mb-8 lg:mb-16">
           {introText && (
             <RichText
               className={cn(

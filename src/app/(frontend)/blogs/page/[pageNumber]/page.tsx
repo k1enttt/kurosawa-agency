@@ -25,12 +25,17 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   if (!Number.isInteger(sanitizedPageNumber)) notFound()
 
-  const posts = await payload.find({
+  const blogs = await payload.find({
     collection: 'posts',
     depth: 1,
     limit: 12,
     page: sanitizedPageNumber,
     overrideAccess: false,
+    where: {
+      'categories.slug': {
+        equals: 'blog',
+      },
+    },
   })
 
   return (
@@ -38,24 +43,26 @@ export default async function Page({ params: paramsPromise }: Args) {
       <PageClient />
       <div className="container mb-16">
         <div className="prose dark:prose-invert max-w-none">
-          <h1>Posts</h1>
+          <h1>Blogs</h1>
         </div>
       </div>
 
       <div className="container mb-8">
         <PageRange
           collection="posts"
-          currentPage={posts.page}
+          currentPage={blogs.page}
           limit={12}
-          totalDocs={posts.totalDocs}
+          totalDocs={blogs.totalDocs}
         />
       </div>
 
-      <CollectionArchive posts={posts.docs} />
+      <div className="container">
+        <CollectionArchive posts={blogs.docs} />
+      </div>
 
       <div className="container">
-        {posts?.page && posts?.totalPages > 1 && (
-          <Pagination page={posts.page} totalPages={posts.totalPages} />
+        {blogs?.page && blogs?.totalPages > 1 && (
+          <Pagination slug="blogs" page={blogs.page} totalPages={blogs.totalPages} />
         )}
       </div>
     </div>
@@ -65,7 +72,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { pageNumber } = await paramsPromise
   return {
-    title: `Kurosawa Posts Page ${pageNumber || ''}`,
+    title: `Kurosawa Blogs Page ${pageNumber || ''}`,
   }
 }
 

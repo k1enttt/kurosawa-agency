@@ -1,11 +1,10 @@
+import { CollectionArchive } from '@/components/CollectionArchive'
+import RichText from '@/components/RichText'
 import type { Post, ArchiveBlock as ArchiveBlockProps } from '@/payload-types'
 
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
-import RichText from '@/components/RichText'
-
-import { CollectionArchive } from '@/components/CollectionArchive'
 
 export const ArchiveBlock: React.FC<
   ArchiveBlockProps & {
@@ -17,6 +16,7 @@ export const ArchiveBlock: React.FC<
   const limit = limitFromProps || 3
 
   let posts: Post[] = []
+  let totalPages: number = 1
 
   if (populateBy === 'collection') {
     const payload = await getPayload({ config: configPromise })
@@ -30,18 +30,22 @@ export const ArchiveBlock: React.FC<
       collection: 'posts',
       depth: 1,
       limit,
-      ...(flattenedCategories && flattenedCategories.length > 0
-        ? {
-            where: {
+      where: {
+        _status: {
+          equals: 'published',
+        },
+        ...(flattenedCategories && flattenedCategories.length > 0
+          ? {
               categories: {
                 in: flattenedCategories,
               },
-            },
-          }
-        : {}),
+            }
+          : {}),
+      },
     })
 
-    posts = fetchedPosts.docs.filter((post) => post._status == 'published')
+    posts = fetchedPosts.docs
+    totalPages = fetchedPosts.totalPages
   } else {
     if (selectedDocs?.length) {
       const filteredSelectedPosts = selectedDocs.map((post) => {
@@ -53,7 +57,7 @@ export const ArchiveBlock: React.FC<
   }
 
   return (
-    <section className="my-16 bg-white dark:bg-gray-900" id={`block-${id}`}>
+    <section className="bg-white dark:bg-gray-900" id={`block-${id}`}>
       <div className="py-8 lg:py-16 container">
         {introContent && (
           <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
@@ -61,7 +65,7 @@ export const ArchiveBlock: React.FC<
             <RichText className="ms-0 max-w-[48rem]" data={introContent} enableGutter={false} />
           </div>
         )}
-        <CollectionArchive posts={posts} />
+        <CollectionArchive posts={posts} totalPages={totalPages} />
       </div>
     </section>
   )

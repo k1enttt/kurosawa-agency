@@ -1,7 +1,7 @@
 {
   "name": "kurosawa-agency",
   "version": "1.0.0",
-  "description": "Website template for Payload",
+  "description": "Kurosawa for Payload",
   "license": "MIT",
   "type": "module",
   "scripts": {

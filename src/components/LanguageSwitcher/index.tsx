@@ -1,5 +1,5 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useEffect, useRef } from 'react'
+import { Fragment, useEffect, useRef } from 'react'
 import { locales } from '@/middleware'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 import { cn } from '@/utilities/ui'
@@ -40,7 +40,7 @@ const LanguageSwitcher = ({ className }: { className?: string }) => {
         document.cookie = `locale=${selectedLanguage}; path=/; max-age=31536000`
       }}
     >
-      <SelectTrigger className={cn('w-36', className)}>
+      <SelectTrigger className={cn('w-16 xl:w-36', className)}>
         <SelectValue placeholder="Select language" />
       </SelectTrigger>
       <SelectContent>
@@ -49,7 +49,8 @@ const LanguageSwitcher = ({ className }: { className?: string }) => {
             (lang) =>
               Object.keys(mapLanguageString).includes(lang) && (
                 <SelectItem key={lang} value={lang}>
-                  {mapLanguageString[lang]}
+                  <div className="hidden xl:flex">{mapLanguageString[lang]}</div>
+                  <div className="flex xl:hidden">{lang.toUpperCase()}</div>
                 </SelectItem>
               ),
           )}
