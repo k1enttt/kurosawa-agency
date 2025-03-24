@@ -1760,6 +1760,7 @@ export interface Header {
  */
 export interface Footer {
   id: number;
+  description?: string | null;
   navItems?:
     | {
         link: {
@@ -1780,6 +1781,21 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
+  copyright?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1811,6 +1827,7 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
+  description?: T;
   navItems?:
     | T
     | {
@@ -1825,6 +1842,7 @@ export interface FooterSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  copyright?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

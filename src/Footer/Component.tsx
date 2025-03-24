@@ -7,11 +7,15 @@ import type { Footer } from '@/payload-types'
 import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
 import { CMSLink } from '@/components/Link'
 import { Logo } from '@/components/Logo/Logo'
+import RichText from '@/components/RichText'
+import { cn } from '@/utilities/ui'
 
 export async function Footer() {
   const footerData: Footer = await getCachedGlobal('footer', 1)()
 
   const navItems = footerData?.navItems || []
+  const introText = footerData?.description
+  const copyright = footerData?.copyright
 
   return (
     <footer className="p-4 bg-white md:p-8 lg:p-10 dark:bg-gray-800">
@@ -24,14 +28,7 @@ export async function Footer() {
         </div>
 
         {/* description */}
-        <p className="my-6 text-gray-500 dark:text-gray-400">
-          Open-source library of over 400+ web components and interactive elements built for better
-          web.
-        </p>
-
-        <div className="flex justify-center items-center text-gray-500 dark:text-gray-400 mb-6">
-          <ThemeSelector />
-        </div>
+        {introText && <p className="my-6 text-gray-500 dark:text-gray-400">{introText}</p>}
 
         {/* nav buttons */}
         <nav className="flex flex-wrap justify-center items-center mb-6 text-gray-900 dark:text-white">
@@ -41,13 +38,19 @@ export async function Footer() {
         </nav>
 
         {/* copyright */}
-        <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-          © 2021-2022{' '}
-          <a href="#" className="hover:underline">
-            Flowbite™
-          </a>
-          . All Rights Reserved.
-        </span>
+        {copyright && (
+          <RichText
+            data={copyright}
+            enableGutter={false}
+            className={cn(
+              'text-sm text-gray-500 sm:text-center dark:text-gray-400 mb-6',
+              '[&_a:hover]:underline [&_a]:text-inherit [&_a]:no-underline',
+            )}
+          />
+        )}
+        <div className="flex justify-center items-center text-gray-500 dark:text-gray-400">
+          <ThemeSelector />
+        </div>
       </div>
     </footer>
   )
