@@ -5,7 +5,7 @@ const Table = ({ data }: { data: { header: string; value: any }[] }) => {
     <div className="relative overflow-x-auto">
       <table className="container w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <tbody>
-          {data.map((item, index) => (
+          {/* {data.map((item, index) => (
             <tr
               key={index}
               className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200"
@@ -16,9 +16,17 @@ const Table = ({ data }: { data: { header: string; value: any }[] }) => {
               >
                 {item.header}
               </th>
-              <td className="px-6 py-4">{item.value}</td>
+              <td className="px-6 py-4">
+                {item.value && (
+                  <RichText
+                    data={item.value}
+                    enableGutter={false}
+                    className="text-inherit text-sm [&_a]:text-inherit [&_a]:no-underline [&_a:hover]:underline"
+                  />
+                )}
+              </td>
             </tr>
-          ))}
+          ))} */}
           <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
             <th
               scope="row"
