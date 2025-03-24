@@ -11,6 +11,8 @@ import { GalleryContentBlock } from './GalleryContent/Component'
 import { CallToActionWithImageBlock } from './CallToActionWithImage/Component'
 import { FaqBlock } from './FAQ/Component'
 import { TwoColsContentBlock } from './TwoColsContent/Component'
+import { TeamBlock } from './Team/Component'
+import { TableBlock } from './TableBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -22,6 +24,8 @@ const blockComponents = {
   galleryContent: GalleryContentBlock,
   faq: FaqBlock,
   twoColsContent: TwoColsContentBlock,
+  team: TeamBlock,
+  tableBlock: TableBlock,
 }
 
 export const RenderBlocks: React.FC<{

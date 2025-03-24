@@ -200,6 +200,8 @@ export interface Page {
     | CallToActionWithImageBlock
     | FaqBlock
     | TwoColsContentBlock
+    | TeamBlock
+    | TableBlock
   )[];
   meta?: {
     title?: string | null;
@@ -923,6 +925,89 @@ export interface TwoColsContentBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TeamBlock".
+ */
+export interface TeamBlock {
+  introText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  columns?:
+    | {
+        name: string;
+        role: string;
+        socialLinks?:
+          | {
+              platform?: string | null;
+              url?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'team';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TableBlock".
+ */
+export interface TableBlock {
+  introText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  columns?:
+    | {
+        headerText?: string | null;
+        valueText?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'tableBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1215,6 +1300,8 @@ export interface PagesSelect<T extends boolean = true> {
         ctaWithImage?: T | CallToActionWithImageBlockSelect<T>;
         faq?: T | FaqBlockSelect<T>;
         twoColsContent?: T | TwoColsContentBlockSelect<T>;
+        team?: T | TeamBlockSelect<T>;
+        tableBlock?: T | TableBlockSelect<T>;
       };
   meta?:
     | T
@@ -1391,6 +1478,45 @@ export interface TwoColsContentBlockSelect<T extends boolean = true> {
         appearance?: T;
       };
   secondColumnContent?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TeamBlock_select".
+ */
+export interface TeamBlockSelect<T extends boolean = true> {
+  introText?: T;
+  columns?:
+    | T
+    | {
+        name?: T;
+        role?: T;
+        socialLinks?:
+          | T
+          | {
+              platform?: T;
+              url?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TableBlock_select".
+ */
+export interface TableBlockSelect<T extends boolean = true> {
+  introText?: T;
+  columns?:
+    | T
+    | {
+        headerText?: T;
+        valueText?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
