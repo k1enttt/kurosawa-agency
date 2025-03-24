@@ -14,20 +14,40 @@ export async function Footer() {
   const navItems = footerData?.navItems || []
 
   return (
-    <footer className="mt-auto border-t border-border bg-black dark:bg-card text-white">
-      <div className="container py-8 gap-8 flex flex-col md:flex-row md:justify-between">
-        <Link className="flex items-center" href="/">
-          <Logo />
-        </Link>
-
-        <div className="flex flex-col-reverse items-start md:flex-row gap-4 md:items-center">
-          <ThemeSelector />
-          <nav className="flex flex-col md:flex-row gap-4">
-            {navItems.map(({ link }, i) => {
-              return <CMSLink className="text-white" key={i} {...link} />
-            })}
-          </nav>
+    <footer className="p-4 bg-white md:p-8 lg:p-10 dark:bg-gray-800">
+      <div className="mx-auto max-w-screen-xl text-center">
+        {/* logo */}
+        <div className="flex justify-center items-center ">
+          <Link className="w-fit" href="/">
+            <Logo />
+          </Link>
         </div>
+
+        {/* description */}
+        <p className="my-6 text-gray-500 dark:text-gray-400">
+          Open-source library of over 400+ web components and interactive elements built for better
+          web.
+        </p>
+
+        <div className="flex justify-center items-center text-gray-500 dark:text-gray-400 mb-6">
+          <ThemeSelector />
+        </div>
+
+        {/* nav buttons */}
+        <nav className="flex flex-wrap justify-center items-center mb-6 text-gray-900 dark:text-white">
+          {navItems.map(({ link }, i) => {
+            return <CMSLink className="mr-4 hover:underline md:mr-6 " key={i} {...link} />
+          })}
+        </nav>
+
+        {/* copyright */}
+        <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+          © 2021-2022{' '}
+          <a href="#" className="hover:underline">
+            Flowbite™
+          </a>
+          . All Rights Reserved.
+        </span>
       </div>
     </footer>
   )
