@@ -48,9 +48,6 @@ export async function Footer() {
             )}
           />
         )}
-        <div className="flex justify-center items-center text-gray-500 dark:text-gray-400">
-          <ThemeSelector />
-        </div>
       </div>
     </footer>
   )
