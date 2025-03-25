@@ -21,7 +21,7 @@ const PageClient: React.FC = () => {
       document.body.classList.remove('font-inter')
       document.body.classList.add('font-meiryo')
     }
-  }, [searchParams])
+  }, [locale])
   return <React.Fragment />
 }
 

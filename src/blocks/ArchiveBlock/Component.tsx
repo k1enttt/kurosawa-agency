@@ -16,7 +16,6 @@ export const ArchiveBlock: React.FC<
   const limit = limitFromProps || 3
 
   let posts: Post[] = []
-  let totalPages: number = 1
 
   if (populateBy === 'collection') {
     const payload = await getPayload({ config: configPromise })
@@ -45,7 +44,6 @@ export const ArchiveBlock: React.FC<
     })
 
     posts = fetchedPosts.docs
-    totalPages = fetchedPosts.totalPages
   } else {
     if (selectedDocs?.length) {
       const filteredSelectedPosts = selectedDocs.map((post) => {

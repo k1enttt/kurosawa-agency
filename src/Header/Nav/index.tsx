@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { Suspense } from 'react'
 
 import type { Header as HeaderType } from '@/payload-types'
 
@@ -23,10 +23,12 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
       {/* action buttons */}
       <div className="flex items-center xl:order-2">
         <div className="mr-4">
-          <CMSLink label="Contact Us" appearance="default" url="/contact" />
+          <CMSLink label="Let's talk" appearance="default" url="/contact" />
         </div>
         <div className="mr-4">
-          <LanguageSwitcher className="bg-black text-white dark:bg-white dark:text-black" />
+          <Suspense>
+            <LanguageSwitcher className="bg-black text-white dark:bg-white dark:text-black" />
+          </Suspense>
         </div>
 
         <Link href="/search">

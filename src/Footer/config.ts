@@ -4,7 +4,6 @@ import { link } from '@/fields/link'
 import { revalidateFooter } from './hooks/revalidateFooter'
 import {
   FixedToolbarFeature,
-  HeadingFeature,
   InlineToolbarFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
