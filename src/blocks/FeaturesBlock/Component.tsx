@@ -4,7 +4,6 @@ import RichText from '@/components/RichText'
 
 import type { FeaturesBlock as FeaturesBlockProps } from '@/payload-types'
 
-import { CMSLink } from '../../components/Link'
 import Link from 'next/link'
 
 export const FeaturesBlock: React.FC<FeaturesBlockProps> = (props) => {

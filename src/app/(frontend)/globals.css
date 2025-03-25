@@ -169,3 +169,7 @@ html[data-theme='light'] {
 .blog-category {
   @apply [&_div.category]:w-fit [&_div.category]:bg-purple-100 [&_div.category]:text-purple-800 [&_div.category]:text-xs [&_div.category]:font-semibold [&_div.category]:mr-2 [&_div.category]:px-2.5 [&_div.category]:py-0.5 [&_div.category]:rounded [&_div.category]:dark:bg-purple-200 [&_div.category]:dark:text-purple-900
 }
+
+.table-column-width {
+  @apply w-[30vw] md:w-[50vw] lg:w-[30vw]
+}
