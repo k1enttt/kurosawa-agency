@@ -14,6 +14,7 @@ import { TwoColsContentBlock } from './TwoColsContent/Component'
 import { TeamBlock } from './Team/Component'
 import { TableBlock } from './TableBlock/Component'
 import { FeaturesBlock } from './FeaturesBlock/Component'
+import { cn } from '@/utilities/ui'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -48,7 +49,7 @@ export const RenderBlocks: React.FC<{
 
             if (Block) {
               return (
-                <div className="my-16" key={index}>
+                <div className={cn(index == blocks.length - 1 && 'mb-0')} key={index}>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
                   <Block {...block} disableInnerContainer />
                 </div>

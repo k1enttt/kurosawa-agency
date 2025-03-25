@@ -17,7 +17,7 @@ export async function Footer() {
   const copyright = footerData?.copyright
 
   return (
-    <footer className="p-4 bg-flowbite-container md:p-8 lg:p-10 dark:bg-gray-800 -mt-[10rem]">
+    <footer className="p-4 bg-flowbite-container md:p-8 lg:p-10 dark:bg-gray-800">
       <div className="mx-auto max-w-screen-xl text-center">
         {/* logo */}
         <div className="flex justify-center items-center ">
