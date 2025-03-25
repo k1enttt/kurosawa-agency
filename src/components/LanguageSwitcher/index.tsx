@@ -40,7 +40,7 @@ const LanguageSwitcher = ({ className }: { className?: string }) => {
         document.cookie = `locale=${selectedLanguage}; path=/; max-age=31536000`
       }}
     >
-      <SelectTrigger className={cn('w-16 xl:w-36', className)}>
+      <SelectTrigger className={cn('w-16 md:w-36', className)}>
         <SelectValue placeholder="Select language" />
       </SelectTrigger>
       <SelectContent>
@@ -49,8 +49,8 @@ const LanguageSwitcher = ({ className }: { className?: string }) => {
             (lang) =>
               Object.keys(mapLanguageString).includes(lang) && (
                 <SelectItem key={lang} value={lang}>
-                  <div className="hidden xl:flex">{mapLanguageString[lang]}</div>
-                  <div className="flex xl:hidden">{lang.toUpperCase()}</div>
+                  <div className="hidden md:flex">{mapLanguageString[lang]}</div>
+                  <div className="flex md:hidden">{lang.toUpperCase()}</div>
                 </SelectItem>
               ),
           )}
