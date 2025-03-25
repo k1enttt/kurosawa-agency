@@ -1031,6 +1031,7 @@ export interface TableBlock {
  * via the `definition` "FeaturesBlock".
  */
 export interface FeaturesBlock {
+  backgroundColor?: ('light' | 'dark') | null;
   introText?: {
     root: {
       type: string;
@@ -1600,6 +1601,7 @@ export interface TableBlockSelect<T extends boolean = true> {
  * via the `definition` "FeaturesBlock_select".
  */
 export interface FeaturesBlockSelect<T extends boolean = true> {
+  backgroundColor?: T;
   introText?: T;
   columns?:
     | T

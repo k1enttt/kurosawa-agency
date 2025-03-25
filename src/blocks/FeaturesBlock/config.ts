@@ -55,6 +55,21 @@ export const FeaturesBlock: Block = {
   interfaceName: 'FeaturesBlock',
   fields: [
     {
+      name: 'backgroundColor',
+      type: 'select',
+      options: [
+        {
+          label: 'Light',
+          value: 'light',
+        },
+        {
+          label: 'Dark',
+          value: 'dark',
+        },
+      ],
+      defaultValue: 'light',
+    },
+    {
       name: 'introText',
       type: 'richText',
       editor: lexicalEditor({
