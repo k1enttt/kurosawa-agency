@@ -21,7 +21,10 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   return (
     <>
       {/* action buttons */}
-      <div className="flex items-center lg:order-2">
+      <div className="flex items-center xl:order-2">
+        <div className="mr-4">
+          <CMSLink label="Contact Us" appearance="default" url="/contact" />
+        </div>
         <div className="mr-4">
           <LanguageSwitcher className="bg-black text-white dark:bg-white dark:text-black" />
         </div>
@@ -35,17 +38,17 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
 
       {/* nav buttons */}
       <div
-        className={`${!isNavOpen && 'hidden'} justify-between items-center w-full lg:flex lg:w-auto lg:order-1`}
+        className={`${!isNavOpen && 'hidden'} justify-between items-center w-full xl:flex xl:w-auto xl:order-1`}
         id="mobile-menu-2"
       >
-        <div className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+        <div className="flex flex-col mt-4 font-medium xl:flex-row xl:space-x-8 xl:mt-0">
           {navItems.map(({ link }, i) => {
             return (
               <div key={i}>
                 <CMSLink
                   {...link}
                   appearance="link"
-                  className="block py-2 pr-4 pl-3 rounded-none border-b hover:no-underline lg:border-0 lg:p-0 !text-p-md text-heading lg:hover:text-link hover:bg-gray-700 hover:text-white lg:hover:bg-transparent border-gray-700"
+                  className="block py-2 pr-4 pl-3 rounded-none border-b hover:no-underline xl:border-0 xl:p-0 !text-p-md text-heading xl:hover:text-link hover:bg-gray-700 hover:text-white xl:hover:bg-transparent border-gray-700"
                 />
               </div>
             )

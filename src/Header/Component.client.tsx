@@ -30,8 +30,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   }, [headerTheme])
 
   return (
-    <header className="relative z-20   " {...(theme ? { 'data-theme': theme } : {})}>
-      <div className="bg-white dark:bg-flowbite-container py-2.5">
+    <header className="sticky top-0 z-20   " {...(theme ? { 'data-theme': theme } : {})}>
+      <div className="relative bg-white dark:bg-flowbite-container py-2.5">
         <div className="container flex flex-wrap justify-between items-center">
           {/* logo */}
           <Link href="/" className="flex items-center">
