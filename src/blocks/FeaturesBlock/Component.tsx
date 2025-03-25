@@ -5,6 +5,7 @@ import RichText from '@/components/RichText'
 import type { FeaturesBlock as FeaturesBlockProps } from '@/payload-types'
 
 import { CMSLink } from '../../components/Link'
+import Link from 'next/link'
 
 export const FeaturesBlock: React.FC<FeaturesBlockProps> = (props) => {
   const { introText, columns } = props
@@ -41,7 +42,26 @@ export const FeaturesBlock: React.FC<FeaturesBlockProps> = (props) => {
                     />
                   )}
 
-                  {enableLink && <CMSLink {...link} />}
+                  {enableLink && (
+                    <Link
+                      className="inline-flex items-center text-sm font-medium text-flowbiteText-primary-600 hover:text-flowbiteText-primary-700 dark:text-flowbiteText-primary-500 dark:hover:text-flowbiteText-primary-400"
+                      href={link?.url || '#'}
+                    >
+                      {link?.label}
+                      <svg
+                        className="ml-1 w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
+                    </Link>
+                  )}
                 </div>
               )
             })}

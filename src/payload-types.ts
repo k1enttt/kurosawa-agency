@@ -1057,23 +1057,8 @@ export interface FeaturesBlock {
         } | null;
         enableLink?: boolean | null;
         link?: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
           label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('default' | 'outline') | null;
+          url: string;
         };
         id?: string | null;
       }[]
@@ -1608,12 +1593,8 @@ export interface FeaturesBlockSelect<T extends boolean = true> {
         link?:
           | T
           | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
               label?: T;
-              appearance?: T;
+              url?: T;
             };
         id?: T;
       };

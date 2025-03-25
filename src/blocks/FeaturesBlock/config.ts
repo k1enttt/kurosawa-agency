@@ -29,15 +29,27 @@ const columnFields: Field[] = [
     name: 'enableLink',
     type: 'checkbox',
   },
-  link({
-    overrides: {
-      admin: {
-        condition: (_data, siblingData) => {
-          return Boolean(siblingData?.enableLink)
-        },
+  {
+    name: 'link',
+    type: 'group',
+    admin: {
+      condition: (_data, siblingData) => {
+        return Boolean(siblingData?.enableLink)
       },
     },
-  }),
+    fields: [
+      {
+        name: 'label',
+        type: 'text',
+        required: true,
+      },
+      {
+        name: 'url',
+        type: 'text',
+        required: true,
+      },
+    ],
+  },
 ]
 
 export const FeaturesBlock: Block = {
