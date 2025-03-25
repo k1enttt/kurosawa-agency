@@ -13,6 +13,7 @@ import { FaqBlock } from './FAQ/Component'
 import { TwoColsContentBlock } from './TwoColsContent/Component'
 import { TeamBlock } from './Team/Component'
 import { TableBlock } from './TableBlock/Component'
+import { FeaturesBlock } from './FeaturesBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -26,6 +27,7 @@ const blockComponents = {
   twoColsContent: TwoColsContentBlock,
   team: TeamBlock,
   tableBlock: TableBlock,
+  featuresBlock: FeaturesBlock,
 }
 
 export const RenderBlocks: React.FC<{

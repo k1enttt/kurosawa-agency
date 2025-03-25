@@ -202,6 +202,7 @@ export interface Page {
     | TwoColsContentBlock
     | TeamBlock
     | TableBlock
+    | FeaturesBlock
   )[];
   meta?: {
     title?: string | null;
@@ -975,6 +976,7 @@ export interface TeamBlock {
  * via the `definition` "TableBlock".
  */
 export interface TableBlock {
+  heading?: string | null;
   introText?: {
     root: {
       type: string;
@@ -990,6 +992,7 @@ export interface TableBlock {
     };
     [k: string]: unknown;
   } | null;
+  hasHeader?: ('yes' | 'no') | null;
   columns?:
     | {
         headerText?: string | null;
@@ -1014,6 +1017,70 @@ export interface TableBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'tableBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeaturesBlock".
+ */
+export interface FeaturesBlock {
+  introText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  columns?:
+    | {
+        richText?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        enableLink?: boolean | null;
+        link?: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'featuresBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1311,6 +1378,7 @@ export interface PagesSelect<T extends boolean = true> {
         twoColsContent?: T | TwoColsContentBlockSelect<T>;
         team?: T | TeamBlockSelect<T>;
         tableBlock?: T | TableBlockSelect<T>;
+        featuresBlock?: T | FeaturesBlockSelect<T>;
       };
   meta?:
     | T
@@ -1513,12 +1581,40 @@ export interface TeamBlockSelect<T extends boolean = true> {
  * via the `definition` "TableBlock_select".
  */
 export interface TableBlockSelect<T extends boolean = true> {
+  heading?: T;
   introText?: T;
+  hasHeader?: T;
   columns?:
     | T
     | {
         headerText?: T;
         valueText?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeaturesBlock_select".
+ */
+export interface FeaturesBlockSelect<T extends boolean = true> {
+  introText?: T;
+  columns?:
+    | T
+    | {
+        richText?: T;
+        enableLink?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
         id?: T;
       };
   id?: T;
