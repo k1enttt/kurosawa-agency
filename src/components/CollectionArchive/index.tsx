@@ -2,7 +2,6 @@ import { cn } from '@/utilities/ui'
 import React from 'react'
 
 import { Card, CardPostData } from '@/components/Card'
-import { Pagination } from '../Pagination'
 
 export type Props = {
   posts: CardPostData[]
@@ -19,7 +18,7 @@ export const CollectionArchive: React.FC<Props> = (props) => {
             <Card
               key={index}
               className={cn(
-                'blog-image blog-title blog-subtitleg blog-no-padding blog-category ',
+                'blog-image blog-title blog-subtitle blog-no-padding blog-category ',
                 'relative p-4 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700',
               )}
               doc={result}
