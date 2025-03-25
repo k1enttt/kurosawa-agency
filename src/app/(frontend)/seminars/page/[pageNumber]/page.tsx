@@ -31,6 +31,11 @@ export default async function Page({ params: paramsPromise }: Args) {
     limit: 12,
     page: sanitizedPageNumber,
     overrideAccess: false,
+    where: {
+      'categories.slug': {
+        equals: 'newsletter',
+      },
+    },
   })
 
   return (
