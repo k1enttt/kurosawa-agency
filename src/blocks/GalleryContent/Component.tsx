@@ -9,7 +9,7 @@ export const GalleryContentBlock: React.FC<GalleryContentBlockProps> = (props) =
   const { introText, contentCards } = props
 
   return (
-    <div className="bg-white dark:bg-gray-900">
+    <div className="bg-flowbite-container dark:bg-gray-900">
       <div className="container py-8 md:text-center lg:py-16">
         {introText && (
           <div className="mb-16 text-center text-gray-900">
