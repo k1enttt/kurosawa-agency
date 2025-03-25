@@ -63,7 +63,7 @@ export default async function Page({ params: paramsPromise, searchParams }: Args
   const { hero, layout } = page
 
   return (
-    <article className="pt-16">
+    <article className="">
       <PageClient />
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />

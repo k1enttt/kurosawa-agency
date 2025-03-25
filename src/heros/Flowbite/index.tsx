@@ -16,7 +16,7 @@ export const FlowbiteHero: React.FC<Page['hero']> = ({ links, media, richText })
   })
 
   return (
-    <div className="bg-white -mt-[4rem] dark:bg-gray-900">
+    <div className="bg-white dark:bg-gray-900">
       <div className="grid container py-8 lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <div className="mr-auto place-self-center lg:col-span-7">
           {/* Heading and description */}
