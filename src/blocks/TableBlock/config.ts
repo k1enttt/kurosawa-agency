@@ -29,6 +29,21 @@ export const TableBlock: Block = {
   interfaceName: 'TableBlock',
   fields: [
     {
+      name: 'backgroundColor',
+      type: 'select',
+      options: [
+        {
+          label: 'Light',
+          value: 'light',
+        },
+        {
+          label: 'Dark',
+          value: 'dark',
+        },
+      ],
+      defaultValue: 'light',
+    },
+    {
       name: 'heading',
       type: 'text',
     },

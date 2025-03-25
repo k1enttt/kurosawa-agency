@@ -17,6 +17,7 @@ export type FormBlockType = {
   enableIntro: boolean
   form: FormType
   introContent?: SerializedEditorState
+  backgroundColor: 'light' | 'dark' | undefined
 }
 
 export const FormBlock: React.FC<
@@ -29,6 +30,7 @@ export const FormBlock: React.FC<
     form: formFromProps,
     form: { id: formID, confirmationMessage, confirmationType, redirect, submitButtonLabel } = {},
     introContent,
+    backgroundColor,
   } = props
 
   const formMethods = useForm({
@@ -114,7 +116,7 @@ export const FormBlock: React.FC<
   )
 
   return (
-    <div className="bg-flowbite-container">
+    <div className={backgroundColor == 'dark' ? 'bg-flowbite-container' : 'bg-white'}>
       <div className="container py-8 lg:py-16 lg:max-w-[48rem]">
         {enableIntro && introContent && !hasSubmitted && (
           <RichText className="mb-8 lg:mb-12" data={introContent} enableGutter={false} />

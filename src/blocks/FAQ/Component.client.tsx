@@ -4,9 +4,11 @@ import { cn } from '@/utilities/ui'
 import { Fragment } from 'react'
 
 export const ClientFaqSection = ({
+  backgroundColor,
   introText,
   questions,
 }: {
+  backgroundColor: string
   introText:
     | {
         [k: string]: unknown
@@ -41,7 +43,12 @@ export const ClientFaqSection = ({
     | undefined
 }): React.ReactNode => {
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section
+      className={cn(
+        backgroundColor == 'dark' ? 'bg-flowbite-container' : 'bg-white',
+        'dark:bg-gray-900',
+      )}
+    >
       <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6 ">
         {introText && (
           <RichText

@@ -14,6 +14,21 @@ export const CallToActionWithImage: Block = {
   interfaceName: 'CallToActionWithImageBlock',
   fields: [
     {
+      name: 'backgroundColor',
+      type: 'select',
+      options: [
+        {
+          label: 'Light',
+          value: 'light',
+        },
+        {
+          label: 'Dark',
+          value: 'dark',
+        },
+      ],
+      defaultValue: 'light',
+    },
+    {
       name: 'direction',
       type: 'select',
       options: [

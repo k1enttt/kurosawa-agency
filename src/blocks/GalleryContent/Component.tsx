@@ -6,10 +6,15 @@ import type { GalleryContentBlock as GalleryContentBlockProps } from '@/payload-
 import { Media } from '@/components/Media'
 
 export const GalleryContentBlock: React.FC<GalleryContentBlockProps> = (props) => {
-  const { introText, contentCards } = props
+  const { backgroundColor, introText, contentCards } = props
 
   return (
-    <div className="bg-flowbite-container dark:bg-gray-900">
+    <div
+      className={cn(
+        backgroundColor == 'dark' ? 'bg-flowbite-container' : 'bg-white',
+        'dark:bg-gray-900',
+      )}
+    >
       <div className="container py-8 md:text-center lg:py-16">
         {introText && (
           <div className="mb-16 text-center text-gray-900">

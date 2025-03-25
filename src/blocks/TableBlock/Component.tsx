@@ -7,7 +7,7 @@ import Table from '@/components/Table'
 import RichText from '@/components/RichText'
 
 export const TableBlock: React.FC<TableBlockProps> = (props) => {
-  const { heading, introText, columns, hasHeader } = props
+  const { backgroundColor, heading, introText, columns, hasHeader } = props
 
   const headingId = useMemo(
     () =>
@@ -25,29 +25,36 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     }) || []
 
   return (
-    <div className="py-8 lg:py-16 container">
-      <div className="mb-8 lg:mb-16">
-        {heading && (
-          <h2
-            id={headingId}
-            className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
-          >
-            {heading}
-          </h2>
-        )}
-        {introText && (
-          <RichText
-            data={introText}
-            enableGutter={false}
-            className={cn(
-              '[&_h2]:mb-4 [&_h2]:text-4xl [&_h2]:tracking-tight [&_h2]:font-extrabold [&_h2]:text-gray-900 [&_h2]:dark:text-white',
-              'font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400',
-            )}
-          />
-        )}
-      </div>
+    <section
+      className={cn(
+        backgroundColor == 'dark' ? 'bg-flowbite-container' : 'bg-white',
+        'dark:bg-gray-900',
+      )}
+    >
+      <div className="py-8 lg:py-16 container">
+        <div className="mb-8 lg:mb-16">
+          {heading && (
+            <h2
+              id={headingId}
+              className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
+            >
+              {heading}
+            </h2>
+          )}
+          {introText && (
+            <RichText
+              data={introText}
+              enableGutter={false}
+              className={cn(
+                '[&_h2]:mb-4 [&_h2]:text-4xl [&_h2]:tracking-tight [&_h2]:font-extrabold [&_h2]:text-gray-900 [&_h2]:dark:text-white',
+                'font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400',
+              )}
+            />
+          )}
+        </div>
 
-      <Table data={tableData} hasHeader={hasHeader == 'yes'} />
-    </div>
+        <Table data={tableData} hasHeader={hasHeader == 'yes'} />
+      </div>
+    </section>
   )
 }

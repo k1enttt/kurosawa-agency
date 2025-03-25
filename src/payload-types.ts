@@ -510,6 +510,7 @@ export interface MediaBlock {
  * via the `definition` "ArchiveBlock".
  */
 export interface ArchiveBlock {
+  backgroundColor?: ('light' | 'dark') | null;
   introContent?: {
     root: {
       type: string;
@@ -544,6 +545,7 @@ export interface ArchiveBlock {
  * via the `definition` "FormBlock".
  */
 export interface FormBlock {
+  backgroundColor?: ('light' | 'dark') | null;
   form: number | Form;
   enableIntro?: boolean | null;
   introContent?: {
@@ -743,6 +745,7 @@ export interface Form {
  * via the `definition` "GalleryContentBlock".
  */
 export interface GalleryContentBlock {
+  backgroundColor?: ('light' | 'dark') | null;
   introText?: {
     root: {
       type: string;
@@ -775,6 +778,7 @@ export interface GalleryContentBlock {
  * via the `definition` "CallToActionWithImageBlock".
  */
 export interface CallToActionWithImageBlock {
+  backgroundColor?: ('light' | 'dark') | null;
   direction: 'ltr' | 'rtl';
   richText?: {
     root: {
@@ -825,6 +829,7 @@ export interface CallToActionWithImageBlock {
  * via the `definition` "FaqBlock".
  */
 export interface FaqBlock {
+  backgroundColor?: ('light' | 'dark') | null;
   introText?: {
     root: {
       type: string;
@@ -870,6 +875,7 @@ export interface FaqBlock {
  * via the `definition` "TwoColsContentBlock".
  */
 export interface TwoColsContentBlock {
+  backgroundColor?: ('light' | 'dark') | null;
   introText?: {
     root: {
       type: string;
@@ -929,6 +935,7 @@ export interface TwoColsContentBlock {
  * via the `definition` "TeamBlock".
  */
 export interface TeamBlock {
+  backgroundColor?: ('light' | 'dark') | null;
   introText?: {
     root: {
       type: string;
@@ -976,6 +983,7 @@ export interface TeamBlock {
  * via the `definition` "TableBlock".
  */
 export interface TableBlock {
+  backgroundColor?: ('light' | 'dark') | null;
   heading?: string | null;
   introText?: {
     root: {
@@ -1443,6 +1451,7 @@ export interface MediaBlockSelect<T extends boolean = true> {
  * via the `definition` "ArchiveBlock_select".
  */
 export interface ArchiveBlockSelect<T extends boolean = true> {
+  backgroundColor?: T;
   introContent?: T;
   populateBy?: T;
   relationTo?: T;
@@ -1457,6 +1466,7 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
  * via the `definition` "FormBlock_select".
  */
 export interface FormBlockSelect<T extends boolean = true> {
+  backgroundColor?: T;
   form?: T;
   enableIntro?: T;
   introContent?: T;
@@ -1468,6 +1478,7 @@ export interface FormBlockSelect<T extends boolean = true> {
  * via the `definition` "GalleryContentBlock_select".
  */
 export interface GalleryContentBlockSelect<T extends boolean = true> {
+  backgroundColor?: T;
   introText?: T;
   contentCards?:
     | T
@@ -1485,6 +1496,7 @@ export interface GalleryContentBlockSelect<T extends boolean = true> {
  * via the `definition` "CallToActionWithImageBlock_select".
  */
 export interface CallToActionWithImageBlockSelect<T extends boolean = true> {
+  backgroundColor?: T;
   direction?: T;
   richText?: T;
   links?:
@@ -1511,6 +1523,7 @@ export interface CallToActionWithImageBlockSelect<T extends boolean = true> {
  * via the `definition` "FaqBlock_select".
  */
 export interface FaqBlockSelect<T extends boolean = true> {
+  backgroundColor?: T;
   introText?: T;
   questions?:
     | T
@@ -1527,6 +1540,7 @@ export interface FaqBlockSelect<T extends boolean = true> {
  * via the `definition` "TwoColsContentBlock_select".
  */
 export interface TwoColsContentBlockSelect<T extends boolean = true> {
+  backgroundColor?: T;
   introText?: T;
   enableLink?: T;
   link?:
@@ -1548,6 +1562,7 @@ export interface TwoColsContentBlockSelect<T extends boolean = true> {
  * via the `definition` "TeamBlock_select".
  */
 export interface TeamBlockSelect<T extends boolean = true> {
+  backgroundColor?: T;
   introText?: T;
   members?:
     | T
@@ -1566,6 +1581,7 @@ export interface TeamBlockSelect<T extends boolean = true> {
  * via the `definition` "TableBlock_select".
  */
 export interface TableBlockSelect<T extends boolean = true> {
+  backgroundColor?: T;
   heading?: T;
   introText?: T;
   hasHeader?: T;

@@ -12,6 +12,21 @@ export const FormBlock: Block = {
   interfaceName: 'FormBlock',
   fields: [
     {
+      name: 'backgroundColor',
+      type: 'select',
+      options: [
+        {
+          label: 'Light',
+          value: 'light',
+        },
+        {
+          label: 'Dark',
+          value: 'dark',
+        },
+      ],
+      defaultValue: 'light',
+    },
+    {
       name: 'form',
       type: 'relationship',
       relationTo: 'forms',

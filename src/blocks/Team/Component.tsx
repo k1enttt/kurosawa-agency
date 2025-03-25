@@ -7,10 +7,15 @@ import type { TeamBlock as TeamBlockProps } from '@/payload-types'
 import { Media } from '@/components/Media'
 
 export const TeamBlock: React.FC<TeamBlockProps> = (props) => {
-  const { introText, members } = props
+  const { backgroundColor, introText, members } = props
 
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section
+      className={cn(
+        backgroundColor == 'dark' ? 'bg-flowbite-container' : 'bg-white',
+        'dark:bg-gray-900',
+      )}
+    >
       <div className="py-8 lg:py-16 container">
         <div className="mb-8 lg:mb-16">
           {introText && (
