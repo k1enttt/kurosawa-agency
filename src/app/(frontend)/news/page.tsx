@@ -7,6 +7,7 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
 import PageClient from './page.client'
+import CategoriesNavbar from '@/components/CategoriesNavbar'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
@@ -43,6 +44,8 @@ export default async function Page() {
           <h1>News</h1>
         </div>
       </div>
+
+      <CategoriesNavbar />
 
       <div className="container mb-8">
         <PageRange

@@ -173,3 +173,11 @@ html[data-theme='light'] {
 .table-column-width {
   @apply w-[30vw] md:w-[50vw] lg:w-[30vw]
 }
+
+.category-selected {
+  @apply border border-blue-700 text-blue-700 hover:bg-blue-100
+}
+
+.category-unselected {
+  @apply hover:bg-flowbite-container
+}
