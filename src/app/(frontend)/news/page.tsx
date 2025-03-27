@@ -9,20 +9,14 @@ import React from 'react'
 import PageClient from './page.client'
 import CategoriesNavbar from '@/components/CategoriesNavbar'
 
-export const dynamic = 'force-static'
-export const revalidate = 600
-
 type Args = {
-  searchParams: Promise<{
-    category: string
-  }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
 export default async function Page({ searchParams: searchParamsPromise }: Args) {
-  const { category } = await searchParamsPromise
+  const searchParams = await searchParamsPromise
+  const category = searchParams.category
   const payload = await getPayload({ config: configPromise })
-
-  console.log(`Category ${category} is selected`)
 
   const news = await payload.find({
     collection: 'posts',
@@ -57,6 +51,8 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
           <h2>News</h2>
         </div>
       </div>
+
+      <CategoriesNavbar />
 
       <div className="container mb-8">
         <PageRange

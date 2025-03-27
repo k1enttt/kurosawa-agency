@@ -13,7 +13,7 @@ const CategoriesNavbar: React.FC = () => {
 
   useEffect(() => {
     router.push(`/news${categoryParam ? `?category=${categoryParam}` : ''}`)
-  }, [categoryParam])
+  }, [categoryParam, router])
 
   return (
     <div>
@@ -51,7 +51,6 @@ const CategoriesNavbar: React.FC = () => {
             Newsletter
           </button>
           <button
-            type="submit"
             onClick={() => updateCategoryParam('blog')}
             className={cn(
               categoryParam == 'blog' ? 'category-selected' : 'category-unselected',
@@ -61,7 +60,6 @@ const CategoriesNavbar: React.FC = () => {
             Blog
           </button>
           <button
-            type="submit"
             onClick={() => updateCategoryParam('recruitment')}
             className={cn(
               categoryParam == 'recruitment' ? 'category-selected' : 'category-unselected',
