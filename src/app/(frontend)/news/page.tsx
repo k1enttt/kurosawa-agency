@@ -12,8 +12,17 @@ import CategoriesNavbar from '@/components/CategoriesNavbar'
 export const dynamic = 'force-static'
 export const revalidate = 600
 
-export default async function Page() {
+type Args = {
+  searchParams: Promise<{
+    category: string
+  }>
+}
+
+export default async function Page({ searchParams: searchParamsPromise }: Args) {
+  const { category } = await searchParamsPromise
   const payload = await getPayload({ config: configPromise })
+
+  console.log(`Category ${category} is selected`)
 
   const news = await payload.find({
     collection: 'posts',
@@ -24,9 +33,13 @@ export default async function Page() {
       _status: {
         equals: 'published',
       },
-      'categories.slug': {
-        equals: 'blog',
-      },
+      ...(category
+        ? {
+            'categories.slug': {
+              equals: category,
+            },
+          }
+        : {}),
     },
     select: {
       title: true,
@@ -44,8 +57,6 @@ export default async function Page() {
           <h1>News</h1>
         </div>
       </div>
-
-      <CategoriesNavbar />
 
       <div className="container mb-8">
         <PageRange
