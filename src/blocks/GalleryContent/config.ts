@@ -40,6 +40,7 @@ export const GalleryContent: Block = {
         },
       }),
       label: false,
+      localized: true,
     },
     {
       name: 'contentCards',
