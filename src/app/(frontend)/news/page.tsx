@@ -53,8 +53,8 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
     <div className="pt-24 pb-24">
       <PageClient />
       <div className="container mb-16">
-        <div className="prose dark:prose-invert max-w-none">
-          <h1>News</h1>
+        <div className="prose dark:prose-invert max-w-none flowbite-h2">
+          <h2>News</h2>
         </div>
       </div>
 

@@ -39,8 +39,8 @@ export default async function Page() {
     <div className="pt-24 pb-24">
       <PageClient />
       <div className="container mb-16">
-        <div className="prose dark:prose-invert max-w-none">
-          <h1>Recruitment</h1>
+        <div className="prose dark:prose-invert max-w-none flowbite-h2">
+          <h2>Recruitment</h2>
         </div>
       </div>
 

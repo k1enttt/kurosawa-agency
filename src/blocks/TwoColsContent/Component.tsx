@@ -24,7 +24,7 @@ export const TwoColsContentBlock: React.FC<TwoColsContentBlockProps> = (props) =
               enableGutter={false}
               className={cn(
                 'font-light text-gray-500 sm:text-lg dark:text-gray-400 mb-4',
-                '[&_h2]:mb-4 [&_h2]:text-4xl [&_h2]:tracking-tight [&_h2]:font-extrabold [&_h2]:text-gray-900 [&_h2]:dark:text-white',
+                'flowbite-h2',
               )}
             />
           )}

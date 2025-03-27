@@ -119,7 +119,11 @@ export const FormBlock: React.FC<
     <div className={backgroundColor == 'dark' ? 'bg-flowbite-container' : 'bg-white'}>
       <div className="container py-8 lg:py-16 lg:max-w-[48rem]">
         {enableIntro && introContent && !hasSubmitted && (
-          <RichText className="mb-8 lg:mb-12" data={introContent} enableGutter={false} />
+          <RichText
+            className="mb-8 lg:mb-12 flowbite-h2"
+            data={introContent}
+            enableGutter={false}
+          />
         )}
         <div className="p-4 lg:p-6 border border-border rounded-[0.8rem]">
           <FormProvider {...formMethods}>
