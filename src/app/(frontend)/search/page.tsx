@@ -63,8 +63,8 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
     <div className="pt-24 pb-24">
       <PageClient />
       <div className="container mb-16">
-        <div className="prose dark:prose-invert max-w-none text-center">
-          <h1 className="mb-8 lg:mb-16">Search</h1>
+        <div className="prose dark:prose-invert max-w-none text-center flowbite-h2">
+          <h2 className="mb-8 lg:mb-16">Search</h2>
 
           <div className="max-w-[50rem] mx-auto">
             <Search />

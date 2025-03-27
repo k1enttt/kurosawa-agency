@@ -59,8 +59,11 @@ export const ArchiveBlock: React.FC<
       <div className="py-8 lg:py-16 container">
         {introContent && (
           <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
-            {/* TODO: Style cho heading va subheading */}
-            <RichText className="ms-0 max-w-[48rem]" data={introContent} enableGutter={false} />
+            <RichText
+              className="ms-0 max-w-[48rem] archieve-heading archieve-subheading"
+              data={introContent}
+              enableGutter={false}
+            />
           </div>
         )}
         <CollectionArchive posts={posts} />
