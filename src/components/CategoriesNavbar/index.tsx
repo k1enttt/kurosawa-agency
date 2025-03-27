@@ -3,7 +3,15 @@ import { cn } from '@/utilities/ui'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-const CategoriesNavbar: React.FC = () => {
+type Args = {
+  data: {
+    id: number
+    title: string
+    slug?: string | null | undefined
+  }[]
+}
+
+const CategoriesNavbar: React.FC<Args> = ({ data }: Args) => {
   const [categoryParam, setCategoryParam] = useState<string | null>(null)
   const router = useRouter()
 
@@ -32,42 +40,19 @@ const CategoriesNavbar: React.FC = () => {
           >
             All categories
           </button>
-          <button
-            onClick={() => updateCategoryParam('seminar')}
-            className={cn(
-              categoryParam == 'seminar' ? 'category-selected' : 'category-unselected',
-              'rounded-full px-6 py-2',
-            )}
-          >
-            Seminar
-          </button>
-          <button
-            onClick={() => updateCategoryParam('newsletter')}
-            className={cn(
-              categoryParam == 'newsletter' ? 'category-selected' : 'category-unselected',
-              'rounded-full px-6 py-2',
-            )}
-          >
-            Newsletter
-          </button>
-          <button
-            onClick={() => updateCategoryParam('blog')}
-            className={cn(
-              categoryParam == 'blog' ? 'category-selected' : 'category-unselected',
-              'rounded-full px-6 py-2',
-            )}
-          >
-            Blog
-          </button>
-          <button
-            onClick={() => updateCategoryParam('recruitment')}
-            className={cn(
-              categoryParam == 'recruitment' ? 'category-selected' : 'category-unselected',
-              'rounded-full px-6 py-2',
-            )}
-          >
-            Recruitment
-          </button>
+
+          {data.map((category) => (
+            <button
+              key={category.id}
+              onClick={() => updateCategoryParam(category.slug || '')}
+              className={cn(
+                categoryParam === category.slug ? 'category-selected' : 'category-unselected',
+                'rounded-full px-6 py-2',
+              )}
+            >
+              {category.title}
+            </button>
+          ))}
         </nav>
       </form>
     </div>

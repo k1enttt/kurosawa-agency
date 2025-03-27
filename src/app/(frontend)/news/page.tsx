@@ -43,6 +43,17 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
     },
   })
 
+  const existedCategories = await payload.find({
+    collection: 'categories',
+    depth: 1,
+    limit: 12,
+    overrideAccess: false,
+    select: {
+      title: true,
+      slug: true,
+    },
+  })
+
   return (
     <div className="pt-24 pb-24">
       <PageClient />
@@ -52,7 +63,9 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
         </div>
       </div>
 
-      <CategoriesNavbar />
+      <div className="mb-8">
+        <CategoriesNavbar data={existedCategories.docs} />
+      </div>
 
       <div className="container mb-8">
         <PageRange
