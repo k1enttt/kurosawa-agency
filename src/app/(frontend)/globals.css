@@ -150,7 +150,7 @@ html[data-theme='light'] {
 }
 
 .cta-button {
-  @apply w-32 h-12 text-base;
+  @apply p-6 text-base;
 }
 
 .blog-image {
