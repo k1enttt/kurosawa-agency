@@ -24,13 +24,10 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
   const news = await payload.find({
     collection: 'posts',
     depth: 1,
-    limit: 12,
+    limit: 6,
     overrideAccess: false,
     where: {
-      _status: {
-        equals: 'published',
-      },
-      ...(category
+      ...(category && category != 'all'
         ? {
             'categories.slug': {
               equals: category,
@@ -49,7 +46,6 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
   const existedCategories = await payload.find({
     collection: 'categories',
     depth: 1,
-    limit: 12,
     overrideAccess: false,
     select: {
       title: true,
@@ -74,7 +70,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
         <PageRange
           collection="posts"
           currentPage={news.page}
-          limit={12}
+          limit={6}
           totalDocs={news.totalDocs}
         />
       </div>

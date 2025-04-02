@@ -20,6 +20,9 @@ const CategoriesNavbar: React.FC<Args> = ({ data }: Args) => {
   }
 
   useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search)
+    const prevCate = searchParams.get('category')
+    if (!categoryParam && prevCate) setCategoryParam(prevCate)
     router.push(`${window.location.pathname}${categoryParam ? `?category=${categoryParam}` : ''}`)
   }, [categoryParam, router])
 
@@ -32,9 +35,11 @@ const CategoriesNavbar: React.FC<Args> = ({ data }: Args) => {
       >
         <nav className="container py-4 flex flex-wrap items-center gap-4">
           <button
-            onClick={() => updateCategoryParam('')}
+            onClick={() => updateCategoryParam('all')}
             className={cn(
-              !!categoryParam == false ? 'category-selected' : 'category-unselected',
+              !!categoryParam == false || categoryParam == 'all'
+                ? 'category-selected'
+                : 'category-unselected',
               'rounded-full px-6 py-2',
             )}
           >
