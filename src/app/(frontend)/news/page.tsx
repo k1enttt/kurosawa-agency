@@ -24,7 +24,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
   const news = await payload.find({
     collection: 'posts',
     depth: 1,
-    limit: 6,
+    limit: 12,
     overrideAccess: false,
     where: {
       ...(category && category != 'all'
@@ -70,7 +70,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
         <PageRange
           collection="posts"
           currentPage={news.page}
-          limit={6}
+          limit={12}
           totalDocs={news.totalDocs}
         />
       </div>
