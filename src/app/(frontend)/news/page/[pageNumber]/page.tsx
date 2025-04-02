@@ -8,18 +8,23 @@ import { getPayload } from 'payload'
 import React from 'react'
 import PageClient from './page.client'
 import { notFound } from 'next/navigation'
+import CategoriesNavbar from '@/components/CategoriesNavbar'
 
 export const revalidate = 600
 
 type Args = {
   params: Promise<{
     pageNumber: string
-    category: string
   }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
-export default async function Page({ params: paramsPromise }: Args) {
-  const { pageNumber, category } = await paramsPromise
+export default async function Page({
+  params: paramsPromise,
+  searchParams: searchParamsPromise,
+}: Args) {
+  const { pageNumber } = await paramsPromise
+  const { category } = await searchParamsPromise
   const payload = await getPayload({ config: configPromise })
 
   const sanitizedPageNumber = Number(pageNumber)
@@ -33,9 +38,24 @@ export default async function Page({ params: paramsPromise }: Args) {
     page: sanitizedPageNumber,
     overrideAccess: false,
     where: {
-      'categories.slug': {
-        equals: 'blog',
-      },
+      ...(category
+        ? {
+            'categories.slug': {
+              equals: category,
+            },
+          }
+        : {}),
+    },
+  })
+
+  const existedCategories = await payload.find({
+    collection: 'categories',
+    depth: 1,
+    limit: 12,
+    overrideAccess: false,
+    select: {
+      title: true,
+      slug: true,
     },
   })
 
@@ -44,8 +64,12 @@ export default async function Page({ params: paramsPromise }: Args) {
       <PageClient />
       <div className="container mb-16">
         <div className="prose dark:prose-invert max-w-none">
-          <h1>News</h1>
+          <h2>News</h2>
         </div>
+      </div>
+
+      <div className="mb-8">
+        <CategoriesNavbar data={existedCategories.docs} />
       </div>
 
       <div className="container mb-8">

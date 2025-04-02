@@ -20,7 +20,7 @@ const CategoriesNavbar: React.FC<Args> = ({ data }: Args) => {
   }
 
   useEffect(() => {
-    router.push(`/news${categoryParam ? `?category=${categoryParam}` : ''}`)
+    router.push(`${window.location.pathname}${categoryParam ? `?category=${categoryParam}` : ''}`)
   }, [categoryParam, router])
 
   return (
