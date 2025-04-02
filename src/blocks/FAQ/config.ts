@@ -12,6 +12,7 @@ const questionFields: Field[] = [
     name: 'question',
     type: 'text',
     required: true,
+    localized: true,
   },
   {
     name: 'answer',
@@ -27,6 +28,7 @@ const questionFields: Field[] = [
       },
     }),
     label: false,
+    localized: true,
   },
 ]
 
@@ -63,6 +65,7 @@ export const Faq: Block = {
         },
       }),
       label: false,
+      localized: true,
     },
     {
       name: 'questions',

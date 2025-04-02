@@ -9,6 +9,9 @@ import React from 'react'
 import PageClient from './page.client'
 import CategoriesNavbar from '@/components/CategoriesNavbar'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 600
+
 type Args = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }

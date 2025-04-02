@@ -57,11 +57,13 @@ export const CallToActionWithImage: Block = {
         },
       }),
       label: false,
+      localized: true,
     },
     linkGroup({
       appearances: ['default', 'outline'],
       overrides: {
         maxRows: 1,
+        localized: true,
       },
     }),
     {

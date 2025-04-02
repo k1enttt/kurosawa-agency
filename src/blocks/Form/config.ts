@@ -54,6 +54,7 @@ export const FormBlock: Block = {
         },
       }),
       label: 'Intro Content',
+      localized: true,
     },
   ],
   graphQL: {
