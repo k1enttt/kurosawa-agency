@@ -8,6 +8,7 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { linkGroup } from '@/fields/linkGroup'
+import { link } from '@/fields/link'
 
 export const hero: Field = {
   name: 'hero',
@@ -39,6 +40,10 @@ export const hero: Field = {
           label: 'Flowbite',
           value: 'flowbite',
         },
+        {
+          label: 'Porto',
+          value: 'porto',
+        },
       ],
       required: true,
     },
@@ -62,16 +67,68 @@ export const hero: Field = {
       overrides: {
         maxRows: 2,
         localized: true,
+        admin: {
+          condition: (_, { type } = {}) => !['porto'].includes(type),
+        },
       },
     }),
     {
       name: 'media',
       type: 'upload',
       admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact', 'flowbite'].includes(type),
+        condition: (_, { type } = {}) =>
+          ['highImpact', 'mediumImpact', 'flowbite', 'porto'].includes(type),
       },
       relationTo: 'media',
       required: true,
+    },
+    {
+      name: 'mediaText',
+      type: 'textarea',
+      admin: {
+        condition: (_, { type } = {}) => ['porto'].includes(type),
+      },
+    },
+    {
+      name: 'servicesSlider',
+      type: 'group',
+      admin: {
+        condition: (_, { type } = {}) => ['porto'].includes(type),
+      },
+      fields: [
+        {
+          name: 'sliderHeading',
+          type: 'text',
+          label: 'Slider Heading',
+        },
+        {
+          name: 'servicesList',
+          type: 'array',
+          label: 'Services List',
+          fields: [
+            {
+              name: 'serviceTitle',
+              type: 'text',
+              label: 'Service Title',
+            },
+            {
+              name: 'serviceDescription',
+              type: 'textarea',
+              label: 'Service Description',
+            },
+            {
+              name: 'serviceIcon',
+              type: 'upload',
+              label: 'Service Icon',
+              relationTo: 'media',
+            },
+            {
+              name: 'serviceLink',
+              type: 'text',
+            },
+          ],
+        },
+      ],
     },
   ],
 

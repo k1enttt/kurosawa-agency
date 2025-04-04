@@ -94,9 +94,9 @@
     --error: 10 39% 43%;
 
     --heading: 0 0% 100%;
-    --paragraph:218 11% 65%;
+    --paragraph: 218 11% 65%;
     --link: 217 91% 60%;
-    
+
     --flowbite-primary: 221 83% 53%;
     --flowbite-background: 221 39% 11%;
     --flowbite-container: 215 28% 17%;
@@ -126,7 +126,7 @@ html[data-theme='light'] {
 }
 
 .flowbite-h2 {
-  @apply [&_h2]:mb-4 [&_h2]:text-4xl [&_h2]:tracking-tight [&_h2]:font-extrabold [&_h2]:text-gray-900 [&_h2]:dark:text-white
+  @apply [&_h2]:mb-4 [&_h2]:text-4xl [&_h2]:tracking-tight [&_h2]:font-extrabold [&_h2]:text-gray-900 [&_h2]:dark:text-white;
 }
 
 .hero-description {
@@ -171,25 +171,37 @@ html[data-theme='light'] {
 }
 
 .blog-category {
-  @apply [&_div.category]:w-fit [&_div.category]:bg-purple-100 [&_div.category]:text-purple-800 [&_div.category]:text-xs [&_div.category]:font-semibold [&_div.category]:mr-2 [&_div.category]:px-2.5 [&_div.category]:py-0.5 [&_div.category]:rounded [&_div.category]:dark:bg-purple-200 [&_div.category]:dark:text-purple-900
+  @apply [&_div.category]:w-fit [&_div.category]:bg-purple-100 [&_div.category]:text-purple-800 [&_div.category]:text-xs [&_div.category]:font-semibold [&_div.category]:mr-2 [&_div.category]:px-2.5 [&_div.category]:py-0.5 [&_div.category]:rounded [&_div.category]:dark:bg-purple-200 [&_div.category]:dark:text-purple-900;
 }
 
 .table-column-width {
-  @apply w-[30vw] md:w-[50vw] lg:w-[30vw]
+  @apply w-[30vw] md:w-[50vw] lg:w-[30vw];
 }
 
 .category-selected {
-  @apply border border-blue-700 text-blue-700 hover:bg-blue-100
+  @apply border border-blue-700 text-blue-700 hover:bg-blue-100;
 }
 
 .category-unselected {
-  @apply hover:bg-flowbite-container
+  @apply hover:bg-flowbite-container;
 }
 
 .archieve-heading {
-  @apply [&_h2]:mb-4 [&_h2]:text-4xl [&_h2]:tracking-tight [&_h2]:font-extrabold [&_h2]:text-gray-900 [&_h2]:dark:text-white
+  @apply [&_h2]:mb-4 [&_h2]:text-4xl [&_h2]:tracking-tight [&_h2]:font-extrabold [&_h2]:text-gray-900 [&_h2]:dark:text-white;
 }
 
 .archieve-subheading {
-  @apply [&_p]:font-light [&_p]:text-gray-500 [&_p]:sm:text-xl [&_p]:dark:text-gray-400
+  @apply [&_p]:font-light [&_p]:text-gray-500 [&_p]:sm:text-xl [&_p]:dark:text-gray-400;
+}
+
+.porto-hero-container {
+  @apply relative w-full text-white;
+}
+
+.porto-hero-text {
+  @apply absolute top-0 left-1/3 lg:left-[20%] [writing-mode:vertical-lr] h-full flex flex-col items-center;
+}
+
+.porto-hero-image {
+  @apply min-h-[80vh] select-none;
 }

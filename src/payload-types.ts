@@ -149,7 +149,7 @@ export interface Page {
   id: number;
   title: string;
   hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact' | 'flowbite';
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact' | 'flowbite' | 'porto';
     richText?: {
       root: {
         type: string;
@@ -190,6 +190,19 @@ export interface Page {
         }[]
       | null;
     media?: (number | null) | Media;
+    mediaText?: string | null;
+    servicesSlider?: {
+      sliderHeading?: string | null;
+      servicesList?:
+        | {
+            serviceTitle?: string | null;
+            serviceDescription?: string | null;
+            serviceIcon?: (number | null) | Media;
+            serviceLink?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
   };
   layout: (
     | CallToActionBlock
@@ -1360,6 +1373,21 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
             };
         media?: T;
+        mediaText?: T;
+        servicesSlider?:
+          | T
+          | {
+              sliderHeading?: T;
+              servicesList?:
+                | T
+                | {
+                    serviceTitle?: T;
+                    serviceDescription?: T;
+                    serviceIcon?: T;
+                    serviceLink?: T;
+                    id?: T;
+                  };
+            };
       };
   layout?:
     | T
