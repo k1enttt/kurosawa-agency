@@ -198,7 +198,10 @@ export interface Page {
             serviceTitle?: string | null;
             serviceDescription?: string | null;
             serviceIcon?: (number | null) | Media;
-            serviceLink?: string | null;
+            serviceLink: {
+              label: string;
+              url?: string | null;
+            };
             id?: string | null;
           }[]
         | null;
@@ -1384,7 +1387,12 @@ export interface PagesSelect<T extends boolean = true> {
                     serviceTitle?: T;
                     serviceDescription?: T;
                     serviceIcon?: T;
-                    serviceLink?: T;
+                    serviceLink?:
+                      | T
+                      | {
+                          label?: T;
+                          url?: T;
+                        };
                     id?: T;
                   };
             };

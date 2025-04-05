@@ -124,7 +124,18 @@ export const hero: Field = {
             },
             {
               name: 'serviceLink',
-              type: 'text',
+              type: 'group',
+              fields: [
+                {
+                  name: 'label',
+                  type: 'text',
+                  required: true,
+                },
+                {
+                  name: 'url',
+                  type: 'text',
+                },
+              ],
             },
           ],
         },

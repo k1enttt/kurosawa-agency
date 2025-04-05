@@ -138,11 +138,11 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
                 </p>
                 {service.serviceLink && (
                   <a
-                    href={service.serviceLink}
+                    href={service.serviceLink.url ?? '#'}
                     className="text-blue-500 hover:text-blue-400 font-semibold underline text-sm"
                     target="_self"
                   >
-                    READ MORE
+                    {service.serviceLink.label}
                   </a>
                 )}
               </div>
