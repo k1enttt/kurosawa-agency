@@ -16,7 +16,7 @@ import { draftMode } from 'next/headers'
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 import localFont from 'next/font/local'
-import { Inter } from 'next/font/google'
+import { Inter, Poppins } from 'next/font/google'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -32,6 +32,13 @@ const inter = Inter({
     'Noto Sans',
     'sans-serif',
   ],
+})
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  variable: '--font-poppins',
+  weight: ['400', '500', '600', '700'],
+  fallback: ['sans-serif'],
 })
 
 const Meiryo = localFont({
@@ -52,7 +59,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html
-      className={cn(inter.variable, Meiryo.variable, GeistSans.variable, GeistMono.variable)}
+      className={cn(poppins.className, Meiryo.variable, GeistSans.variable, GeistMono.variable)}
       lang="en"
       suppressHydrationWarning
     >

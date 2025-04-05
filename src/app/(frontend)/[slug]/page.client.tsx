@@ -16,9 +16,9 @@ const PageClient: React.FC = () => {
   useEffect(() => {
     if (locale != 'ja') {
       document.body.classList.remove('font-meiryo')
-      document.body.classList.add('font-inter')
+      document.body.classList.add('font-poppins')
     } else {
-      document.body.classList.remove('font-inter')
+      document.body.classList.remove('font-poppins')
       document.body.classList.add('font-meiryo')
     }
   }, [locale])

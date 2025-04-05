@@ -116,7 +116,7 @@ const config = {
       },
       fontFamily: {
         meiryo: ['var(--font-meiryo)'],
-        inter: ['var(--font-inter)'],
+        poppins: ['var(--font-poppins)'],
       },
       keyframes: {
         'accordion-down': {
