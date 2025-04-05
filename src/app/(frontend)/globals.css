@@ -228,17 +228,13 @@ html[data-theme='light'] {
 }
 
 .hero-slider-navigator {
-  @apply flex justify-center
+  @apply flex justify-center;
 }
 
-.hero-slider-left-btn {
-
-}
-
+.hero-slider-left-btn,
 .hero-slider-right-btn {
-  
+  @apply cursor-pointer;
 }
-
 .hero-slider-items {
   @apply flex-1 basis-3/5 flex flex-nowrap items-center pl-4 py-2 gap-4 overflow-x-auto no-scrollbar select-none snap-x;
   @apply *:min-w-[420px] *:h-[200px] *:py-8 *:px-4 *:snap-start *:snap-normal;
