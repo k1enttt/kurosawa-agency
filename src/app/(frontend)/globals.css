@@ -121,6 +121,15 @@ html[data-theme='light'] {
   opacity: initial;
 }
 
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
 .hero-heading {
   @apply [&_h1]:max-w-2xl [&_h1]:mb-4 [&_h1]:text-4xl [&_h1]:font-extrabold [&_h1]:tracking-tight [&_h1]:leading-none [&_h1]:md:text-5xl [&_h1]:xl:text-6xl [&_h1:dark]:text-white;
 }
@@ -199,9 +208,22 @@ html[data-theme='light'] {
 }
 
 .porto-hero-text {
-  @apply absolute top-0 left-1/3 lg:left-[20%] [writing-mode:vertical-lr] h-full flex flex-col items-center;
+  @apply absolute top-0 left-1/3 lg:left-[20%] uppercase [writing-mode:vertical-lr] h-full flex flex-col items-center;
 }
 
 .porto-hero-image {
   @apply min-h-[80vh] select-none;
+}
+
+.hero-slider-heading {
+  @apply flex-1 basis-2/5 flex items-center py-4 pr-4;
+}
+
+.hero-slider-heading-content {
+ @apply bg-gray-800 w-full h-20 flex items-center justify-end p-4 text-white text-2xl font-bold;
+}
+
+.hero-slider-items {
+  @apply flex-1 basis-3/5 flex flex-nowrap items-center pl-4 py-2 gap-4 overflow-x-auto no-scrollbar select-none;
+  @apply *:min-w-[420px] *:h-[200px] *:py-8 *:px-4;
 }
