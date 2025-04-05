@@ -28,48 +28,17 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
     setHeaderTheme('light')
   })
 
-  useEffect(() => {
-    const slider = sliderRef.current
-    if (!slider) return
-
-    let isDragging = false
-    let startX = 0
-    let scrollLeft = 0
-
-    const handleMouseDown = (e: MouseEvent) => {
-      isDragging = true
-      slider.classList.add('cursor-grabbing')
-      slider.classList.remove('cursor-grab')
-      startX = e.pageX - slider.offsetLeft
-      scrollLeft = slider.scrollLeft
+  const scrollLeft = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollBy({ left: -300, behavior: 'smooth' })
     }
+  }
 
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!isDragging) return
-      e.preventDefault()
-      const x = e.pageX - slider.offsetLeft
-      const walk = x - startX // Adjust scroll speed
-      slider.scrollLeft = scrollLeft - walk
+  const scrollRight = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollBy({ left: 300, behavior: 'smooth' })
     }
-
-    const handleMouseUpOrLeave = () => {
-      isDragging = false
-      slider.classList.remove('cursor-grabbing')
-      slider.classList.add('cursor-grab')
-    }
-
-    slider.addEventListener('mousedown', handleMouseDown)
-    slider.addEventListener('mousemove', handleMouseMove)
-    slider.addEventListener('mouseup', handleMouseUpOrLeave)
-    slider.addEventListener('mouseleave', handleMouseUpOrLeave)
-
-    return () => {
-      slider.removeEventListener('mousedown', handleMouseDown)
-      slider.removeEventListener('mousemove', handleMouseMove)
-      slider.removeEventListener('mouseup', handleMouseUpOrLeave)
-      slider.removeEventListener('mouseleave', handleMouseUpOrLeave)
-    }
-  }, [])
+  }
 
   return (
     <div className="bg-white dark:bg-gray-900">
@@ -95,10 +64,54 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
           <h3 className="text-7xl leading-[70px] font-bold tracking-[0]">{mediaText}</h3>
         </div>
       </div>
-      <div className="flex">
+      <div className="porto-hero-slider">
         {/* Slider heading */}
         <div className="hero-slider-heading">
-          <div className="hero-slider-heading-content">{servicesSlider?.sliderHeading}</div>
+          <div className="hero-slider-heading-content">
+            {/* Slider heading text */}
+            <h2>{servicesSlider?.sliderHeading}</h2>
+            {/* Slider navigators */}
+            <div className="hero-slider-navigator">
+              <div className="hero-slider-left-btn" onClick={scrollLeft}>
+                <svg
+                  className="w-12 h-12 text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m14 8-4 4 4 4"
+                  />
+                </svg>
+              </div>
+              <div className="hero-slider-right-btn" onClick={scrollRight}>
+                <svg
+                  className="w-12 h-12 text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m10 16 4-4-4-4"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
         </div>
         {/* Services list */}
         <div ref={sliderRef} className="hero-slider-items">

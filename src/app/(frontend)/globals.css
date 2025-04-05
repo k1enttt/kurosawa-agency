@@ -215,15 +215,31 @@ html[data-theme='light'] {
   @apply min-h-[80vh] select-none;
 }
 
+.porto-hero-slider {
+  @apply flex -translate-y-1/2;
+}
+
 .hero-slider-heading {
   @apply flex-1 basis-2/5 flex items-center py-4 pr-4;
 }
 
 .hero-slider-heading-content {
- @apply bg-gray-800 w-full h-20 flex items-center justify-end p-4 text-white text-2xl font-bold;
+ @apply bg-gray-800 w-full h-20 flex gap-4 items-center justify-end p-4 text-white text-2xl font-bold;
+}
+
+.hero-slider-navigator {
+  @apply flex justify-center
+}
+
+.hero-slider-left-btn {
+
+}
+
+.hero-slider-right-btn {
+  
 }
 
 .hero-slider-items {
-  @apply flex-1 basis-3/5 flex flex-nowrap items-center pl-4 py-2 gap-4 overflow-x-auto no-scrollbar select-none;
-  @apply *:min-w-[420px] *:h-[200px] *:py-8 *:px-4;
+  @apply flex-1 basis-3/5 flex flex-nowrap items-center pl-4 py-2 gap-4 overflow-x-auto no-scrollbar select-none snap-x;
+  @apply *:min-w-[420px] *:h-[200px] *:py-8 *:px-4 *:snap-start *:snap-normal;
 }
