@@ -30,13 +30,13 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
 
   const scrollLeft = () => {
     if (sliderRef.current) {
-      sliderRef.current.scrollBy({ left: -300, behavior: 'smooth' })
+      sliderRef.current.scrollBy({ left: -400, behavior: 'smooth' })
     }
   }
 
   const scrollRight = () => {
     if (sliderRef.current) {
-      sliderRef.current.scrollBy({ left: 300, behavior: 'smooth' })
+      sliderRef.current.scrollBy({ left: 400, behavior: 'smooth' })
     }
   }
 
@@ -116,38 +116,80 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
           </div>
         </div>
         {/* Services list */}
-        <div ref={sliderRef} className="hero-slider-items">
-          {servicesSlider?.servicesList?.map((service, index) => (
-            <div key={index} className="flex w-full p-4 bg-white shadow-md">
-              {/* Left column with icon */}
-              <div className="w-1/3 pt-2 pr-4 flex items-start justify-center">
-                {service.serviceIcon && (
-                  <Media
-                    resource={service.serviceIcon}
-                    imgClassName="w-[94px] object-contain"
-                    priority
-                    alt={service.serviceTitle || 'Service Icon'}
-                  />
-                )}
+        <div ref={sliderRef} className="hero-slider-items-container">
+          <div className="hero-slider-items">
+            {servicesSlider?.servicesList?.map((service, index) => (
+              <div key={index} className="flex w-full p-12 bg-white shadow-md">
+                {/* Left column with icon */}
+                <div className="w-1/3 pt-2 pr-4 flex items-start justify-center">
+                  {service.serviceIcon && (
+                    <Media
+                      resource={service.serviceIcon}
+                      imgClassName="w-[94px] object-contain"
+                      priority
+                      alt={service.serviceTitle || 'Service Icon'}
+                    />
+                  )}
+                </div>
+                {/* Right column with title, description, and link */}
+                <div className="w-2/3">
+                  <h4 className="text-xl font-bold mb-2">{service.serviceTitle}</h4>
+                  <p className="text-sm font-medium leading-6 text-[#999] mb-2">
+                    {service.serviceDescription}
+                  </p>
+                  {service.serviceLink && (
+                    <a
+                      href={service.serviceLink.url ?? '#'}
+                      className="text-blue-500 hover:text-blue-400 font-semibold underline text-sm"
+                      target="_self"
+                    >
+                      {service.serviceLink.label}
+                    </a>
+                  )}
+                </div>
               </div>
-              {/* Right column with title, description, and link */}
-              <div className="w-2/3">
-                <h4 className="text-xl font-bold mb-2">{service.serviceTitle}</h4>
-                <p className="text-sm font-medium leading-6 text-[#999] mb-2">
-                  {service.serviceDescription}
-                </p>
-                {service.serviceLink && (
-                  <a
-                    href={service.serviceLink.url ?? '#'}
-                    className="text-blue-500 hover:text-blue-400 font-semibold underline text-sm"
-                    target="_self"
-                  >
-                    {service.serviceLink.label}
-                  </a>
-                )}
+            ))}
+            <div className="md:hidden fixed bottom-0 left-0 p-4 md:min-w-[420px] min-w-full h-4/5 flex justify-between items-center border-none pointer-events-none">
+              <div className="bg-white/50 cursor-pointer pointer-events-auto" onClick={scrollLeft}>
+                <svg
+                  className="w-12 h-12 text-black"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m14 8-4 4 4 4"
+                  />
+                </svg>
+              </div>
+              <div className="bg-white/50 cursor-pointer pointer-events-auto" onClick={scrollRight}>
+                <svg
+                  className="w-12 h-12 text-black"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m10 16 4-4-4-4"
+                  />
+                </svg>
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </div>

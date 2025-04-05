@@ -224,11 +224,11 @@ html[data-theme='light'] {
 }
 
 .hero-slider-heading-background {
- @apply bg-gray-800 w-full h-20 py-4;
+  @apply bg-gray-800 w-full h-20 py-4;
 }
 
 .hero-slider-heading-content {
- @apply container w-full h-full flex gap-4 items-center justify-start md:justify-end text-white text-2xl font-bold;
+  @apply container w-full h-full flex gap-4 items-center justify-start md:justify-end text-white text-2xl font-bold;
 }
 
 .hero-slider-navigator {
@@ -239,7 +239,12 @@ html[data-theme='light'] {
 .hero-slider-right-btn {
   @apply cursor-pointer hidden md:block;
 }
+
+.hero-slider-items-container {
+  @apply flex-1 basis-2/3 md:px-0 w-full h-full overflow-x-auto no-scrollbar select-none snap-x;
+}
+
 .hero-slider-items {
-  @apply container md:px-0 flex-1 basis-2/3 flex flex-nowrap py-2 gap-4 overflow-x-auto no-scrollbar select-none snap-x;
-  @apply *:md:min-w-[420px] *:min-w-full *:p-12 *:md:snap-start *:snap-center *:snap-always *:border *:border-black/[0.06];
+  @apply relative container md:px-0 w-full h-full flex flex-nowrap py-2 gap-4;
+  @apply *:md:min-w-[420px] *:min-w-full *:md:snap-start *:snap-center *:snap-always *:border *:border-black/[0.06];
 }
