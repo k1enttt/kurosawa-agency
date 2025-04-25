@@ -149,46 +149,47 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
                 </div>
               </div>
             ))}
-            <div className="md:hidden fixed bottom-0 left-0 p-4 md:min-w-[420px] min-w-full h-4/5 flex justify-between items-center border-none pointer-events-none">
-              <div className="bg-white/50 cursor-pointer pointer-events-auto" onClick={scrollLeft}>
-                <svg
-                  className="w-12 h-12 text-black"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m14 8-4 4 4 4"
-                  />
-                </svg>
-              </div>
-              <div className="bg-white/50 cursor-pointer pointer-events-auto" onClick={scrollRight}>
-                <svg
-                  className="w-12 h-12 text-black"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m10 16 4-4-4-4"
-                  />
-                </svg>
-              </div>
-            </div>
+          </div>
+        </div>
+        {/* Mobile slider navigator */}
+        <div className="md:hidden fixed bottom-0 left-0 p-4 md:min-w-[420px] min-w-full h-4/5 flex justify-between items-center border-none pointer-events-none">
+          <div className="bg-white/50 cursor-pointer pointer-events-auto" onClick={scrollLeft}>
+            <svg
+              className="w-12 h-12 text-black"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="m14 8-4 4 4 4"
+              />
+            </svg>
+          </div>
+          <div className="bg-white/50 cursor-pointer pointer-events-auto" onClick={scrollRight}>
+            <svg
+              className="w-12 h-12 text-black"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="m10 16 4-4-4-4"
+              />
+            </svg>
           </div>
         </div>
       </div>
