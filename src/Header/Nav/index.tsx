@@ -9,7 +9,6 @@ import Link from 'next/link'
 import { SearchIcon } from 'lucide-react'
 import BurgerButton from '../BurgerButton'
 import clsx from 'clsx'
-import Router from 'next/router'
 import { usePathname } from 'next/navigation'
 
 export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
@@ -21,8 +20,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
 
   const pathname = usePathname()
   useEffect(() => {
-    console.log('url changed')
-    close()
+    if (isNavOpen) close()
   }, [pathname])
 
   return (

@@ -17,23 +17,27 @@
   }
 
   :root {
+    /* Dùng cho các nội dung chữ chính như heading, gây sự chú ý */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 218 17% 18%;
 
-    --card: 240 5% 96%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 95%;
+    --card-foreground: 218 17% 18%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 95%;
+    --popover-foreground: 218 17% 18%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Dùng cho các nút chính, CTA, link */
+    --primary: 86 35% 50%;
+    --primary--foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Nền của các thành phần phụ (button, footer) */
+    --secondary: 218 17% 18%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Dùng cho các nội dung chữ phụ, tránh phân tâm */
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 50%;
 
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
@@ -50,14 +54,6 @@
     --success: 196 52% 74%;
     --warning: 34 89% 85%;
     --error: 10 100% 86%;
-
-    --heading: 221 39% 11%;
-    --paragraph: 220 9% 46%;
-    --link: 224 76% 48%;
-
-    --flowbite-primary: 224 76% 48%;
-    --flowbite-background: 0 0% 100%;
-    --flowbite-container: 210 20% 98%;
   }
 
   [data-theme='dark'] {
@@ -92,14 +88,6 @@
     --success: 196 100% 14%;
     --warning: 34 51% 25%;
     --error: 10 39% 43%;
-
-    --heading: 0 0% 100%;
-    --paragraph: 218 11% 65%;
-    --link: 217 91% 60%;
-
-    --flowbite-primary: 221 83% 53%;
-    --flowbite-background: 221 39% 11%;
-    --flowbite-container: 215 28% 17%;
   }
 }
 
@@ -258,7 +246,7 @@ html[data-theme='light'] {
 }
 
 .category-unselected {
-  @apply hover:bg-flowbite-container;
+  @apply hover:bg-muted;
 }
 
 .archieve-heading {

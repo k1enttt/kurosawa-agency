@@ -14,9 +14,7 @@ export const CallToActionWithImageBlock: React.FC<CTAWithImageBlockProps> = ({
   media,
 }) => {
   return (
-    <div
-      className={`${backgroundColor == 'dark' ? 'bg-flowbite-container' : 'bg-white'} dark:bg-gray-900`}
-    >
+    <div className={`${backgroundColor == 'dark' ? 'bg-muted' : 'bg-white'} dark:bg-gray-900`}>
       <div className="gap-8 items-center py-8 xl:gap-16 md:grid md:grid-cols-2 sm:py-16 container">
         <Media
           resource={media}

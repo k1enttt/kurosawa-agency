@@ -116,7 +116,7 @@ export const FormBlock: React.FC<
   )
 
   return (
-    <div className={backgroundColor == 'dark' ? 'bg-flowbite-container' : 'bg-white'}>
+    <div className={backgroundColor == 'dark' ? 'bg-muted' : 'bg-white'}>
       <div className="container py-8 lg:py-16 lg:max-w-[48rem]">
         {enableIntro && introContent && !hasSubmitted && (
           <RichText

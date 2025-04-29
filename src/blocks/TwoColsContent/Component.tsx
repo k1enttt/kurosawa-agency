@@ -10,12 +10,7 @@ export const TwoColsContentBlock: React.FC<TwoColsContentBlockProps> = (props) =
   const { backgroundColor, introText, enableLink, link, secondColumnContent } = props
 
   return (
-    <div
-      className={cn(
-        backgroundColor == 'dark' ? 'bg-flowbite-container' : 'bg-white',
-        'dark:bg-gray-900',
-      )}
-    >
+    <div className={cn(backgroundColor == 'dark' ? 'bg-muted' : 'bg-white', 'dark:bg-gray-900')}>
       <div className="gap-16 items-center py-8 lg:grid lg:grid-cols-2 lg:py-16 container">
         <div>
           {introText && (

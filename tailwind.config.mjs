@@ -109,9 +109,9 @@ const config = {
         error: 'hsl(var(--error))',
         warning: 'hsl(var(--warning))',
         flowbite: {
-          primary: 'hsl(var(--flowbite-primary))',
-          background: 'hsl(var(--flowbite-background))',
-          container: 'hsl(var(--flowbite-container))',
+          primary: 'hsl(var(--primary))',
+          background: 'hsl(var(--background))',
+          container: 'hsl(var(--muted))',
         },
       },
       fontFamily: {
@@ -185,9 +185,9 @@ const config = {
         h1: '48px',
       },
       textColor: {
-        heading: 'hsl(var(--heading))',
-        paragraph: 'hsl(var(--paragraph))',
-        link: 'hsl(var(--link))',
+        heading: 'hsl(var(--foreground))',
+        paragraph: 'hsl(var(--muted-foreground))',
+        link: 'hsl(var(--primary))',
       },
     },
   },

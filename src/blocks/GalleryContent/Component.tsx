@@ -9,12 +9,7 @@ export const GalleryContentBlock: React.FC<GalleryContentBlockProps> = (props) =
   const { backgroundColor, introText, contentCards } = props
 
   return (
-    <div
-      className={cn(
-        backgroundColor == 'dark' ? 'bg-flowbite-container' : 'bg-white',
-        'dark:bg-gray-900',
-      )}
-    >
+    <div className={cn(backgroundColor == 'dark' ? 'bg-muted' : 'bg-white', 'dark:bg-gray-900')}>
       <div className="container py-8 md:text-center lg:py-16">
         {introText && (
           <div className="mb-16 text-center text-gray-900">
