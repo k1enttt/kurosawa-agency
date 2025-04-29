@@ -44,7 +44,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
         <CMSLink
           url={'#'}
           label={'Contact Us'}
-          className="rounded-lg border-b border-b-green-700 text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-200 font-medium text-sm px-4 lg:px-5 py-2 lg:py-2.5 dark:bg-green-400 dark:hover:bg-green-500 focus:outline-none dark:focus:ring-green-600"
+          className="rounded-lg border-b border-b-primary-outline text-white bg-primary hover:bg-primary/80 focus:ring-4 focus:ring-green-200 font-medium text-sm px-4 lg:px-5 py-2 lg:py-2.5 dark:bg-green-400 dark:hover:bg-primary focus:outline-none dark:focus:ring-primary/80"
         />
       </div>
 
@@ -76,7 +76,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
       <div className={`${isNavOpen ? 'fixed' : 'hidden'} inset-0 bg-black/80`}>
         <button
           onClick={close}
-          className="absolute top-0 right-0 mt-10 mr-10 h-8 w-8 p-1 bg-green-600 rounded-lg"
+          className="absolute top-0 right-0 mt-10 mr-10 h-8 w-8 p-1 bg-primary/80 rounded-lg"
         >
           <svg
             className="w-6 h-6 text-white"

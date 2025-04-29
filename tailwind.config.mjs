@@ -83,6 +83,7 @@ const config = {
         },
         primary: {
           DEFAULT: 'hsl(var(--primary))',
+          outline: 'hsl(var(--primary--outline))',
           foreground: 'hsl(var(--primary-foreground))',
         },
         flowbiteText: {
