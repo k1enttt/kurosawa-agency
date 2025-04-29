@@ -1,6 +1,6 @@
 'use client'
 
-import React, { Suspense } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import type { Header as HeaderType } from '@/payload-types'
 
@@ -8,53 +8,113 @@ import { CMSLink } from '@/components/Link'
 import Link from 'next/link'
 import { SearchIcon } from 'lucide-react'
 import BurgerButton from '../BurgerButton'
-import LanguageSwitcher from '@/components/LanguageSwitcher'
+import clsx from 'clsx'
+import Router from 'next/router'
+import { usePathname } from 'next/navigation'
 
 export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   const navItems = data?.navItems || []
-  const [isNavOpen, setIsNavOpen] = React.useState(false)
+  const [isNavOpen, setIsNavOpen] = useState(false)
 
-  const toggleNav = () => {
-    setIsNavOpen(!isNavOpen)
-  }
+  const open = () => setIsNavOpen(true)
+  const close = () => setIsNavOpen(false)
+
+  const pathname = usePathname()
+  useEffect(() => {
+    console.log('url changed')
+    close()
+  }, [pathname])
 
   return (
     <>
       {/* action buttons */}
-      <div className="flex items-center lg:order-2">
-        <div className="mr-4">
-          <CMSLink label="Let's talk" appearance="default" url="/contact" />
-        </div>
-        <div className="mr-4">
-          <Suspense>
-            <LanguageSwitcher className="bg-black text-white dark:bg-white dark:text-black" />
-          </Suspense>
-        </div>
-
+      <div className="hidden lg:flex items-center lg:order-2 space-x-4">
+        {/* Search */}
         <Link href="/search">
           <span className="sr-only">Search</span>
           <SearchIcon className="w-5 text-gray-400 mr-2" />
         </Link>
-        <BurgerButton onClick={toggleNav} />
+
+        {/* Services */}
+        <CMSLink
+          url={'#'}
+          label={'Our Services'}
+          className="rounded-lg border-b border-b-gray-900 text-white bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 font-medium text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none"
+        />
+
+        {/* Contact Us */}
+        <CMSLink
+          url={'#'}
+          label={'Contact Us'}
+          className="rounded-lg border-b border-b-green-700 text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-200 font-medium text-sm px-4 lg:px-5 py-2 lg:py-2.5 dark:bg-green-400 dark:hover:bg-green-500 focus:outline-none dark:focus:ring-green-600"
+        />
       </div>
 
       {/* nav buttons */}
-      <div
-        className={`${!isNavOpen && 'hidden'} justify-between items-center w-full lg:flex lg:w-auto lg:order-1`}
-        id="mobile-menu-2"
-      >
-        <div className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+      <div className={`justify-between items-center w-full hidden md:flex lg:w-auto lg:order-1`}>
+        <div className="flex font-medium flex-row space-x-8 mt-0">
           {navItems.map(({ link }, i) => {
             return (
               <div key={i}>
                 <CMSLink
                   {...link}
                   appearance="link"
-                  className="block py-2 pr-4 pl-3 rounded-none border-b hover:no-underline lg:border-0 lg:p-0 !text-p-md text-heading lg:hover:text-link hover:bg-gray-700 hover:text-white lg:hover:bg-transparent border-gray-700"
+                  className="block py-2 pr-4 pl-3 rounded-none border-b hover:no-underline border-0 p-0 !text-p-md text-heading hover:text-link hover:bg-gray-700 hover:bg-transparent border-gray-700"
                 />
               </div>
             )
           })}
+        </div>
+      </div>
+
+      {/* Burger Button */}
+      <div className="absolute right-0 mr-10">
+        <div className="w-full flex md:hidden item-center justify-end">
+          <BurgerButton onClick={open} />
+        </div>
+      </div>
+
+      {/* Mobile navbar */}
+      <div className={`${isNavOpen ? 'fixed' : 'hidden'} inset-0 bg-black/80`}>
+        <button
+          onClick={close}
+          className="absolute top-0 right-0 mt-10 mr-10 h-8 w-8 p-1 bg-green-600 rounded-lg"
+        >
+          <svg
+            className="w-6 h-6 text-white"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 18 17.94 6M18 18 6.06 6"
+            />
+          </svg>
+        </button>
+        <div className={`absolute h-full top-0 left-0 w-3/5 bg-white`}>
+          <div className="flex flex-col my-6 font-medium">
+            {data.navItems?.map(({ link }, i) => {
+              return (
+                <div key={i}>
+                  <CMSLink
+                    {...link}
+                    appearance="link"
+                    className={clsx(
+                      i == data.navItems?.length! - 1 && 'border-none',
+                      'block py-4 pr-4 pl-3 rounded-none border-b hover:no-underline !text-p-md text-heading hover:bg-gray-700 hover:text-white border-gray-200',
+                    )}
+                  />
+                </div>
+              )
+            })}
+          </div>
         </div>
       </div>
     </>

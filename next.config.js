@@ -18,6 +18,10 @@ const nextConfig = {
           protocol: url.protocol.replace(':', ''),
         }
       }),
+      {
+        hostname: 'default.kienttt.id.vn',
+        protocol: 'https',
+      },
     ],
   },
   reactStrictMode: true,

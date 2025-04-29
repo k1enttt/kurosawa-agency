@@ -41,7 +41,7 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
   }
 
   return (
-    <div className="bg-white dark:bg-gray-900 relative">
+    <div className="bg-white dark:bg-gray-900 relative top-0">
       <div className="porto-hero-container">
         {/* image */}
         <div className="porto-hero-image">

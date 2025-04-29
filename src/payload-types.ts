@@ -2079,6 +2079,12 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Header {
   id: number;
+  logo?: (number | null) | Media;
+  contactInformation?: {
+    phone?: string | null;
+    email?: string | null;
+    workTime?: string | null;
+  };
   navItems?:
     | {
         link: {
@@ -2152,6 +2158,14 @@ export interface Footer {
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
+  logo?: T;
+  contactInformation?:
+    | T
+    | {
+        phone?: T;
+        email?: T;
+        workTime?: T;
+      };
   navItems?:
     | T
     | {
