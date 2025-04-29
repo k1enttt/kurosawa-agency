@@ -48,7 +48,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
         />
       </div>
 
-      {/* nav buttons */}
+      {/* Navbar */}
       <div className={`justify-between items-center w-full hidden md:flex lg:w-auto lg:order-1`}>
         <div className="flex font-medium flex-row space-x-8 mt-0">
           {navItems.map(({ link }, i) => {

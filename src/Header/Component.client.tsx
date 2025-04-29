@@ -41,7 +41,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   }, [headerTheme])
 
   return (
-    <header className="sticky top-0 z-20   " {...(theme ? { 'data-theme': theme } : {})}>
+    <header className="top-0 z-20   " {...(theme ? { 'data-theme': theme } : {})}>
       <div className="header">
         <Link href={'/'} className="header-logo-container">
           {logo ? (

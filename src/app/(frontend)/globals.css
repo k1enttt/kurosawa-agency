@@ -48,7 +48,7 @@
 
     --border: 240 6% 80%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 218 17% 18%;
 
     --radius: 0.5rem;
 
@@ -58,23 +58,24 @@
   }
 
   [data-theme='dark'] {
-    --background: 0 0% 0%;
-    --foreground: 210 40% 98%;
+    --background: 218 17% 18%;
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 4%;
-    --card-foreground: 210 40% 98%;
+    --card: 218 17% 18%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 218 17% 18%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 86 35% 50%;
+    --primary--outline: 86 35% 40%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 218 17% 18%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 50%;
 
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
@@ -259,7 +260,7 @@ html[data-theme='light'] {
 }
 
 .porto-hero-container {
-  @apply relative w-full text-white mb-0 md:mb-32;
+  @apply relative w-full h-[725px] text-white mb-0 md:mb-32;
 }
 
 .porto-hero-text {
