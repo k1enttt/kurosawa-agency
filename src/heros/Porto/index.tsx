@@ -129,7 +129,9 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
                     {service.serviceIcon && (
                       <Media
                         resource={service.serviceIcon}
-                        imgClassName="w-[94px] object-contain"
+                        imgClassName="object-contain"
+                        fill
+                        className="w-full aspect-square relative"
                         priority
                         alt={service.serviceTitle || 'Service Icon'}
                       />
@@ -137,14 +139,14 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
                   </div>
                   {/* Right column with title, description, and link */}
                   <div className="w-2/3">
-                    <h4 className="text-lg font-bold mb-2">{service.serviceTitle}</h4>
-                    <p className="text-sm font-medium leading-6 text-[#999] mb-2">
+                    <h4 className="text-lg font-bold mb-1">{service.serviceTitle}</h4>
+                    <p className="text-sm font-medium leading-6 text-[#999] mb-1">
                       {service.serviceDescription}
                     </p>
                     {service.serviceLink && (
                       <a
                         href={service.serviceLink.url ?? '#'}
-                        className="text-blue-500 hover:text-blue-400 font-semibold underline text-sm"
+                        className="text-primary hover:text-primary/80 font-semibold underline text-sm"
                         target="_self"
                       >
                         {service.serviceLink.label}
