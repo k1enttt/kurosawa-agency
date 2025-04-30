@@ -51,6 +51,7 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
         </div>
         {/* image text */}
         <div className="porto-hero-text">
+          <h3 className="text-7xl leading-[70px] font-bold tracking-[0]">{mediaText}</h3>
           <h3
             className="text-7xl leading-[70px] font-bold tracking-[0] text-white"
             style={{
@@ -61,7 +62,6 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
           >
             {mediaText}
           </h3>
-          <h3 className="text-7xl leading-[70px] font-bold tracking-[0]">{mediaText}</h3>
         </div>
       </div>
       <div className="porto-hero-slider">

@@ -264,7 +264,7 @@ html[data-theme='light'] {
 }
 
 .porto-hero-text {
-  @apply absolute top-0 left-1/3 lg:left-[20%] uppercase [writing-mode:vertical-lr] h-full flex flex-col items-center;
+  @apply absolute top-0 right-1/3 lg:right-[18%] uppercase h-full flex flex-col justify-center;
 }
 
 .porto-hero-image {
