@@ -5,6 +5,7 @@ import React, { useEffect, useRef } from 'react'
 import type { Page } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import ServiceCard from '@/components/ServiceCard'
 
 type PortoHeroType =
   | {
@@ -41,7 +42,7 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
   }
 
   return (
-    <div className="bg-white dark:bg-gray-900 relative">
+    <div className="bg-white dark:bg-gray-900 relative top-0">
       <div className="porto-hero-container">
         {/* image */}
         <div className="porto-hero-image">
@@ -51,6 +52,7 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
         </div>
         {/* image text */}
         <div className="porto-hero-text">
+          <h3 className="text-7xl leading-[70px] font-bold tracking-[0]">{mediaText}</h3>
           <h3
             className="text-7xl leading-[70px] font-bold tracking-[0] text-white"
             style={{
@@ -61,7 +63,6 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
           >
             {mediaText}
           </h3>
-          <h3 className="text-7xl leading-[70px] font-bold tracking-[0]">{mediaText}</h3>
         </div>
       </div>
       <div className="porto-hero-slider">
@@ -119,34 +120,8 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
         <div ref={sliderRef} className="hero-slider-items-container">
           <div className="hero-slider-items">
             {servicesSlider?.servicesList?.map((service, index) => (
-              <div key={index} className="flex w-full p-12 bg-white shadow-md">
-                {/* Left column with icon */}
-                <div className="w-1/3 pt-2 pr-4 flex items-start justify-center">
-                  {service.serviceIcon && (
-                    <Media
-                      resource={service.serviceIcon}
-                      imgClassName="w-[94px] object-contain"
-                      priority
-                      alt={service.serviceTitle || 'Service Icon'}
-                    />
-                  )}
-                </div>
-                {/* Right column with title, description, and link */}
-                <div className="w-2/3">
-                  <h4 className="text-xl font-bold mb-2">{service.serviceTitle}</h4>
-                  <p className="text-sm font-medium leading-6 text-[#999] mb-2">
-                    {service.serviceDescription}
-                  </p>
-                  {service.serviceLink && (
-                    <a
-                      href={service.serviceLink.url ?? '#'}
-                      className="text-blue-500 hover:text-blue-400 font-semibold underline text-sm"
-                      target="_self"
-                    >
-                      {service.serviceLink.label}
-                    </a>
-                  )}
-                </div>
+              <div key={index}>
+                <ServiceCard data={service} />
               </div>
             ))}
           </div>

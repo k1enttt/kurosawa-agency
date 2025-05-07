@@ -10,12 +10,7 @@ export const FeaturesBlock: React.FC<FeaturesBlockProps> = (props) => {
   const { backgroundColor, introText, columns } = props
 
   return (
-    <div
-      className={cn(
-        backgroundColor == 'dark' ? 'bg-flowbite-container' : 'bg-white',
-        'dark:bg-gray-900',
-      )}
-    >
+    <div className={cn(backgroundColor == 'dark' ? 'bg-muted' : 'bg-white', 'dark:bg-gray-900')}>
       <div className="py-8 text-center sm:py-16 container">
         {introText && (
           <RichText

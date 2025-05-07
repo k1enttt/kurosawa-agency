@@ -43,10 +43,7 @@ export const ClientFaqSection = ({
 }): React.ReactNode => {
   return (
     <section
-      className={cn(
-        backgroundColor == 'dark' ? 'bg-flowbite-container' : 'bg-white',
-        'dark:bg-gray-900',
-      )}
+      className={cn(backgroundColor == 'dark' ? 'bg-muted' : 'bg-white', 'dark:bg-gray-900')}
     >
       <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6 ">
         {introText && (

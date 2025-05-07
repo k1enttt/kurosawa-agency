@@ -2,11 +2,7 @@ import type { GlobalConfig } from 'payload'
 
 import { link } from '@/fields/link'
 import { revalidateFooter } from './hooks/revalidateFooter'
-import {
-  FixedToolbarFeature,
-  InlineToolbarFeature,
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical'
+import { linkGroup } from '@/fields/linkGroup'
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
@@ -15,9 +11,34 @@ export const Footer: GlobalConfig = {
   },
   fields: [
     {
+      name: 'logo',
+      type: 'upload',
+      relationTo: 'media',
+    },
+    {
       name: 'description',
       type: 'text',
     },
+    {
+      name: 'contactInformation',
+      type: 'group',
+      fields: [
+        {
+          name: 'email',
+          type: 'text',
+        },
+        {
+          name: 'phone',
+          type: 'text',
+        },
+      ],
+    },
+    linkGroup({
+      appearances: ['default', 'outline'],
+      overrides: {
+        maxRows: 2,
+      },
+    }),
     {
       name: 'navItems',
       type: 'array',
@@ -26,7 +47,7 @@ export const Footer: GlobalConfig = {
           appearances: false,
         }),
       ],
-      maxRows: 6,
+      maxRows: 8,
       admin: {
         initCollapsed: true,
         components: {
@@ -35,14 +56,20 @@ export const Footer: GlobalConfig = {
       },
     },
     {
-      name: 'copyright',
-      type: 'richText',
-      editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]
+      name: 'servicesItems',
+      type: 'array',
+      fields: [
+        link({
+          appearances: false,
+        }),
+      ],
+      maxRows: 8,
+      admin: {
+        initCollapsed: true,
+        components: {
+          RowLabel: '@/Footer/RowLabel#RowLabel',
         },
-      }),
-      label: false,
+      },
     },
   ],
   hooks: {

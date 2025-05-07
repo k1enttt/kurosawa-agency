@@ -58,7 +58,7 @@ const FaqLine = ({
             enableGutter={false}
             className={cn(
               'py-5 border-b border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400',
-              '[&_a]:text-flowbite-primary [&_a]:no-underline [&_a:hover]:underline',
+              '[&_a]:text-primary [&_a]:no-underline [&_a:hover]:underline',
             )}
           />
         </div>

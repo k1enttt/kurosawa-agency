@@ -26,10 +26,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
 
   return (
     <section
-      className={cn(
-        backgroundColor == 'dark' ? 'bg-flowbite-container' : 'bg-white',
-        'dark:bg-gray-900',
-      )}
+      className={cn(backgroundColor == 'dark' ? 'bg-muted' : 'bg-white', 'dark:bg-gray-900')}
     >
       <div className="py-8 lg:py-16 container">
         <div className="mb-8 lg:mb-16">
