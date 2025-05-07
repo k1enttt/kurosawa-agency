@@ -35,16 +35,16 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
 
         {/* Services */}
         <CMSLink
-          url={'#'}
+          url={'/services'}
           label={'Our Services'}
-          className="rounded-lg border-b border-b-gray-900 text-white bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 font-medium text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none"
+          className="rounded-lg border-b border-b-gray-900 text-primary-foreground bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 font-medium text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none"
         />
 
         {/* Contact Us */}
         <CMSLink
-          url={'#'}
+          url={'/contact'}
           label={'Contact Us'}
-          className="rounded-lg border-b border-b-primary-outline text-white bg-primary hover:bg-primary/80 focus:ring-4 focus:ring-green-200 font-medium text-sm px-4 lg:px-5 py-2 lg:py-2.5 dark:bg-green-400 dark:hover:bg-primary focus:outline-none dark:focus:ring-primary/80"
+          className="rounded-lg border-b border-b-primary-outline text-primary-foreground bg-primary hover:bg-primary/80 focus:ring-4 font-medium text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none focus:ring-primary/80"
         />
       </div>
 
@@ -57,7 +57,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                 <CMSLink
                   {...link}
                   appearance="link"
-                  className="block py-2 pr-4 pl-3 rounded-none border-b hover:no-underline border-0 p-0 !text-p-md text-heading hover:text-link hover:bg-gray-700 hover:bg-transparent border-gray-700"
+                  className="block py-2 pr-4 pl-3 rounded-none border-b hover:no-underline border-0 p-0 !text-p-md text-foreground dark:text-background hover:text-link hover:bg-gray-700 hover:bg-transparent border-gray-700"
                 />
               </div>
             )

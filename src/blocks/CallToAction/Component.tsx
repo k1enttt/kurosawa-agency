@@ -9,11 +9,11 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
   return (
     <div className="bg-primary">
       <div className="container">
-        <div className="rounded py-10 flex flex-col gap-8 md:flex-row md:justify-between md:items-center">
+        <div className="rounded py-10 flex flex-col md:gap-8 gap-4 md:flex-row md:justify-between md:items-center">
           <div className="max-w-[48rem] flex items-center">
             {richText && (
               <RichText
-                className="mb-0 text-lg text-primary-foreground"
+                className="mb-0 text-lg text-primary-foreground md:text-left text-center"
                 data={richText}
                 enableProse={false}
                 enableGutter={false}
@@ -26,8 +26,9 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
                 <CMSLink
                   key={i}
                   size="lg"
+                  type={'custom'}
                   {...link}
-                  className="font-bold text-foreground bg-primary-foreground hover:bg-primary-foreground"
+                  className="font-bold text-foreground bg-primary-foreground hover:bg-primary-foreground px-10 py-3"
                 />
               )
             })}

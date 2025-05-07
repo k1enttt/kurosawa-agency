@@ -32,7 +32,9 @@ const ServiceCard = ({ data }: { data: ServiceType }) => {
         </div>
         {/* Right column with title, description, and link */}
         <div className="w-full space-y-1">
-          <h4 className="text-base font-bold">{service.serviceTitle}</h4>
+          <h4 className="text-base font-bold text-foreground dark:text-background">
+            {service.serviceTitle}
+          </h4>
           <p className="text-sm font-medium leading-6 text-[#999]">{service.serviceDescription}</p>
           {service.serviceLink && (
             <a

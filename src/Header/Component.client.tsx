@@ -6,13 +6,9 @@ import React, { useEffect, useState } from 'react'
 
 import type { Header } from '@/payload-types'
 
-import SearchButton from '@/components/SearchButton'
-import LanguageSwitcher from '@/components/LanguageSwitcherV2'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
 import { Media } from '@/components/Media'
-import clsx from 'clsx'
 import { HeaderNav } from './Nav'
-import BurgerButton from './BurgerButton'
-import { CMSLink } from '@/components/Link'
 
 interface HeaderClientProps {
   data: Header
