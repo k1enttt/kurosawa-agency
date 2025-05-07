@@ -68,7 +68,7 @@ export async function Footer() {
                 {/* Common Navigation */}
                 <div>
                   <h3 className="font-bold">Navigation</h3>
-                  <ul className="mt-2 grid grid-cols-1 lg:grid-cols-2 gap-2">
+                  <ul className="mt-2 grid grid-cols-2 gap-2">
                     {navItems &&
                       navItems.map(({ link }, i) => (
                         <li key={i}>
@@ -80,7 +80,7 @@ export async function Footer() {
                 {/* Services navigation */}
                 <div>
                   <h3 className="font-bold">Services</h3>
-                  <ul className="mt-2 grid lg:grid-cols-2 grid-cols-1 gap-2">
+                  <ul className="mt-2 grid grid-cols-2 gap-2">
                     {servicesItems &&
                       servicesItems.map(({ link }, i) => (
                         <li key={i}>
