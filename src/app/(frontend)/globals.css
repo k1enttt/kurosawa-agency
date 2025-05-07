@@ -29,8 +29,8 @@
 
     /* Dùng cho các nút chính, CTA, link */
     --primary: 86 35% 50%;
-    --primary--outline: 86 35% 40%;
-    --primary--foreground: 0 0% 100%;
+    --primary-outline: 86 35% 40%;
+    --primary-foreground: 0 0% 100%;
 
     /* Nền của các thành phần phụ (button, footer) */
     --secondary: 218 17% 18%;
@@ -68,7 +68,7 @@
     --popover-foreground: 0 0% 95%;
 
     --primary: 86 35% 50%;
-    --primary--outline: 86 35% 40%;
+    --primary-outline: 86 35% 40%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 100%;
