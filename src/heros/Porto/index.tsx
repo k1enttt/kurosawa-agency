@@ -5,6 +5,7 @@ import React, { useEffect, useRef } from 'react'
 import type { Page } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import ServiceCard from '@/components/ServiceCard'
 
 type PortoHeroType =
   | {
@@ -119,41 +120,8 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
         <div ref={sliderRef} className="hero-slider-items-container">
           <div className="hero-slider-items">
             {servicesSlider?.servicesList?.map((service, index) => (
-              <div
-                key={index}
-                className="flex items-center md:min-w-[366px] min-w-full px-8 py-6 bg-white shadow-md"
-              >
-                <div className="flex w-full h-fit">
-                  {/* Left column with icon */}
-                  <div className="w-1/3 pt-2 pr-4 flex items-start justify-center">
-                    {service.serviceIcon && (
-                      <Media
-                        resource={service.serviceIcon}
-                        imgClassName="object-contain"
-                        fill
-                        className="w-full aspect-square relative"
-                        priority
-                        alt={service.serviceTitle || 'Service Icon'}
-                      />
-                    )}
-                  </div>
-                  {/* Right column with title, description, and link */}
-                  <div className="w-2/3">
-                    <h4 className="text-lg font-bold mb-1">{service.serviceTitle}</h4>
-                    <p className="text-sm font-medium leading-6 text-[#999] mb-1">
-                      {service.serviceDescription}
-                    </p>
-                    {service.serviceLink && (
-                      <a
-                        href={service.serviceLink.url ?? '#'}
-                        className="text-primary hover:text-primary/80 font-semibold underline text-sm"
-                        target="_self"
-                      >
-                        {service.serviceLink.label}
-                      </a>
-                    )}
-                  </div>
-                </div>
+              <div key={index}>
+                <ServiceCard data={service} />
               </div>
             ))}
           </div>
