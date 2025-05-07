@@ -55,7 +55,6 @@ export const Footer: GlobalConfig = {
         },
       },
     },
-
     {
       name: 'servicesItems',
       type: 'array',
@@ -71,12 +70,6 @@ export const Footer: GlobalConfig = {
           RowLabel: '@/Footer/RowLabel#RowLabel',
         },
       },
-    },
-    {
-      name: 'copyright',
-      type: 'text',
-      defaultValue: 'Kurosawa Consulting Vietnam © 2025. All Rights Reserved.',
-      required: true,
     },
   ],
   hooks: {

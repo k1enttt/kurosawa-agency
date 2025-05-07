@@ -1,119 +1,117 @@
-import { getCachedGlobal } from '@/utilities/getGlobals'
-import Link from 'next/link'
 import React from 'react'
 
 import type { Footer } from '@/payload-types'
 
+import { getCachedGlobal } from '@/utilities/getGlobals'
+import { Media } from '@/components/Media'
 import { CMSLink } from '@/components/Link'
-import { Logo } from '@/components/Logo/Logo'
-import RichText from '@/components/RichText'
-import { cn } from '@/utilities/ui'
 
 export async function Footer() {
-  // const footerData: Footer = await getCachedGlobal('footer', 1)()
+  const footerData: Footer = await getCachedGlobal('footer', 1)()
+
+  const { logo, description, contactInformation, links, navItems, servicesItems } = footerData
 
   return (
-    <footer className="bg-secondary text-secondary-foreground p-8">
-      {/* Logo, mô tả, mail, số điện thoại, CTA, Navigation */}
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div>
-          {/* Logo */}
-          <img
-            aria-hidden="true"
-            alt="Kurosawa Logo"
-            src="https://openui.fly.dev/openui/24x24.svg?text=🌿"
-          />
+    <footer className="bg-secondary text-secondary-foreground">
+      <div className="container">
+        <div className="py-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-16">
+            {/* Logo, mô tả, mail, số điện thoại, CTA */}
+            <div className="flex flex-col gap-6">
+              {/* Logo, mô tả */}
+              <div>
+                {logo ? (
+                  <Media
+                    aria-hidden="true"
+                    alt="Kurosawa Logo"
+                    resource={logo}
+                    className="w-[100px] aspect-square"
+                  />
+                ) : (
+                  <div className="w-[100px] h-[100px] text-2xl bg-muted text-muted-foreground flex items-center justify-center">
+                    LOGO
+                  </div>
+                )}
 
-          {/* Mô tả */}
-          <p className="mt-2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit quisque rutrum pellentesque.
-          </p>
+                <p className="mt-2 text-muted-foreground">
+                  {description
+                    ? description
+                    : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit quisque rutrum pellentesque.'}
+                </p>
+              </div>
 
-          {/* Email */}
-          <p className="mt-2">kurosawa@domain.com</p>
+              {/* Email */}
+              {contactInformation?.email && (
+                <p className="text-lg font-semibold">{contactInformation.email}</p>
+              )}
 
-          {/* Phone */}
-          <p className="mt-2">+84-90-1392-232</p>
+              {/* Phone */}
+              {contactInformation?.phone && (
+                <p className="text-lg font-semibold">{contactInformation.phone}</p>
+              )}
 
-          {/* CTA */}
-          <div className="mt-4">
-            <button className="bg-secondary text-secondary-foreground hover:bg-secondary/80 px-4 py-2 rounded">
-              Our services
-            </button>
-            <button className="bg-accent text-accent-foreground hover:bg-accent/80 px-4 py-2 rounded">
-              Get a Quote
-            </button>
+              {/* CTA */}
+              <div className="space-x-4">
+                {(links || []).map(({ link }, i) => {
+                  let buttonStyle =
+                    'bg-primary text-primary-foreground font-semibold hover:bg-primary/80 px-6 py-3 rounded'
+                  if (link.appearance == 'outline')
+                    buttonStyle =
+                      'bg-secondary-foreground text-secondary font-semibold hover:bg-secondary-foreground/80 px-6 py-3 rounded'
+                  return <CMSLink key={i} size="lg" {...link} className={buttonStyle} />
+                })}
+              </div>
+            </div>
+            {/* Navigation links */}
+            <div className="flex flex-col justify-between col-span-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6">
+                {/* Common Navigation */}
+                <div>
+                  <h3 className="font-bold">Navigation</h3>
+                  <ul className="mt-2 grid grid-cols-1 lg:grid-cols-2 gap-2">
+                    {navItems &&
+                      navItems.map(({ link }, i) => (
+                        <li key={i}>
+                          <CMSLink {...link} className="text-muted-foreground hover:text-primary" />
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+                {/* Services navigation */}
+                <div>
+                  <h3 className="font-bold">Services</h3>
+                  <ul className="mt-2 grid lg:grid-cols-2 grid-cols-1 gap-2">
+                    {servicesItems &&
+                      servicesItems.map(({ link }, i) => (
+                        <li key={i}>
+                          <CMSLink {...link} className="text-muted-foreground hover:text-primary" />
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              </div>
+              {/* Newsletter */}
+              <div className="mt-8">
+                <h3 className="font-bold">Subscribe to Newsletter:</h3>
+                <div className="flex mt-2">
+                  <input
+                    type="email"
+                    placeholder="Email Address"
+                    className="border border-border rounded-l px-4 py-2 w-full text-muted-foreground"
+                  />
+                  <button className="bg-primary text-primary-foreground hover:bg-primary/80 px-4 py-2 rounded-r">
+                    GO
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        {/* Common Navigation */}
-        <div>
-          <h3 className="font-bold">Navigation</h3>
-          <ul className="mt-2">
-            <li>
-              <a href="#" className="text-muted-foreground hover:text-primary">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-muted-foreground hover:text-primary">
-                About Us
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-muted-foreground hover:text-primary">
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-muted-foreground hover:text-primary">
-                News
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-muted-foreground hover:text-primary">
-                Contact
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-muted-foreground hover:text-primary">
-                Recruitment
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-muted-foreground hover:text-primary">
-                Privacy Policy
-              </a>
-            </li>
-          </ul>
+
+        {/* Copyright */}
+        <div className="py-8 text-center text-muted-foreground border-t border-t-white/10">
+          <p>Kurosawa Consulting Vietnam © {new Date().getFullYear()}. All Rights Reserved.</p>
         </div>
-        {/* Services navigation */}
-        <div>
-          <h3 className="font-bold">Services</h3>
-          <ul className="mt-2">
-            <li className="text-muted-foreground">Establishment support service</li>
-            <li className="text-muted-foreground">Translation service</li>
-            <li className="text-muted-foreground">Tax consulting service</li>
-            <li className="text-muted-foreground">Real estate consulting service</li>
-          </ul>
-        </div>
-      </div>
-      {/* Newsletter */}
-      <div className="mt-8">
-        <h3 className="font-bold">Subscribe to Newsletter:</h3>
-        <div className="flex mt-2">
-          <input
-            type="email"
-            placeholder="Email Address"
-            className="border border-border rounded-l px-4 py-2 w-full"
-          />
-          <button className="bg-accent text-accent-foreground hover:bg-accent/80 px-4 py-2 rounded-r">
-            GO
-          </button>
-        </div>
-      </div>
-      {/* Copyright */}
-      <div className="mt-8 text-center text-muted-foreground">
-        <p>Kurosawa Consulting Vietnam © 2025. All Rights Reserved.</p>
       </div>
     </footer>
   )
