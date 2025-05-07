@@ -2084,6 +2084,9 @@ export interface Header {
     phone?: string | null;
     email?: string | null;
     workTime?: string | null;
+    facebookUrl?: string | null;
+    xUrl?: string | null;
+    linkedinUrl?: string | null;
   };
   navItems?:
     | {
@@ -2199,6 +2202,9 @@ export interface HeaderSelect<T extends boolean = true> {
         phone?: T;
         email?: T;
         workTime?: T;
+        facebookUrl?: T;
+        xUrl?: T;
+        linkedinUrl?: T;
       };
   navItems?:
     | T

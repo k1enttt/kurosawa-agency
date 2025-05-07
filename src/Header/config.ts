@@ -30,6 +30,18 @@ export const Header: GlobalConfig = {
           name: 'workTime',
           type: 'text',
         },
+        {
+          name: 'facebookUrl',
+          type: 'text',
+        },
+        {
+          name: 'xUrl',
+          type: 'text',
+        },
+        {
+          name: 'linkedinUrl',
+          type: 'text',
+        },
       ],
     },
     {
