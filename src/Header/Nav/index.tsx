@@ -106,7 +106,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                     appearance="link"
                     className={clsx(
                       i == data.navItems?.length! - 1 && 'border-none',
-                      'block py-4 pr-4 pl-3 rounded-none border-b hover:no-underline !text-p-md text-heading hover:bg-gray-700 hover:text-white border-gray-200',
+                      'block py-4 pr-4 pl-3 rounded-none border-b hover:no-underline !text-p-md text-foreground dark:text-background hover:bg-gray-700 hover:text-white border-gray-200',
                     )}
                   />
                 </div>

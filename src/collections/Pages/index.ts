@@ -29,6 +29,7 @@ import { TableBlock } from '@/blocks/TableBlock/config'
 import { FeaturesBlock } from '@/blocks/FeaturesBlock/config'
 import { CustomerBlock } from '@/blocks/CustomerBlock/config'
 import { FeaturesWithImage } from '@/blocks/FeaturesWithImage/config'
+import { LastestNews } from '@/blocks/LatestNewsBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -99,6 +100,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 FeaturesBlock,
                 FeaturesWithImage,
                 CustomerBlock,
+                LastestNews,
               ],
               required: true,
               admin: {

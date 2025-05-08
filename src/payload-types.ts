@@ -222,6 +222,7 @@ export interface Page {
     | FeaturesBlock
     | FeaturesWithImage
     | CustomerBlock
+    | LastestNews
   )[];
   meta?: {
     title?: string | null;
@@ -1153,6 +1154,17 @@ export interface CustomerBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LastestNews".
+ */
+export interface LastestNews {
+  backgroundColor?: ('light' | 'dark') | null;
+  sectionHeading?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'lastestNews';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1471,6 +1483,7 @@ export interface PagesSelect<T extends boolean = true> {
         featuresBlock?: T | FeaturesBlockSelect<T>;
         featuresWithImage?: T | FeaturesWithImageSelect<T>;
         customerBlock?: T | CustomerBlockSelect<T>;
+        lastestNews?: T | LastestNewsSelect<T>;
       };
   meta?:
     | T
@@ -1757,6 +1770,16 @@ export interface CustomerBlockSelect<T extends boolean = true> {
         textLarge?: T;
         textSmall?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LastestNews_select".
+ */
+export interface LastestNewsSelect<T extends boolean = true> {
+  backgroundColor?: T;
+  sectionHeading?: T;
   id?: T;
   blockName?: T;
 }
