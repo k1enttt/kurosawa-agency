@@ -220,6 +220,7 @@ export interface Page {
     | TeamBlock
     | TableBlock
     | FeaturesBlock
+    | CustomerBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1094,6 +1095,30 @@ export interface FeaturesBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CustomerBlock".
+ */
+export interface CustomerBlock {
+  backgroundColor?: ('light' | 'dark') | null;
+  sectionLabel?: string | null;
+  heading?: string | null;
+  customer1?: {
+    textLarge?: string | null;
+    textSmall?: string | null;
+  };
+  customer2?: {
+    textLarge?: string | null;
+    textSmall?: string | null;
+  };
+  customer3?: {
+    textLarge?: string | null;
+    textSmall?: string | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'customerBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1410,6 +1435,7 @@ export interface PagesSelect<T extends boolean = true> {
         team?: T | TeamBlockSelect<T>;
         tableBlock?: T | TableBlockSelect<T>;
         featuresBlock?: T | FeaturesBlockSelect<T>;
+        customerBlock?: T | CustomerBlockSelect<T>;
       };
   meta?:
     | T
@@ -1648,6 +1674,35 @@ export interface FeaturesBlockSelect<T extends boolean = true> {
         title?: T;
         media?: T;
         id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CustomerBlock_select".
+ */
+export interface CustomerBlockSelect<T extends boolean = true> {
+  backgroundColor?: T;
+  sectionLabel?: T;
+  heading?: T;
+  customer1?:
+    | T
+    | {
+        textLarge?: T;
+        textSmall?: T;
+      };
+  customer2?:
+    | T
+    | {
+        textLarge?: T;
+        textSmall?: T;
+      };
+  customer3?:
+    | T
+    | {
+        textLarge?: T;
+        textSmall?: T;
       };
   id?: T;
   blockName?: T;

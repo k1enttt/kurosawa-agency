@@ -27,6 +27,7 @@ import { TwoColsContent } from '@/blocks/TwoColsContent/config'
 import { Team } from '@/blocks/Team/config'
 import { TableBlock } from '@/blocks/TableBlock/config'
 import { FeaturesBlock } from '@/blocks/FeaturesBlock/config'
+import { CustomerBlock } from '@/blocks/CustomerBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -95,6 +96,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 Team,
                 TableBlock,
                 FeaturesBlock,
+                CustomerBlock,
               ],
               required: true,
               admin: {
