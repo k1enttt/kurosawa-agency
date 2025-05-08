@@ -260,7 +260,7 @@ html[data-theme='light'] {
 }
 
 .porto-hero-container {
-  @apply relative w-full h-[725px] text-white mb-0 md:mb-32;
+  @apply relative w-full h-[725px] text-white mb-0 md:mb-24;
 }
 
 .porto-hero-text {

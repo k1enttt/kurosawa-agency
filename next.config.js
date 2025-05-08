@@ -22,6 +22,10 @@ const nextConfig = {
         hostname: 'default.kienttt.id.vn',
         protocol: 'https',
       },
+      {
+        hostname: '**.unsplash.com',
+        protocol: 'https',
+      },
     ],
   },
   reactStrictMode: true,

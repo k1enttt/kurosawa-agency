@@ -1050,7 +1050,23 @@ export interface TableBlock {
  */
 export interface FeaturesBlock {
   backgroundColor?: ('light' | 'dark') | null;
-  introText?: {
+  yearsInBusiness?: number | null;
+  paragraphSmall?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  paragraphLarge?: {
     root: {
       type: string;
       children: {
@@ -1067,26 +1083,8 @@ export interface FeaturesBlock {
   } | null;
   columns?:
     | {
-        richText?: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        } | null;
-        enableLink?: boolean | null;
-        link?: {
-          label: string;
-          url: string;
-        };
+        title?: string | null;
+        media?: (number | null) | Media;
         id?: string | null;
       }[]
     | null;
@@ -1641,18 +1639,14 @@ export interface TableBlockSelect<T extends boolean = true> {
  */
 export interface FeaturesBlockSelect<T extends boolean = true> {
   backgroundColor?: T;
-  introText?: T;
+  yearsInBusiness?: T;
+  paragraphSmall?: T;
+  paragraphLarge?: T;
   columns?:
     | T
     | {
-        richText?: T;
-        enableLink?: T;
-        link?:
-          | T
-          | {
-              label?: T;
-              url?: T;
-            };
+        title?: T;
+        media?: T;
         id?: T;
       };
   id?: T;

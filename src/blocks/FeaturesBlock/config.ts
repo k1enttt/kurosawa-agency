@@ -9,44 +9,13 @@ import {
 
 const columnFields: Field[] = [
   {
-    name: 'richText',
-    type: 'richText',
-    editor: lexicalEditor({
-      features: ({ rootFeatures }) => {
-        return [
-          ...rootFeatures,
-          HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
-          FixedToolbarFeature(),
-          InlineToolbarFeature(),
-        ]
-      },
-    }),
-    label: false,
+    name: 'title',
+    type: 'text',
   },
   {
-    name: 'enableLink',
-    type: 'checkbox',
-  },
-  {
-    name: 'link',
-    type: 'group',
-    admin: {
-      condition: (_data, siblingData) => {
-        return Boolean(siblingData?.enableLink)
-      },
-    },
-    fields: [
-      {
-        name: 'label',
-        type: 'text',
-        required: true,
-      },
-      {
-        name: 'url',
-        type: 'text',
-        required: true,
-      },
-    ],
+    name: 'media',
+    type: 'upload',
+    relationTo: 'media',
   },
 ]
 
@@ -70,19 +39,38 @@ export const FeaturesBlock: Block = {
       defaultValue: 'light',
     },
     {
-      name: 'introText',
+      name: 'yearsInBusiness',
+      type: 'number',
+    },
+    {
+      name: 'paragraphSmall',
       type: 'richText',
       editor: lexicalEditor({
         features: ({ rootFeatures }) => {
           return [
             ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h3', 'h4'] }),
+            HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
           ]
         },
       }),
-      label: false,
+      label: 'Small Paragraph',
+    },
+    {
+      name: 'paragraphLarge',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => {
+          return [
+            ...rootFeatures,
+            HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          ]
+        },
+      }),
+      label: 'Large Paragraph',
     },
     {
       name: 'columns',
@@ -91,6 +79,7 @@ export const FeaturesBlock: Block = {
         initCollapsed: true,
       },
       fields: columnFields,
+      maxRows: 3,
     },
   ],
 }

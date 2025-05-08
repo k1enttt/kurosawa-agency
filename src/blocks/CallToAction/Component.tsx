@@ -28,7 +28,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
                   size="lg"
                   type={'custom'}
                   {...link}
-                  className="font-bold text-foreground bg-primary-foreground hover:bg-primary-foreground px-10 py-3"
+                  className="font-bold text-foreground dark:text-background bg-primary-foreground hover:bg-primary-foreground px-10 py-3"
                 />
               )
             })}
