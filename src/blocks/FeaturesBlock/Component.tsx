@@ -6,7 +6,7 @@ import type { FeaturesBlock as FeaturesBlockProps } from '@/payload-types'
 
 import Link from 'next/link'
 import { Media } from '@/components/Media'
-import CardSlider from '@/components/CardSlider'
+import FeatureCardSlider from '@/components/FeatureCardSlider'
 
 export const FeaturesBlock: React.FC<FeaturesBlockProps> = (props) => {
   const { backgroundColor, yearsInBusiness, paragraphSmall, paragraphLarge, columns } = props
@@ -71,7 +71,7 @@ export const FeaturesBlock: React.FC<FeaturesBlockProps> = (props) => {
         </div>
         {/* Mobile feature cards */}
         <div className="block md:hidden h-64">
-          <CardSlider data={columns} />
+          <FeatureCardSlider data={columns} />
         </div>
       </div>
     </div>
