@@ -29,12 +29,12 @@ export const FeaturesWithImageBlock: React.FC<FeaturesWithImageProps> = (props) 
           <div className="flex flex-col gap-4">
             {columns?.map((column, index) => (
               <div key={index} className="flex gap-4">
-                <div className="space-y-4">
-                  <div className="h-14 aspect-square rounded-full bg-dark text-light font-bold text-xl flex items-center justify-center">
+                <div className="flex flex-col gap-y-4">
+                  <div className="flex-0 h-14 aspect-square rounded-full bg-dark text-light font-bold text-xl flex items-center justify-center">
                     {index + 1}
                   </div>
                   {index < columns.length - 1 && (
-                    <div className="w-1 h-10 bg-muted rounded-sm mx-auto"></div>
+                    <div className="flex-1 w-1 min-h-10 bg-muted rounded-sm mx-auto"></div>
                   )}
                 </div>
                 <div>
