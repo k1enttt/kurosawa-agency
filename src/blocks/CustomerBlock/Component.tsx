@@ -15,6 +15,7 @@ export const CustomerBlock: React.FC<CustomerBlockProps> = (props) => {
           <div className="text-2xl font-bold">{heading}</div>
         </div>
 
+        {/* TODO: Giảm chiều rộng của các cột  */}
         <div className="grid grid-cols-3 gap-4">
           <div className="w-full text-center">
             <div className="text-[50px] leading-[50px] font-bold">{customer1?.textLarge}</div>

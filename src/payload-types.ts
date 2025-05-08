@@ -220,6 +220,7 @@ export interface Page {
     | TeamBlock
     | TableBlock
     | FeaturesBlock
+    | FeaturesWithImage
     | CustomerBlock
   )[];
   meta?: {
@@ -1095,6 +1096,39 @@ export interface FeaturesBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeaturesWithImage".
+ */
+export interface FeaturesWithImage {
+  backgroundColor?: ('light' | 'dark') | null;
+  media?: (number | null) | Media;
+  introText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  columns?:
+    | {
+        title?: string | null;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'featuresWithImage';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CustomerBlock".
  */
 export interface CustomerBlock {
@@ -1435,6 +1469,7 @@ export interface PagesSelect<T extends boolean = true> {
         team?: T | TeamBlockSelect<T>;
         tableBlock?: T | TableBlockSelect<T>;
         featuresBlock?: T | FeaturesBlockSelect<T>;
+        featuresWithImage?: T | FeaturesWithImageSelect<T>;
         customerBlock?: T | CustomerBlockSelect<T>;
       };
   meta?:
@@ -1673,6 +1708,24 @@ export interface FeaturesBlockSelect<T extends boolean = true> {
     | {
         title?: T;
         media?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeaturesWithImage_select".
+ */
+export interface FeaturesWithImageSelect<T extends boolean = true> {
+  backgroundColor?: T;
+  media?: T;
+  introText?: T;
+  columns?:
+    | T
+    | {
+        title?: T;
+        description?: T;
         id?: T;
       };
   id?: T;

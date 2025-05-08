@@ -16,6 +16,7 @@ import { TableBlock } from './TableBlock/Component'
 import { FeaturesBlock } from './FeaturesBlock/Component'
 import { cn } from '@/utilities/ui'
 import { CustomerBlock } from './CustomerBlock/Component'
+import { FeaturesWithImageBlock } from './FeaturesWithImage/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -31,6 +32,7 @@ const blockComponents = {
   tableBlock: TableBlock,
   featuresBlock: FeaturesBlock,
   customerBlock: CustomerBlock,
+  featuresWithImage: FeaturesWithImageBlock,
 }
 
 export const RenderBlocks: React.FC<{
