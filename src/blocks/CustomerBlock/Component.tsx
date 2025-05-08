@@ -15,17 +15,16 @@ export const CustomerBlock: React.FC<CustomerBlockProps> = (props) => {
           <div className="text-2xl font-bold">{heading}</div>
         </div>
 
-        {/* TODO: Giảm chiều rộng của các cột  */}
-        <div className="grid grid-cols-3 gap-4">
-          <div className="w-full text-center">
+        <div className="grid grid-cols-3 gap-4 justify-items-center">
+          <div className="w-full md:w-2/3 text-center">
             <div className="text-[50px] leading-[50px] font-bold">{customer1?.textLarge}</div>
             <div className="text-muted-foreground font-semibold">{customer1?.textSmall}</div>
           </div>
-          <div className="w-full text-center">
+          <div className="w-full md:w-2/3 text-center">
             <div className="text-[50px] leading-[50px] font-bold">{customer2?.textLarge}</div>
             <div className="text-muted-foreground font-semibold">{customer2?.textSmall}</div>
           </div>
-          <div className="w-full text-center">
+          <div className="w-full md:w-2/3 text-center">
             <div className="text-[50px] leading-[50px] font-bold">{customer3?.textLarge}</div>
             <div className="text-muted-foreground font-semibold">{customer3?.textSmall}</div>
           </div>
