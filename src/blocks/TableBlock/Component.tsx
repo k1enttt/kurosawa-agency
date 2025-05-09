@@ -33,7 +33,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
           {heading && (
             <h2
               id={headingId}
-              className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white divide-line"
+              className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white divide-line"
             >
               {heading}
             </h2>
@@ -43,7 +43,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
               data={introText}
               enableGutter={false}
               className={cn(
-                '[&_h2]:mb-4 [&_h2]:text-4xl [&_h2]:tracking-tight [&_h2]:font-extrabold [&_h2]:text-gray-900 [&_h2]:dark:text-white [&_h2]:divide-line',
+                '[&_h2]:mb-4 [&_h2]:text-4xl [&_h2]:tracking-tight [&_h2]:font-bold [&_h2]:text-gray-900 [&_h2]:dark:text-white [&_h2]:divide-line',
                 'font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400',
               )}
             />

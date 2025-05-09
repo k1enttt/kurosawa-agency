@@ -224,6 +224,7 @@ export interface Page {
     | FeaturesWithImage
     | CustomerBlock
     | LastestNews
+    | Message
   )[];
   meta?: {
     title?: string | null;
@@ -1166,6 +1167,37 @@ export interface LastestNews {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Message".
+ */
+export interface Message {
+  backgroundColor?: ('light' | 'dark') | null;
+  heading?: string | null;
+  media: number | Media;
+  author?: {
+    name?: string | null;
+    role?: string | null;
+  };
+  message?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'message';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1486,6 +1518,7 @@ export interface PagesSelect<T extends boolean = true> {
         featuresWithImage?: T | FeaturesWithImageSelect<T>;
         customerBlock?: T | CustomerBlockSelect<T>;
         lastestNews?: T | LastestNewsSelect<T>;
+        message?: T | MessageSelect<T>;
       };
   meta?:
     | T
@@ -1782,6 +1815,24 @@ export interface CustomerBlockSelect<T extends boolean = true> {
 export interface LastestNewsSelect<T extends boolean = true> {
   backgroundColor?: T;
   sectionHeading?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Message_select".
+ */
+export interface MessageSelect<T extends boolean = true> {
+  backgroundColor?: T;
+  heading?: T;
+  media?: T;
+  author?:
+    | T
+    | {
+        name?: T;
+        role?: T;
+      };
+  message?: T;
   id?: T;
   blockName?: T;
 }
