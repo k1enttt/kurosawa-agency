@@ -1,8 +1,7 @@
+'use client'
 const Breadcrumb = () => {
   const getPageNameFromUrl = () => {
-    const searchParams = new URLSearchParams()
-    const path = searchParams.get('path')
-    if (!path) return null
+    const path = window.location.pathname
     return path.substring(path.lastIndexOf('/') + 1)
   }
 

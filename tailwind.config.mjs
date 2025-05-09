@@ -11,7 +11,7 @@ const config = {
     './node_modules/flowbite/**/*.js',
   ],
   darkMode: ['selector', '[data-theme="dark"]'],
-  plugins: [tailwindcssAnimate, typography, require('flowbite/plugin')],
+  plugins: [tailwindcssAnimate, typography, require('flowbite/plugin')], // eslint-disable-line
   prefix: '',
   safelist: [
     'lg:col-span-4',

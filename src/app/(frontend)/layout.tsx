@@ -16,23 +16,7 @@ import { draftMode } from 'next/headers'
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 import localFont from 'next/font/local'
-import { Inter, Poppins } from 'next/font/google'
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  fallback: [
-    'ui-sans-serif',
-    'system-ui',
-    '-apple-system',
-    'Segoe UI',
-    'Roboto',
-    'Helvetica Neue',
-    'Arial',
-    'Noto Sans',
-    'sans-serif',
-  ],
-})
+import { Poppins } from 'next/font/google'
 
 const poppins = Poppins({
   subsets: ['latin'],
