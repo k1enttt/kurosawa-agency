@@ -1,6 +1,8 @@
 const Breadcrumb = () => {
   const getPageNameFromUrl = () => {
-    const path = window.location.pathname
+    const searchParams = new URLSearchParams()
+    const path = searchParams.get('path')
+    if (!path) return null
     return path.substring(path.lastIndexOf('/') + 1)
   }
 
@@ -16,7 +18,7 @@ const Breadcrumb = () => {
     <div className="text-xs font-semibold text-primary flex gap-1">
       <div>Home</div>
       <div>/</div>
-      <div>{formatPageName(pageName)}</div>
+      {pageName && <div>{formatPageName(pageName)}</div>}
     </div>
   )
 }
