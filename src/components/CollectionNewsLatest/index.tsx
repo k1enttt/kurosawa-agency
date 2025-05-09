@@ -19,13 +19,14 @@ export const CollectionNewsLatest: React.FC<Props> = (props) => {
             <div key={index}>
               <Card
                 className={cn(
-                  'blog-image blog-title blog-subtitle blog-no-padding blog-category mb-2',
+                  'blog-image news-title blog-subtitle blog-no-padding blog-category mb-2 pointer-events-none',
                   'relative bg-transparent border-none',
                 )}
                 doc={result}
                 relationTo="posts"
                 showCategories={false}
               />
+
               <Link
                 href={`/posts/${result.slug}`}
                 className="text-primary text-sm font-semibold underline"

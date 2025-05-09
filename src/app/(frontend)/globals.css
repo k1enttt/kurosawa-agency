@@ -342,3 +342,7 @@ html[data-theme='light'] {
   .swiper-wrapper {
     @apply pb-2
   }
+
+  .news-title {
+    @apply [&_h3]:my-2 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:tracking-tight [&_h3]:text-gray-900 [&_h3]:dark:text-white;
+  }
