@@ -1,7 +1,10 @@
 'use client'
+
+import { usePathname } from 'next/navigation'
+
 const Breadcrumb = () => {
   const getPageNameFromUrl = () => {
-    const path = window.location.pathname
+    const path = usePathname()
     return path.substring(path.lastIndexOf('/') + 1)
   }
 

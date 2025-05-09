@@ -108,6 +108,18 @@
   }
 }
 
+@layer utilities {
+  .divide-line::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    border-radius: 4px;
+    background-color: hsl(var(--primary));
+    margin-top: 1rem;
+  }
+}
+
 html {
   opacity: 0;
 }
@@ -348,19 +360,9 @@ html[data-theme='light'] {
 }
 
 .privacy-heading3 {
-  @apply [&_h3]:text-2xl;
-
-  h3::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 4px;
-    border-radius: 4px;
-    background-color: hsl(var(--primary));
-    margin-top: 1rem;
-  }
+  @apply [&_h3]:text-2xl [&_h3]:divide-line;
 }
 
 .privacy-link {
-  @apply [&_a]:text-primary
+  @apply [&_a]:text-primary;
 }
