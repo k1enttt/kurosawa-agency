@@ -52,20 +52,8 @@ export const Faq: Block = {
       defaultValue: 'light',
     },
     {
-      name: 'introText',
-      type: 'richText',
-      editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-          ]
-        },
-      }),
-      label: false,
-      localized: true,
+      name: 'heading',
+      type: 'text',
     },
     {
       name: 'questions',

@@ -40,28 +40,23 @@ export const AddressBlock: React.FC<AddressBlockProps> = ({
                     <div className="flex gap-4 items-start justify-center">
                       <div className="flex-0">
                         <svg
-                          className="w-6 h-6 text-gray-800 dark:text-white"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
                           width="24"
                           height="24"
-                          fill="none"
                           viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
                         >
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
-                          />
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M17.8 13.938h-.011a7 7 0 1 0-11.464.144h-.016l.14.171c.1.127.2.251.3.371L12 21l5.13-6.248c.194-.209.374-.429.54-.659l.13-.155Z"
-                          />
+                          <g clip-path="url(#clip0_436_552)">
+                            <path
+                              d="M12 12C10.9 12 10 11.1 10 10C10 8.9 10.9 8 12 8C13.1 8 14 8.9 14 10C14 11.1 13.1 12 12 12ZM18 10.2C18 6.57 15.35 4 12 4C8.65 4 6 6.57 6 10.2C6 12.54 7.95 15.64 12 19.34C16.05 15.64 18 12.54 18 10.2ZM12 2C16.2 2 20 5.22 20 10.2C20 13.52 17.33 17.45 12 22C6.67 17.45 4 13.52 4 10.2C4 5.22 7.8 2 12 2Z"
+                              fill="#323232"
+                            />
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_436_552">
+                              <rect width="24" height="24" fill="white" />
+                            </clipPath>
+                          </defs>
                         </svg>
                       </div>
                       <div className="flex-1">{address.officeAddress}</div>
@@ -70,21 +65,23 @@ export const AddressBlock: React.FC<AddressBlockProps> = ({
                     <div className="flex gap-4 items-start justify-center">
                       <div className="flex-0">
                         <svg
-                          className="w-6 h-6 text-gray-800 dark:text-white"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
                           width="24"
                           height="24"
-                          fill="none"
                           viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
                         >
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M18.427 14.768 17.2 13.542a1.733 1.733 0 0 0-2.45 0l-.613.613a1.732 1.732 0 0 1-2.45 0l-1.838-1.84a1.735 1.735 0 0 1 0-2.452l.612-.613a1.735 1.735 0 0 0 0-2.452L9.237 5.572a1.6 1.6 0 0 0-2.45 0c-3.223 3.2-1.702 6.896 1.519 10.117 3.22 3.221 6.914 4.745 10.12 1.535a1.601 1.601 0 0 0 0-2.456Z"
-                          />
+                          <g clip-path="url(#clip0_436_555)">
+                            <path
+                              d="M6.54 5C6.6 5.89 6.75 6.76 6.99 7.59L5.79 8.79C5.38 7.59 5.12 6.32 5.03 5H6.54ZM16.4 17.02C17.25 17.26 18.12 17.41 19 17.47V18.96C17.68 18.87 16.41 18.61 15.2 18.21L16.4 17.02ZM7.5 3H4C3.45 3 3 3.45 3 4C3 13.39 10.61 21 20 21C20.55 21 21 20.55 21 20V16.51C21 15.96 20.55 15.51 20 15.51C18.76 15.51 17.55 15.31 16.43 14.94C16.33 14.9 16.22 14.89 16.12 14.89C15.86 14.89 15.61 14.99 15.41 15.18L13.21 17.38C10.38 15.93 8.06 13.62 6.62 10.79L8.82 8.59C9.1 8.31 9.18 7.92 9.07 7.57C8.7 6.45 8.5 5.25 8.5 4C8.5 3.45 8.05 3 7.5 3Z"
+                              fill="#323232"
+                            />
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_436_555">
+                              <rect width="24" height="24" fill="white" />
+                            </clipPath>
+                          </defs>
                         </svg>
                       </div>
                       <div className="flex-1">{address.phone}</div>
@@ -93,21 +90,23 @@ export const AddressBlock: React.FC<AddressBlockProps> = ({
                     <div className="flex gap-4 items-start justify-center">
                       <div className="flex-0">
                         <svg
-                          className="w-6 h-6 text-gray-800 dark:text-white"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
                           width="24"
                           height="24"
-                          fill="none"
                           viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
                         >
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M11 16v-5.5A3.5 3.5 0 0 0 7.5 7m3.5 9H4v-5.5A3.5 3.5 0 0 1 7.5 7m3.5 9v4M7.5 7H14m0 0V4h2.5M14 7v3m-3.5 6H20v-6a3 3 0 0 0-3-3m-2 9v4m-8-6.5h1"
-                          />
+                          <g clip-path="url(#clip0_436_559)">
+                            <path
+                              d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM19 18H5C4.45 18 4 17.55 4 17V8L10.94 12.34C11.59 12.75 12.41 12.75 13.06 12.34L20 8V17C20 17.55 19.55 18 19 18ZM12 11L4 6H20L12 11Z"
+                              fill="#323232"
+                            />
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_436_559">
+                              <rect width="24" height="24" fill="white" />
+                            </clipPath>
+                          </defs>
                         </svg>
                       </div>
                       <div className="flex-1">

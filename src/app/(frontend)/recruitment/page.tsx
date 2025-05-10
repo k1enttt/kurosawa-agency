@@ -7,6 +7,9 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
 import PageClient from './page.client'
+import Breadcrumb from '@/components/Breadcrumb'
+import { Media } from '@/components/Media'
+import { FaqBlock } from '@/blocks/FAQ/Component'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
@@ -38,9 +41,18 @@ export default async function Page() {
   return (
     <div className="pt-24 pb-24">
       <PageClient />
-      <div className="container mb-16">
-        <div className="prose dark:prose-invert max-w-none flowbite-h2">
-          <h2>Recruitment</h2>
+      <div
+        className="relative -mt-[6rem] flex items-center justify-center text-white py-20"
+        data-theme="light"
+      >
+        <div className="container z-10 relative flex items-center justify-start">
+          <div className="max-w-[36.5rem] space-y-2">
+            <Breadcrumb />
+            <h1 className="text-4xl font-semibold text-dark">Recruitment</h1>
+          </div>
+        </div>
+        <div className="absolute inset-0 select-none bg-white/90">
+          {/* <Media fill imgClassName="-z-10 object-cover" priority resource={media} /> */}
         </div>
       </div>
 
@@ -66,6 +78,31 @@ export default async function Page() {
           />
         )}
       </div>
+
+      <FaqBlock
+        blockType="faq"
+        questions={[
+          {
+            question: 'What is this?',
+            answer: {
+              root: {
+                type: 'root',
+                children: [
+                  {
+                    type: 'text',
+                    text: 'A website for Kurosawa',
+                    version: 1,
+                  },
+                ],
+                direction: null,
+                format: '',
+                indent: 0,
+                version: 1,
+              },
+            },
+          },
+        ]}
+      />
     </div>
   )
 }

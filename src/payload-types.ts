@@ -854,21 +854,7 @@ export interface CallToActionWithImageBlock {
  */
 export interface FaqBlock {
   backgroundColor?: ('light' | 'dark') | null;
-  introText?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
+  heading?: string | null;
   questions?:
     | {
         question: string;
@@ -1694,7 +1680,7 @@ export interface CallToActionWithImageBlockSelect<T extends boolean = true> {
  */
 export interface FaqBlockSelect<T extends boolean = true> {
   backgroundColor?: T;
-  introText?: T;
+  heading?: T;
   questions?:
     | T
     | {
