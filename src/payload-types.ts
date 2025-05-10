@@ -225,6 +225,7 @@ export interface Page {
     | CustomerBlock
     | LastestNews
     | Message
+    | AddressBlock
   )[];
   meta?: {
     title?: string | null;
@@ -1198,6 +1199,27 @@ export interface Message {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "addressBlock".
+ */
+export interface AddressBlock {
+  backgroundColor?: ('light' | 'dark') | null;
+  heading?: string | null;
+  addresses?:
+    | {
+        googleMapsEmbedHtml?: string | null;
+        heading?: string | null;
+        officeAddress?: string | null;
+        phone?: string | null;
+        email?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'address';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1519,6 +1541,7 @@ export interface PagesSelect<T extends boolean = true> {
         customerBlock?: T | CustomerBlockSelect<T>;
         lastestNews?: T | LastestNewsSelect<T>;
         message?: T | MessageSelect<T>;
+        address?: T | AddressBlockSelect<T>;
       };
   meta?:
     | T
@@ -1833,6 +1856,26 @@ export interface MessageSelect<T extends boolean = true> {
         role?: T;
       };
   message?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "addressBlock_select".
+ */
+export interface AddressBlockSelect<T extends boolean = true> {
+  backgroundColor?: T;
+  heading?: T;
+  addresses?:
+    | T
+    | {
+        googleMapsEmbedHtml?: T;
+        heading?: T;
+        officeAddress?: T;
+        phone?: T;
+        email?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

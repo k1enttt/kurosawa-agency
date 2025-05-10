@@ -31,6 +31,7 @@ import { CustomerBlock } from '@/blocks/CustomerBlock/config'
 import { FeaturesWithImage } from '@/blocks/FeaturesWithImage/config'
 import { LastestNews } from '@/blocks/LatestNewsBlock/config'
 import { Message } from '@/blocks/Message/config'
+import { Address } from '@/blocks/Address/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -103,6 +104,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 CustomerBlock,
                 LastestNews,
                 Message,
+                Address,
               ],
               required: true,
               admin: {

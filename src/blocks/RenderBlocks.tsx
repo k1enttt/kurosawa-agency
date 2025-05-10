@@ -19,6 +19,7 @@ import { CustomerBlock } from './CustomerBlock/Component'
 import { FeaturesWithImageBlock } from './FeaturesWithImage/Component'
 import { LastestNewsBlock } from './LatestNewsBlock/Component'
 import { MessageBlock } from './Message/Component'
+import { AddressBlock } from './Address/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -37,6 +38,7 @@ const blockComponents = {
   featuresWithImage: FeaturesWithImageBlock,
   lastestNews: LastestNewsBlock,
   message: MessageBlock,
+  address: AddressBlock,
 }
 
 export const RenderBlocks: React.FC<{
