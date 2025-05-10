@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const Breadcrumb = () => {
@@ -18,7 +19,7 @@ const Breadcrumb = () => {
   const pageName = getPageNameFromUrl()
   return (
     <div className="text-xs font-semibold text-primary flex gap-1">
-      <div>Home</div>
+      <Link href="/">Home</Link>
       <div>/</div>
       {pageName && <div>{formatPageName(pageName)}</div>}
     </div>
