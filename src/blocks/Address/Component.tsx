@@ -16,24 +16,23 @@ export const AddressBlock: React.FC<AddressBlockProps> = ({
     <div className={`${backgroundColor == 'dark' ? 'bg-muted' : 'bg-white'} dark:bg-gray-900`}>
       <div className="py-8 md:py-16 container">
         <h2 className="text-4xl tracking-tight font-bold divide-line mb-8">{heading}</h2>
-        <div className="gap-8 items-start xl:gap-16 grid md:grid-cols-2 grid-cols-1">
+        <div className="space-y-8 md:space-y-12 items-start">
           {addresses &&
             addresses.map((address, index) => (
-              <React.Fragment key={index}>
+              <div key={index} className="grid md:grid-cols-2 grid-cols-1 gap-8 md:gap-12">
                 {/* Bản đồ */}
                 {address.googleMapsEmbedHtml && (
                   <iframe
                     src={extractSrcFromIframe(address.googleMapsEmbedHtml)}
-                    width="600"
-                    height="400"
                     style={{ border: 0 }}
                     allowFullScreen={true}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
+                    className="w-full md:aspect-[3/2] aspect-square"
                   ></iframe>
                 )}
                 {/* Địa chỉ liên lạc */}
-                <div className="mt-4 md:mt-0 space-y-6">
+                <div className="space-y-6">
                   {/* Heading */}
                   <h2 className="font-semibold text-2xl">{address.heading}</h2>
                   <div className="space-y-4">
@@ -122,7 +121,7 @@ export const AddressBlock: React.FC<AddressBlockProps> = ({
                     </div>
                   </div>
                 </div>
-              </React.Fragment>
+              </div>
             ))}
         </div>
       </div>
