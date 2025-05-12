@@ -21,6 +21,7 @@ import { LastestNewsBlock } from './LatestNewsBlock/Component'
 import { MessageBlock } from './Message/Component'
 import { AddressBlock } from './Address/Component'
 import { ArchiveWithPaginationBlock } from './ArchiveWithPaginationBlock/Component'
+import { CardGridBlock } from './CardGrid/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -41,6 +42,7 @@ const blockComponents = {
   lastestNews: LastestNewsBlock,
   message: MessageBlock,
   address: AddressBlock,
+  cardGrid: CardGridBlock,
 }
 
 export const RenderBlocks: React.FC<{

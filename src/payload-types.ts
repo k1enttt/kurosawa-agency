@@ -227,6 +227,7 @@ export interface Page {
     | LastestNews
     | Message
     | AddressBlock
+    | CardGridBlock
   )[];
   meta?: {
     title?: string | null;
@@ -823,8 +824,7 @@ export interface GalleryContentBlock {
   contentCards?:
     | {
         media?: (number | null) | Media;
-        heading?: string | null;
-        subheading?: string | null;
+        title?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -1241,6 +1241,63 @@ export interface AddressBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CardGridBlock".
+ */
+export interface CardGridBlock {
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  cards?:
+    | {
+        media: number | Media;
+        title: string;
+        description?: string | null;
+        link?: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: 'default' | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  features?:
+    | {
+        media?: (number | null) | Media;
+        title?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cardGrid';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1564,6 +1621,7 @@ export interface PagesSelect<T extends boolean = true> {
         lastestNews?: T | LastestNewsSelect<T>;
         message?: T | MessageSelect<T>;
         address?: T | AddressBlockSelect<T>;
+        cardGrid?: T | CardGridBlockSelect<T>;
       };
   meta?:
     | T
@@ -1690,8 +1748,7 @@ export interface GalleryContentBlockSelect<T extends boolean = true> {
     | T
     | {
         media?: T;
-        heading?: T;
-        subheading?: T;
+        title?: T;
         id?: T;
       };
   id?: T;
@@ -1910,6 +1967,39 @@ export interface AddressBlockSelect<T extends boolean = true> {
         officeAddress?: T;
         phone?: T;
         email?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CardGridBlock_select".
+ */
+export interface CardGridBlockSelect<T extends boolean = true> {
+  richText?: T;
+  cards?:
+    | T
+    | {
+        media?: T;
+        title?: T;
+        description?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
+  features?:
+    | T
+    | {
+        media?: T;
+        title?: T;
         id?: T;
       };
   id?: T;
