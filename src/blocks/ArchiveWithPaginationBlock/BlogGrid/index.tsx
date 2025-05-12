@@ -79,7 +79,7 @@ const BlogGrid = ({ posts, categories }: { posts: CardPostData[]; categories: Ca
     <>
       {/* Categories Navbar */}
       <div className="mb-8">
-        <nav className="container py-4 flex flex-wrap items-center gap-4">
+        <nav className="py-4 flex flex-wrap items-center gap-4">
           <button
             onClick={() => setCurrentCategory(null)}
             className={cn(
@@ -105,7 +105,7 @@ const BlogGrid = ({ posts, categories }: { posts: CardPostData[]; categories: Ca
         </nav>
       </div>
       {/* Page range */}
-      <div className="container mb-8">
+      <div className="mb-8">
         <PageRange collection="posts" currentPage={page} limit={limit} totalDocs={totalPosts} />
       </div>
       {/* Post grid */}

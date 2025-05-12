@@ -260,7 +260,7 @@ html[data-theme='light'] {
 }
 
 .category-selected {
-  @apply border border-blue-700 text-blue-700 hover:bg-blue-100;
+  @apply border border-primary text-primary hover:bg-primary/10;
 }
 
 .category-unselected {
