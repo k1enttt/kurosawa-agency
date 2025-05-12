@@ -213,6 +213,7 @@ export interface Page {
     | ContentBlock
     | MediaBlock
     | ArchiveBlock
+    | ArchiveWithPaginationBlock
     | FormBlock
     | GalleryContentBlock
     | CallToActionWithImageBlock
@@ -562,6 +563,40 @@ export interface ArchiveBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'archive';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ArchiveWithPaginationBlock".
+ */
+export interface ArchiveWithPaginationBlock {
+  backgroundColor?: ('light' | 'dark') | null;
+  introContent?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  populateBy?: ('collection' | 'selection') | null;
+  relationTo?: 'posts' | null;
+  categories?: (number | Category)[] | null;
+  selectedDocs?:
+    | {
+        relationTo: 'posts';
+        value: number | Post;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'archiveWithPagination';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1515,6 +1550,7 @@ export interface PagesSelect<T extends boolean = true> {
         content?: T | ContentBlockSelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
+        archiveWithPagination?: T | ArchiveWithPaginationBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         galleryContent?: T | GalleryContentBlockSelect<T>;
         ctaWithImage?: T | CallToActionWithImageBlockSelect<T>;
@@ -1613,6 +1649,20 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
   relationTo?: T;
   categories?: T;
   limit?: T;
+  selectedDocs?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ArchiveWithPaginationBlock_select".
+ */
+export interface ArchiveWithPaginationBlockSelect<T extends boolean = true> {
+  backgroundColor?: T;
+  introContent?: T;
+  populateBy?: T;
+  relationTo?: T;
+  categories?: T;
   selectedDocs?: T;
   id?: T;
   blockName?: T;

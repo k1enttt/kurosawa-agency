@@ -20,9 +20,11 @@ import { FeaturesWithImageBlock } from './FeaturesWithImage/Component'
 import { LastestNewsBlock } from './LatestNewsBlock/Component'
 import { MessageBlock } from './Message/Component'
 import { AddressBlock } from './Address/Component'
+import { ArchiveWithPaginationBlock } from './ArchiveWithPaginationBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
+  archiveWithPagination: ArchiveWithPaginationBlock,
   content: ContentBlock,
   cta: CallToActionBlock,
   ctaWithImage: CallToActionWithImageBlock,

@@ -32,6 +32,7 @@ import { FeaturesWithImage } from '@/blocks/FeaturesWithImage/config'
 import { LastestNews } from '@/blocks/LatestNewsBlock/config'
 import { Message } from '@/blocks/Message/config'
 import { Address } from '@/blocks/Address/config'
+import { ArchiveWithPagination } from '@/blocks/ArchiveWithPaginationBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -92,6 +93,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 Content,
                 MediaBlock,
                 Archive,
+                ArchiveWithPagination,
                 FormBlock,
                 GalleryContent,
                 CallToActionWithImage,
