@@ -13,12 +13,40 @@ import { Card, CardPostData } from '@/components/Card'
 import { cn } from '@/utilities/ui'
 import { useEffect, useState } from 'react'
 import { PageRange } from '@/components/PageRange'
+import { Category } from '@/payload-types'
 
-const BlogGrid = ({ posts }: { posts: CardPostData[] }) => {
+const BlogGrid = ({ posts, categories }: { posts: CardPostData[]; categories: Category[] }) => {
   const limit = 3
+  const [totalPosts, setTotalPosts] = useState<number>(posts.length)
   const [currentPosts, setCurrentPosts] = useState<CardPostData[]>([])
   const [page, setPage] = useState<number>(1)
-  let totalPages = Math.ceil(posts.length / limit)
+  const [totalPages, setTotalPages] = useState<number>(Math.ceil(posts.length / limit))
+  const [currentCategory, setCurrentCategory] = useState<number | null>(null)
+
+  const getPostId = (post: CardPostData): number[] | undefined => {
+    return post?.categories?.map((category) => {
+      if (typeof category === 'object') return category.id
+      else return category
+    })
+  }
+
+  const filterPostsByCategory = (posts: CardPostData[], categoryId: number | null) => {
+    let filtedPosts = posts
+    let totalPages = Math.ceil(posts.length / limit)
+
+    if (categoryId) {
+      filtedPosts = posts.filter((post) => {
+        const postCategoryIds = getPostId(post)
+        return postCategoryIds?.includes(categoryId)
+      })
+      totalPages = Math.ceil(filtedPosts.length / limit)
+    }
+
+    return {
+      posts: filtedPosts,
+      totalPages,
+    }
+  }
 
   const paginatePosts = (posts: CardPostData[], postsPerPage: number, currentPage: number) => {
     const startIndex = (currentPage - 1) * postsPerPage
@@ -27,8 +55,19 @@ const BlogGrid = ({ posts }: { posts: CardPostData[] }) => {
   }
 
   useEffect(() => {
-    setCurrentPosts(paginatePosts(posts, limit, page))
+    // Khi page thay đổi -> chuyển đến trang được yêu cầu
+    const filteredPosts = filterPostsByCategory(posts, currentCategory)
+    setCurrentPosts(paginatePosts(filteredPosts.posts, limit, page))
   }, [page])
+
+  useEffect(() => {
+    // Khi category thanh đổi -> chuyển về trang 1
+    const filteredPosts = filterPostsByCategory(posts, currentCategory)
+    setCurrentPosts(paginatePosts(filteredPosts.posts, limit, 1))
+    setPage(1)
+    setTotalPages(filteredPosts.totalPages)
+    setTotalPosts(filteredPosts.posts.length)
+  }, [currentCategory])
 
   const hasNextPage = page < totalPages
   const hasPrevPage = page > 1
@@ -38,9 +77,36 @@ const BlogGrid = ({ posts }: { posts: CardPostData[] }) => {
 
   return (
     <>
+      {/* Categories Navbar */}
+      <div className="mb-8">
+        <nav className="container py-4 flex flex-wrap items-center gap-4">
+          <button
+            onClick={() => setCurrentCategory(null)}
+            className={cn(
+              currentCategory == null ? 'category-selected' : 'category-unselected',
+              'rounded-full px-6 py-2',
+            )}
+          >
+            All categories
+          </button>
+
+          {categories.map((category) => (
+            <button
+              key={category.id}
+              onClick={() => setCurrentCategory(category.id)}
+              className={cn(
+                currentCategory === category.id ? 'category-selected' : 'category-unselected',
+                'rounded-full px-6 py-2',
+              )}
+            >
+              {category.title}
+            </button>
+          ))}
+        </nav>
+      </div>
       {/* Page range */}
       <div className="container mb-8">
-        <PageRange collection="posts" currentPage={page} limit={limit} totalDocs={posts.length} />
+        <PageRange collection="posts" currentPage={page} limit={limit} totalDocs={totalPosts} />
       </div>
       {/* Post grid */}
       <div className={cn('grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-8')}>

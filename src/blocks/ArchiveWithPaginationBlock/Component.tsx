@@ -2,6 +2,7 @@ import RichText from '@/components/RichText'
 import type {
   Post,
   ArchiveWithPaginationBlock as ArchiveWithPaginationBlockProps,
+  Category,
 } from '@/payload-types'
 
 import configPromise from '@payload-config'
@@ -17,6 +18,7 @@ export const ArchiveWithPaginationBlock: React.FC<
   const { id, categories, introContent, populateBy, selectedDocs } = props
 
   let posts: Post[] = []
+  let detailedCategories: Category[] = []
 
   if (populateBy === 'collection') {
     const payload = await getPayload({ config: configPromise })
@@ -44,6 +46,7 @@ export const ArchiveWithPaginationBlock: React.FC<
     })
 
     posts = fetchedPosts.docs
+    detailedCategories = categories?.filter((category) => typeof category === 'object') || []
   } else {
     if (selectedDocs?.length) {
       const filteredSelectedPosts = selectedDocs.map((post) => {
@@ -69,7 +72,7 @@ export const ArchiveWithPaginationBlock: React.FC<
         )}
 
         {/* BLog grid và Pagination */}
-        <BlogGrid posts={posts} />
+        <BlogGrid posts={posts} categories={detailedCategories} />
       </div>
     </section>
   )
