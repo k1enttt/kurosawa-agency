@@ -12,11 +12,13 @@ import {
 import { Card, CardPostData } from '@/components/Card'
 import { cn } from '@/utilities/ui'
 import { useEffect, useState } from 'react'
+import { PageRange } from '@/components/PageRange'
 
 const BlogGrid = ({ posts }: { posts: CardPostData[] }) => {
+  const limit = 3
   const [currentPosts, setCurrentPosts] = useState<CardPostData[]>([])
   const [page, setPage] = useState<number>(1)
-  let totalPages = Math.ceil(posts.length / 3)
+  let totalPages = Math.ceil(posts.length / limit)
 
   const paginatePosts = (posts: CardPostData[], postsPerPage: number, currentPage: number) => {
     const startIndex = (currentPage - 1) * postsPerPage
@@ -25,7 +27,7 @@ const BlogGrid = ({ posts }: { posts: CardPostData[] }) => {
   }
 
   useEffect(() => {
-    setCurrentPosts(paginatePosts(posts, 3, page))
+    setCurrentPosts(paginatePosts(posts, limit, page))
   }, [page])
 
   const hasNextPage = page < totalPages
@@ -36,6 +38,10 @@ const BlogGrid = ({ posts }: { posts: CardPostData[] }) => {
 
   return (
     <>
+      {/* Page range */}
+      <div className="container mb-8">
+        <PageRange collection="posts" currentPage={page} limit={limit} totalDocs={posts.length} />
+      </div>
       {/* Post grid */}
       <div className={cn('grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-8')}>
         {currentPosts?.map((result, index) => {
@@ -58,7 +64,7 @@ const BlogGrid = ({ posts }: { posts: CardPostData[] }) => {
       </div>
       <div className="container">
         {totalPages > 1 && page && (
-          <div className={cn('my-12')}>
+          <div className={cn('mt-12')}>
             <PaginationComponent>
               <PaginationContent>
                 <PaginationItem>
