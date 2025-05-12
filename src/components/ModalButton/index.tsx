@@ -1,9 +1,10 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import type { TeamBlock as TeamBlockProps } from '@/payload-types'
 import { Media } from '../Media'
 import RichText from '../RichText'
+import { initFlowbite } from 'flowbite'
 
 const ModalButton = ({
   children,
@@ -15,6 +16,10 @@ const ModalButton = ({
   data: Exclude<TeamBlockProps['members'], null | undefined>[number]
 }) => {
   const { avatar, name: authorName, role: authorRole, description } = data
+
+  useEffect(() => {
+    initFlowbite()
+  })
 
   return (
     <>
