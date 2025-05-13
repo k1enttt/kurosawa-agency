@@ -5,6 +5,7 @@ import type { Post } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 import { formatAuthors } from '@/utilities/formatAuthors'
+import Link from 'next/link'
 
 export const PostHero: React.FC<{
   post: Post
@@ -17,25 +18,29 @@ export const PostHero: React.FC<{
   return (
     <div className="relative -mt-[10.4rem] flex items-end">
       <div className="container z-10 relative lg:grid lg:grid-cols-[1fr_48rem_1fr] text-white pb-8">
-        <div className="col-start-1 col-span-1 md:col-start-2 md:col-span-2">
-          <div className="uppercase text-sm mb-6">
-            {categories?.map((category, index) => {
-              if (typeof category === 'object' && category !== null) {
-                const { title: categoryTitle } = category
+        <div className="col-start-1 col-span-1 md:col-start-2 md:col-span-2 text-foreground">
+          <div className="text-sm font-semibold text-primary flex gap-1 mb-6">
+            <Link href="/">Home</Link>
+            <div>/</div>
+            <div>
+              {categories?.map((category, index) => {
+                if (typeof category === 'object' && category !== null) {
+                  const { title: categoryTitle } = category
 
-                const titleToUse = categoryTitle || 'Untitled category'
+                  const titleToUse = categoryTitle || 'Untitled category'
 
-                const isLast = index === categories.length - 1
+                  const isLast = index === categories.length - 1
 
-                return (
-                  <React.Fragment key={index}>
-                    {titleToUse}
-                    {!isLast && <React.Fragment>, &nbsp;</React.Fragment>}
-                  </React.Fragment>
-                )
-              }
-              return null
-            })}
+                  return (
+                    <React.Fragment key={index}>
+                      {titleToUse}
+                      {!isLast && <React.Fragment>, &nbsp;</React.Fragment>}
+                    </React.Fragment>
+                  )
+                }
+                return null
+              })}
+            </div>
           </div>
 
           <div className="">
@@ -66,7 +71,7 @@ export const PostHero: React.FC<{
         {heroImage && typeof heroImage !== 'string' && (
           <Media fill priority imgClassName="-z-10 object-cover" resource={heroImage} />
         )}
-        <div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-black to-transparent" />
+        <div className="absolute pointer-events-none left-0 bottom-0 w-full h-full bg-background/90" />
       </div>
     </div>
   )

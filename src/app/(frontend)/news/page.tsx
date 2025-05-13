@@ -8,6 +8,9 @@ import { getPayload } from 'payload'
 import React from 'react'
 import PageClient from './page.client'
 import CategoriesNavbar from '@/components/CategoriesNavbar'
+import Breadcrumb from '@/components/Breadcrumb'
+import { Media } from '@/components/Media'
+import HandshakeImage from '@/components/Images'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 600
@@ -59,13 +62,21 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
   })
 
   return (
-    <div className="pt-24 pb-24">
+    <div>
       <PageClient />
 
-      {/* TODO: Cập nhật theo High Impact hero */}
-      <div className="container mb-16">
-        <div className="prose dark:prose-invert max-w-none flowbite-h2">
-          <h2>News</h2>
+      <div
+        className="relative flex items-center justify-center text-white py-20 mb-8"
+        data-theme="light"
+      >
+        <div className="container z-10 relative flex items-center justify-start">
+          <div className="max-w-[36.5rem] space-y-2">
+            <Breadcrumb />
+            <h1 className="text-4xl font-semibold text-dark">News</h1>
+          </div>
+        </div>
+        <div className="absolute inset-0 select-none bg-white/90">
+          <Media fill imgClassName="-z-10 object-cover" priority src={HandshakeImage} />
         </div>
       </div>
 

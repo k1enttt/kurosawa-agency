@@ -70,7 +70,7 @@ export default async function Page({
     <div>
       <PageClient />
       <div
-        className="relative flex items-center justify-center text-white py-20"
+        className="relative flex items-center justify-center text-white py-20 mb-8"
         data-theme="light"
       >
         <div className="container z-10 relative flex items-center justify-start">
@@ -83,29 +83,27 @@ export default async function Page({
           <Media fill imgClassName="-z-10 object-cover" priority src={HandshakeImage} />
         </div>
       </div>
-      <div className="py-8 md:py-16">
-        <div className="mb-8">
-          <CategoriesNavbar data={existedCategories.docs} />
-        </div>
+      <div className="mb-8">
+        <CategoriesNavbar data={existedCategories.docs} />
+      </div>
 
-        <div className="container mb-8">
-          <PageRange
-            collection="posts"
-            currentPage={news.page}
-            limit={12}
-            totalDocs={news.totalDocs}
-          />
-        </div>
+      <div className="container mb-8">
+        <PageRange
+          collection="posts"
+          currentPage={news.page}
+          limit={12}
+          totalDocs={news.totalDocs}
+        />
+      </div>
 
-        <div className="container">
-          <CollectionArchive posts={news.docs} />
-        </div>
+      <div className="container">
+        <CollectionArchive posts={news.docs} />
+      </div>
 
-        <div className="container">
-          {news?.page && news?.totalPages > 1 && (
-            <Pagination slug="news" page={news.page} totalPages={news.totalPages} />
-          )}
-        </div>
+      <div className="container">
+        {news?.page && news?.totalPages > 1 && (
+          <Pagination slug="news" page={news.page} totalPages={news.totalPages} />
+        )}
       </div>
     </div>
   )

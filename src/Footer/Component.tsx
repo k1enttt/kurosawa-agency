@@ -20,6 +20,7 @@ export async function Footer() {
             <div className="flex flex-col gap-6">
               {/* Logo, mô tả */}
               <div>
+                {/* TODO: Thêm đường Link cho Logo */}
                 {logo ? (
                   <Media
                     aria-hidden="true"
@@ -33,11 +34,7 @@ export async function Footer() {
                   </div>
                 )}
 
-                <p className="mt-2 text-muted-foreground">
-                  {description
-                    ? description
-                    : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit quisque rutrum pellentesque.'}
-                </p>
+                {description && <p className="mt-2 text-muted-foreground">{description}</p>}
               </div>
 
               {/* Email */}
@@ -93,6 +90,7 @@ export async function Footer() {
               {/* Newsletter */}
               <div className="mt-8">
                 <h3 className="font-bold">Subscribe to Newsletter:</h3>
+                {/* TODO: Xử lý form như Contact form để có thể nhận được email gửi đến Admin */}
                 <div className="flex mt-2">
                   <input
                     type="email"
