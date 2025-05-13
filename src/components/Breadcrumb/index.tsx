@@ -6,7 +6,8 @@ import { usePathname } from 'next/navigation'
 const Breadcrumb = () => {
   const getPageNameFromUrl = () => {
     const path = usePathname()
-    return path.substring(path.lastIndexOf('/') + 1)
+    const segments = path.split('/').filter(Boolean)
+    return segments.length > 0 ? segments[0] : ''
   }
 
   const formatPageName = (text: string) => {

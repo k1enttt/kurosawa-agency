@@ -9,6 +9,9 @@ import React from 'react'
 import PageClient from './page.client'
 import { notFound } from 'next/navigation'
 import CategoriesNavbar from '@/components/CategoriesNavbar'
+import Breadcrumb from '@/components/Breadcrumb'
+import { Media } from '@/components/Media'
+import HandshakeImage from '@/components/Images'
 
 export const revalidate = 600
 
@@ -34,7 +37,7 @@ export default async function Page({
   const news = await payload.find({
     collection: 'posts',
     depth: 1,
-    limit: 12,
+    limit: 6,
     page: sanitizedPageNumber,
     overrideAccess: false,
     where: {
@@ -52,6 +55,11 @@ export default async function Page({
     collection: 'categories',
     depth: 1,
     overrideAccess: false,
+    where: {
+      parent: {
+        exists: false,
+      },
+    },
     select: {
       title: true,
       slug: true,
@@ -59,35 +67,45 @@ export default async function Page({
   })
 
   return (
-    <div className="pt-24 pb-24">
+    <div>
       <PageClient />
-      <div className="container mb-16">
-        <div className="prose dark:prose-invert max-w-none">
-          <h2>News</h2>
+      <div
+        className="relative flex items-center justify-center text-white py-20"
+        data-theme="light"
+      >
+        <div className="container z-10 relative flex items-center justify-start">
+          <div className="max-w-[36.5rem] space-y-2">
+            <Breadcrumb />
+            <h1 className="text-4xl font-semibold text-dark">News</h1>
+          </div>
+        </div>
+        <div className="absolute inset-0 select-none bg-white/90">
+          <Media fill imgClassName="-z-10 object-cover" priority src={HandshakeImage} />
         </div>
       </div>
+      <div className="py-8 md:py-16">
+        <div className="mb-8">
+          <CategoriesNavbar data={existedCategories.docs} />
+        </div>
 
-      <div className="mb-8">
-        <CategoriesNavbar data={existedCategories.docs} />
-      </div>
+        <div className="container mb-8">
+          <PageRange
+            collection="posts"
+            currentPage={news.page}
+            limit={12}
+            totalDocs={news.totalDocs}
+          />
+        </div>
 
-      <div className="container mb-8">
-        <PageRange
-          collection="posts"
-          currentPage={news.page}
-          limit={12}
-          totalDocs={news.totalDocs}
-        />
-      </div>
+        <div className="container">
+          <CollectionArchive posts={news.docs} />
+        </div>
 
-      <div className="container">
-        <CollectionArchive posts={news.docs} />
-      </div>
-
-      <div className="container">
-        {news?.page && news?.totalPages > 1 && (
-          <Pagination slug="news" page={news.page} totalPages={news.totalPages} />
-        )}
+        <div className="container">
+          {news?.page && news?.totalPages > 1 && (
+            <Pagination slug="news" page={news.page} totalPages={news.totalPages} />
+          )}
+        </div>
       </div>
     </div>
   )

@@ -21,7 +21,7 @@ export const Pagination: React.FC<{
   const router = useRouter()
   const searchParams = useSearchParams()
   const categoryParam = searchParams.get('category')
-  const [category, setCategory] = useState(categoryParam)
+  const [category, setCategory] = useState<string | null>(categoryParam)
 
   const { className, page, totalPages, slug } = props
   const hasNextPage = page < totalPages

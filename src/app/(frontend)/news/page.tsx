@@ -24,10 +24,10 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
   const news = await payload.find({
     collection: 'posts',
     depth: 1,
-    limit: 12,
+    limit: 6,
     overrideAccess: false,
     where: {
-      ...(category && category != 'all'
+      ...(category
         ? {
             'categories.slug': {
               equals: category,
@@ -47,6 +47,11 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
     collection: 'categories',
     depth: 1,
     overrideAccess: false,
+    where: {
+      parent: {
+        exists: false,
+      },
+    },
     select: {
       title: true,
       slug: true,

@@ -18,6 +18,7 @@ const ModalButton = ({
   const { avatar, name: authorName, role: authorRole, description } = data
 
   useEffect(() => {
+    // Dòng này để đảm bảo code js của Flowbite luôn hoạt động
     initFlowbite()
   })
 
