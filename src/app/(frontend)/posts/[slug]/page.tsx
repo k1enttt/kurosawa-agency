@@ -14,6 +14,7 @@ import { PostHero } from '@/heros/PostHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+import Link from 'next/link'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -82,9 +83,11 @@ export default async function Post({ params: paramsPromise }: Args) {
               </p>
             </div>
             <div className="flex flex-col gap-8">
-              <button className="rounded-lg font-bold text-foreground dark:text-background bg-primary-foreground hover:bg-primary-foreground px-10 py-3">
-                Get a Quote
-              </button>
+              <Link href={'/contact'}>
+                <button className="rounded-lg font-bold text-foreground dark:text-background bg-primary-foreground hover:bg-primary-foreground px-10 py-3">
+                  Get a Quote
+                </button>
+              </Link>
             </div>
           </div>
         </div>

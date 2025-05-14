@@ -5,11 +5,27 @@ import type { Footer } from '@/payload-types'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import { Media } from '@/components/Media'
 import { CMSLink } from '@/components/Link'
+import Link from 'next/link'
+import type { Form as FormType } from '@payloadcms/plugin-form-builder/types'
+import CustomForm from '@/blocks/CustomForm'
 
 export async function Footer() {
-  const footerData: Footer = await getCachedGlobal('footer', 1)()
+  const footerData: {
+    form: FormType
+  } & Footer = (await getCachedGlobal('footer', 1)()) as {
+    form: FormType
+  } & Footer
 
-  const { logo, description, contactInformation, links, navItems, servicesItems } = footerData
+  const {
+    logo,
+    description,
+    contactInformation,
+    links,
+    navItems,
+    servicesItems,
+    form: formFromProps,
+    form: { id: formID, confirmationMessage, confirmationType, redirect, submitButtonLabel } = {},
+  } = footerData
 
   return (
     <footer className="bg-secondary text-secondary-foreground">
@@ -20,14 +36,15 @@ export async function Footer() {
             <div className="flex flex-col gap-6">
               {/* Logo, mô tả */}
               <div>
-                {/* TODO: Thêm đường Link cho Logo */}
                 {logo ? (
-                  <Media
-                    aria-hidden="true"
-                    alt="Kurosawa Logo"
-                    resource={logo}
-                    className="w-[100px] aspect-square"
-                  />
+                  <Link href={'/'}>
+                    <Media
+                      aria-hidden="true"
+                      alt="Kurosawa Logo"
+                      resource={logo}
+                      className="w-[100px] aspect-square"
+                    />
+                  </Link>
                 ) : (
                   <div className="w-[100px] h-[100px] text-2xl bg-muted text-muted-foreground flex items-center justify-center">
                     LOGO
@@ -64,8 +81,8 @@ export async function Footer() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6">
                 {/* Common Navigation */}
                 <div>
-                  <h3 className="font-bold">Navigation</h3>
-                  <ul className="mt-2 grid grid-cols-2 gap-2">
+                  <h3 className="font-bold text-lg">Navigation</h3>
+                  <ul className="mt-4 grid grid-cols-2 gap-4">
                     {navItems &&
                       navItems.map(({ link }, i) => (
                         <li key={i}>
@@ -76,8 +93,8 @@ export async function Footer() {
                 </div>
                 {/* Services navigation */}
                 <div>
-                  <h3 className="font-bold">Services</h3>
-                  <ul className="mt-2 grid grid-cols-2 gap-2">
+                  <h3 className="font-bold text-lg">Services</h3>
+                  <ul className="mt-4 grid grid-cols-2 gap-4">
                     {servicesItems &&
                       servicesItems.map(({ link }, i) => (
                         <li key={i}>
@@ -88,19 +105,21 @@ export async function Footer() {
                 </div>
               </div>
               {/* Newsletter */}
-              <div className="mt-8">
-                <h3 className="font-bold">Subscribe to Newsletter:</h3>
+              <div className="mt-8 w-full flex md:items-center items-start md:flex-row flex-col gap-x-4 gap-y-2">
+                <h3 className="font-bold text-lg">Subscribe to Newsletter:</h3>
                 {/* TODO: Xử lý form như Contact form để có thể nhận được email gửi đến Admin */}
-                <div className="flex mt-2">
+
+                <CustomForm form={formFromProps} />
+                {/* <div className="flex flex-1 w-full mt-2">
                   <input
                     type="email"
                     placeholder="Email Address"
-                    className="border border-border rounded-l px-4 py-2 w-full text-muted-foreground"
+                    className="border-none rounded-l px-4 py-2 w-full text-muted-foreground"
                   />
                   <button className="bg-primary text-primary-foreground hover:bg-primary/80 px-4 py-2 rounded-r">
                     GO
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
