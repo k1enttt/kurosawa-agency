@@ -58,7 +58,9 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
       <div className={`justify-between items-center w-full hidden md:flex lg:w-auto lg:order-1`}>
         <div className="flex font-medium flex-row space-x-8 mt-0">
           {navItems.map(({ link }, i) => {
-            const isSelected = getPageNameFromUrl() == link.label
+            const pageName = getPageNameFromUrl()
+            const linkLabel = link.label.toLowerCase()
+            const isSelected = pageName == linkLabel || (pageName == '' && linkLabel == 'home')
             return (
               <div key={i}>
                 <CMSLink
