@@ -4,11 +4,14 @@ import useClickableCard from '@/utilities/useClickableCard'
 import Link from 'next/link'
 import React, { Fragment } from 'react'
 
-import type { Post } from '@/payload-types'
+import type { Post, User } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 
-export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title' | 'publishedAt'>
+export type CardPostData = Pick<
+  Post,
+  'slug' | 'categories' | 'meta' | 'title' | 'publishedAt' | 'authors'
+>
 
 export const Card: React.FC<{
   alignItems?: 'center'
@@ -18,6 +21,7 @@ export const Card: React.FC<{
   showCategories?: boolean
   title?: string
   hasPublishedDate?: boolean
+  hasAuthors?: boolean
 }> = (props) => {
   const { card, link } = useClickableCard({})
   const {
@@ -27,9 +31,10 @@ export const Card: React.FC<{
     showCategories,
     title: titleFromProps,
     hasPublishedDate,
+    hasAuthors,
   } = props
 
-  const { slug, categories, meta, title, publishedAt } = doc || {}
+  const { slug, categories, meta, title, publishedAt, authors } = doc || {}
   const { description, image: metaImage } = meta || {}
 
   const hasCategories = categories && Array.isArray(categories) && categories.length > 0
@@ -44,6 +49,16 @@ export const Card: React.FC<{
     const day = date.getDate()
     const month = date.toLocaleString('en-US', { month: 'short' })
     return { day, month }
+  }
+
+  function getAuthorNames(authors?: (number | User)[] | null | undefined): string[] {
+    if (!authors) return []
+    return authors
+      .map((author) => {
+        if (typeof author === 'number') return author.toString()
+        return author.name || ''
+      })
+      .filter(Boolean)
   }
 
   return (
@@ -95,6 +110,11 @@ export const Card: React.FC<{
                 })}
               </div>
             )}
+          </div>
+        )}
+        {hasAuthors && authors && authors.length > 0 && (
+          <div className="text-sm font-semibold uppercase text-muted-foreground -mb-2">
+            By {getAuthorNames(authors).join(', ')}
           </div>
         )}
         {titleToUse && (
