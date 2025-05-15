@@ -25,6 +25,7 @@ export const CollectionNewsLatest: React.FC<Props> = (props) => {
                 doc={result}
                 relationTo="posts"
                 showCategories={false}
+                hasPublishedDate={true}
               />
 
               <Link

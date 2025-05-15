@@ -114,7 +114,7 @@ export async function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="py-8 text-center text-muted-foreground border-t border-t-white/10">
+        <div className="py-8 text-center text-muted-foreground border-t border-t-muted-foreground/20">
           <p>Kurosawa Consulting Vietnam © {new Date().getFullYear()}. All Rights Reserved.</p>
         </div>
       </div>

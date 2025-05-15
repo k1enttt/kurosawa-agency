@@ -236,7 +236,7 @@ html[data-theme='light'] {
 
 .blog-image {
   @apply [&_div#media]:mb-5 [&_img]:rounded-lg [&_img]:object-cover [&_img]:w-full [&_img]:h-full [&_img]:absolute;
-  @apply [&>div:nth-child(1)]:lg:h-60 [&>div:nth-child(1)]:h-44;
+  @apply [&>div:nth-child(1)]:h-48;
 }
 
 .blog-title {
