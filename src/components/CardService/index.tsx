@@ -23,8 +23,8 @@ const CardService = ({ data }: { data: ServiceType }) => {
           {service.serviceIcon && (
             <Media
               resource={service.serviceIcon}
-              imgClassName="object-contain"
               fill
+              imgClassName="object-contain"
               className="w-full aspect-square relative"
               priority
               alt={service.serviceTitle || 'Service Icon'}

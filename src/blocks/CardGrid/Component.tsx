@@ -50,7 +50,7 @@ export const CardGridBlock: React.FC<
                       />
                     )}
                   </div>
-                  <div className="flex-0 space-y-2">
+                  <div className="flex-1 space-y-2">
                     {title && <h3 className="font-semibold text-xl">{title}</h3>}
                     {description && (
                       <p className="line-clamp-2 text-sm font-medium text-muted-foreground">
