@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
 
 import type { AddressBlock as AddressBlockProps } from '@/payload-types'
 import Link from 'next/link'
