@@ -6,15 +6,19 @@ import React, { useCallback, useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import RichText from '@/components/RichText'
 import { Button } from '@/components/ui/button'
-import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
 
 import { getClientSideURL } from '@/utilities/getURL'
 import { cn } from '@/utilities/ui'
 import { fields } from '../Form/fields'
 
-const CustomForm = ({ form }: { form: FormType }) => {
-  const formFromProps = form
-  const { id: formID, confirmationMessage, confirmationType, redirect, submitButtonLabel } = form
+const CustomForm = ({ form: formFromProps }: { form: FormType }) => {
+  const {
+    id: formID,
+    confirmationMessage,
+    confirmationType,
+    redirect,
+    submitButtonLabel,
+  } = formFromProps
 
   const formMethods = useForm({
     defaultValues: formFromProps.fields,

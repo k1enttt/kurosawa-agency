@@ -4,10 +4,10 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const Breadcrumb = () => {
-  const getPageNameFromUrl = () => {
-    const path = usePathname()
+  const path = usePathname()
+  const getPageNameFromUrl = (): string => {
     const segments = path.split('/').filter(Boolean)
-    return segments.length > 0 ? segments[0] : ''
+    return segments.length > 0 ? segments[0] || '' : ''
   }
 
   const formatPageName = (text: string) => {

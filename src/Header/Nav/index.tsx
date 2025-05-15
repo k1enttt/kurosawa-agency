@@ -23,6 +23,12 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
     if (isNavOpen) close()
   }, [pathname])
 
+  const path = usePathname()
+  const getPageNameFromUrl = (): string => {
+    const segments = path.split('/').filter(Boolean)
+    return segments.length > 0 ? segments[0] || '' : ''
+  }
+
   return (
     <>
       {/* action buttons */}
@@ -52,12 +58,13 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
       <div className={`justify-between items-center w-full hidden md:flex lg:w-auto lg:order-1`}>
         <div className="flex font-medium flex-row space-x-8 mt-0">
           {navItems.map(({ link }, i) => {
+            const isSelected = getPageNameFromUrl() == link.label
             return (
               <div key={i}>
                 <CMSLink
                   {...link}
                   appearance="link"
-                  className="block py-2 pr-4 pl-3 rounded-none border-b hover:no-underline border-0 p-0 !text-p-md text-foreground dark:text-background hover:text-link hover:bg-gray-700 hover:bg-transparent border-gray-700"
+                  className={`${isSelected ? 'text-primary' : 'text-foreground dark:text-background'} block py-2 pr-4 pl-3 rounded-none border-b hover:no-underline border-0 p-0 !text-p-md  hover:text-link hover:bg-gray-700 hover:bg-transparent border-gray-700`}
                 />
               </div>
             )

@@ -33,7 +33,7 @@ const Table = ({
         <tbody>
           {data.map((item, index) => {
             if (hasHeader && index == 0) return
-            let borderStyle =
+            const borderStyle =
               index < data.length - 1 ? 'border-b dark:border-gray-700 border-gray-200' : ''
 
             return (
