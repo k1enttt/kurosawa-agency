@@ -98,6 +98,7 @@ export const hero: Field = {
       admin: {
         condition: (_, { type } = {}) => ['porto'].includes(type),
       },
+      localized: true,
     },
     {
       name: 'servicesSlider',
@@ -110,6 +111,7 @@ export const hero: Field = {
           name: 'sliderHeading',
           type: 'text',
           label: 'Slider Heading',
+          localized: true,
         },
         {
           name: 'servicesList',
@@ -120,6 +122,7 @@ export const hero: Field = {
               name: 'serviceTitle',
               type: 'text',
               label: 'Service Title',
+              localized: true,
             },
             {
               name: 'serviceDescription',
