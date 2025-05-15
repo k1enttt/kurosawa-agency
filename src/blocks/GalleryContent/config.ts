@@ -50,8 +50,7 @@ export const GalleryContent: Block = {
       },
       fields: [
         { name: 'media', type: 'upload', relationTo: 'media' },
-        { name: 'heading', type: 'text', localized: true },
-        { name: 'subheading', type: 'text', localized: true },
+        { name: 'title', type: 'text', localized: true },
       ],
       maxRows: 6,
     },

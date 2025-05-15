@@ -4,11 +4,14 @@ import useClickableCard from '@/utilities/useClickableCard'
 import Link from 'next/link'
 import React, { Fragment } from 'react'
 
-import type { Post } from '@/payload-types'
+import type { Post, User } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 
-export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title'>
+export type CardPostData = Pick<
+  Post,
+  'slug' | 'categories' | 'meta' | 'title' | 'publishedAt' | 'authors'
+>
 
 export const Card: React.FC<{
   alignItems?: 'center'
@@ -17,17 +20,46 @@ export const Card: React.FC<{
   relationTo?: 'posts'
   showCategories?: boolean
   title?: string
+  hasPublishedDate?: boolean
+  hasAuthors?: boolean
 }> = (props) => {
   const { card, link } = useClickableCard({})
-  const { className, doc, relationTo, showCategories, title: titleFromProps } = props
+  const {
+    className,
+    doc,
+    relationTo,
+    showCategories,
+    title: titleFromProps,
+    hasPublishedDate,
+    hasAuthors,
+  } = props
 
-  const { slug, categories, meta, title } = doc || {}
+  const { slug, categories, meta, title, publishedAt, authors } = doc || {}
   const { description, image: metaImage } = meta || {}
 
   const hasCategories = categories && Array.isArray(categories) && categories.length > 0
   const titleToUse = titleFromProps || title
   const sanitizedDescription = description?.replace(/\s/g, ' ') // replace non-breaking space with white space
   const href = `/${relationTo}/${slug}`
+
+  function formatDateToDayMonth(dateString?: string) {
+    if (!dateString) return null
+    const date = new Date(dateString)
+    if (isNaN(date.getTime())) return null
+    const day = date.getDate()
+    const month = date.toLocaleString('en-US', { month: 'short' })
+    return { day, month }
+  }
+
+  function getAuthorNames(authors?: (number | User)[] | null | undefined): string[] {
+    if (!authors) return []
+    return authors
+      .map((author) => {
+        if (typeof author === 'number') return author.toString()
+        return author.name || ''
+      })
+      .filter(Boolean)
+  }
 
   return (
     <article
@@ -42,10 +74,20 @@ export const Card: React.FC<{
           <div className="flex items-center justify-center h-full rounded-lg">No image</div>
         )}
         {metaImage && typeof metaImage !== 'string' && <Media resource={metaImage} size="33vw" />}
+        {hasPublishedDate && publishedAt && (
+          <div className="absolute left-0 bottom-0 ml-6 mb-6 w-16 aspect-[6/5] bg-primary text-primary-foreground rounded-sm flex flex-col items-center justify-center">
+            <div className="text-2xl font-semibold leading-5">
+              {formatDateToDayMonth(publishedAt)?.day}
+            </div>
+            <div className="text-lg font-semibold leading-5 uppercase">
+              {formatDateToDayMonth(publishedAt)?.month}
+            </div>
+          </div>
+        )}
       </div>
       <div className="p-4">
         {showCategories && hasCategories && (
-          <div className="uppercase text-sm mb-4">
+          <div className="uppercase text-sm mb-2">
             {showCategories && hasCategories && (
               <div className="category">
                 {categories?.map((category, index) => {
@@ -68,6 +110,11 @@ export const Card: React.FC<{
                 })}
               </div>
             )}
+          </div>
+        )}
+        {hasAuthors && authors && authors.length > 0 && (
+          <div className="text-sm font-semibold uppercase text-muted-foreground -mb-2">
+            By {getAuthorNames(authors).join(', ')}
           </div>
         )}
         {titleToUse && (

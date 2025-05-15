@@ -59,8 +59,19 @@ export const hero: Field = {
           ]
         },
       }),
+      admin: {
+        condition: (_, { type } = {}) => !['highImpact'].includes(type),
+      },
       label: false,
       localized: true,
+    },
+    {
+      name: 'heading',
+      type: 'text',
+      admin: {
+        condition: (_, { type } = {}) => ['highImpact'].includes(type),
+      },
+      required: true,
     },
     linkGroup({
       overrides: {

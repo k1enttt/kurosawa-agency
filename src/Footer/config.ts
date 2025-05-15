@@ -71,6 +71,11 @@ export const Footer: GlobalConfig = {
         },
       },
     },
+    {
+      name: 'form',
+      type: 'relationship',
+      relationTo: 'forms',
+    },
   ],
   hooks: {
     afterChange: [revalidateFooter],

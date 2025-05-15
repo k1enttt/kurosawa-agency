@@ -15,17 +15,9 @@ export const Number: React.FC<
 > = ({ name, defaultValue, errors, label, register, required, width }) => {
   return (
     <Width width={width}>
-      <Label htmlFor={name}>
-        {label}
-
-        {required && (
-          <span className="required">
-            * <span className="sr-only">(required)</span>
-          </span>
-        )}
-      </Label>
       <Input
         defaultValue={defaultValue}
+        placeholder={required ? `${label}*` : label}
         id={name}
         type="number"
         {...register(name, { required })}

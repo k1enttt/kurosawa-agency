@@ -27,6 +27,13 @@ import { TwoColsContent } from '@/blocks/TwoColsContent/config'
 import { Team } from '@/blocks/Team/config'
 import { TableBlock } from '@/blocks/TableBlock/config'
 import { FeaturesBlock } from '@/blocks/FeaturesBlock/config'
+import { CustomerBlock } from '@/blocks/CustomerBlock/config'
+import { FeaturesWithImage } from '@/blocks/FeaturesWithImage/config'
+import { LastestNews } from '@/blocks/LatestNewsBlock/config'
+import { Message } from '@/blocks/Message/config'
+import { Address } from '@/blocks/Address/config'
+import { ArchiveWithPagination } from '@/blocks/ArchiveWithPaginationBlock/config'
+import { CardGrid } from '@/blocks/CardGrid/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -87,6 +94,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 Content,
                 MediaBlock,
                 Archive,
+                ArchiveWithPagination,
                 FormBlock,
                 GalleryContent,
                 CallToActionWithImage,
@@ -95,6 +103,12 @@ export const Pages: CollectionConfig<'pages'> = {
                 Team,
                 TableBlock,
                 FeaturesBlock,
+                FeaturesWithImage,
+                CustomerBlock,
+                LastestNews,
+                Message,
+                Address,
+                CardGrid,
               ],
               required: true,
               admin: {

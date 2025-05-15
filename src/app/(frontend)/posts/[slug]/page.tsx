@@ -14,6 +14,7 @@ import { PostHero } from '@/heros/PostHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+import Link from 'next/link'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -50,7 +51,7 @@ export default async function Post({ params: paramsPromise }: Args) {
   if (!post) return <PayloadRedirects url={url} />
 
   return (
-    <article className="pt-16 pb-16">
+    <article className="pt-16">
       <PageClient />
 
       {/* Allows redirects for valid pages too */}
@@ -60,7 +61,7 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       <PostHero post={post} />
 
-      <div className="flex flex-col items-center gap-4 pt-8">
+      <div className="flex flex-col items-center gap-4 pt-8 mb-8 md:mb-16">
         <div className="container">
           <RichText className="max-w-[48rem] mx-auto" data={post.content} enableGutter={false} />
           {post.relatedPosts && post.relatedPosts.length > 0 && (
@@ -69,6 +70,26 @@ export default async function Post({ params: paramsPromise }: Args) {
               docs={post.relatedPosts.filter((post) => typeof post === 'object')}
             />
           )}
+        </div>
+      </div>
+
+      <div className="bg-primary">
+        <div className="container">
+          <div className="rounded py-10 flex flex-col md:gap-8 gap-4 md:flex-row md:justify-between md:items-center">
+            <div className="max-w-[48rem] flex items-center">
+              <p className="mb-0 text-lg text-primary-foreground md:text-left text-center">
+                <b>Get a Quote Online</b> - Need Fast Assistance? Call Us at{' '}
+                <b className="underline">+84-90-1392-232</b>
+              </p>
+            </div>
+            <div className="flex flex-col gap-8">
+              <Link href={'/contact'}>
+                <button className="rounded-lg font-bold text-foreground dark:text-background bg-primary-foreground hover:bg-primary-foreground px-10 py-3">
+                  Get a Quote
+                </button>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </article>

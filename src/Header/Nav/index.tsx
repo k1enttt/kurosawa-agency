@@ -76,7 +76,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
       <div className={`${isNavOpen ? 'fixed' : 'hidden'} inset-0 bg-black/80`}>
         <button
           onClick={close}
-          className="absolute top-0 right-0 mt-10 mr-10 h-8 w-8 p-1 bg-primary/80 rounded-lg"
+          className="absolute top-0 right-0 mt-10 mr-10 p-2 bg-primary/80 rounded-lg"
         >
           <svg
             className="w-6 h-6 text-white"
@@ -98,20 +98,25 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
         </button>
         <div className={`absolute h-full top-0 left-0 w-3/5 bg-white`}>
           <div className="flex flex-col my-6 font-medium">
-            {data.navItems?.map(({ link }, i) => {
-              return (
-                <div key={i}>
-                  <CMSLink
-                    {...link}
-                    appearance="link"
-                    className={clsx(
-                      i == data.navItems?.length! - 1 && 'border-none',
-                      'block py-4 pr-4 pl-3 rounded-none border-b hover:no-underline !text-p-md text-heading hover:bg-gray-700 hover:text-white border-gray-200',
-                    )}
-                  />
-                </div>
-              )
-            })}
+            {data.navItems &&
+              data.navItems.map(({ link }, i) => {
+                let borderStyle = ''
+                if (data.navItems && data.navItems.length > 0) {
+                  borderStyle = i == data.navItems.length - 1 ? 'border-none' : ''
+                }
+                return (
+                  <div key={i}>
+                    <CMSLink
+                      {...link}
+                      appearance="link"
+                      className={clsx(
+                        borderStyle,
+                        'block py-4 pr-4 pl-3 rounded-none border-b hover:no-underline !text-p-md text-foreground dark:text-background hover:bg-gray-700 hover:text-white border-gray-200',
+                      )}
+                    />
+                  </div>
+                )
+              })}
           </div>
         </div>
       </div>

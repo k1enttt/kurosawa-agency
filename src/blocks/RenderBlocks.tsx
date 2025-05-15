@@ -15,9 +15,17 @@ import { TeamBlock } from './Team/Component'
 import { TableBlock } from './TableBlock/Component'
 import { FeaturesBlock } from './FeaturesBlock/Component'
 import { cn } from '@/utilities/ui'
+import { CustomerBlock } from './CustomerBlock/Component'
+import { FeaturesWithImageBlock } from './FeaturesWithImage/Component'
+import { LastestNewsBlock } from './LatestNewsBlock/Component'
+import { MessageBlock } from './Message/Component'
+import { AddressBlock } from './Address/Component'
+import { ArchiveWithPaginationBlock } from './ArchiveWithPaginationBlock/Component'
+import { CardGridBlock } from './CardGrid/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
+  archiveWithPagination: ArchiveWithPaginationBlock,
   content: ContentBlock,
   cta: CallToActionBlock,
   ctaWithImage: CallToActionWithImageBlock,
@@ -29,6 +37,12 @@ const blockComponents = {
   team: TeamBlock,
   tableBlock: TableBlock,
   featuresBlock: FeaturesBlock,
+  customerBlock: CustomerBlock,
+  featuresWithImage: FeaturesWithImageBlock,
+  lastestNews: LastestNewsBlock,
+  message: MessageBlock,
+  address: AddressBlock,
+  cardGrid: CardGridBlock,
 }
 
 export const RenderBlocks: React.FC<{

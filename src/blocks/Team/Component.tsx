@@ -5,6 +5,7 @@ import RichText from '@/components/RichText'
 import type { TeamBlock as TeamBlockProps } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import ModalButton from '../../components/ModalButton'
 
 export const TeamBlock: React.FC<TeamBlockProps> = (props) => {
   const { backgroundColor, introText, members } = props
@@ -18,7 +19,7 @@ export const TeamBlock: React.FC<TeamBlockProps> = (props) => {
           {introText && (
             <RichText
               className={cn(
-                '[&_h2]:mb-4 [&_h2]:text-4xl [&_h2]:tracking-tight [&_h2]:font-extrabold [&_h2]:text-gray-900 [&_h2]:dark:text-white',
+                '[&_h2]:mb-4 [&_h2]:text-4xl [&_h2]:tracking-tight [&_h2]:font-extrabold [&_h2]:text-gray-900 [&_h2]:dark:text-white [&_h2]:divide-line',
                 'font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400',
               )}
               data={introText}
@@ -26,40 +27,51 @@ export const TeamBlock: React.FC<TeamBlockProps> = (props) => {
             />
           )}
         </div>
-        <div className="grid gap-8 mb-6 lg:mb-16">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-6 mb-6 lg:mb-16">
           {members &&
             members.length > 0 &&
             members.map((member) => (
               <div
                 key={member.id}
-                className="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700"
+                className="items-start grid grid-cols-3 gap-4 p-4 bg-gray-50 h-fit rounded-lg shadow-md dark:bg-gray-800"
               >
-                {/* <!-- image --> */}
-                <a href="#" className="pl-5">
-                  <Media
-                    imgClassName="rounded-lg sm:rounded-none sm:rounded-lg object-cover"
-                    className="relative w-64 h-64"
-                    fill
-                    resource={member.avatar}
-                    alt={`${member.name} Avatar`}
-                  />
-                </a>
-                {/* <!-- info --> */}
-                <div className="p-5">
-                  {/* <!-- name --> */}
-                  <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                {/* image */}
+                <Media
+                  imgClassName="rounded-lg sm:rounded-none sm:rounded-lg object-cover"
+                  className="relative w-full aspect-square"
+                  fill
+                  resource={member.avatar}
+                  alt={`${member.name} Avatar`}
+                />
+
+                {/* info */}
+                <div className="col-span-2 space-y-2">
+                  {/* name */}
+                  <h3 className="text-xl font-bold tracking-tight text-dark dark:text-white">
                     <a href="#">{member.name}</a>
                   </h3>
-                  {/* <!-- role --> */}
-                  <span className="text-gray-500 dark:text-gray-400">{member.role}</span>
-                  {/* <!-- description --> */}
+
+                  {/* role */}
+                  <span className="text-dark font-medium">{member.role}</span>
+
+                  {/* description */}
                   {member.description && (
-                    <RichText
-                      data={member.description}
-                      enableGutter={false}
-                      className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400"
-                    />
+                    <div className="hidden md:block">
+                      <RichText
+                        data={member.description}
+                        enableGutter={false}
+                        className="ont-light text-gray-500 dark:text-gray-400 line-clamp-4"
+                      />
+                    </div>
                   )}
+
+                  {/* Read more button */}
+                  <ModalButton
+                    data={member}
+                    className="block text-sm font-semibold text-primary underline underline-offset-1"
+                  >
+                    READ MORE
+                  </ModalButton>
                 </div>
               </div>
             ))}

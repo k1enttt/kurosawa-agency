@@ -10,6 +10,7 @@ import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical
 
 import { fields } from './fields'
 import { getClientSideURL } from '@/utilities/getURL'
+import { cn } from '@/utilities/ui'
 
 export type FormBlockType = {
   blockName?: string
@@ -117,7 +118,7 @@ export const FormBlock: React.FC<
 
   return (
     <div className={backgroundColor == 'dark' ? 'bg-muted' : 'bg-white'}>
-      <div className="container py-8 lg:py-16 lg:max-w-[48rem]">
+      <div className="container py-8 lg:py-16">
         {enableIntro && introContent && !hasSubmitted && (
           <RichText
             className="mb-8 lg:mb-12 flowbite-h2"
@@ -125,46 +126,55 @@ export const FormBlock: React.FC<
             enableGutter={false}
           />
         )}
-        <div className="p-4 lg:p-6 border border-border rounded-[0.8rem]">
-          <FormProvider {...formMethods}>
-            {!isLoading && hasSubmitted && confirmationType === 'message' && (
-              <RichText data={confirmationMessage} />
-            )}
-            {isLoading && !hasSubmitted && <p>Loading, please wait...</p>}
-            {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
-            {!hasSubmitted && (
-              <form id={formID} onSubmit={handleSubmit(onSubmit)}>
-                <div className="mb-4 last:mb-0">
-                  {formFromProps &&
-                    formFromProps.fields &&
-                    formFromProps.fields?.map((field, index) => {
-                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                      const Field: React.FC<any> = fields?.[field.blockType as keyof typeof fields]
-                      if (Field) {
-                        return (
-                          <div className="mb-6 last:mb-0" key={index}>
-                            <Field
-                              form={formFromProps}
-                              {...field}
-                              {...formMethods}
-                              control={control}
-                              errors={errors}
-                              register={register}
-                            />
-                          </div>
-                        )
-                      }
-                      return null
-                    })}
-                </div>
+        <FormProvider {...formMethods}>
+          {!isLoading && hasSubmitted && confirmationType === 'message' && (
+            <RichText enableGutter={false} data={confirmationMessage} />
+          )}
+          {isLoading && !hasSubmitted && <p>Loading, please wait...</p>}
+          {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
+          {!hasSubmitted && (
+            <form id={formID} onSubmit={handleSubmit(onSubmit)}>
+              <div className="mb-4 last:mb-0 grid grid-cols-2 gap-x-4">
+                {formFromProps &&
+                  formFromProps.fields &&
+                  formFromProps.fields?.map((field, index) => {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    const Field: React.FC<any> = fields?.[field.blockType as keyof typeof fields]
+                    if (Field) {
+                      return (
+                        <div
+                          className={cn(
+                            'mb-6 last:mb-0',
+                            field.blockType == 'textarea' && 'col-span-2',
+                          )}
+                          key={index}
+                        >
+                          <Field
+                            form={formFromProps}
+                            {...field}
+                            {...formMethods}
+                            control={control}
+                            errors={errors}
+                            register={register}
+                          />
+                        </div>
+                      )
+                    }
+                    return null
+                  })}
+              </div>
 
-                <Button form={formID} type="submit" variant="default">
-                  {submitButtonLabel}
-                </Button>
-              </form>
-            )}
-          </FormProvider>
-        </div>
+              <Button
+                form={formID}
+                type="submit"
+                variant="default"
+                className="bg-secondary hover:bg-secondary/80 py-6 rounded-lg"
+              >
+                {submitButtonLabel}
+              </Button>
+            </form>
+          )}
+        </FormProvider>
       </div>
     </div>
   )

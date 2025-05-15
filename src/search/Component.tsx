@@ -3,10 +3,11 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import React, { useState, useEffect } from 'react'
 import { useDebounce } from '@/utilities/useDebounce'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 export const Search: React.FC = () => {
-  const [value, setValue] = useState('')
+  const searchParams = useSearchParams()
+  const [value, setValue] = useState(searchParams.get('q'))
   const router = useRouter()
 
   const debouncedValue = useDebounce(value)
@@ -28,7 +29,7 @@ export const Search: React.FC = () => {
         <div className="relative">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             <svg
-              className="w-4 h-4 text-gray-500 dark:text-gray-400"
+              className="w-4 h-4 text-muted-foreground"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -43,14 +44,17 @@ export const Search: React.FC = () => {
               />
             </svg>
           </div>
-          <Input
-            id="search"
-            className="ps-10"
-            onChange={(event) => {
-              setValue(event.target.value)
-            }}
-            placeholder="Search"
-          />
+          <div className="border border-muted-foreground rounded-sm">
+            <Input
+              id="search"
+              className="ps-10 bg-transparent"
+              value={value ?? ''}
+              onChange={(event) => {
+                setValue(event.target.value)
+              }}
+              placeholder="Search"
+            />
+          </div>
           <button type="submit" className="sr-only">
             submit
           </button>

@@ -5,65 +5,73 @@ import RichText from '@/components/RichText'
 import type { FeaturesBlock as FeaturesBlockProps } from '@/payload-types'
 
 import Link from 'next/link'
+import { Media } from '@/components/Media'
+import FeatureCardSlider from '@/components/FeatureCardSlider'
 
 export const FeaturesBlock: React.FC<FeaturesBlockProps> = (props) => {
-  const { backgroundColor, introText, columns } = props
+  const { backgroundColor, yearsInBusiness, paragraphSmall, paragraphLarge, columns } = props
 
   return (
     <div className={cn(backgroundColor == 'dark' ? 'bg-muted' : 'bg-white', 'dark:bg-gray-900')}>
-      <div className="py-8 text-center sm:py-16 container">
-        {introText && (
-          <RichText
-            data={introText}
-            enableGutter={false}
-            className={cn(
-              '[&_h2]:mb-4 [&_h2]:text-4xl [&_h2]:tracking-tight [&_h2]:font-extrabold [&_h2]:text-gray-900 [&_h2]:dark:text-white',
-              '[&_p]:font-light [&_p]:text-gray-500 [&_p]:lg:mb-16 [&_p]:sm:text-xl [&_p]:dark:text-gray-400',
-            )}
-          />
-        )}
-        <div className="mt-8 lg:mt-12 space-y-8 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-12 md:space-y-0">
-          {columns &&
-            columns.length > 0 &&
-            columns.map((col, index) => {
-              const { enableLink, link, richText } = col
+      <div className="py-8 sm:py-16 container">
+        <div className="flex flex-col md:flex-row justify-between gap-12 mb-10">
+          {/* Năm kinh doanh và mô tả công ty */}
+          <div className="flex-1 space-y-5">
+            <div className="flex gap-4">
+              <div className="text-[90px] leading-[90px] font-bold">{yearsInBusiness}</div>
+              {paragraphSmall && (
+                <RichText
+                  className="font-medium text-muted-foreground"
+                  data={paragraphSmall}
+                  enableProse={false}
+                  enableGutter={false}
+                />
+              )}
+            </div>
+            <Link
+              href={'/about'}
+              className="text-primary font-semibold underline underline-offset-2"
+            >
+              VIEW MORE ABOUT US
+            </Link>
+          </div>
 
-              return (
-                <div key={index}>
-                  {richText && (
-                    <RichText
-                      data={richText}
-                      enableGutter={false}
-                      className={cn(
-                        '[&_h3]:mb-2 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:dark:text-white',
-                        '[&_p]:mb-4 [&_p]:text-gray-500 [&_p]:dark:text-gray-400',
-                      )}
-                    />
-                  )}
-
-                  {enableLink && (
-                    <Link
-                      className="inline-flex items-center text-sm font-medium text-flowbiteText-primary-600 hover:text-flowbiteText-primary-700 dark:text-flowbiteText-primary-500 dark:hover:text-flowbiteText-primary-400"
-                      href={link?.url || '#'}
-                    >
-                      {link?.label}
-                      <svg
-                        className="ml-1 w-5 h-5"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                          clipRule="evenodd"
-                        ></path>
-                      </svg>
-                    </Link>
-                  )}
+          <div className="flex-0 h-16 w-2 rounded bg-primary hidden md:block"></div>
+          {/* Cam kết chất lượng dịch vụ */}
+          {paragraphLarge && (
+            <RichText
+              className="flex-1 font-medium text-3xl text-justify"
+              data={paragraphLarge}
+              enableProse={false}
+              enableGutter={false}
+            />
+          )}
+        </div>
+        {/* Desktop feature cards */}
+        <div className="hidden md:block">
+          <div className="w-full grid grid-cols-3 gap-5">
+            {columns?.map((column, index) => (
+              <div key={index} className="relative rounded-lg h-64 overflow-hidden flex items-end">
+                {column.media && (
+                  <Media
+                    resource={column.media}
+                    alt={'Feature image'}
+                    fill
+                    className="absolute inset-0"
+                    imgClassName="object-cover"
+                  />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                <div className="w-full text-background dark:text-foreground text-lg text-center z-20 mb-7">
+                  {column.title}
                 </div>
-              )
-            })}
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* Mobile feature cards */}
+        <div className="block md:hidden h-64">
+          <FeatureCardSlider data={columns} />
         </div>
       </div>
     </div>

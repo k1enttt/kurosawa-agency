@@ -16,23 +16,8 @@ import { draftMode } from 'next/headers'
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 import localFont from 'next/font/local'
-import { Inter, Poppins } from 'next/font/google'
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  fallback: [
-    'ui-sans-serif',
-    'system-ui',
-    '-apple-system',
-    'Segoe UI',
-    'Roboto',
-    'Helvetica Neue',
-    'Arial',
-    'Noto Sans',
-    'sans-serif',
-  ],
-})
+import { Poppins } from 'next/font/google'
+import CookieConsentPopup from '@/components/CookieConsentPopup'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -80,6 +65,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <Footer />
         </Providers>
         <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js" async />
+
+        <CookieConsentPopup />
       </body>
     </html>
   )

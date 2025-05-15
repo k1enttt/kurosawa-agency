@@ -165,6 +165,7 @@ export interface Page {
       };
       [k: string]: unknown;
     } | null;
+    heading?: string | null;
     links?:
       | {
           link: {
@@ -212,6 +213,7 @@ export interface Page {
     | ContentBlock
     | MediaBlock
     | ArchiveBlock
+    | ArchiveWithPaginationBlock
     | FormBlock
     | GalleryContentBlock
     | CallToActionWithImageBlock
@@ -220,6 +222,12 @@ export interface Page {
     | TeamBlock
     | TableBlock
     | FeaturesBlock
+    | FeaturesWithImage
+    | CustomerBlock
+    | LastestNews
+    | Message
+    | AddressBlock
+    | CardGridBlock
   )[];
   meta?: {
     title?: string | null;
@@ -559,6 +567,40 @@ export interface ArchiveBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ArchiveWithPaginationBlock".
+ */
+export interface ArchiveWithPaginationBlock {
+  backgroundColor?: ('light' | 'dark') | null;
+  introContent?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  populateBy?: ('collection' | 'selection') | null;
+  relationTo?: 'posts' | null;
+  categories?: (number | Category)[] | null;
+  selectedDocs?:
+    | {
+        relationTo: 'posts';
+        value: number | Post;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'archiveWithPagination';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "FormBlock".
  */
 export interface FormBlock {
@@ -782,8 +824,7 @@ export interface GalleryContentBlock {
   contentCards?:
     | {
         media?: (number | null) | Media;
-        heading?: string | null;
-        subheading?: string | null;
+        title?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -848,21 +889,7 @@ export interface CallToActionWithImageBlock {
  */
 export interface FaqBlock {
   backgroundColor?: ('light' | 'dark') | null;
-  introText?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
+  heading?: string | null;
   questions?:
     | {
         question: string;
@@ -1050,6 +1077,55 @@ export interface TableBlock {
  */
 export interface FeaturesBlock {
   backgroundColor?: ('light' | 'dark') | null;
+  yearsInBusiness?: number | null;
+  paragraphSmall?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  paragraphLarge?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  columns?:
+    | {
+        title?: string | null;
+        media?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'featuresBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeaturesWithImage".
+ */
+export interface FeaturesWithImage {
+  backgroundColor?: ('light' | 'dark') | null;
+  media?: (number | null) | Media;
   introText?: {
     root: {
       type: string;
@@ -1067,32 +1143,158 @@ export interface FeaturesBlock {
   } | null;
   columns?:
     | {
-        richText?: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        } | null;
-        enableLink?: boolean | null;
-        link?: {
-          label: string;
-          url: string;
-        };
+        title?: string | null;
+        description?: string | null;
         id?: string | null;
       }[]
     | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'featuresBlock';
+  blockType: 'featuresWithImage';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CustomerBlock".
+ */
+export interface CustomerBlock {
+  backgroundColor?: ('light' | 'dark') | null;
+  sectionLabel?: string | null;
+  heading?: string | null;
+  customer1?: {
+    textLarge?: string | null;
+    textSmall?: string | null;
+  };
+  customer2?: {
+    textLarge?: string | null;
+    textSmall?: string | null;
+  };
+  customer3?: {
+    textLarge?: string | null;
+    textSmall?: string | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'customerBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LastestNews".
+ */
+export interface LastestNews {
+  backgroundColor?: ('light' | 'dark') | null;
+  sectionHeading?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'lastestNews';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Message".
+ */
+export interface Message {
+  backgroundColor?: ('light' | 'dark') | null;
+  heading?: string | null;
+  media: number | Media;
+  author?: {
+    name?: string | null;
+    role?: string | null;
+  };
+  message?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'message';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "addressBlock".
+ */
+export interface AddressBlock {
+  backgroundColor?: ('light' | 'dark') | null;
+  heading?: string | null;
+  addresses?:
+    | {
+        googleMapsEmbedHtml?: string | null;
+        heading?: string | null;
+        officeAddress?: string | null;
+        phone?: string | null;
+        email?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'address';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CardGridBlock".
+ */
+export interface CardGridBlock {
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  cards?:
+    | {
+        media: number | Media;
+        title: string;
+        description?: string | null;
+        link?: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: 'default' | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  features?:
+    | {
+        media?: (number | null) | Media;
+        title?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cardGrid';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1360,6 +1562,7 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         type?: T;
         richText?: T;
+        heading?: T;
         links?:
           | T
           | {
@@ -1404,6 +1607,7 @@ export interface PagesSelect<T extends boolean = true> {
         content?: T | ContentBlockSelect<T>;
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
+        archiveWithPagination?: T | ArchiveWithPaginationBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         galleryContent?: T | GalleryContentBlockSelect<T>;
         ctaWithImage?: T | CallToActionWithImageBlockSelect<T>;
@@ -1412,6 +1616,12 @@ export interface PagesSelect<T extends boolean = true> {
         team?: T | TeamBlockSelect<T>;
         tableBlock?: T | TableBlockSelect<T>;
         featuresBlock?: T | FeaturesBlockSelect<T>;
+        featuresWithImage?: T | FeaturesWithImageSelect<T>;
+        customerBlock?: T | CustomerBlockSelect<T>;
+        lastestNews?: T | LastestNewsSelect<T>;
+        message?: T | MessageSelect<T>;
+        address?: T | AddressBlockSelect<T>;
+        cardGrid?: T | CardGridBlockSelect<T>;
       };
   meta?:
     | T
@@ -1503,6 +1713,20 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ArchiveWithPaginationBlock_select".
+ */
+export interface ArchiveWithPaginationBlockSelect<T extends boolean = true> {
+  backgroundColor?: T;
+  introContent?: T;
+  populateBy?: T;
+  relationTo?: T;
+  categories?: T;
+  selectedDocs?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "FormBlock_select".
  */
 export interface FormBlockSelect<T extends boolean = true> {
@@ -1524,8 +1748,7 @@ export interface GalleryContentBlockSelect<T extends boolean = true> {
     | T
     | {
         media?: T;
-        heading?: T;
-        subheading?: T;
+        title?: T;
         id?: T;
       };
   id?: T;
@@ -1564,7 +1787,7 @@ export interface CallToActionWithImageBlockSelect<T extends boolean = true> {
  */
 export interface FaqBlockSelect<T extends boolean = true> {
   backgroundColor?: T;
-  introText?: T;
+  heading?: T;
   questions?:
     | T
     | {
@@ -1641,18 +1864,142 @@ export interface TableBlockSelect<T extends boolean = true> {
  */
 export interface FeaturesBlockSelect<T extends boolean = true> {
   backgroundColor?: T;
+  yearsInBusiness?: T;
+  paragraphSmall?: T;
+  paragraphLarge?: T;
+  columns?:
+    | T
+    | {
+        title?: T;
+        media?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeaturesWithImage_select".
+ */
+export interface FeaturesWithImageSelect<T extends boolean = true> {
+  backgroundColor?: T;
+  media?: T;
   introText?: T;
   columns?:
     | T
     | {
-        richText?: T;
-        enableLink?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CustomerBlock_select".
+ */
+export interface CustomerBlockSelect<T extends boolean = true> {
+  backgroundColor?: T;
+  sectionLabel?: T;
+  heading?: T;
+  customer1?:
+    | T
+    | {
+        textLarge?: T;
+        textSmall?: T;
+      };
+  customer2?:
+    | T
+    | {
+        textLarge?: T;
+        textSmall?: T;
+      };
+  customer3?:
+    | T
+    | {
+        textLarge?: T;
+        textSmall?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LastestNews_select".
+ */
+export interface LastestNewsSelect<T extends boolean = true> {
+  backgroundColor?: T;
+  sectionHeading?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Message_select".
+ */
+export interface MessageSelect<T extends boolean = true> {
+  backgroundColor?: T;
+  heading?: T;
+  media?: T;
+  author?:
+    | T
+    | {
+        name?: T;
+        role?: T;
+      };
+  message?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "addressBlock_select".
+ */
+export interface AddressBlockSelect<T extends boolean = true> {
+  backgroundColor?: T;
+  heading?: T;
+  addresses?:
+    | T
+    | {
+        googleMapsEmbedHtml?: T;
+        heading?: T;
+        officeAddress?: T;
+        phone?: T;
+        email?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CardGridBlock_select".
+ */
+export interface CardGridBlockSelect<T extends boolean = true> {
+  richText?: T;
+  cards?:
+    | T
+    | {
+        media?: T;
+        title?: T;
+        description?: T;
         link?:
           | T
           | {
-              label?: T;
+              type?: T;
+              newTab?: T;
+              reference?: T;
               url?: T;
+              appearance?: T;
             };
+        id?: T;
+      };
+  features?:
+    | T
+    | {
+        media?: T;
+        title?: T;
         id?: T;
       };
   id?: T;
@@ -2187,6 +2534,7 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
+  form?: (number | null) | Form;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2280,6 +2628,7 @@ export interface FooterSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  form?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

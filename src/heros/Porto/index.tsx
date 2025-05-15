@@ -5,7 +5,18 @@ import React, { useEffect, useRef } from 'react'
 import type { Page } from '@/payload-types'
 
 import { Media } from '@/components/Media'
-import ServiceCard from '@/components/ServiceCard'
+import CardService from '@/components/CardService'
+
+import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
+
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+
+// import required modules
+import { Navigation } from 'swiper/modules'
+import Link from 'next/link'
 
 type PortoHeroType =
   | {
@@ -23,22 +34,18 @@ type PortoHeroType =
 
 export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesSlider }) => {
   const { setHeaderTheme } = useHeaderTheme()
-  const sliderRef = useRef<HTMLDivElement>(null)
+  const swiperRef = useRef<SwiperRef>(null)
 
   useEffect(() => {
     setHeaderTheme('light')
   })
 
   const scrollLeft = () => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollBy({ left: -400, behavior: 'smooth' })
-    }
+    swiperRef.current?.swiper.slidePrev()
   }
 
   const scrollRight = () => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollBy({ left: 400, behavior: 'smooth' })
-    }
+    swiperRef.current?.swiper.slideNext()
   }
 
   return (
@@ -52,9 +59,14 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
         </div>
         {/* image text */}
         <div className="porto-hero-text">
-          <h3 className="text-7xl leading-[70px] font-bold tracking-[0]">{mediaText}</h3>
           <h3
-            className="text-7xl leading-[70px] font-bold tracking-[0] text-white"
+            className="leading-[70px] tracking-[0]"
+            style={{ textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)' }}
+          >
+            {mediaText}
+          </h3>
+          <h3
+            className="leading-[70px] tracking-[0] text-white"
             style={{
               WebkitTextFillColor: 'transparent',
               WebkitTextStrokeWidth: '1px',
@@ -116,56 +128,41 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
             </div>
           </div>
         </div>
-        {/* Services list */}
-        <div ref={sliderRef} className="hero-slider-items-container">
-          <div className="hero-slider-items">
-            {servicesSlider?.servicesList?.map((service, index) => (
-              <div key={index}>
-                <ServiceCard data={service} />
-              </div>
-            ))}
-          </div>
+        {/* Desktop Services list */}
+        <div className="hero-slider-items-container">
+          {servicesSlider && servicesSlider.servicesList && (
+            <Swiper
+              ref={swiperRef}
+              slidesPerView={3}
+              spaceBetween={30}
+              loop={true}
+              navigation={false}
+              modules={[Navigation]}
+              className="mySwiper"
+            >
+              {servicesSlider.servicesList.map((item, index) => (
+                <SwiperSlide key={index}>
+                  <CardService data={item} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          )}
         </div>
-        {/* Mobile slider navigator */}
-        <div className="md:hidden fixed bottom-0 left-0 p-4 md:min-w-[420px] min-w-full h-4/5 flex justify-between items-center border-none pointer-events-none">
-          <div className="bg-white/50 cursor-pointer pointer-events-auto" onClick={scrollLeft}>
-            <svg
-              className="w-12 h-12 text-black"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m14 8-4 4 4 4"
-              />
-            </svg>
+        {/* Mobile services list */}
+        <div className="block md:hidden container py-4">
+          <div className="space-y-4 mb-4">
+            {servicesSlider &&
+              servicesSlider.servicesList &&
+              servicesSlider.servicesList.length > 0 &&
+              servicesSlider.servicesList.map((service, index) => {
+                if (index <= 2) return <CardService key={index} data={service} />
+              })}
           </div>
-          <div className="bg-white/50 cursor-pointer pointer-events-auto" onClick={scrollRight}>
-            <svg
-              className="w-12 h-12 text-black"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m10 16 4-4-4-4"
-              />
-            </svg>
-          </div>
+          <Link href={'/services'}>
+            <button className="p-3 w-full bg-primary text-primary-foreground rounded-lg hover:bg-primary/80 font-semibold">
+              EXPLORE MORE
+            </button>
+          </Link>
         </div>
       </div>
     </div>
