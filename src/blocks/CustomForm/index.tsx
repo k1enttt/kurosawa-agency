@@ -109,7 +109,7 @@ const CustomForm = ({ form }: { form: FormType }) => {
         <form
           id={formID}
           onSubmit={handleSubmit(onSubmit)}
-          className="relative flex justify-center flex-1 rounded-sm overflow-hidden"
+          className="relative w-full flex justify-center flex-1 rounded-sm overflow-hidden"
         >
           <div className="w-full">
             {formFromProps &&
@@ -121,7 +121,7 @@ const CustomForm = ({ form }: { form: FormType }) => {
                   return (
                     <div
                       className={cn(
-                        'mb-6 last:mb-0',
+                        'mb-6 last:mb-0 text-dark',
                         field.blockType == 'textarea' && 'col-span-2',
                       )}
                       key={index}

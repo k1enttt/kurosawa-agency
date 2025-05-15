@@ -276,11 +276,11 @@ html[data-theme='light'] {
 }
 
 .porto-hero-container {
-  @apply relative w-full h-[725px] text-white mb-0 md:mb-24;
+  @apply relative w-full h-[450px] md:h-[725px] text-white mb-0 md:mb-24;
 }
 
 .porto-hero-text {
-  @apply absolute top-0 right-1/3 lg:right-[18%] uppercase h-full flex flex-col justify-center;
+  @apply absolute top-0 right-0 lg:right-[18%] uppercase h-full md:w-auto w-full text-center md:text-left flex flex-col justify-center text-6xl md:text-7xl font-bold;
 }
 
 .porto-hero-image {

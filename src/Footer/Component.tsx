@@ -107,19 +107,7 @@ export async function Footer() {
               {/* Newsletter */}
               <div className="mt-8 w-full flex md:items-center items-start md:flex-row flex-col gap-x-4 gap-y-2">
                 <h3 className="font-bold text-lg">Subscribe to Newsletter:</h3>
-                {/* TODO: Xử lý form như Contact form để có thể nhận được email gửi đến Admin */}
-
                 <CustomForm form={formFromProps} />
-                {/* <div className="flex flex-1 w-full mt-2">
-                  <input
-                    type="email"
-                    placeholder="Email Address"
-                    className="border-none rounded-l px-4 py-2 w-full text-muted-foreground"
-                  />
-                  <button className="bg-primary text-primary-foreground hover:bg-primary/80 px-4 py-2 rounded-r">
-                    GO
-                  </button>
-                </div> */}
               </div>
             </div>
           </div>

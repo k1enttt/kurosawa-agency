@@ -76,7 +76,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
       <div className={`${isNavOpen ? 'fixed' : 'hidden'} inset-0 bg-black/80`}>
         <button
           onClick={close}
-          className="absolute top-0 right-0 mt-10 mr-10 h-8 w-8 p-1 bg-primary/80 rounded-lg"
+          className="absolute top-0 right-0 mt-10 mr-10 p-2 bg-primary/80 rounded-lg"
         >
           <svg
             className="w-6 h-6 text-white"

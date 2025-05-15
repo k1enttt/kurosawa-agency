@@ -3,7 +3,6 @@ import React from 'react'
 import type { Message as MessageProps } from '@/payload-types'
 
 import RichText from '@/components/RichText'
-import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 
 export const MessageBlock: React.FC<MessageProps> = ({
@@ -17,9 +16,12 @@ export const MessageBlock: React.FC<MessageProps> = ({
     <div className={`${backgroundColor == 'dark' ? 'bg-muted' : 'bg-white'} dark:bg-gray-900`}>
       <div className="py-8 sm:py-16 container">
         <h2 className="mb-8 text-4xl tracking-tight font-bold divide-line">{heading}</h2>
-        <div className="grid md:grid-cols-3 grid-cosl-1 gap-8 items-start">
-          <Media resource={media} imgClassName="w-full rounded-lg" />
-          <div className="mt-4 md:mt-0 col-span-2">
+        <div className="grid md:grid-cols-3 grid-cols-1-1 gap-8 items-start">
+          <div className="w-full">
+            <Media resource={media} imgClassName="md:w-full w-1/3 rounded-lg" />
+          </div>
+
+          <div className="mt-4 md:mt-0 col-span-1 md:col-span-2">
             <div className="mb-6">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

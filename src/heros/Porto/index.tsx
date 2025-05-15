@@ -59,9 +59,14 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
         </div>
         {/* image text */}
         <div className="porto-hero-text">
-          <h3 className="text-7xl leading-[70px] font-bold tracking-[0]">{mediaText}</h3>
           <h3
-            className="text-7xl leading-[70px] font-bold tracking-[0] text-white"
+            className="leading-[70px] tracking-[0]"
+            style={{ textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)' }}
+          >
+            {mediaText}
+          </h3>
+          <h3
+            className="leading-[70px] tracking-[0] text-white"
             style={{
               WebkitTextFillColor: 'transparent',
               WebkitTextStrokeWidth: '1px',

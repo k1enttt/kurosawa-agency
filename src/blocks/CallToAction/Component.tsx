@@ -21,6 +21,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
             )}
           </div>
           <div className="flex flex-col gap-8">
+            {/* TODO: Điều chỉnh kích thước của CTA Button ở Mobile */}
             {(links || []).map(({ link }, i) => {
               return (
                 <CMSLink
