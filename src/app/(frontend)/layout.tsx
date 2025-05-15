@@ -17,6 +17,7 @@ import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 import localFont from 'next/font/local'
 import { Poppins } from 'next/font/google'
+import CookieConsentPopup from '@/components/CookieConsentPopup'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -64,6 +65,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <Footer />
         </Providers>
         <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js" async />
+
+        <CookieConsentPopup />
       </body>
     </html>
   )
