@@ -128,6 +128,7 @@ export const hero: Field = {
               name: 'serviceDescription',
               type: 'textarea',
               label: 'Service Description',
+              localized: true,
             },
             {
               name: 'serviceIcon',
@@ -143,6 +144,7 @@ export const hero: Field = {
                   name: 'label',
                   type: 'text',
                   required: true,
+                  localized: true,
                 },
                 {
                   name: 'url',
