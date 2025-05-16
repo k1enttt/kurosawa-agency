@@ -22,10 +22,12 @@ export const CustomerBlock: Block = {
     {
       name: 'sectionLabel',
       type: 'text',
+      localized: true,
     },
     {
       name: 'heading',
       type: 'text',
+      localized: true,
     },
     {
       name: 'customer1',
@@ -39,6 +41,7 @@ export const CustomerBlock: Block = {
         {
           name: 'textSmall',
           type: 'text',
+          localized: true,
         },
       ],
     },
@@ -54,6 +57,7 @@ export const CustomerBlock: Block = {
         {
           name: 'textSmall',
           type: 'text',
+          localized: true,
         },
       ],
     },
@@ -69,6 +73,7 @@ export const CustomerBlock: Block = {
         {
           name: 'textSmall',
           type: 'text',
+          localized: true,
         },
       ],
     },
