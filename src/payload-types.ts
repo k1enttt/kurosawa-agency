@@ -1093,6 +1093,10 @@ export interface FeaturesBlock {
     };
     [k: string]: unknown;
   } | null;
+  link?: {
+    label?: string | null;
+    url?: string | null;
+  };
   paragraphLarge?: {
     root: {
       type: string;
@@ -1866,6 +1870,12 @@ export interface FeaturesBlockSelect<T extends boolean = true> {
   backgroundColor?: T;
   yearsInBusiness?: T;
   paragraphSmall?: T;
+  link?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+      };
   paragraphLarge?: T;
   columns?:
     | T

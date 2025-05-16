@@ -60,6 +60,21 @@ export const FeaturesBlock: Block = {
       localized: true,
     },
     {
+      name: 'link',
+      type: 'group',
+      fields: [
+        {
+          name: 'label',
+          type: 'text',
+          localized: true,
+        },
+        {
+          name: 'url',
+          type: 'text',
+        },
+      ],
+    },
+    {
       name: 'paragraphLarge',
       type: 'richText',
       editor: lexicalEditor({
