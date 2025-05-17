@@ -22,6 +22,7 @@ const columnFields: Field[] = [
     name: 'role',
     type: 'text',
     required: true,
+    localized: true,
   },
   {
     name: 'description',
@@ -31,6 +32,7 @@ const columnFields: Field[] = [
         return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]
       },
     }),
+    localized: true,
   },
 ]
 
@@ -67,6 +69,7 @@ export const Team: Block = {
         },
       }),
       label: false,
+      localized: true,
     },
     {
       name: 'members',

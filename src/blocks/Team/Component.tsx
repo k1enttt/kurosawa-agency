@@ -60,6 +60,7 @@ export const TeamBlock: React.FC<TeamBlockProps> = (props) => {
                       <RichText
                         data={member.description}
                         enableGutter={false}
+                        enableProse={false}
                         className="ont-light text-gray-500 dark:text-gray-400 line-clamp-4"
                       />
                     </div>
