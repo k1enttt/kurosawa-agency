@@ -72,6 +72,7 @@ export const hero: Field = {
         condition: (_, { type } = {}) => ['highImpact'].includes(type),
       },
       required: true,
+      localized: true,
     },
     linkGroup({
       overrides: {
