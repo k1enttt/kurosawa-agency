@@ -2,7 +2,6 @@ import type { Block, Field } from 'payload'
 
 import {
   FixedToolbarFeature,
-  HeadingFeature,
   IndentFeature,
   InlineToolbarFeature,
   lexicalEditor,
@@ -12,6 +11,7 @@ const columnFields: Field[] = [
   {
     name: 'headerText',
     type: 'text',
+    localized: true,
   },
   {
     name: 'valueText',
@@ -46,21 +46,7 @@ export const TableBlock: Block = {
     {
       name: 'heading',
       type: 'text',
-    },
-    {
-      name: 'introText',
-      type: 'richText',
-      editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-          ]
-        },
-      }),
-      label: 'Introduction Text',
+      localized: true,
     },
     {
       name: 'hasHeader',
