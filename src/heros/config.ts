@@ -72,6 +72,7 @@ export const hero: Field = {
         condition: (_, { type } = {}) => ['highImpact'].includes(type),
       },
       required: true,
+      localized: true,
     },
     linkGroup({
       overrides: {
@@ -98,6 +99,7 @@ export const hero: Field = {
       admin: {
         condition: (_, { type } = {}) => ['porto'].includes(type),
       },
+      localized: true,
     },
     {
       name: 'servicesSlider',
@@ -110,6 +112,7 @@ export const hero: Field = {
           name: 'sliderHeading',
           type: 'text',
           label: 'Slider Heading',
+          localized: true,
         },
         {
           name: 'servicesList',
@@ -120,11 +123,13 @@ export const hero: Field = {
               name: 'serviceTitle',
               type: 'text',
               label: 'Service Title',
+              localized: true,
             },
             {
               name: 'serviceDescription',
               type: 'textarea',
               label: 'Service Description',
+              localized: true,
             },
             {
               name: 'serviceIcon',
@@ -140,6 +145,7 @@ export const hero: Field = {
                   name: 'label',
                   type: 'text',
                   required: true,
+                  localized: true,
                 },
                 {
                   name: 'url',

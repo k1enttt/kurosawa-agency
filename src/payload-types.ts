@@ -1030,21 +1030,6 @@ export interface TeamBlock {
 export interface TableBlock {
   backgroundColor?: ('light' | 'dark') | null;
   heading?: string | null;
-  introText?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
   hasHeader?: ('yes' | 'no') | null;
   columns?:
     | {
@@ -1093,6 +1078,10 @@ export interface FeaturesBlock {
     };
     [k: string]: unknown;
   } | null;
+  link?: {
+    label?: string | null;
+    url?: string | null;
+  };
   paragraphLarge?: {
     root: {
       type: string;
@@ -1846,7 +1835,6 @@ export interface TeamBlockSelect<T extends boolean = true> {
 export interface TableBlockSelect<T extends boolean = true> {
   backgroundColor?: T;
   heading?: T;
-  introText?: T;
   hasHeader?: T;
   columns?:
     | T
@@ -1866,6 +1854,12 @@ export interface FeaturesBlockSelect<T extends boolean = true> {
   backgroundColor?: T;
   yearsInBusiness?: T;
   paragraphSmall?: T;
+  link?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+      };
   paragraphLarge?: T;
   columns?:
     | T

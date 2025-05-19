@@ -23,6 +23,12 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
     if (isNavOpen) close()
   }, [pathname])
 
+  const path = usePathname()
+  const getPageNameFromUrl = (): string => {
+    const segments = path.split('/').filter(Boolean)
+    return segments.length > 0 ? segments[0] || '' : ''
+  }
+
   return (
     <>
       {/* action buttons */}
@@ -50,14 +56,17 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
 
       {/* Desktop Navbar */}
       <div className={`justify-between items-center w-full hidden md:flex lg:w-auto lg:order-1`}>
-        <div className="flex font-medium flex-row space-x-8 mt-0">
+        <div className="flex flex-row space-x-8 mt-0">
           {navItems.map(({ link }, i) => {
+            const pageName = getPageNameFromUrl()
+            const linkLabel = link.label.toLowerCase()
+            const isSelected = pageName == linkLabel || (pageName == '' && linkLabel == 'home')
             return (
               <div key={i}>
                 <CMSLink
                   {...link}
                   appearance="link"
-                  className="block py-2 pr-4 pl-3 rounded-none border-b hover:no-underline border-0 p-0 !text-p-md text-foreground dark:text-background hover:text-link hover:bg-gray-700 hover:bg-transparent border-gray-700"
+                  className={`${isSelected ? 'text-primary' : 'text-foreground dark:text-background'}   font-semibold block py-2 pr-4 pl-3 rounded-none border-b hover:no-underline border-0 p-0 !text-p-md  hover:text-link hover:bg-gray-700 hover:bg-transparent border-gray-700`}
                 />
               </div>
             )
@@ -97,7 +106,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
           </svg>
         </button>
         <div className={`absolute h-full top-0 left-0 w-3/5 bg-white`}>
-          <div className="flex flex-col my-6 font-medium">
+          <div className="flex flex-col my-6">
             {data.navItems &&
               data.navItems.map(({ link }, i) => {
                 let borderStyle = ''
@@ -111,7 +120,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
                       appearance="link"
                       className={clsx(
                         borderStyle,
-                        'block py-4 pr-4 pl-3 rounded-none border-b hover:no-underline !text-p-md text-foreground dark:text-background hover:bg-gray-700 hover:text-white border-gray-200',
+                        'font-semibold block py-4 pr-4 pl-3 rounded-none border-b hover:no-underline !text-p-md text-foreground dark:text-background hover:bg-gray-700 hover:text-white border-gray-200',
                       )}
                     />
                   </div>

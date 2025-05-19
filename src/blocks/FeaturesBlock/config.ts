@@ -11,6 +11,7 @@ const columnFields: Field[] = [
   {
     name: 'title',
     type: 'text',
+    localized: true,
   },
   {
     name: 'media',
@@ -56,6 +57,22 @@ export const FeaturesBlock: Block = {
         },
       }),
       label: 'Small Paragraph',
+      localized: true,
+    },
+    {
+      name: 'link',
+      type: 'group',
+      fields: [
+        {
+          name: 'label',
+          type: 'text',
+          localized: true,
+        },
+        {
+          name: 'url',
+          type: 'text',
+        },
+      ],
     },
     {
       name: 'paragraphLarge',
@@ -71,6 +88,7 @@ export const FeaturesBlock: Block = {
         },
       }),
       label: 'Large Paragraph',
+      localized: true,
     },
     {
       name: 'columns',

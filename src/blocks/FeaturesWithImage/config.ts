@@ -11,10 +11,12 @@ const columnFields: Field[] = [
   {
     name: 'title',
     type: 'text',
+    localized: true,
   },
   {
     name: 'description',
     type: 'textarea',
+    localized: true,
   },
 ]
 
@@ -56,6 +58,7 @@ export const FeaturesWithImage: Block = {
         },
       }),
       label: false,
+      localized: true,
     },
     {
       name: 'columns',

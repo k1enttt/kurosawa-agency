@@ -24,7 +24,6 @@ export async function Footer() {
     navItems,
     servicesItems,
     form: formFromProps,
-    form: { id: formID, confirmationMessage, confirmationType, redirect, submitButtonLabel } = {},
   } = footerData
 
   return (

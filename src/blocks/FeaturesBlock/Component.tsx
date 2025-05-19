@@ -9,7 +9,7 @@ import { Media } from '@/components/Media'
 import FeatureCardSlider from '@/components/FeatureCardSlider'
 
 export const FeaturesBlock: React.FC<FeaturesBlockProps> = (props) => {
-  const { backgroundColor, yearsInBusiness, paragraphSmall, paragraphLarge, columns } = props
+  const { backgroundColor, yearsInBusiness, paragraphSmall, link, paragraphLarge, columns } = props
 
   return (
     <div className={cn(backgroundColor == 'dark' ? 'bg-muted' : 'bg-white', 'dark:bg-gray-900')}>
@@ -28,12 +28,14 @@ export const FeaturesBlock: React.FC<FeaturesBlockProps> = (props) => {
                 />
               )}
             </div>
-            <Link
-              href={'/about'}
-              className="text-primary font-semibold underline underline-offset-2"
-            >
-              VIEW MORE ABOUT US
-            </Link>
+            {link && link.label && (
+              <Link
+                href={link.url || '#'}
+                className="text-primary font-semibold underline underline-offset-2"
+              >
+                {link.label}
+              </Link>
+            )}
           </div>
 
           <div className="flex-0 h-16 w-2 rounded bg-primary hidden md:block"></div>

@@ -22,6 +22,7 @@ export const LastestNews: Block = {
     {
       name: 'sectionHeading',
       type: 'text',
+      localized: true,
     },
   ],
 }

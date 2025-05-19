@@ -54,6 +54,7 @@ export const Faq: Block = {
     {
       name: 'heading',
       type: 'text',
+      localized: true,
     },
     {
       name: 'questions',

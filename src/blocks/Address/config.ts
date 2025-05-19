@@ -8,10 +8,12 @@ const addressFields: Field[] = [
   {
     name: 'heading',
     type: 'text',
+    localized: true,
   },
   {
     name: 'officeAddress',
     type: 'text',
+    localized: true,
   },
   {
     name: 'phone',
@@ -45,6 +47,7 @@ export const Address: Block = {
     {
       name: 'heading',
       type: 'text',
+      localized: true,
     },
     {
       name: 'addresses',
