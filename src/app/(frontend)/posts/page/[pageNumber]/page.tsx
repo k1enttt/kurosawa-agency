@@ -5,7 +5,7 @@ import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import React from 'react'
+import React, { Suspense } from 'react'
 import PageClient from './page.client'
 import { notFound } from 'next/navigation'
 
@@ -55,7 +55,9 @@ export default async function Page({ params: paramsPromise }: Args) {
 
       <div className="container">
         {posts?.page && posts?.totalPages > 1 && (
-          <Pagination slug="posts" page={posts.page} totalPages={posts.totalPages} />
+          <Suspense>
+            <Pagination slug="posts" page={posts.page} totalPages={posts.totalPages} />
+          </Suspense>
         )}
       </div>
     </div>

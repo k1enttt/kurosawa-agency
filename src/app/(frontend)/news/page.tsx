@@ -5,7 +5,7 @@ import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import React from 'react'
+import React, { Suspense } from 'react'
 import PageClient from './page.client'
 import CategoriesNavbar from '@/components/CategoriesNavbar'
 import Breadcrumb from '@/components/Breadcrumb'
@@ -105,7 +105,9 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
 
       <div className="container">
         {news.totalPages > 1 && news.page && (
-          <Pagination slug="news" page={news.page} totalPages={news.totalPages} />
+          <Suspense>
+            <Pagination slug="news" page={news.page} totalPages={news.totalPages} />
+          </Suspense>
         )}
       </div>
     </div>
