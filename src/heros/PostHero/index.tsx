@@ -15,6 +15,13 @@ export const PostHero: React.FC<{
   const hasAuthors =
     populatedAuthors && populatedAuthors.length > 0 && formatAuthors(populatedAuthors) !== ''
 
+  const hasServiceCategory =
+    Array.isArray(categories) &&
+    categories.some(
+      (category) =>
+        typeof category === 'object' && category !== null && category.slug === 'service',
+    )
+
   return (
     <div className="relative -mt-[10.4rem] flex items-end">
       <div className="container z-10 relative lg:grid lg:grid-cols-[1fr_48rem_1fr] text-white pb-8">
@@ -57,7 +64,7 @@ export const PostHero: React.FC<{
                 </div>
               </div>
             )}
-            {publishedAt && (
+            {publishedAt && !hasServiceCategory && (
               <div className="flex flex-col gap-1">
                 <p className="text-sm">Date Published</p>
 
