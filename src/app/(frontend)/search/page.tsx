@@ -7,14 +7,16 @@ import React from 'react'
 import { Search } from '@/search/Component'
 import PageClient from './page.client'
 import { CardPostData } from '@/components/Card'
+import { customTranslations } from 'custom-translations'
 
 type Args = {
   searchParams: Promise<{
     q: string
+    locale: string
   }>
 }
 export default async function Page({ searchParams: searchParamsPromise }: Args) {
-  const { q: query } = await searchParamsPromise
+  const { q: query, locale } = await searchParamsPromise
   const payload = await getPayload({ config: configPromise })
 
   const posts = await payload.find({
@@ -59,12 +61,16 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       : {}),
   })
 
+  const t = customTranslations
+
   return (
     <div className="pt-24 pb-24">
       <PageClient />
       <div className="container mb-16">
         <div className="prose dark:prose-invert max-w-none text-center flowbite-h2">
-          <h2 className="mb-8 lg:mb-16">Search</h2>
+          <h2 className="mb-8 lg:mb-16">
+            {t[(locale as 'en' | 'ja' | 'vi') || 'en'].heroHeading.search}
+          </h2>
 
           <div className="max-w-[50rem] mx-auto">
             <Search />

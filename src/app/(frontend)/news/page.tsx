@@ -11,6 +11,7 @@ import CategoriesNavbar from '@/components/CategoriesNavbar'
 import Breadcrumb from '@/components/Breadcrumb'
 import { Media } from '@/components/Media'
 import HandshakeImage from '@/components/Images'
+import { customTranslations } from 'custom-translations'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 600
@@ -22,6 +23,7 @@ type Args = {
 export default async function Page({ searchParams: searchParamsPromise }: Args) {
   const searchParams = await searchParamsPromise
   const category = searchParams.category
+  const locale = searchParams.locale
   const payload = await getPayload({ config: configPromise })
 
   const news = await payload.find({
@@ -61,6 +63,8 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
     },
   })
 
+  const t = customTranslations
+
   return (
     <div>
       <PageClient />
@@ -72,7 +76,9 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
         <div className="container z-10 relative flex items-center justify-start">
           <div className="max-w-[36.5rem] space-y-2">
             <Breadcrumb />
-            <h1 className="text-4xl font-semibold text-dark">News</h1>
+            <h1 className="text-4xl font-semibold text-dark">
+              {t[(locale as 'en' | 'ja' | 'vi') || 'en'].heroHeading.news}
+            </h1>
           </div>
         </div>
         <div className="absolute inset-0 select-none bg-white/90">
