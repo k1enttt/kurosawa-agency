@@ -19,10 +19,12 @@ const cardFields: Field[] = [
     name: 'title',
     type: 'text',
     required: true,
+    localized: true,
   },
   {
     name: 'description',
     type: 'textarea',
+    localized: true,
   },
   link({
     disableLabel: true,
@@ -48,6 +50,7 @@ export const CardGrid: Block = {
         },
       }),
       label: false,
+      localized: true,
     },
     {
       name: 'cards',
