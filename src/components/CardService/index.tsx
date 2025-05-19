@@ -16,7 +16,7 @@ export type ServiceType = {
 const CardService = ({ data }: { data: ServiceType }) => {
   const service = data
   return (
-    <div className="flex items-center md:min-w-[324px] min-w-full p-8 bg-white shadow-md rounded-md md:snap-start snap-center snap-always border border-black/[0.06] ">
+    <div className="flex items-center md:w-full min-w-full p-8 bg-white shadow-md rounded-md md:snap-start snap-center snap-always border border-black/[0.06] ">
       <div className="flex w-full h-fit">
         {/* Left column with icon */}
         <div className="w-[60px] pt-2 pr-4 flex items-start justify-center">

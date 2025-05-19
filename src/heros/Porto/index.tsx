@@ -134,7 +134,7 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
             <Swiper
               ref={swiperRef}
               slidesPerView={3}
-              spaceBetween={30}
+              spaceBetween={16}
               loop={true}
               navigation={false}
               modules={[Navigation]}
