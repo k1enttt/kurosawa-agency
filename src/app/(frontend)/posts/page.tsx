@@ -5,7 +5,7 @@ import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import React from 'react'
+import React, { Suspense } from 'react'
 import PageClient from './page.client'
 
 export const dynamic = 'force-static'
@@ -59,7 +59,9 @@ export default async function Page() {
 
       <div className="container">
         {posts.totalPages > 1 && posts.page && (
-          <Pagination slug="posts" page={posts.page} totalPages={posts.totalPages} />
+          <Suspense>
+            <Pagination slug="posts" page={posts.page} totalPages={posts.totalPages} />
+          </Suspense>
         )}
       </div>
     </div>

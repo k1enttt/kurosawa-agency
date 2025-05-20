@@ -4,7 +4,7 @@ import { PayloadRedirects } from '@/components/PayloadRedirects'
 import configPromise from '@payload-config'
 import { getPayload, type RequiredDataFromCollectionSlug } from 'payload'
 import { draftMode } from 'next/headers'
-import React, { cache } from 'react'
+import React, { cache, Suspense } from 'react'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { RenderHero } from '@/heros/RenderHero'
 import { generateMeta } from '@/utilities/generateMeta'
@@ -64,7 +64,9 @@ export default async function Page({ params: paramsPromise, searchParams }: Args
 
   return (
     <article className="">
-      <PageClient />
+      <Suspense>
+        <PageClient />
+      </Suspense>
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 

@@ -87,7 +87,9 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       </div>
 
       <div className="mb-8">
-        <CategoriesNavbar data={existedCategories.docs} />
+        <Suspense>
+          <CategoriesNavbar data={existedCategories.docs} />
+        </Suspense>
       </div>
 
       <div className="container mb-8">

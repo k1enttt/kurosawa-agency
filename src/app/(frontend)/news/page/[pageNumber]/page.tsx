@@ -5,7 +5,7 @@ import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import React from 'react'
+import React, { Suspense } from 'react'
 import PageClient from './page.client'
 import { notFound } from 'next/navigation'
 import CategoriesNavbar from '@/components/CategoriesNavbar'
@@ -84,7 +84,9 @@ export default async function Page({
         </div>
       </div>
       <div className="mb-8">
-        <CategoriesNavbar data={existedCategories.docs} />
+        <Suspense>
+          <CategoriesNavbar data={existedCategories.docs} />
+        </Suspense>
       </div>
 
       <div className="container mb-8">
@@ -102,7 +104,9 @@ export default async function Page({
 
       <div className="container">
         {news?.page && news?.totalPages > 1 && (
-          <Pagination slug="news" page={news.page} totalPages={news.totalPages} />
+          <Suspense>
+            <Pagination slug="news" page={news.page} totalPages={news.totalPages} />
+          </Suspense>
         )}
       </div>
     </div>
