@@ -11,7 +11,8 @@ import { getClientSideURL } from '@/utilities/getURL'
 import { cn } from '@/utilities/ui'
 import { fields } from '../Form/fields'
 
-const CustomForm = ({ form: formFromProps }: { form: FormType }) => {
+const CustomForm = ({ form: formFromProps }: { form?: FormType }) => {
+  if (!formFromProps) return null
   const {
     id: formID,
     confirmationMessage,

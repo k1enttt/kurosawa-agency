@@ -21,6 +21,7 @@
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.6.0",
     "@payloadcms/admin-bar": "latest",
+    "@payloadcms/db-postgres": "3.32.0",
     "@payloadcms/db-sqlite": "latest",
     "@payloadcms/live-preview-react": "latest",
     "@payloadcms/next": "latest",
