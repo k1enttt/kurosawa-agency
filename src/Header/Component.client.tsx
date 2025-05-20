@@ -2,7 +2,7 @@
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 
 import type { Header } from '@/payload-types'
 
@@ -72,7 +72,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             </div>
             <div className="flex-1 basis-1/3 flex justify-end">
               <div className="language">
-                <LanguageSwitcher />
+                <Suspense>
+                  <LanguageSwitcher />
+                </Suspense>
               </div>
 
               {/* Social media */}

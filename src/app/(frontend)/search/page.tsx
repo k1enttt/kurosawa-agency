@@ -3,7 +3,7 @@ import type { Metadata } from 'next/types'
 import { CollectionArchive } from '@/components/CollectionArchive'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Search } from '@/search/Component'
 import PageClient from './page.client'
 import { CardPostData } from '@/components/Card'
@@ -73,7 +73,9 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
           </h2>
 
           <div className="max-w-[50rem] mx-auto">
-            <Search />
+            <Suspense>
+              <Search />
+            </Suspense>
           </div>
         </div>
       </div>
