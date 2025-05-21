@@ -31,6 +31,7 @@ export const TeamBlock: React.FC<TeamBlockProps> = (props) => {
           {members &&
             members.length > 0 &&
             members.map((member) => (
+              // Member Card
               <div
                 key={member.id}
                 className="items-start grid grid-cols-3 gap-4 p-4 bg-gray-50 h-fit rounded-lg shadow-md dark:bg-gray-800"
@@ -61,7 +62,7 @@ export const TeamBlock: React.FC<TeamBlockProps> = (props) => {
                         data={member.description}
                         enableGutter={false}
                         enableProse={false}
-                        className="ont-light text-gray-500 dark:text-gray-400 line-clamp-4"
+                        className="font-light text-gray-500 dark:text-gray-400 line-clamp-3"
                       />
                     </div>
                   )}
