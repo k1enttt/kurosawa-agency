@@ -15,8 +15,8 @@ importers:
         specifier: latest
         version: 3.32.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@payloadcms/db-postgres':
-        specifier: ^3.38.0
-        version: 3.38.0(@libsql/client@0.14.0)(@types/react@19.0.10)(payload@3.32.0(graphql@16.10.0)(typescript@5.7.3))(react@19.0.0)
+        specifier: 3.32.0
+        version: 3.32.0(@libsql/client@0.14.0)(@types/react@19.0.10)(payload@3.32.0(graphql@16.10.0)(typescript@5.7.3))(react@19.0.0)
       '@payloadcms/db-sqlite':
         specifier: latest
         version: 3.32.0(@types/pg@8.10.2)(@types/react@19.0.10)(payload@3.32.0(graphql@16.10.0)(typescript@5.7.3))(pg@8.11.3)(react@19.0.0)
@@ -1361,10 +1361,10 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
-  '@payloadcms/db-postgres@3.38.0':
-    resolution: {integrity: sha512-ItdUUxPhemlD2B3NXroixV6WAY1aB2+SOUkewHoBPg2bEcrERKocGiKeMndqNX5HPgtWRlUEMw2RraNPdTTLSg==}
+  '@payloadcms/db-postgres@3.32.0':
+    resolution: {integrity: sha512-mwnM+oQOxqTLh2Rps/o9gSv+q1xYjmKYdOQNg2FVVc7yM67An6QEPCYw9YS2CsLKNjQOeYGZebmoGeRip/XV4A==}
     peerDependencies:
-      payload: 3.38.0
+      payload: 3.32.0
 
   '@payloadcms/db-sqlite@3.32.0':
     resolution: {integrity: sha512-S6w/Qp+F2cwC1z7oshIRD0syx0AnGeaKN2RFUEREzYoGFS04SnuUmM/wDwgB4m9GGpPiPuBfWvJO71uVAU6eoQ==}
@@ -1375,11 +1375,6 @@ packages:
     resolution: {integrity: sha512-JhLB9R40Bwb0PWNkmKRg7DvugKZvsvg7FEnyLWulaBMd+BHOkqNG8PboFXUwsKwuM08ZkU0J6WQ7XiyKTVqI8Q==}
     peerDependencies:
       payload: 3.32.0
-
-  '@payloadcms/drizzle@3.38.0':
-    resolution: {integrity: sha512-8YUFotd0LzgD03ga/H9ocQpRcR20S0eGtH69LOA9eMD4+OrXcN8k33Ugcd2f0Z2Ap4bcOLddtrKynEPCoyqZdg==}
-    peerDependencies:
-      payload: 3.38.0
 
   '@payloadcms/email-nodemailer@3.32.0':
     resolution: {integrity: sha512-boFfL7mioTZZaj9emd8Xwvy+KEOQPPEEZtF4bLxg5OhHYeN5olO0qdcZv+Q08t9gYU9mcH4pxv29E3qTS0svSg==}
@@ -6347,9 +6342,9 @@ snapshots:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
-  '@payloadcms/db-postgres@3.38.0(@libsql/client@0.14.0)(@types/react@19.0.10)(payload@3.32.0(graphql@16.10.0)(typescript@5.7.3))(react@19.0.0)':
+  '@payloadcms/db-postgres@3.32.0(@libsql/client@0.14.0)(@types/react@19.0.10)(payload@3.32.0(graphql@16.10.0)(typescript@5.7.3))(react@19.0.0)':
     dependencies:
-      '@payloadcms/drizzle': 3.38.0(@libsql/client@0.14.0)(@types/pg@8.10.2)(@types/react@19.0.10)(payload@3.32.0(graphql@16.10.0)(typescript@5.7.3))(pg@8.11.3)(react@19.0.0)
+      '@payloadcms/drizzle': 3.32.0(@libsql/client@0.14.0)(@types/pg@8.10.2)(@types/react@19.0.10)(payload@3.32.0(graphql@16.10.0)(typescript@5.7.3))(pg@8.11.3)(react@19.0.0)
       '@types/pg': 8.10.2
       console-table-printer: 2.12.1
       drizzle-kit: 0.28.0
@@ -6437,46 +6432,6 @@ snapshots:
   '@payloadcms/drizzle@3.32.0(@libsql/client@0.14.0)(@types/pg@8.10.2)(@types/react@19.0.10)(payload@3.32.0(graphql@16.10.0)(typescript@5.7.3))(pg@8.11.3)(react@19.0.0)':
     dependencies:
       console-table-printer: 2.12.1
-      drizzle-orm: 0.36.1(@libsql/client@0.14.0)(@types/pg@8.10.2)(@types/react@19.0.10)(pg@8.11.3)(react@19.0.0)
-      payload: 3.32.0(graphql@16.10.0)(typescript@5.7.3)
-      prompts: 2.4.2
-      to-snake-case: 1.0.0
-      uuid: 9.0.0
-    transitivePeerDependencies:
-      - '@aws-sdk/client-rds-data'
-      - '@cloudflare/workers-types'
-      - '@electric-sql/pglite'
-      - '@libsql/client'
-      - '@libsql/client-wasm'
-      - '@neondatabase/serverless'
-      - '@op-engineering/op-sqlite'
-      - '@opentelemetry/api'
-      - '@planetscale/database'
-      - '@prisma/client'
-      - '@tidbcloud/serverless'
-      - '@types/better-sqlite3'
-      - '@types/pg'
-      - '@types/react'
-      - '@types/sql.js'
-      - '@vercel/postgres'
-      - '@xata.io/client'
-      - better-sqlite3
-      - bun-types
-      - expo-sqlite
-      - knex
-      - kysely
-      - mysql2
-      - pg
-      - postgres
-      - prisma
-      - react
-      - sql.js
-      - sqlite3
-
-  '@payloadcms/drizzle@3.38.0(@libsql/client@0.14.0)(@types/pg@8.10.2)(@types/react@19.0.10)(payload@3.32.0(graphql@16.10.0)(typescript@5.7.3))(pg@8.11.3)(react@19.0.0)':
-    dependencies:
-      console-table-printer: 2.12.1
-      dequal: 2.0.3
       drizzle-orm: 0.36.1(@libsql/client@0.14.0)(@types/pg@8.10.2)(@types/react@19.0.10)(pg@8.11.3)(react@19.0.0)
       payload: 3.32.0(graphql@16.10.0)(typescript@5.7.3)
       prompts: 2.4.2

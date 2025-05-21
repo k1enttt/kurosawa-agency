@@ -1,5 +1,6 @@
 import { CollectionNewsLatest } from '@/components/CollectionNewsLatest'
 import type { Post, LastestNews as LastestNewsProps } from '@/payload-types'
+import { cookies } from 'next/headers'
 
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
@@ -18,6 +19,9 @@ export const LastestNewsBlock: React.FC<
 
   const payload = await getPayload({ config: configPromise })
 
+  const locale = (await cookies()).get('locale')?.value || 'en'
+  const typedLocale = locale as 'en' | 'vi' | 'ja' | undefined
+
   const fetchedPosts = await payload.find({
     collection: 'posts',
     depth: 1,
@@ -31,6 +35,7 @@ export const LastestNewsBlock: React.FC<
         equals: 'newsletter',
       },
     },
+    locale: typedLocale || 'en',
   })
 
   posts = fetchedPosts.docs
@@ -40,7 +45,7 @@ export const LastestNewsBlock: React.FC<
       <div className="py-8 lg:py-16 container space-y-7">
         <h2 className="text-3xl font-semibold">{sectionHeading}</h2>
         <div className="h-1 w-12 rounded-sm bg-primary"></div>
-        <CollectionNewsLatest posts={posts} />
+        <CollectionNewsLatest posts={posts} locale={typedLocale} />
       </div>
     </section>
   )

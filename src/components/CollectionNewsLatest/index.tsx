@@ -3,13 +3,15 @@ import React from 'react'
 
 import { Card, CardPostData } from '@/components/Card'
 import Link from 'next/link'
+import { customTranslations as t } from 'custom-translations'
 
 export type Props = {
   posts: CardPostData[]
+  locale: 'en' | 'vi' | 'ja' | undefined
 }
 
 export const CollectionNewsLatest: React.FC<Props> = (props) => {
-  const { posts } = props
+  const { posts, locale } = props
 
   return (
     <div className={cn('grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-8')}>
@@ -31,9 +33,9 @@ export const CollectionNewsLatest: React.FC<Props> = (props) => {
 
               <Link
                 href={`/posts/${result.slug}`}
-                className="text-primary text-sm font-semibold underline"
+                className="text-primary text-sm font-semibold underline uppercase"
               >
-                READ MORE
+                {t[locale || 'en'].readMore}
               </Link>
             </div>
           )
