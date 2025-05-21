@@ -244,7 +244,7 @@ html[data-theme='light'] {
 }
 
 .blog-subtitle {
-  @apply [&_p]:font-light [&_p]:text-gray-500 [&_p]:dark:text-gray-400;
+  @apply [&_p]:font-light [&_p]:text-gray-500 [&_p]:dark:text-gray-400 [&_p]:line-clamp-3;
 }
 
 .blog-no-padding {
