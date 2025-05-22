@@ -5,6 +5,7 @@ export const customTranslations = {
       search: 'Search',
     },
     readMore: 'Read more',
+    allCategories: 'All categories',
   },
   vi: {
     heroHeading: {
@@ -12,6 +13,7 @@ export const customTranslations = {
       search: 'Tìm kiếm',
     },
     readMore: 'Đọc thêm',
+    allCategories: 'Tất cả danh mục',
   },
   ja: {
     heroHeading: {
@@ -19,5 +21,6 @@ export const customTranslations = {
       search: '検索',
     },
     readMore: '続きを読む',
+    allCategories: 'すべてのカテゴリー',
   },
 }

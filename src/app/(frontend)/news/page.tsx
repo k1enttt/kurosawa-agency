@@ -12,6 +12,7 @@ import Breadcrumb from '@/components/Breadcrumb'
 import { Media } from '@/components/Media'
 import HandshakeImage from '@/components/Images'
 import { customTranslations } from 'custom-translations'
+import { Config } from '@/payload-types'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 600
@@ -23,7 +24,7 @@ type Args = {
 export default async function Page({ searchParams: searchParamsPromise }: Args) {
   const searchParams = await searchParamsPromise
   const category = searchParams.category
-  const locale = searchParams.locale
+  const locale = searchParams.locale as Config['locale'] | undefined
   const payload = await getPayload({ config: configPromise })
 
   const news = await payload.find({
@@ -46,6 +47,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       categories: true,
       meta: true,
     },
+    locale,
   })
 
   const existedCategories = await payload.find({
@@ -61,6 +63,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       title: true,
       slug: true,
     },
+    locale,
   })
 
   const t = customTranslations
