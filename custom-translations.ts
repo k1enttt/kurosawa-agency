@@ -10,8 +10,8 @@ export const customTranslations = {
     pageRange: {
       showing: 'Showing',
       of: 'of',
-      posts: 'posts',
-      post: 'post',
+      posts: 'Posts',
+      post: 'Post',
     },
   },
   vi: {
