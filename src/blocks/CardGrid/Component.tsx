@@ -1,9 +1,12 @@
+'use server'
 import FeatureCardSlider from '@/components/FeatureCardSlider'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
-import type { CardGridBlock as CardGridBlockProps } from '@/payload-types'
+import type { CardGridBlock as CardGridBlockProps, Config } from '@/payload-types'
 import { cn } from '@/utilities/ui'
+import { customTranslations as t } from 'custom-translations'
+import { cookies } from 'next/headers'
 
 import React from 'react'
 
@@ -13,6 +16,9 @@ export const CardGridBlock: React.FC<
   }
 > = async (props) => {
   const { id, richText, cards, features } = props
+
+  const locale = (await cookies()).get('locale')?.value
+  const typedLocale = locale as Config['locale'] | undefined
 
   return (
     <section className="bg-white dark:bg-gray-900" id={`block-${id}`}>
@@ -60,8 +66,8 @@ export const CardGridBlock: React.FC<
                     {link && (
                       <CMSLink
                         {...link}
-                        label={'VIEW MORE'}
-                        className="p-0 h-min text-primary font-semibold text-sm bg-transparent hover:bg-transparent underline"
+                        label={t[typedLocale || 'en'].readMore}
+                        className="p-0 h-min text-primary font-semibold text-sm bg-transparent hover:bg-transparent underline uppercase"
                       />
                     )}
                   </div>
