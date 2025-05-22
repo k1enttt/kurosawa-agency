@@ -1,4 +1,8 @@
+'use client'
+import { Config } from '@/payload-types'
+import { useSearchParams } from 'next/navigation'
 import React from 'react'
+import { customTranslations as t } from 'custom-translations'
 
 const defaultLabels = {
   plural: 'Docs',
@@ -44,14 +48,25 @@ export const PageRange: React.FC<{
     defaultLabels ||
     {}
 
+  const locale = useSearchParams().get('locale') as Config['locale'] | undefined
+
+  const pageRangeText = t[locale || 'en'].pageRange
+
   return (
     <div className={[className, 'font-semibold'].filter(Boolean).join(' ')}>
       {(typeof totalDocs === 'undefined' || totalDocs === 0) && 'Search produced no results.'}
       {typeof totalDocs !== 'undefined' &&
         totalDocs > 0 &&
-        `Showing ${indexStart}${indexStart > 0 ? ` - ${indexEnd}` : ''} of ${totalDocs} ${
-          totalDocs > 1 ? plural : singular
+        locale !== 'ja' &&
+        `${pageRangeText.showing} ${indexStart}${indexStart > 0 ? ` - ${indexEnd}` : ''} ${pageRangeText.of} ${totalDocs} ${
+          totalDocs > 1 ? pageRangeText.posts : pageRangeText.post
         }`}
+      {typeof totalDocs !== 'undefined' &&
+        totalDocs > 0 &&
+        locale == 'ja' &&
+        `${totalDocs}件中${indexStart}${indexStart > 0 ? ` - ${indexEnd}` : ''}件${pageRangeText.of}${
+          totalDocs > 1 ? pageRangeText.posts : pageRangeText.post
+        }を${pageRangeText.showing}`}
     </div>
   )
 }

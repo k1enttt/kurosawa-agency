@@ -7,6 +7,12 @@ export const customTranslations = {
     previous: 'Previous',
     next: 'Next',
     morePages: 'More pages',
+    pageRange: {
+      showing: 'Showing',
+      of: 'of',
+      posts: 'posts',
+      post: 'post',
+    },
   },
   vi: {
     news: 'Tin tức',
@@ -16,6 +22,12 @@ export const customTranslations = {
     previous: 'Trước',
     next: 'Sau',
     morePages: 'Thêm trang',
+    pageRange: {
+      showing: 'Hiển thị',
+      of: 'trong số',
+      posts: 'bài viết',
+      post: 'bài viết',
+    },
   },
   ja: {
     news: 'ニュース',
@@ -25,5 +37,11 @@ export const customTranslations = {
     previous: '前の',
     next: '次',
     morePages: 'その他のページ',
+    pageRange: {
+      showing: '表示',
+      of: 'の',
+      posts: '投稿',
+      post: '役職',
+    },
   },
 }

@@ -18,6 +18,7 @@ import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
 import { defaultLocale } from './middleware'
+import { customTranslations } from 'custom-translations'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -86,6 +87,10 @@ export default buildConfig({
     ],
     fallback: true,
     defaultLocale,
+  },
+  i18n: {
+    fallbackLanguage: 'en', // default
+    translations: customTranslations,
   },
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
