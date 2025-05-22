@@ -80,7 +80,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
           <div className="max-w-[36.5rem] space-y-2">
             <Breadcrumb />
             <h1 className="text-4xl font-semibold text-dark">
-              {t[(locale as 'en' | 'ja' | 'vi') || 'en'].heroHeading.news}
+              {t[(locale as 'en' | 'ja' | 'vi') || 'en'].news}
             </h1>
           </div>
         </div>

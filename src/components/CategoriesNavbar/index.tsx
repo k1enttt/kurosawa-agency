@@ -84,7 +84,7 @@ const CategoriesNavbar: React.FC<Args> = ({ data }: Args) => {
             id="searchInput"
             className="w-full bg-transparent rounded-sm border border-border text-border"
             type="text"
-            placeholder="Search"
+            placeholder={t[locale || 'en'].search}
           />
           <div className="absolute right-0 top-0 h-full aspect-square flex items-center justify-center">
             <button
