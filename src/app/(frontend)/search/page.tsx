@@ -8,6 +8,7 @@ import { Search } from '@/search/Component'
 import PageClient from './page.client'
 import { CardPostData } from '@/components/Card'
 import { customTranslations } from 'custom-translations'
+import { Config } from '@/payload-types'
 
 type Args = {
   searchParams: Promise<{
@@ -18,11 +19,13 @@ type Args = {
 export default async function Page({ searchParams: searchParamsPromise }: Args) {
   const { q: query, locale } = await searchParamsPromise
   const payload = await getPayload({ config: configPromise })
+  const typedLocale = locale as Config['locale'] | undefined
 
   const posts = await payload.find({
     collection: 'search',
     depth: 1,
     limit: 12,
+    locale: typedLocale,
     select: {
       title: true,
       slug: true,
@@ -71,7 +74,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
           <h2 className="mb-8 lg:mb-16">{t[(locale as 'en' | 'ja' | 'vi') || 'en'].search}</h2>
 
           <div className="max-w-[50rem] mx-auto">
-            <Suspense>
+            <Suspense fallback={<div>Loading...</div>}>
               <Search />
             </Suspense>
           </div>

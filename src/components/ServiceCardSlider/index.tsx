@@ -12,14 +12,16 @@ import 'swiper/css/navigation'
 // import required modules
 import { Navigation } from 'swiper/modules'
 
-import CardService, { ServiceType } from '../CardService'
+import CardService from '../CardService'
+import { Config } from '@/payload-types'
 
 export default function ServiceCardSlider({
   data,
   slidesPerView = 1,
   navigation = true,
 }: {
-  data: ServiceType[] | null | undefined
+  data: NonNullable<Config['collections']['pages']['hero']['servicesSlider']>['servicesList']
+
   slidesPerView?: number
   navigation?: boolean
   ref?: SwiperRef

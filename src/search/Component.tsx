@@ -4,11 +4,14 @@ import { Label } from '@/components/ui/label'
 import React, { useState, useEffect } from 'react'
 import { useDebounce } from '@/utilities/useDebounce'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { customTranslations as t } from 'custom-translations'
+import { Config } from '@/payload-types'
 
 export const Search: React.FC = () => {
   const searchParams = useSearchParams()
   const [value, setValue] = useState(searchParams.get('q'))
   const router = useRouter()
+  const locale = useSearchParams().get('locale') as Config['locale'] | undefined
 
   const debouncedValue = useDebounce(value)
 
@@ -52,7 +55,7 @@ export const Search: React.FC = () => {
               onChange={(event) => {
                 setValue(event.target.value)
               }}
-              placeholder="Search"
+              placeholder={t[locale || 'en'].search}
             />
           </div>
           <button type="submit" className="sr-only">
