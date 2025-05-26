@@ -201,7 +201,7 @@ export interface Page {
             serviceIcon?: (number | null) | Media;
             serviceLink: {
               label: string;
-              url?: string | null;
+              slug?: string | null;
             };
             id?: string | null;
           }[]
@@ -1583,7 +1583,7 @@ export interface PagesSelect<T extends boolean = true> {
                       | T
                       | {
                           label?: T;
-                          url?: T;
+                          slug?: T;
                         };
                     id?: T;
                   };

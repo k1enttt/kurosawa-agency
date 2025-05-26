@@ -148,7 +148,7 @@ export const hero: Field = {
                   localized: true,
                 },
                 {
-                  name: 'url',
+                  name: 'slug',
                   type: 'text',
                 },
               ],
