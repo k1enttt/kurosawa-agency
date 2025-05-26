@@ -23,11 +23,13 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
     if (isNavOpen) close()
   }, [pathname])
 
-  const path = usePathname()
-  const getPageNameFromUrl = (): string => {
+  const getPageNameFromPath = (path: string): string => {
     const segments = path.split('/').filter(Boolean)
     return segments.length > 0 ? segments[0] || '' : ''
   }
+
+  const path = usePathname()
+  const pageName = getPageNameFromPath(path)
 
   return (
     <>
@@ -58,8 +60,15 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
       <div className={`justify-between items-center w-full hidden md:flex lg:w-auto lg:order-1`}>
         <div className="flex flex-row space-x-8 mt-0">
           {navItems.map(({ link }, i) => {
-            const pageName = getPageNameFromUrl()
-            const linkLabel = link.label.toLowerCase()
+            // Nếu là custom link
+            let linkLabel: string = getPageNameFromPath(link.url || '')
+
+            // Nếu là page reference link
+            if (link.reference && link.reference.relationTo == 'pages') {
+              if (typeof link.reference.value != 'number' && link.reference.value.slug) {
+                linkLabel = link.reference.value.slug
+              }
+            }
             const isSelected = pageName == linkLabel || (pageName == '' && linkLabel == 'home')
             return (
               <div key={i}>

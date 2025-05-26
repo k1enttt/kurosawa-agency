@@ -12,6 +12,7 @@ import Breadcrumb from '@/components/Breadcrumb'
 import { Media } from '@/components/Media'
 import HandshakeImage from '@/components/Images'
 import { customTranslations } from 'custom-translations'
+import { Config } from '@/payload-types'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 600
@@ -23,7 +24,7 @@ type Args = {
 export default async function Page({ searchParams: searchParamsPromise }: Args) {
   const searchParams = await searchParamsPromise
   const category = searchParams.category
-  const locale = searchParams.locale
+  const locale = searchParams.locale as Config['locale'] | undefined
   const payload = await getPayload({ config: configPromise })
 
   const news = await payload.find({
@@ -46,6 +47,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       categories: true,
       meta: true,
     },
+    locale,
   })
 
   const existedCategories = await payload.find({
@@ -61,6 +63,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       title: true,
       slug: true,
     },
+    locale,
   })
 
   const t = customTranslations
@@ -77,7 +80,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
           <div className="max-w-[36.5rem] space-y-2">
             <Breadcrumb />
             <h1 className="text-4xl font-semibold text-dark">
-              {t[(locale as 'en' | 'ja' | 'vi') || 'en'].heroHeading.news}
+              {t[(locale as 'en' | 'ja' | 'vi') || 'en'].news}
             </h1>
           </div>
         </div>
@@ -93,12 +96,14 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       </div>
 
       <div className="container mb-8">
-        <PageRange
-          collection="posts"
-          currentPage={news.page}
-          limit={12}
-          totalDocs={news.totalDocs}
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <PageRange
+            collection="posts"
+            currentPage={news.page}
+            limit={12}
+            totalDocs={news.totalDocs}
+          />
+        </Suspense>
       </div>
 
       <div className="container">

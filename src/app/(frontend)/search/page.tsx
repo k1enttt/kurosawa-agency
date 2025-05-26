@@ -68,9 +68,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       <PageClient />
       <div className="container mb-16">
         <div className="prose dark:prose-invert max-w-none text-center flowbite-h2">
-          <h2 className="mb-8 lg:mb-16">
-            {t[(locale as 'en' | 'ja' | 'vi') || 'en'].heroHeading.search}
-          </h2>
+          <h2 className="mb-8 lg:mb-16">{t[(locale as 'en' | 'ja' | 'vi') || 'en'].search}</h2>
 
           <div className="max-w-[50rem] mx-auto">
             <Suspense>

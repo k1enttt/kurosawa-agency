@@ -2,6 +2,8 @@
 import { cn } from '@/utilities/ui'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { customTranslations as t } from 'custom-translations'
+import { Config } from '@/payload-types'
 
 type Args = {
   data: {
@@ -15,6 +17,7 @@ const CategoriesNavbar: React.FC<Args> = ({ data }: Args) => {
   const searchParams = useSearchParams()
   const [categoryParam, setCategoryParam] = useState<string | null>(searchParams.get('category'))
   const router = useRouter()
+  const locale = useSearchParams().get('locale') as Config['locale'] | undefined
 
   const updateCategoryParam = (category: string | null) => {
     setCategoryParam(category)
@@ -22,7 +25,6 @@ const CategoriesNavbar: React.FC<Args> = ({ data }: Args) => {
 
   useEffect(() => {
     const url = new URL(window.location.href)
-    const locale = url.searchParams.get('locale')
     let categories = url.searchParams.get('category')
     let newPathname = url.pathname
 
@@ -61,7 +63,7 @@ const CategoriesNavbar: React.FC<Args> = ({ data }: Args) => {
               'rounded-full px-6 py-2',
             )}
           >
-            All categories
+            {t[locale || 'en'].allCategories}
           </button>
 
           {data.map((category) => (
@@ -82,7 +84,7 @@ const CategoriesNavbar: React.FC<Args> = ({ data }: Args) => {
             id="searchInput"
             className="w-full bg-transparent rounded-sm border border-border text-border"
             type="text"
-            placeholder="Search"
+            placeholder={t[locale || 'en'].search}
           />
           <div className="absolute right-0 top-0 h-full aspect-square flex items-center justify-center">
             <button

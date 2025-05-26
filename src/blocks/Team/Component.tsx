@@ -2,13 +2,18 @@ import { cn } from '@/utilities/ui'
 import React from 'react'
 import RichText from '@/components/RichText'
 
-import type { TeamBlock as TeamBlockProps } from '@/payload-types'
+import type { Config, TeamBlock as TeamBlockProps } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 import ModalButton from '../../components/ModalButton'
+import { customTranslations as t } from 'custom-translations'
+import { cookies } from 'next/headers'
 
-export const TeamBlock: React.FC<TeamBlockProps> = (props) => {
+export const TeamBlock: React.FC<TeamBlockProps> = async (props) => {
   const { backgroundColor, introText, members } = props
+
+  const locale = (await cookies()).get('locale')?.value || 'en'
+  const typedLocale = locale as Config['locale'] | undefined
 
   return (
     <section
@@ -70,9 +75,9 @@ export const TeamBlock: React.FC<TeamBlockProps> = (props) => {
                   {/* Read more button */}
                   <ModalButton
                     data={member}
-                    className="block text-sm font-semibold text-primary underline underline-offset-1"
+                    className="block text-sm font-semibold text-primary underline underline-offset-1 uppercase"
                   >
-                    READ MORE
+                    {t[typedLocale || 'en'].readMore}
                   </ModalButton>
                 </div>
               </div>

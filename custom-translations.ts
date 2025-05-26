@@ -1,23 +1,47 @@
 export const customTranslations = {
   en: {
-    heroHeading: {
-      news: 'News',
-      search: 'Search',
-    },
+    news: 'News',
+    search: 'Search',
     readMore: 'Read more',
+    allCategories: 'All categories',
+    previous: 'Previous',
+    next: 'Next',
+    morePages: 'More pages',
+    pageRange: {
+      showing: 'Showing',
+      of: 'of',
+      posts: 'Posts',
+      post: 'Post',
+    },
   },
   vi: {
-    heroHeading: {
-      news: 'Tin tức',
-      search: 'Tìm kiếm',
-    },
+    news: 'Tin tức',
+    search: 'Tìm kiếm',
     readMore: 'Đọc thêm',
+    allCategories: 'Tất cả danh mục',
+    previous: 'Trước',
+    next: 'Sau',
+    morePages: 'Thêm trang',
+    pageRange: {
+      showing: 'Hiển thị',
+      of: 'trong số',
+      posts: 'bài viết',
+      post: 'bài viết',
+    },
   },
   ja: {
-    heroHeading: {
-      news: 'ニュース',
-      search: '検索',
-    },
+    news: 'ニュース',
+    search: '検索',
     readMore: '続きを読む',
+    allCategories: 'すべてのカテゴリー',
+    previous: '前の',
+    next: '次',
+    morePages: 'その他のページ',
+    pageRange: {
+      showing: '表示',
+      of: 'の',
+      posts: '投稿',
+      post: '役職',
+    },
   },
 }
