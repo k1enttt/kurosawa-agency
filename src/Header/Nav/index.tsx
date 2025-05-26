@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 
-import type { Header as HeaderType, Page } from '@/payload-types'
+import type { Header as HeaderType } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
 import Link from 'next/link'
