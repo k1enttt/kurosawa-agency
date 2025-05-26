@@ -3,12 +3,14 @@ import type {
   Post,
   ArchiveWithPaginationBlock as ArchiveWithPaginationBlockProps,
   Category,
+  Config,
 } from '@/payload-types'
 
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
 import BlogGrid from './BlogGrid'
+import { cookies } from 'next/headers'
 
 export const ArchiveWithPaginationBlock: React.FC<
   ArchiveWithPaginationBlockProps & {
@@ -19,6 +21,8 @@ export const ArchiveWithPaginationBlock: React.FC<
 
   let posts: Post[] = []
   let detailedCategories: Category[] = []
+  const locale = (await cookies()).get('locale')?.value
+  const typedLocale = locale as Config['locale'] | undefined
 
   if (populateBy === 'collection') {
     const payload = await getPayload({ config: configPromise })
@@ -31,6 +35,7 @@ export const ArchiveWithPaginationBlock: React.FC<
     const fetchedPosts = await payload.find({
       collection: 'posts',
       depth: 1,
+      locale: typedLocale,
       where: {
         _status: {
           equals: 'published',

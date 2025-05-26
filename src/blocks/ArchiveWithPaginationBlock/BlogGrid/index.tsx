@@ -13,15 +13,19 @@ import { Card, CardPostData } from '@/components/Card'
 import { cn } from '@/utilities/ui'
 import { useEffect, useState } from 'react'
 import { PageRange } from '@/components/PageRange'
-import { Category } from '@/payload-types'
+import { Category, Config } from '@/payload-types'
+import { customTranslations as t } from 'custom-translations'
+import { useSearchParams } from 'next/navigation'
 
 const BlogGrid = ({ posts, categories }: { posts: CardPostData[]; categories: Category[] }) => {
   const limit = 3
+  const [postsState, setPostsState] = useState<CardPostData[]>(posts)
   const [totalPosts, setTotalPosts] = useState<number>(posts.length)
   const [currentPosts, setCurrentPosts] = useState<CardPostData[]>([])
   const [page, setPage] = useState<number>(1)
   const [totalPages, setTotalPages] = useState<number>(Math.ceil(posts.length / limit))
   const [currentCategory, setCurrentCategory] = useState<number | null>(null)
+  const locale = useSearchParams().get('locale') as Config['locale'] | undefined
 
   const getPostId = (post: CardPostData): number[] | undefined => {
     return post?.categories?.map((category) => {
@@ -55,19 +59,23 @@ const BlogGrid = ({ posts, categories }: { posts: CardPostData[]; categories: Ca
   }
 
   useEffect(() => {
+    setPostsState(posts)
+  }, [posts])
+
+  useEffect(() => {
     // Khi page thay đổi -> chuyển đến trang được yêu cầu
-    const filteredPosts = filterPostsByCategory(posts, currentCategory)
+    const filteredPosts = filterPostsByCategory(postsState, currentCategory)
     setCurrentPosts(paginatePosts(filteredPosts.posts, limit, page))
-  }, [page])
+  }, [page, postsState])
 
   useEffect(() => {
     // Khi category thanh đổi -> chuyển về trang 1
-    const filteredPosts = filterPostsByCategory(posts, currentCategory)
+    const filteredPosts = filterPostsByCategory(postsState, currentCategory)
     setCurrentPosts(paginatePosts(filteredPosts.posts, limit, 1))
     setPage(1)
     setTotalPages(filteredPosts.totalPages)
     setTotalPosts(filteredPosts.posts.length)
-  }, [currentCategory])
+  }, [currentCategory, postsState])
 
   const hasNextPage = page < totalPages
   const hasPrevPage = page > 1
@@ -87,7 +95,7 @@ const BlogGrid = ({ posts, categories }: { posts: CardPostData[]; categories: Ca
               'rounded-full px-6 py-2',
             )}
           >
-            All categories
+            {t[locale || 'en'].allCategories}
           </button>
 
           {categories.map((category) => (
