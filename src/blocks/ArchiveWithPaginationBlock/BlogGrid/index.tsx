@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/pagination'
 import { Card, CardPostData } from '@/components/Card'
 import { cn } from '@/utilities/ui'
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { PageRange } from '@/components/PageRange'
 import { Category, Config } from '@/payload-types'
 import { customTranslations as t } from 'custom-translations'
@@ -114,7 +114,9 @@ const BlogGrid = ({ posts, categories }: { posts: CardPostData[]; categories: Ca
       </div>
       {/* Page range */}
       <div className="mb-8">
-        <PageRange collection="posts" currentPage={page} limit={limit} totalDocs={totalPosts} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <PageRange collection="posts" currentPage={page} limit={limit} totalDocs={totalPosts} />
+        </Suspense>
       </div>
       {/* Post grid */}
       <div className={cn('grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mb-8')}>

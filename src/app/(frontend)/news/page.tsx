@@ -96,12 +96,14 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       </div>
 
       <div className="container mb-8">
-        <PageRange
-          collection="posts"
-          currentPage={news.page}
-          limit={12}
-          totalDocs={news.totalDocs}
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <PageRange
+            collection="posts"
+            currentPage={news.page}
+            limit={12}
+            totalDocs={news.totalDocs}
+          />
+        </Suspense>
       </div>
 
       <div className="container">

@@ -8,7 +8,7 @@ import type {
 
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import React from 'react'
+import React, { Suspense } from 'react'
 import BlogGrid from './BlogGrid'
 import { cookies } from 'next/headers'
 
@@ -76,8 +76,10 @@ export const ArchiveWithPaginationBlock: React.FC<
           </div>
         )}
 
-        {/* BLog grid và Pagination */}
-        <BlogGrid posts={posts} categories={detailedCategories} />
+        <Suspense fallback={<div>Loading...</div>}>
+          {/* BLog grid và Pagination */}
+          <BlogGrid posts={posts} categories={detailedCategories} />
+        </Suspense>
       </div>
     </section>
   )
