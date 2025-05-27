@@ -1,20 +1,13 @@
-import type { Media as MediaType } from '@/payload-types'
+import type { Config, Media as MediaType } from '@/payload-types'
 import { Media } from '../Media'
 
-// TODO: Tách ra thư mục riêng
-export type ServiceType = {
-  serviceTitle?: string | null
-  serviceDescription?: string | null
-  serviceIcon?: (number | null) | MediaType
-  serviceLink: {
-    label: string
-    url?: string | null
-  }
-  id?: string | null
-}
-
-const CardService = ({ data }: { data: ServiceType }) => {
-  const service = data
+const CardService = ({
+  data: service,
+}: {
+  data: NonNullable<
+    NonNullable<Config['collections']['pages']['hero']['servicesSlider']>['servicesList']
+  >[number]
+}) => {
   return (
     <div className="flex items-center md:w-full min-w-full p-8 bg-white shadow-md rounded-md md:snap-start snap-center snap-always border border-black/[0.06] ">
       <div className="flex w-full h-fit">
@@ -39,7 +32,7 @@ const CardService = ({ data }: { data: ServiceType }) => {
           <p className="text-sm font-medium leading-6 text-[#999]">{service.serviceDescription}</p>
           {service.serviceLink && (
             <a
-              href={service.serviceLink.url ?? '#'}
+              href={service.serviceLink.slug ? `/${service.serviceLink.slug}` : '#'}
               className="text-primary hover:text-primary/80 font-semibold underline text-sm"
               target="_self"
             >

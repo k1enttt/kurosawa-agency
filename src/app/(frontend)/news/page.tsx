@@ -11,7 +11,7 @@ import CategoriesNavbar from '@/components/CategoriesNavbar'
 import Breadcrumb from '@/components/Breadcrumb'
 import { Media } from '@/components/Media'
 import HandshakeImage from '@/components/Images'
-import { customTranslations } from 'custom-translations'
+import { customTranslations as t } from 'custom-translations'
 import { Config } from '@/payload-types'
 
 export const dynamic = 'force-dynamic'
@@ -65,8 +65,6 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
     },
     locale,
   })
-
-  const t = customTranslations
 
   return (
     <div>
