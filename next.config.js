@@ -19,11 +19,11 @@ const nextConfig = {
         }
       }),
       {
-        hostname: 'default.kienttt.id.vn',
+        hostname: '**.kienttt.id.vn',
         protocol: 'https',
       },
       {
-        hostname: 'default.kienttt.id.vn',
+        hostname: '**.kienttt.id.vn',
         protocol: 'http',
       },
       {
