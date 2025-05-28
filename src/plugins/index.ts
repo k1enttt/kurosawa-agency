@@ -94,7 +94,9 @@ export const plugins: Plugin[] = [
   payloadCloudPlugin(),
   s3Storage({
     collections: {
-      media: true,
+      media: {
+        prefix: 'media',
+      },
     },
     bucket: process.env.S3_BUCKET || '',
     config: {
@@ -103,6 +105,7 @@ export const plugins: Plugin[] = [
         secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '',
       },
       region: process.env.S3_REGION,
+      endpoint: process.env.S3_ENDPOINT,
       forcePathStyle: true,
       // ... Other S3 configuration
     },
