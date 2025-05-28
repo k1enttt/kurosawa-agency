@@ -94,9 +94,7 @@ export const plugins: Plugin[] = [
   payloadCloudPlugin(),
   s3Storage({
     collections: {
-      media: {
-        prefix: 'media',
-      },
+      media: true,
     },
     bucket: process.env.S3_BUCKET || '',
     config: {
