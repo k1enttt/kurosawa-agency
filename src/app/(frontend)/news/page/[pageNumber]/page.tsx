@@ -94,7 +94,7 @@ export default async function Page({
           <PageRange
             collection="posts"
             currentPage={news.page}
-            limit={12}
+            limit={6}
             totalDocs={news.totalDocs}
           />
         </Suspense>
