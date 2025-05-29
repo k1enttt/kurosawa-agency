@@ -118,7 +118,7 @@ Nếu bạn muốn đóng góp, bạn có thể:
 
 ## Giấy Phép
 
-Dự án này được cấp phép theo **MIT License**. Xem chi tiết trong tệp `LICENSE`
+Dự án này được cấp phép theo **GNU Affero General Public License version 3**. Xem chi tiết trong tệp `LICENSE`
 
 ## Liên Hệ
 
