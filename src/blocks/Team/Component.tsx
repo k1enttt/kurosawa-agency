@@ -58,7 +58,7 @@ export const TeamBlock: React.FC<TeamBlockProps> = async (props) => {
                   </h3>
 
                   {/* role */}
-                  <span className="text-dark font-medium">{member.role}</span>
+                  <span className="text-foreground font-medium">{member.role}</span>
 
                   {/* description */}
                   {member.description && (
