@@ -86,6 +86,10 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
       {/* Burger Button */}
       <div className="absolute right-0 mr-10">
         <div className="w-full flex md:hidden item-center justify-end">
+          <Link href="/search" className="my-auto">
+            <span className="sr-only">Search</span>
+            <SearchIcon className="w-5 text-gray-400 mr-2" />
+          </Link>
           <BurgerButton onClick={open} />
         </div>
       </div>

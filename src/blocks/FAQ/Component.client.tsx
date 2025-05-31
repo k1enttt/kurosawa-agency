@@ -39,7 +39,7 @@ export const ClientFaqSection = ({
         <div
           id="accordion-flush"
           data-accordion="collapse"
-          data-active-classes="bg-primary text-white"
+          data-active-classes="bg-primary text-white dark:bg-primary text-white"
           data-inactive-classes="bg-white text-secondary"
           className="space-y-4"
         >

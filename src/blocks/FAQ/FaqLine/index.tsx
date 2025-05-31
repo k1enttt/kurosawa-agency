@@ -21,7 +21,6 @@ const FaqLine = ({
   return (
     <div>
       <h3 id={`accordion-flush-heading-${index + 1}`}>
-        {/* TODO: Kiểm tra màu nền của câu hỏi ở Dark mode */}
         <button
           className="flex justify-between items-center p-5 w-full font-bold text-left text-gray-900 bg-white dark:bg-gray-900 dark:text-white"
           data-accordion-target={`#accordion-flush-body-${index + 1}`}

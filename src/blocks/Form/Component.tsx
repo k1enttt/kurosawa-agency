@@ -168,7 +168,7 @@ export const FormBlock: React.FC<
                 form={formID}
                 type="submit"
                 variant="default"
-                className="bg-secondary hover:bg-secondary/80 py-6 rounded-lg"
+                className="bg-secondary hover:bg-secondary/80 dark:bg-secondary-foreground dark:hover:bg-secondary-foreground/80 py-6 rounded-lg"
               >
                 {submitButtonLabel}
               </Button>
