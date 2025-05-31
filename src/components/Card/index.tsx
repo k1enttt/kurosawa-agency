@@ -73,7 +73,9 @@ export const Card: React.FC<{
         {!metaImage && (
           <div className="flex items-center justify-center h-full rounded-lg">No image</div>
         )}
-        {metaImage && typeof metaImage !== 'string' && <Media resource={metaImage} size="33vw" />}
+        {metaImage && typeof metaImage !== 'string' && (
+          <Media loading="lazy" resource={metaImage} size="33vw" />
+        )}
         {hasPublishedDate && publishedAt && (
           <div className="absolute left-0 bottom-0 ml-6 mb-6 w-16 aspect-[6/5] bg-primary text-primary-foreground rounded-sm flex flex-col items-center justify-center">
             <div className="text-2xl font-semibold leading-5">
