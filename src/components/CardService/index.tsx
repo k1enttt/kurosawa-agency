@@ -1,4 +1,4 @@
-import type { Config, Media as MediaType } from '@/payload-types'
+import type { Config } from '@/payload-types'
 import { Media } from '../Media'
 
 const CardService = ({
