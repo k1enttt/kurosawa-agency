@@ -19,7 +19,7 @@ const CookieConsentPopup = () => {
   if (!visible) return null
 
   return (
-    <div className="fixed bottom-auto md:bottom-0 left-0 top-0 md:top-auto w-full z-50 bg-white shadow-[0_-4px_24px_0_rgba(0,0,0,0.12)] p-6 flex flex-col md:flex-row items-center gap-4">
+    <div className="fixed bottom-auto md:bottom-0 left-0 top-0 md:top-auto w-full z-50 bg-white text-dark shadow-[0_-4px_24px_0_rgba(0,0,0,0.12)] p-6 flex flex-col md:flex-row items-center gap-4">
       <span>
         We use our own cookies as well as third-party cookies on our websites to enhance your
         experience, analyze our traffic, and for security and marketing. Select{' '}
