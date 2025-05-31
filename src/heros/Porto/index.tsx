@@ -54,7 +54,14 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
         {/* image */}
         <div className="porto-hero-image">
           {media && typeof media === 'object' && (
-            <Media fill imgClassName="object-cover" priority loading="eager" resource={media} />
+            <Media
+              fill
+              imgClassName="object-cover"
+              className="relative h-[28rem] md:h-[45rem]"
+              priority
+              loading="eager"
+              resource={media}
+            />
           )}
         </div>
         {/* image text */}
