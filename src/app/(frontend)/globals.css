@@ -276,7 +276,7 @@ html[data-theme='light'] {
 }
 
 .porto-hero-container {
-  @apply relative w-full h-[450px] md:h-[725px] text-white mb-0 md:mb-24;
+  @apply relative w-full text-white mb-0 md:mb-24;
 }
 
 .porto-hero-text {
@@ -284,7 +284,7 @@ html[data-theme='light'] {
 }
 
 .porto-hero-image {
-  @apply min-h-[80vh] select-none;
+  @apply select-none;
 }
 
 .porto-hero-slider {
