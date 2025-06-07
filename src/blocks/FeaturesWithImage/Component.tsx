@@ -52,9 +52,7 @@ export const FeaturesWithImageBlock: React.FC<FeaturesWithImageProps> = (props) 
               <Media
                 alt="Big Feature Image"
                 resource={media}
-                fill
-                imgClassName="object-cover"
-                className="h-full w-full"
+                imgClassName="absolute inset-0 object-cover h-full w-full"
               />
             )}
           </div>

@@ -19,14 +19,6 @@ const nextConfig = {
         }
       }),
       {
-        hostname: '**.kienttt.id.vn',
-        protocol: 'https',
-      },
-      {
-        hostname: '**.kienttt.id.vn',
-        protocol: 'http',
-      },
-      {
         hostname: '**.unsplash.com',
         protocol: 'https',
       },

@@ -24,7 +24,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ media, heading }) => {
       </div>
       <div className="absolute inset-0 select-none bg-white/90">
         {media && typeof media === 'object' && (
-          <Media fill imgClassName="-z-10 object-cover" priority resource={media} />
+          <Media fill imgClassName="-z-10 object-cover" priority resource={media} loading="eager" />
         )}
       </div>
     </div>

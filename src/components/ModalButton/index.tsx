@@ -49,9 +49,7 @@ const ModalButton = ({
               {avatar && (
                 <div className="w-full flex justify-center">
                   <Media
-                    imgClassName="rounded-lg object-cover"
-                    fill
-                    className="relative w-40 aspect-square "
+                    imgClassName="w-40 aspect-square rounded-lg object-cover"
                     resource={data.avatar}
                   />
                 </div>

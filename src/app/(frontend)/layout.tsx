@@ -37,6 +37,7 @@ const Meiryo = localFont({
     '-apple-system',
     'sans-serif',
   ],
+  preload: false,
 })
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -46,14 +47,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html
       className={cn(poppins.className, Meiryo.variable, GeistSans.variable, GeistMono.variable)}
       lang="en"
-      suppressHydrationWarning
     >
       <head>
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/android-chrome-512x512.png" rel="icon" type="image/png" />
       </head>
-      <body className="bg-white dark:bg-gray-900" suppressHydrationWarning>
+      <body className="bg-white dark:bg-gray-900">
         <Providers>
           <AdminBar
             adminBarProps={{
@@ -64,7 +64,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {children}
           <Footer />
         </Providers>
-        <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js" async />
 
         <CookieConsentPopup />
       </body>

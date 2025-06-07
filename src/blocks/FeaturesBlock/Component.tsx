@@ -29,11 +29,10 @@ export const FeaturesBlock: React.FC<FeaturesBlockProps> = (props) => {
               )}
             </div>
             {link && link.label && (
-              <Link
-                href={link.url || '#'}
-                className="text-primary font-semibold underline underline-offset-2"
-              >
-                {link.label}
+              <Link href={link.url || '#'}>
+                <button className="text-primary font-semibold underline underline-offset-2 mt-4">
+                  {link.label}
+                </button>
               </Link>
             )}
           </div>

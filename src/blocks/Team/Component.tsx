@@ -5,7 +5,7 @@ import RichText from '@/components/RichText'
 import type { Config, TeamBlock as TeamBlockProps } from '@/payload-types'
 
 import { Media } from '@/components/Media'
-import ModalButton from '../../components/ModalButton'
+import ModalButton from '@/components/ModalButton'
 import { customTranslations as t } from 'custom-translations'
 import { cookies } from 'next/headers'
 
@@ -43,9 +43,7 @@ export const TeamBlock: React.FC<TeamBlockProps> = async (props) => {
               >
                 {/* image */}
                 <Media
-                  imgClassName="rounded-lg sm:rounded-none sm:rounded-lg object-cover"
-                  className="relative w-full aspect-square"
-                  fill
+                  imgClassName="rounded-lg sm:rounded-none sm:rounded-lg w-full aspect-square"
                   resource={member.avatar}
                   alt={`${member.name} Avatar`}
                 />

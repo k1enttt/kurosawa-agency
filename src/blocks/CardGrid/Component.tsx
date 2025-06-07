@@ -48,12 +48,7 @@ export const CardGridBlock: React.FC<
                       </div>
                     )}
                     {media && (
-                      <Media
-                        resource={media}
-                        fill
-                        imgClassName="object-contain"
-                        className="relative w-full aspect-square"
-                      />
+                      <Media resource={media} imgClassName="object-contain w-full aspect-square" />
                     )}
                   </div>
                   <div className="flex-1 space-y-2">
@@ -84,9 +79,7 @@ export const CardGridBlock: React.FC<
                   <Media
                     resource={feature.media}
                     alt={'Feature image'}
-                    fill
-                    className="absolute inset-0"
-                    imgClassName="object-cover"
+                    className="absolute object-cover inset-0"
                   />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>

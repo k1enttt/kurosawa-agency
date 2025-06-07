@@ -12,9 +12,7 @@ const CardFeature = ({
         <Media
           resource={data.media}
           alt={'Feature image'}
-          fill
-          className="absolute inset-0"
-          imgClassName="object-cover"
+          className="absolute inset-0 object-cover"
         />
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
