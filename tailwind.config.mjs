@@ -119,6 +119,7 @@ const config = {
       },
       fontFamily: {
         meiryo: ['var(--font-meiryo)'],
+        beVietnamPro: ['var(--font-be-vietnam-pro)'],
         poppins: ['var(--font-poppins)'],
       },
       keyframes: {

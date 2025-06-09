@@ -18,10 +18,18 @@ import { getServerSideURL } from '@/utilities/getURL'
 import localFont from 'next/font/local'
 import { Poppins } from 'next/font/google'
 import CookieConsentPopup from '@/components/CookieConsentPopup'
+import { Be_Vietnam_Pro } from 'next/font/google'
 
 const poppins = Poppins({
   subsets: ['latin'],
   variable: '--font-poppins',
+  weight: ['400', '500', '600', '700'],
+  fallback: ['sans-serif'],
+})
+
+const beVietnamPro = Be_Vietnam_Pro({
+  subsets: ['latin'],
+  variable: '--font-be-vietnam-pro',
   weight: ['400', '500', '600', '700'],
   fallback: ['sans-serif'],
 })
@@ -45,15 +53,16 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html
-      className={cn(poppins.className, Meiryo.variable, GeistSans.variable, GeistMono.variable)}
+      className={cn(poppins.className, beVietnamPro.className, Meiryo.variable)}
       lang="en"
+      suppressHydrationWarning
     >
       <head>
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/android-chrome-512x512.png" rel="icon" type="image/png" />
       </head>
-      <body className="bg-white dark:bg-gray-900">
+      <body className="bg-white dark:bg-gray-900" suppressHydrationWarning>
         <Providers>
           <AdminBar
             adminBarProps={{
