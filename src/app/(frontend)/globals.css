@@ -313,7 +313,7 @@ html[data-theme='light'] {
 }
 
 .hero-slider-items-container {
-  @apply hidden md:block flex-1 basis-2/3 md:px-0 w-full h-full overflow-x-auto no-scrollbar select-none snap-x;
+  @apply hidden md:block flex-1 basis-2/3 md:px-0 w-full h-[13.2rem] overflow-x-auto no-scrollbar select-none snap-x;
 }
 
 .hero-slider-items {

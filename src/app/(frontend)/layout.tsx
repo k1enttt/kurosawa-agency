@@ -17,8 +17,8 @@ import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 import localFont from 'next/font/local'
 import { Poppins } from 'next/font/google'
-import CookieConsentPopup from '@/components/CookieConsentPopup'
 import { Be_Vietnam_Pro } from 'next/font/google'
+import CookieConsentPopup from '@/components/CookieConsentPopup'
 
 const poppins = Poppins({
   subsets: ['latin'],
