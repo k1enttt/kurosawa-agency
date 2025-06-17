@@ -16,7 +16,7 @@ export const MessageBlock: React.FC<MessageProps> = ({
     <div className={`${backgroundColor == 'dark' ? 'bg-muted' : 'bg-white'} dark:bg-gray-900`}>
       <div className="py-8 sm:py-16 container">
         <h2 className="mb-8 text-4xl tracking-tight font-bold divide-line">{heading}</h2>
-        <div className="grid md:grid-cols-3 grid-cols-1-1 gap-8 items-start">
+        <div className="grid md:grid-cols-3 grid-cols-1 gap-8 items-start">
           <div className="w-full">
             <Media resource={media} imgClassName="md:w-full w-1/3 rounded-lg" />
           </div>
@@ -45,7 +45,7 @@ export const MessageBlock: React.FC<MessageProps> = ({
             </div>
             {message && (
               <RichText
-                className="mb-6 cta-heading cta-description"
+                className="mb-6 cta-heading cta-description md:text-justify text-left"
                 data={message}
                 enableGutter={false}
               />
