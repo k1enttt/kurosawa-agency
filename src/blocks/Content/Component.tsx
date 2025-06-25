@@ -35,7 +35,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                   <RichText
                     data={richText}
                     enableGutter={false}
-                    className="privacy-heading3 privacy-link"
+                    className="privacy-heading3 privacy-link md:text-justify text-left"
                   />
                 )}
 

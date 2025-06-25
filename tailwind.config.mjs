@@ -116,6 +116,11 @@ const config = {
           background: 'hsl(var(--background))',
           container: 'hsl(var(--muted))',
         },
+        socialMedia: {
+          facebook: 'hsl(var(--facebook))',
+          x: 'hsl(var(--x))',
+          linkedin: 'hsl(var(--linkedin))',
+        },
       },
       fontFamily: {
         meiryo: ['var(--font-meiryo)'],

@@ -58,6 +58,10 @@
     --success: 196 52% 74%;
     --warning: 34 89% 85%;
     --error: 10 100% 86%;
+
+    --facebook: 217 100% 52%;
+    --x: 0 0% 0%;
+    --linkedin: 210 90% 40%;
   }
 
   [data-theme='dark'] {

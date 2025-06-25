@@ -61,7 +61,7 @@ const ModalButton = ({
 
               {description && (
                 <RichText
-                  className="text-muted-foreground leading-relaxed"
+                  className="text-muted-foreground leading-relaxed text-left md:text-justify"
                   data={description}
                   enableGutter={false}
                 />

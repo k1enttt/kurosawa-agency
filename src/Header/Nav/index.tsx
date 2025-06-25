@@ -41,13 +41,6 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
           <SearchIcon className="w-5 text-gray-400 mr-2" />
         </Link>
 
-        {/* Services */}
-        <CMSLink
-          url={'/services'}
-          label={'Our Services'}
-          className="rounded-lg border-b border-b-gray-900 text-primary-foreground bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 font-medium text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none"
-        />
-
         {/* Contact Us */}
         <CMSLink
           url={'/contact'}
