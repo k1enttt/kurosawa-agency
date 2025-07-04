@@ -6,30 +6,30 @@
   </a>
 </p>
 
-Trang web của Kurosawa Vietnam Group, một công ty dịch vụ tư vấn kế toán và thuế.
+Trang web chính thức của Kurosawa Vietnam Group, cung cấp thông tin về dịch vụ tư vấn kế toán và thuế.
 
-## Mục Lục
+## Công Nghệ
 
-* [Giới Thiệu](#giới-thiệu)
-* [Công Nghệ Sử Dụng](#công-nghệ-sử-dụng)
-* [Tính Năng Nổi Bật](#tính-năng-nổi-bật)
-* [Yêu Cầu Tiên Quyết](#yêu-cầu-tiên-quyết)
-* [Cài Đặt Và Khởi Chạy](#cài-đặt-và-khởi-chạy)
-    * [Các Bước Cài Đặt](#các-bước-cài-đặt)
-    * [Khởi Chạy Dự Án](#khởi-chạy-dự-án)
-* [Sử Dụng](#sử-dụng)
-* [Cấu Trúc Thư Mục Quan Trọng](#cấu-trúc-thư-mục-quan-trọng)
-* [Đóng Góp](#đóng-góp)
-* [Giấy Phép](#giấy-phép)
-* [Liên Hệ](#liên-hệ)
+- Next.js, TailwindCSS (Frontend)
+- PayloadCMS (Admin & Backend)
+- PostgreSQL, Supabase Storage
 
-## Giới Thiệu
+## Cài Đặt Nhanh
 
-Dự án này xây dựng trang web chính thức cho Kurosawa Vietnam Group, cung cấp thông tin về các dịch vụ tư vấn kế toán và thuế của công ty. Trang web được quản lý nội dung một cách linh hoạt thông qua Admin Dashboard được xây dựng bằng PayloadCMS.
+```bash
+git clone https://github.com/k1enttt/kurosawa-agency.git
+cd kurosawa-agency
+cp .env.example .env # điền thông tin kết nối Supabase, PayloadCMS
+pnpm install
+pnpm run dev
+```
 
-## Công Nghệ Sử Dụng
+- Truy cập `http://localhost:3000` (website) hoặc `/admin` (dashboard).
 
-* **Frontend:** Next.js, TailwindCSS
+## Liên Hệ
+
+- Facebook: [Tạ Thúc Trung Kiên](https://www.facebook.com/tathuc.trungkien/)
+- Email: [kientathuc@gmail.com](mailto:kientathuc@gmail.com)
 * **Backend & CMS:** PayloadCMS
 * **Database:** PostgreSQL (thường được tích hợp với PayloadCMS hoặc Supabase)
 * **Storage:** Supabase Storage (cho lưu trữ file, media)
@@ -116,12 +116,13 @@ Nếu bạn muốn đóng góp, bạn có thể:
     * **Email:** [kientathuc@gmail.com](mailto:kientathuc@gmail.com)
     * **Facebook:** [Tạ Thúc Trung Kiên](https://www.facebook.com/tathuc.trungkien/)
 
-## Giấy Phép
+## Giấy Phép (License)
 
-Dự án này được cấp phép theo **GNU Affero General Public License version 3**. Xem chi tiết trong tệp `LICENSE`
+Dự án này được cấp phép theo **GNU Affero General Public License version 3**.  
+This project is licensed under the **GNU Affero General Public License v3**. See `LICENSE` for details.
 
 ## Liên Hệ
 
-* **Tạ Thúc Trung Kiên**
-    * Facebook: [https://www.facebook.com/tathuc.trungkien/](https://www.facebook.com/tathuc.trungkien/)
-    * Email: [kientathuc@gmail.com](mailto:kientathuc@gmail.com)
+**Tạ Thúc Trung Kiên**  
+- Facebook: [https://www.facebook.com/tathuc.trungkien/](https://www.facebook.com/tathuc.trungkien/)  
+- Email: [kientathuc@gmail.com](mailto:kientathuc@gmail.com)

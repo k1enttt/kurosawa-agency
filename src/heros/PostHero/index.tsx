@@ -26,7 +26,7 @@ export const PostHero: React.FC<{
     <div className="relative -mt-[10.4rem] flex items-end">
       <div className="container z-10 relative lg:grid lg:grid-cols-[1fr_48rem_1fr] text-white pb-8">
         <div className="col-start-1 col-span-1 md:col-start-2 md:col-span-2 text-foreground">
-          <div className="text-sm font-semibold text-primary flex gap-1 mb-6">
+          <div className="text-base font-semibold text-primary flex gap-1 mb-6">
             <Link href="/news">News</Link>
             <div className="pointer-events-none">/</div>
             <div className="pointer-events-none">

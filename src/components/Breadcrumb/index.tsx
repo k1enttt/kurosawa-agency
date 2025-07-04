@@ -1,3 +1,17 @@
+/**
+ * Breadcrumb component
+ *
+ * Hiển thị đường dẫn điều hướng (breadcrumb) cho trang web.
+ * - Luôn hiển thị "Home" với link về trang chủ.
+ * - Hiển thị tên trang hiện tại dựa trên segment đầu tiên của URL.
+ * - Tự động format tên trang (chuyển từ dạng 'about-us' thành 'About Us').
+ * - Sử dụng Next.js Link để điều hướng.
+ *
+ * Ví dụ:
+ *   URL: /about-us => Home / About Us
+ *   URL: /services/web-development => Home / Services
+ */
+
 'use client'
 
 import Link from 'next/link'
@@ -19,7 +33,7 @@ const Breadcrumb = () => {
 
   const pageName = getPageNameFromUrl()
   return (
-    <div className="text-xs font-semibold text-primary flex gap-1">
+    <div className="text-base font-semibold text-primary flex gap-1">
       <Link href="/">Home</Link>
       <div>/</div>
       {pageName && <div>{formatPageName(pageName)}</div>}
