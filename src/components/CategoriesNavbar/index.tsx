@@ -1,3 +1,18 @@
+/**
+ * CategoriesNavbar component
+ *
+ * Hiển thị thanh điều hướng các danh mục và ô tìm kiếm.
+ * - Cho phép chọn danh mục, cập nhật URL với tham số 'category' và reset về trang 1 khi thay đổi.
+ * - Hỗ trợ đa ngôn ngữ qua tham số 'locale'.
+ * - Có ô tìm kiếm, khi nhập và nhấn nút sẽ chuyển hướng đến trang tìm kiếm với query 'q'.
+ * - Các nút danh mục sẽ được highlight khi được chọn.
+ *
+ * Props:
+ *   - data: Mảng các danh mục (id, title, slug).
+ *
+ * Sử dụng Next.js router để điều hướng và cập nhật URL.
+ */
+
 'use client'
 import { cn } from '@/utilities/ui'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -47,6 +62,9 @@ const CategoriesNavbar: React.FC<Args> = ({ data }: Args) => {
     router.push(`${newPathname}?${newSearchParams.toString()}`)
   }, [categoryParam, router])
 
+  // Lọc bỏ các category có slug là "recruitment"
+  const filteredData = data.filter((category) => category.slug !== 'recruitment')
+
   return (
     <div>
       <form
@@ -66,7 +84,7 @@ const CategoriesNavbar: React.FC<Args> = ({ data }: Args) => {
             {t[locale || 'en'].allCategories}
           </button>
 
-          {data.map((category) => (
+          {filteredData.map((category) => (
             <button
               key={category.id}
               onClick={() => updateCategoryParam(category.slug || null)}
