@@ -7,6 +7,21 @@ import { Media } from '@/components/Media'
 import { formatAuthors } from '@/utilities/formatAuthors'
 import Link from 'next/link'
 
+/**
+ * PostHero component
+ *
+ * Hiển thị phần hero cho trang chi tiết bài viết.
+ * - Hiển thị breadcrumb: "News / [Tên danh mục]" dựa trên categories của bài viết.
+ * - Hiển thị tiêu đề bài viết (title), giới hạn 3 dòng.
+ * - Hiển thị tác giả (author) nếu có populatedAuthors.
+ * - Hiển thị ngày đăng (publishedAt) nếu không phải category "service".
+ * - Hiển thị ảnh hero (heroImage) làm nền phía sau.
+ * - Sử dụng các tiện ích formatAuthors, formatDateTime và Media component.
+ *
+ * Props:
+ *   - post: Đối tượng bài viết (Post) chứa thông tin cần thiết.
+ */
+
 export const PostHero: React.FC<{
   post: Post
 }> = ({ post }) => {
@@ -51,7 +66,7 @@ export const PostHero: React.FC<{
           </div>
 
           <div className="">
-            <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl">{title}</h1>
+            <h1 className="mb-6 text-3xl md:text-5xl lg:text-6xl line-clamp-4">{title}</h1>
           </div>
 
           <div className="flex flex-col md:flex-row gap-4 md:gap-16">

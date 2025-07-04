@@ -14,6 +14,35 @@ Trang web chính thức của Kurosawa Vietnam Group, cung cấp thông tin về
 - PayloadCMS (Admin & Backend)
 - PostgreSQL, Supabase Storage
 
+## Cấu trúc thư mục dự án
+
+```
+kurosawa-agency/
+├── src/
+│   ├── components/           # Các component dùng chung
+│   │   ├── Breadcrumb/
+│   │   ├── CategoriesNavbar/
+│   │   └── ...
+│   ├── heros/                # Các hero component cho từng trang
+│   │   ├── PostHero/
+│   │   └── ...
+│   ├── utilities/            # Các hàm tiện ích (utils)
+│   └── ...
+├── public/                   # Tài nguyên tĩnh (ảnh, favicon, ...)
+├── pages/ hoặc app/          # Routing của Next.js
+├── styles/                   # Các file CSS/SCSS toàn cục
+├── README.md                 # Tài liệu dự án
+└── package.json              # Thông tin và dependencies dự án
+```
+
+- **src/components/**: Chứa các React component dùng lại nhiều nơi.
+- **src/heros/**: Các thành phần hero cho từng loại trang/bài viết.
+- **src/utilities/**: Các hàm tiện ích, helper.
+- **public/**: Chứa các file tĩnh.
+- **pages/** hoặc **app/**: Định nghĩa các route của Next.js.
+- **styles/**: Chứa các file style toàn cục.
+- **README.md**: Tài liệu hướng dẫn dự án.
+
 ## Cài Đặt Nhanh
 
 ```bash
@@ -25,15 +54,6 @@ pnpm run dev
 ```
 
 - Truy cập `http://localhost:3000` (website) hoặc `/admin` (dashboard).
-
-## Liên Hệ
-
-- Facebook: [Tạ Thúc Trung Kiên](https://www.facebook.com/tathuc.trungkien/)
-- Email: [kientathuc@gmail.com](mailto:kientathuc@gmail.com)
-* **Backend & CMS:** PayloadCMS
-* **Database:** PostgreSQL (thường được tích hợp với PayloadCMS hoặc Supabase)
-* **Storage:** Supabase Storage (cho lưu trữ file, media)
-* **Package Manager:** pnpm
 
 ## Tính Năng Nổi Bật
 

@@ -15,7 +15,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ media, heading }) => {
   })
 
   return (
-    <div className="relative flex items-center justify-center text-white py-20" data-theme="light">
+    <div className="relative flex items-center justify-center text-white py-16" data-theme="light">
       <div className="container z-10 relative flex items-center justify-start">
         <div className="max-w-[36.5rem] space-y-2">
           <Breadcrumb />
