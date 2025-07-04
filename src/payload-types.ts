@@ -1002,6 +1002,7 @@ export interface TeamBlock {
         avatar?: (number | null) | Media;
         name: string;
         role: string;
+        background?: (number | null) | Media;
         description?: {
           root: {
             type: string;
@@ -1823,6 +1824,7 @@ export interface TeamBlockSelect<T extends boolean = true> {
         avatar?: T;
         name?: T;
         role?: T;
+        background?: T;
         description?: T;
         id?: T;
       };

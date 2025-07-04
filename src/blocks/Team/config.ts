@@ -25,6 +25,11 @@ const columnFields: Field[] = [
     localized: true,
   },
   {
+    name: 'background',
+    type: 'upload',
+    relationTo: 'media',
+  },
+  {
     name: 'description',
     type: 'richText',
     editor: lexicalEditor({

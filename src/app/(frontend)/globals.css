@@ -81,8 +81,8 @@
     --primary-outline: 86 35% 40%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 100%;
-    --secondary-foreground: 218 17% 18%;
+    --secondary: 218 17% 18%;
+    --secondary-foreground: 0 0% 100%;
 
     --muted: 0 0% 95%;
     --muted-foreground: 0 0% 50%;
@@ -317,7 +317,7 @@ html[data-theme='light'] {
 }
 
 .hero-slider-items-container {
-  @apply hidden md:block flex-1 basis-2/3 md:px-0 w-full h-[13.2rem] overflow-x-auto no-scrollbar select-none snap-x;
+  @apply hidden md:block flex-1 basis-2/3 md:px-0 w-full max-h-[13.2rem] overflow-x-auto no-scrollbar select-none snap-x;
 }
 
 .hero-slider-items {
