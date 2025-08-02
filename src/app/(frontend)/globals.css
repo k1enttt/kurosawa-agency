@@ -267,6 +267,29 @@ html[data-theme='light'] {
   @apply [&_h1]:max-w-2xl [&_h1]:mb-4 [&_h1]:text-4xl [&_h1]:font-extrabold [&_h1]:tracking-tight [&_h1]:leading-none [&_h1]:md:text-5xl [&_h1]:xl:text-6xl [&_h1:dark]:text-white;
 }
 
+.hero-heading h1 {
+  max-width: 42rem;
+  margin-bottom: 1rem;
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  color: inherit;
+}
+@media (min-width: 768px) {
+  .hero-heading h1 {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 1280px) {
+  .hero-heading h1 {
+    font-size: 3.75rem;
+  }
+}
+.hero-heading h1.dark {
+  color: #fff;
+}
+
 .flowbite-h2 {
   @apply [&_h2]:mb-4 [&_h2]:text-4xl [&_h2]:tracking-tight [&_h2]:font-extrabold [&_h2]:text-gray-900 [&_h2]:dark:text-white;
 }
