@@ -4,12 +4,12 @@ import { useSearchParams } from 'next/navigation'
 import React from 'react'
 import { customTranslations as t } from 'custom-translations'
 
-const defaultLabels = {
+const _defaultLabels = {
   plural: 'Docs',
   singular: 'Doc',
 }
 
-const defaultCollectionLabels = {
+const _defaultCollectionLabels = {
   posts: {
     plural: 'Posts',
     singular: 'Post',
@@ -18,7 +18,7 @@ const defaultCollectionLabels = {
 
 export const PageRange: React.FC<{
   className?: string
-  collection?: keyof typeof defaultCollectionLabels
+  collection?: keyof typeof _defaultCollectionLabels
   collectionLabels?: {
     plural?: string
     singular?: string
@@ -29,8 +29,8 @@ export const PageRange: React.FC<{
 }> = (props) => {
   const {
     className,
-    collection,
-    collectionLabels: collectionLabelsFromProps,
+    collection: _collection,
+    collectionLabels: _collectionLabelsFromProps,
     currentPage,
     limit,
     totalDocs,
@@ -42,11 +42,11 @@ export const PageRange: React.FC<{
   let indexEnd = (currentPage || 1) * (limit || 1)
   if (totalDocs && indexEnd > totalDocs) indexEnd = totalDocs
 
-  const { plural: _plural, singular: _singular } =
-    collectionLabelsFromProps ||
-    (collection ? defaultCollectionLabels[collection] : undefined) ||
-    defaultLabels ||
-    {}
+  // const { plural: _plural, singular: _singular } =
+  //   collectionLabelsFromProps ||
+  //   (collection ? defaultCollectionLabels[collection] : undefined) ||
+  //   defaultLabels ||
+  //   {}
 
   const locale = useSearchParams().get('locale') as Config['locale'] | undefined
 

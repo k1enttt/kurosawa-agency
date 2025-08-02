@@ -9,8 +9,8 @@ type Overrides = {
 
 type Slug = (fieldToUse?: string, overrides?: Overrides) => [TextField, CheckboxField]
 
-export const slugField: Slug = (fieldToUse = 'title', overrides = {}) => {
-  const { slugOverrides, checkboxOverrides } = overrides
+export const slugField: Slug = (_fieldToUse = 'title', _overrides = {}) => {
+  const { slugOverrides, checkboxOverrides } = _overrides
 
   const checkBoxField: CheckboxField = {
     name: 'slugLock',
@@ -32,7 +32,7 @@ export const slugField: Slug = (fieldToUse = 'title', overrides = {}) => {
     ...(slugOverrides || {}),
     hooks: {
       // Kept this in for hook or API based updates
-      beforeValidate: [formatSlugHook(fieldToUse)],
+      beforeValidate: [formatSlugHook(_fieldToUse)],
     },
     admin: {
       position: 'sidebar',
@@ -41,7 +41,7 @@ export const slugField: Slug = (fieldToUse = 'title', overrides = {}) => {
         Field: {
           path: '@/fields/slug/SlugComponent#SlugComponent',
           clientProps: {
-            fieldToUse,
+            _fieldToUse,
             checkboxFieldPath: checkBoxField.name,
           },
         },
