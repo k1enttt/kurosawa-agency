@@ -109,7 +109,10 @@
   }
   body {
     background-color: hsl(var(--background));
-    @apply text-foreground min-h-[100vh] flex flex-col;
+    color: hsl(var(--foreground));
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 }
 
