@@ -176,7 +176,25 @@ html[data-theme='light'] {
 }
 
 .header-row-1 {
-  @apply h-[42px] hidden md:flex items-center px-6 font-semibold text-xs text-gray-500 *:flex *:items-center;
+  height: 42px;
+  display: none;
+  align-items: center;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: #6b7280; /* text-gray-500 */
+}
+
+.header-row-1 > * {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .header-row-1 {
+    display: flex;
+  }
 }
 
 .header-row-1 .phone,
