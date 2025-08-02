@@ -73,7 +73,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
         <div className="prose dark:prose-invert max-w-none text-center flowbite-h2">
           <h2 className="mb-8 lg:mb-16">{t[(locale as 'en' | 'ja' | 'vi') || 'en'].search}</h2>
 
-          <div className="max-w-[50rem] mx-auto">
+          <div className="max-w-200 mx-auto">
             <Suspense fallback={<div>Loading...</div>}>
               <Search />
             </Suspense>

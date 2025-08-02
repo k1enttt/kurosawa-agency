@@ -68,10 +68,10 @@ export default async function Post({ params: paramsPromise, searchParams }: Args
 
       <div className="flex flex-col items-center gap-4 pt-8 mb-8 md:mb-16">
         <div className="container">
-          <RichText className="max-w-[48rem] mx-auto" data={post.content} enableGutter={false} />
+          <RichText className="max-w-3xl mx-auto" data={post.content} enableGutter={false} />
           {post.relatedPosts && post.relatedPosts.length > 0 && (
             <RelatedPosts
-              className="mt-12 max-w-[52rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
+              className="mt-12 max-w-208 lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
               docs={post.relatedPosts.filter((post) => typeof post === 'object')}
             />
           )}
@@ -81,7 +81,7 @@ export default async function Post({ params: paramsPromise, searchParams }: Args
       <div className="bg-primary">
         <div className="container">
           <div className="rounded py-10 flex flex-col md:gap-8 gap-4 md:flex-row md:justify-between md:items-center">
-            <div className="max-w-[48rem] flex items-center">
+            <div className="max-w-3xl flex items-center">
               <p className="mb-0 text-lg text-primary-foreground md:text-left text-center">
                 <b>Get a Quote Online</b> - Need Fast Assistance? Call Us at{' '}
                 <b className="underline">+84-90-1392-232</b>

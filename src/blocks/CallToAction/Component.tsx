@@ -10,7 +10,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
     <div className="bg-primary">
       <div className="container">
         <div className="rounded py-10 flex flex-col md:gap-8 gap-4 md:flex-row md:justify-between md:items-center">
-          <div className="max-w-[48rem] flex items-center">
+          <div className="max-w-3xl flex items-center">
             {richText && (
               <RichText
                 className="mb-0 text-lg text-primary-foreground md:text-left text-center"

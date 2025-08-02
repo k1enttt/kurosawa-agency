@@ -1,0 +1,114 @@
+/* HEADER BEGIN */
+.header {
+  display: flex;
+  width: 100%;
+  height: 8rem;
+  align-items: center;
+  border-bottom: 1px solid hsl(var(--border));
+  background-color: hsl(var(--background));
+}
+
+.header-logo-container {
+  width: 8rem;
+  height: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(var(--background));
+  border-right: 1px solid hsl(var(--border));
+}
+
+.logo {
+  @apply max-w-[70%] max-h-[70%] object-contain;
+}
+
+.header-content {
+  @apply relative flex flex-1 h-full flex-col;
+}
+
+.header-row-1 {
+  height: 42px;
+  display: none;
+  align-items: center;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.header-row-1 > * {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .header-row-1 {
+    display: flex;
+  }
+}
+
+.header-row-1 .phone,
+.header-row-1 .language {
+  width: auto;
+  padding-right: 1rem;
+}
+
+.header-row-1 .social-media {
+  width: auto;
+  padding-left: 1rem;
+}
+
+.header-row-1 .email {
+  width: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.header-row-1 .email,
+.header-row-1 .workTime,
+.header-row-1 .social-media {
+  border-left: 1px solid hsl(var(--border));
+}
+
+.header-row-1 .workTime {
+  flex: 1;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.header-row-1 .language {
+  display: flex;
+  align-items: center;
+}
+
+.header-row-1 .email,
+.header-row-1 .workTime {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .header-row-1 .email,
+  .header-row-1 .workTime {
+    display: block;
+  }
+}
+
+.header-row-1 .social-media {
+  display: flex;
+  justify-content: space-around;
+  gap: 0.5rem;
+}
+.header-row-1 .social-media > * {
+  display: flex;
+  align-items: center;
+}
+.header-row-2 {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border-top: 1px solid hsl(var(--border));
+}
+/* HEADER END */

@@ -1,0 +1,49 @@
+/* Blog section styles */
+.blog-image div#media {
+  margin-bottom: 1.25rem;
+}
+.blog-image img {
+  border-radius: 0.5rem;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.blog-image > div:nth-child(1) {
+  height: 12rem;
+}
+.blog-title h3 {
+  margin: 0.5rem 0;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: -0.025em;
+  color: hsl(var(--foreground));
+}
+.blog-title h3.dark {
+  color: hsl(var(--background));
+}
+.blog-subtitle p {
+  font-weight: 300;
+  color: hsl(var(--muted-foreground));
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.blog-subtitle p.dark {
+  color: hsl(var(--muted-foreground));
+}
+.blog-no-padding div:nth-child(2) {
+  padding: 0;
+}
+.blog-category div.category {
+  width: fit-content;
+  background-color: hsl(var(--primary)) / 0.2;
+  color: hsl(var(--primary));
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+  padding: 0.125rem 0.625rem;
+  border-radius: 0.25rem;
+}

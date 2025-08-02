@@ -1,0 +1,14 @@
+/* Table and category styles */
+.table-column-width {
+  width: 30vw;
+}
+@media (min-width: 768px) {
+  .table-column-width {
+    width: 50vw;
+  }
+}
+@media (min-width: 1280px) {
+  .table-column-width {
+    width: 30vw;
+  }
+}

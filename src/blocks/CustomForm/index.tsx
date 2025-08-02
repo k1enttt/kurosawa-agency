@@ -150,7 +150,7 @@ const CustomForm = ({ form: formFromProps }: { form: FormType }) => {
               form={formID}
               type="submit"
               variant="default"
-              className="px-4 h-full bg-primary !rounded-none"
+              className="px-4 h-full bg-primary rounded-none!"
             >
               {submitButtonLabel}
             </Button>

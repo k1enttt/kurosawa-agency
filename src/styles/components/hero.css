@@ -1,0 +1,51 @@
+/* Hero section styles */
+.hero-heading h1 {
+  max-width: 42rem;
+  margin-bottom: 1rem;
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  color: hsl(var(--foreground));
+}
+@media (min-width: 768px) {
+  .hero-heading h1 {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 1280px) {
+  .hero-heading h1 {
+    font-size: 3.75rem;
+  }
+}
+.hero-heading h1.dark {
+  color: hsl(var(--background));
+}
+.hero-description {
+  @apply [&_p]:text-muted-foreground [&_p:dark]:text-muted-foreground;
+}
+.hero-description p {
+  max-width: 42rem;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+  color: hsl(var(--muted-foreground));
+}
+@media (min-width: 1024px) {
+  .hero-description p {
+    margin-bottom: 2rem;
+    font-size: 1.125rem;
+  }
+}
+@media (min-width: 768px) {
+  .hero-description p {
+    font-size: 1.125rem;
+  }
+}
+@media (min-width: 1280px) {
+  .hero-description p {
+    font-size: 1.25rem;
+  }
+}
+.hero-description p.dark {
+  color: hsl(var(--muted-foreground));
+}

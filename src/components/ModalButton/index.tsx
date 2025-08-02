@@ -58,12 +58,12 @@ const ModalButton = ({
       >
         <div className="relative p-4 w-full max-w-3xl max-h-full">
           {/* Modal content */}
-          <div className="relative rounded-tl-lg rounded-tr-2xl rounded-br-lg rounded-bl-lg overflow-hidden shadow-sm bg-gradient-to-br from-gray-50 via-white to-gray-100">
+          <div className="relative rounded-tl-lg rounded-tr-2xl rounded-br-lg rounded-bl-lg overflow-hidden shadow-sm bg-linear-to-br from-gray-50 via-white to-gray-100">
             {/* Nút đóng */}
             <button
               data-modal-hide={`default-modal-${data.id}`}
               type="button"
-              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-primary hover:bg-primary/80 rounded-md z-[52]"
+              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-primary hover:bg-primary/80 rounded-md z-52"
               aria-label="Đóng"
             >
               <svg
@@ -90,7 +90,7 @@ const ModalButton = ({
                 {/* Hình nền */}
                 {background && (
                   <Media
-                    className="hidden md:block absolute inset-x-0 z-[51] object-center opacity-10"
+                    className="hidden md:block absolute inset-x-0 z-51 object-center opacity-10"
                     resource={background}
                   />
                 )}
@@ -99,17 +99,17 @@ const ModalButton = ({
                 {avatar && (
                   <div className="block md:hidden">
                     <Media
-                      imgClassName="absolute inset-0 z-[51] object-cover"
+                      imgClassName="absolute inset-0 z-51 object-cover"
                       fill
                       resource={avatar}
                     />
-                    <div className="absolute inset-0 z-[51] bg-gradient-to-t from-white/90 to-transparent"></div>
+                    <div className="absolute inset-0 z-51 bg-linear-to-t from-white/90 to-transparent"></div>
                   </div>
                 )}
 
                 {/* Ảnh đại diện - Desktop */}
                 {avatar && (
-                  <div className="hidden md:block flex-shrink-0 z-[52]">
+                  <div className="hidden md:block shrink-0 z-52">
                     <Media
                       imgClassName="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-2 border-gray-200"
                       resource={avatar}
@@ -118,7 +118,7 @@ const ModalButton = ({
                 )}
 
                 {/* Tên thành viên */}
-                <div className="flex-1 pt-1 z-[52]">
+                <div className="flex-1 pt-1 z-52">
                   {authorName && (
                     <h2 className="text-xl md:text-2xl font-bold text-secondary">{authorName}</h2>
                   )}

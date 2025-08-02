@@ -29,7 +29,7 @@ export const AddressBlock: React.FC<AddressBlockProps> = ({
                     allowFullScreen={true}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    className="w-full md:aspect-[3/2] aspect-square"
+                    className="w-full md:aspect-3/2 aspect-square"
                   ></iframe>
                 )}
                 {/* Địa chỉ liên lạc */}
