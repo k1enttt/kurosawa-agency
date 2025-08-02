@@ -1,0 +1,21 @@
+/* CTA section styles */
+.cta-heading h2 {
+  margin-bottom: 1rem;
+  font-size: 2.25rem;
+  letter-spacing: -0.025em;
+  font-weight: 800;
+}
+.cta-description p {
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+  color: hsl(var(--muted-foreground));
+  font-size: 1rem;
+}
+@media (min-width: 768px) {
+  .cta-description p {
+    font-size: 1.125rem;
+  }
+}
+.cta-description p.dark {
+  color: hsl(var(--muted-foreground));
+}
