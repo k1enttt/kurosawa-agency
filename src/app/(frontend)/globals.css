@@ -317,7 +317,7 @@ html[data-theme='light'] {
 }
 
 .gallery-content-heading {
-  @apply [&_h2]:mb-4 [&_h2]:text-4xl [&_h2]:tracking-tight [&_h2]:font-extrabold [&_h2]:text-gray-900 [&_h2:dark]:text-white;
+  @apply [&_h2]:text-4xl [&_h2]:tracking-tight [&_h2]:font-extrabold [&_h2]:text-gray-900 [&_h2:dark]:text-white;
 }
 
 .gallery-content-subheading {
