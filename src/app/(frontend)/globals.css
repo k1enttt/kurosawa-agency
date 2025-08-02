@@ -199,42 +199,66 @@ html[data-theme='light'] {
 
 .header-row-1 .phone,
 .header-row-1 .language {
-  @apply w-auto pr-4;
+  width: auto;
+  padding-right: 1rem;
 }
 
 .header-row-1 .social-media {
-  @apply w-auto pl-4;
+  width: auto;
+  padding-left: 1rem;
 }
 
 .header-row-1 .email {
-  @apply w-auto px-4;
+  width: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .header-row-1 .email,
 .header-row-1 .workTime,
 .header-row-1 .social-media {
-  @apply border-l border-gray-200;
+  border-left: 1px solid #e5e7eb; /* border-gray-200 */
 }
 
 .header-row-1 .workTime {
-  @apply flex-1 px-4;
+  flex: 1;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .header-row-1 .language {
-  @apply flex items-center;
+  display: flex;
+  align-items: center;
 }
 
 .header-row-1 .email,
 .header-row-1 .workTime {
-  @apply hidden lg:block;
+  display: none;
+}
+@media (min-width: 1024px) {
+  .header-row-1 .email,
+  .header-row-1 .workTime {
+    display: block;
+  }
 }
 
 .header-row-1 .social-media {
-  @apply flex justify-around gap-2 *:flex *:items-center;
+  display: flex;
+  justify-content: space-around;
+  gap: 0.5rem;
 }
-
+.header-row-1 .social-media > * {
+  display: flex;
+  align-items: center;
+}
 .header-row-2 {
-  @apply flex-1 flex items-center justify-between px-6 border-t border-gray-200;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border-top: 1px solid #e5e7eb; /* border-gray-200 */
 }
 
 /* HEADER END */
