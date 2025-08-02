@@ -286,21 +286,6 @@ html[data-theme='light'] {
   color: #fff;
 }
 
-.flowbite-h2 {
-  @apply [&_h2]:mb-4 [&_h2]:text-4xl [&_h2]:tracking-tight [&_h2]:font-extrabold [&_h2]:text-gray-900 [&_h2]:dark:text-white;
-}
-
-.flowbite-h2 h2 {
-  margin-bottom: 1rem;
-  font-size: 2.25rem;
-  letter-spacing: -0.025em;
-  font-weight: 800;
-  color: #111827;
-}
-.flowbite-h2 h2.dark {
-  color: #fff;
-}
-
 .hero-description {
   @apply [&_p]:max-w-2xl [&_p]:mb-6 [&_p]:font-light [&_p]:text-gray-500 [&_p]:lg:mb-8 [&_p]:md:text-lg [&_p]:lg:text-xl [&_p:dark]:text-gray-400;
 }
