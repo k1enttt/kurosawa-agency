@@ -15,7 +15,7 @@ const CardFeature = ({
           className="absolute inset-0 object-cover"
         />
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+      <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent"></div>
       <div className="w-full text-background dark:text-foreground text-lg text-center z-20 mb-7">
         {data.title}
       </div>

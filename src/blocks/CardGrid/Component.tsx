@@ -82,7 +82,7 @@ export const CardGridBlock: React.FC<
                     className="absolute object-cover inset-0"
                   />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent"></div>
                 <div className="w-full text-background dark:text-foreground text-lg text-center z-20 mb-7">
                   {feature.title}
                 </div>

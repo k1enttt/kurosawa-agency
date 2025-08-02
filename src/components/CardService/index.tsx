@@ -9,7 +9,7 @@ const CardService = ({
   >[number]
 }) => {
   return (
-    <div className="flex items-start md:w-full min-w-full h-full p-8 bg-white shadow-md rounded-md md:snap-start snap-center snap-always border border-black/[0.06] ">
+    <div className="flex items-start md:w-full min-w-full h-full p-8 bg-white shadow-md rounded-md md:snap-start snap-center snap-always border border-black/6 ">
       <div className="flex w-full">
         {/* Left column with icon */}
         <div className="w-[60px] pt-2 pr-4 flex items-start justify-center">

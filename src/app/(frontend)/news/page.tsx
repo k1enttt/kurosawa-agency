@@ -75,7 +75,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
         data-theme="light"
       >
         <div className="container z-10 relative flex items-center justify-start">
-          <div className="max-w-[36.5rem] space-y-2">
+          <div className="max-w-146 space-y-2">
             <Breadcrumb />
             <h1 className="text-4xl font-semibold text-dark">
               {t[(locale as 'en' | 'ja' | 'vi') || 'en'].news}

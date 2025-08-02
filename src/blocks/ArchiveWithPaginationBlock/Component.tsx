@@ -67,9 +67,9 @@ export const ArchiveWithPaginationBlock: React.FC<
       <div className="py-8 lg:py-16 container">
         {/* TODO: Đổi introContent thành Heading-text */}
         {introContent && (
-          <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
+          <div className="mx-auto max-w-(--breakpoint-sm) text-center mb-8 lg:mb-16">
             <RichText
-              className="ms-0 max-w-[48rem] archieve-heading archieve-subheading"
+              className="ms-0 max-w-3xl archieve-heading archieve-subheading"
               data={introContent}
               enableGutter={false}
             />
