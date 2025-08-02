@@ -287,7 +287,7 @@ html[data-theme='light'] {
 }
 
 .hero-description {
-  @apply [&_p]:mb-6 [&_p]:font-light [&_p]:text-gray-500 [&_p:dark]:text-gray-400;
+  @apply [&_p]:font-light [&_p]:text-gray-500 [&_p:dark]:text-gray-400;
 }
 
 .hero-description p {
