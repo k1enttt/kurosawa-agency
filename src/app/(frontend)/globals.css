@@ -108,7 +108,8 @@
     @apply border-gray-200;
   }
   body {
-    @apply bg-background text-foreground min-h-[100vh] flex flex-col;
+    background-color: hsl(var(--background));
+    @apply text-foreground min-h-[100vh] flex flex-col;
   }
 }
 
