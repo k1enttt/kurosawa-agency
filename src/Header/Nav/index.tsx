@@ -21,7 +21,7 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   const pathname = usePathname()
   useEffect(() => {
     if (isNavOpen) close()
-  }, [pathname])
+  }, [pathname, isNavOpen])
 
   const getPageNameFromPath = (path: string): string => {
     const segments = path.split('/').filter(Boolean)

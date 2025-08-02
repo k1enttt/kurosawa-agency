@@ -60,7 +60,7 @@ const CategoriesNavbar: React.FC<Args> = ({ data }: Args) => {
     }
 
     router.push(`${newPathname}?${newSearchParams.toString()}`)
-  }, [categoryParam, router])
+  }, [categoryParam, router, locale])
 
   // Lọc bỏ các category có slug là "recruitment"
   const filteredData = data.filter((category) => category.slug !== 'recruitment')

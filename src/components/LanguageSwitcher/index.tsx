@@ -30,7 +30,7 @@ const LanguageSwitcher = () => {
       // Save to the cookie
       document.cookie = `locale=${langRef.current}; path=/; max-age=31536000`
     }
-  }, [langRef.current])
+  }, [pathname, router, searchParams])
 
   const open = () => {
     setIsOpen(true)
