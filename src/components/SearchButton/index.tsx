@@ -1,11 +1,16 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
+
 const SearchButton = () => {
+  const router = useRouter()
   return (
     <button
       className="p-2 cursor-pointer"
+      title="Tìm kiếm"
+      aria-label="Tìm kiếm"
       onClick={() => {
-        console.log('Clicked Search button')
+        router.push('/search')
       }}
     >
       <svg
