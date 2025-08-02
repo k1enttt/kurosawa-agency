@@ -1,11 +1,8 @@
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SERVER_URL ||
-  process.env.VERCEL_PROJECT_PRODUCTION_URL ||
-  'https://example.com'
+const siteUrl = process.env.NEXT_PUBLIC_SERVER_URL
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: SITE_URL,
+  siteUrl: siteUrl,
   generateRobotsTxt: true,
   exclude: ['/posts-sitemap.xml', '/pages-sitemap.xml', '/*', '/posts/*'],
   robotsTxtOptions: {
@@ -15,6 +12,6 @@ module.exports = {
         disallow: '/admin/*',
       },
     ],
-    additionalSitemaps: [`${SITE_URL}/pages-sitemap.xml`, `${SITE_URL}/posts-sitemap.xml`],
+    additionalSitemaps: [`${siteUrl}/pages-sitemap.xml`, `${siteUrl}/posts-sitemap.xml`],
   },
 }
