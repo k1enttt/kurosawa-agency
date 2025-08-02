@@ -263,10 +263,6 @@ html[data-theme='light'] {
 
 /* HEADER END */
 
-.hero-heading {
-  @apply [&_h1]:max-w-2xl [&_h1]:mb-4 [&_h1]:text-4xl [&_h1]:font-extrabold [&_h1]:tracking-tight [&_h1]:leading-none [&_h1]:md:text-5xl [&_h1]:xl:text-6xl [&_h1:dark]:text-white;
-}
-
 .hero-heading h1 {
   max-width: 42rem;
   margin-bottom: 1rem;
