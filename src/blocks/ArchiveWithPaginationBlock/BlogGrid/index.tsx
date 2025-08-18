@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/pagination'
 import { Card, CardPostData } from '@/components/Card'
 import { cn } from '@/utilities/ui'
-import { Suspense, useEffect, useState } from 'react'
+import { Suspense, useEffect, useState, useCallback } from 'react'
 import { PageRange } from '@/components/PageRange'
 import { Category, Config } from '@/payload-types'
 import { customTranslations as t } from 'custom-translations'
@@ -34,23 +34,26 @@ const BlogGrid = ({ posts, categories }: { posts: CardPostData[]; categories: Ca
     })
   }
 
-  const filterPostsByCategory = (posts: CardPostData[], categoryId: number | null) => {
-    let filtedPosts = posts
-    let totalPages = Math.ceil(posts.length / limit)
+  const filterPostsByCategory = useCallback(
+    (posts: CardPostData[], categoryId: number | null) => {
+      let filtedPosts = posts
+      let totalPages = Math.ceil(posts.length / limit)
 
-    if (categoryId) {
-      filtedPosts = posts.filter((post) => {
-        const postCategoryIds = getPostId(post)
-        return postCategoryIds?.includes(categoryId)
-      })
-      totalPages = Math.ceil(filtedPosts.length / limit)
-    }
+      if (categoryId) {
+        filtedPosts = posts.filter((post) => {
+          const postCategoryIds = getPostId(post)
+          return postCategoryIds?.includes(categoryId)
+        })
+        totalPages = Math.ceil(filtedPosts.length / limit)
+      }
 
-    return {
-      posts: filtedPosts,
-      totalPages,
-    }
-  }
+      return {
+        posts: filtedPosts,
+        totalPages,
+      }
+    },
+    [limit],
+  )
 
   const paginatePosts = (posts: CardPostData[], postsPerPage: number, currentPage: number) => {
     const startIndex = (currentPage - 1) * postsPerPage
@@ -66,7 +69,7 @@ const BlogGrid = ({ posts, categories }: { posts: CardPostData[]; categories: Ca
     // Khi page thay đổi -> chuyển đến trang được yêu cầu
     const filteredPosts = filterPostsByCategory(postsState, currentCategory)
     setCurrentPosts(paginatePosts(filteredPosts.posts, limit, page))
-  }, [page, postsState])
+  }, [page, postsState, currentCategory, filterPostsByCategory])
 
   useEffect(() => {
     // Khi category thanh đổi -> chuyển về trang 1
@@ -75,7 +78,7 @@ const BlogGrid = ({ posts, categories }: { posts: CardPostData[]; categories: Ca
     setPage(1)
     setTotalPages(filteredPosts.totalPages)
     setTotalPosts(filteredPosts.posts.length)
-  }, [currentCategory, postsState])
+  }, [currentCategory, postsState, filterPostsByCategory])
 
   const hasNextPage = page < totalPages
   const hasPrevPage = page > 1

@@ -1,3 +1,6 @@
 - [ ] Thêm nút CTA nổi trên màn hình, nút đặt ở góc dưới phải, nút tròn, có nền primary và icon điện thoại màu trắng ở giữa nút. Ở màn hình mobile, nút CTA nổi xuất hiện và header không dính, còn màn hình desktop thì không xuất hiện nút CTA nổi và header sẽ dính phía trên cùng màn hình.
-- [ ] Header bỏ số điện thoại, email, thời gian làm việc và các social media icon, đặt nút chuyển đổi ngôn ngữ cùng hàng và cạnh bên trái nút icon tìm kiếm để làm gọn header
-- [ ] Thêm hiệu ứng chuyển động tăng dần số khi chúng vào tầm nhìn của màn hình cho các số % đối tác ở trang home
+- [X] Header bỏ số điện thoại, email, thời gian làm việc và các social media icon, đặt nút chuyển đổi ngôn ngữ cùng hàng và cạnh bên trái nút icon tìm kiếm để làm gọn header
+- [x] Thêm hiệu ứng chuyển động tăng dần số khi chúng vào tầm nhìn của màn hình cho các số % đối tác ở trang home
+
+- [ ] Bỏ đường line bên phải của logo
+- [ ] Tạo đường line bên phải mới nằm cách đều logo và navbar, sử dụng padding

@@ -13,6 +13,7 @@ import { draftMode } from 'next/headers'
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 import CookieConsentPopup from '@/components/CookieConsentPopup'
+import FloatingButton from '@/components/FloatingButton' // New import
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
@@ -37,6 +38,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         </Providers>
 
         <CookieConsentPopup />
+        <FloatingButton /> {/* New component call */}
       </body>
     </html>
   )
