@@ -43,8 +43,19 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [headerTheme])
 
+  const getPageNameFromPath = (path: string): string => {
+    const segments = path.split('/').filter(Boolean)
+    return segments.length > 0 ? segments[0] || '' : ''
+  }
+
+  const path = usePathname()
+  const pageName = getPageNameFromPath(path)
+
   return (
-    <header className="relative top-0 z-20 w-full lg:sticky" {...(theme ? { 'data-theme': theme } : {})}>
+    <header
+      className="relative top-0 z-20 w-full lg:sticky"
+      {...(theme ? { 'data-theme': theme } : {})}
+    >
       <div className="header flex items-center justify-between w-full">
         {/* Logo */}
         <Link href={'/'} className="header-logo-container">
@@ -63,7 +74,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                 linkLabel = link.reference.value.slug
               }
             }
-            const pageName = '' // Nếu cần, truyền từ props hoặc lấy từ usePathname
             const isSelected = pageName === linkLabel || (pageName === '' && linkLabel === 'home')
             return (
               <div
@@ -116,7 +126,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                     linkLabel = link.reference.value.slug
                   }
                 }
-                const pageName = '' // Nếu cần, truyền từ props hoặc lấy từ usePathname
                 const isSelected =
                   pageName === linkLabel || (pageName === '' && linkLabel === 'home')
                 return (
