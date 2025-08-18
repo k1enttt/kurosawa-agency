@@ -1,12 +1,13 @@
 'use client'
 
+import 'flag-icons/css/flag-icons.min.css'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useRef } from 'react'
 
 const flagIcons: Record<string, string> = {
-  en: '🇬🇧', // English
-  vi: '🇻🇳', // Vietnamese
-  ja: '🇯🇵', // Japanese
+  en: 'gb', // English
+  vi: 'vn', // Vietnamese
+  ja: 'jp', // Japanese
 }
 
 const languageOrder: Record<string, string[]> = {
@@ -42,7 +43,9 @@ const LanguageSwitcher = () => {
           aria-label={locale}
           onClick={() => handleSwitch(locale)}
         >
-          {flagIcons[locale]}
+          <span
+            className={`fi fi-${flagIcons[locale]} inline-block w-8 h-6 rounded shadow-md`}
+          ></span>
         </button>
       ))}
     </div>

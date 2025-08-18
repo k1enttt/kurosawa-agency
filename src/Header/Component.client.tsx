@@ -27,7 +27,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
 
   const [isNavOpen, setIsNavOpen] = useState(false)
 
-  const open = () => setIsNavOpen(true)
   const close = () => setIsNavOpen(false)
 
   useEffect(() => {
@@ -140,14 +139,18 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
 
         {/* Action buttons */}
         <div className="header-actions">
-          <LanguageSwitcher />
-          <SearchButton />
-          <div className="lg:hidden">
+          <div>
+            <LanguageSwitcher />
+          </div>
+          <div className="pl-2">
+            <SearchButton />
+          </div>
+          <div className="pl-2 lg:hidden">
             <BurgerButton onClick={() => setIsNavOpen((open) => !open)} />
           </div>
           <Link
             href="/contact"
-            className="px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition"
+            className="px-2 ml-2 py-2 bg-primary text-white rounded hover:bg-primary-dark transition whitespace-nowrap"
           >
             Liên hệ
           </Link>
