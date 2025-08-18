@@ -14,15 +14,21 @@ function CountUpPercent({
 }) {
   const ref = React.useRef<HTMLSpanElement>(null)
   const [isVisible, setIsVisible] = useState(false)
+  const [hasAnimated, setHasAnimated] = useState(false)
   const match = typeof value === 'string' ? value.match(/^([0-9]+)%$/) : null
   const percent = match ? Number(match[1]) : typeof value === 'number' ? value : undefined
-  const [display, setDisplay] = useState(percent ?? 0)
+  const [display, setDisplay] = useState(0)
 
   useEffect(() => {
     const observer = new window.IntersectionObserver(
       (entries) => {
-        const entry = entries[0]
-        setIsVisible(entry?.isIntersecting ?? false)
+        // Handle case where entries might be empty or entry undefined
+        if (entries.length > 0) {
+          const entry = entries[0]
+          if (entry) {
+            setIsVisible(entry.isIntersecting)
+          }
+        }
       },
       { threshold: 0.2 },
     )
@@ -31,7 +37,9 @@ function CountUpPercent({
   }, [])
 
   useEffect(() => {
-    if (!isVisible || percent === undefined) return
+    if (!isVisible || percent === undefined || hasAnimated) return
+    
+    setHasAnimated(true)
     let start = 0
     const increment = percent / (duration * 60)
     const interval = setInterval(() => {
@@ -44,7 +52,7 @@ function CountUpPercent({
       }
     }, 1000 / 60)
     return () => clearInterval(interval)
-  }, [isVisible, percent, duration])
+  }, [isVisible, percent, duration, hasAnimated])
 
   if (percent !== undefined) {
     return <span ref={ref}>{display}%</span>
