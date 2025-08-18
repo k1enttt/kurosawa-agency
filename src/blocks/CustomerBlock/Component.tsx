@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/utilities/ui'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 
 import type { CustomerBlock as CustomerBlockProps } from '@/payload-types'
 
@@ -12,12 +12,14 @@ function CountUpPercent({
   value: string | number | null | undefined
   duration?: number
 }) {
+  console.log('CountUpPercent received value:', value); // Added console.log
   const ref = React.useRef<HTMLSpanElement>(null)
   const [isVisible, setIsVisible] = useState(false)
   const [hasAnimated, setHasAnimated] = useState(false)
   const match = typeof value === 'string' ? value.match(/^([0-9]+)%$/) : null
   const percent = match ? Number(match[1]) : typeof value === 'number' ? value : undefined
   const [display, setDisplay] = useState(0)
+  const intervalRef = useRef<NodeJS.Timeout | null>(null); // New ref
 
   useEffect(() => {
     const observer = new window.IntersectionObserver(
@@ -37,22 +39,35 @@ function CountUpPercent({
   }, [])
 
   useEffect(() => {
-    if (!isVisible || percent === undefined || hasAnimated) return
+    console.log('CountUpPercent - isVisible:', isVisible, 'percent:', percent, 'hasAnimated:', hasAnimated); // Added console.log
+    if (!isVisible || percent === undefined) return
+
+    if (hasAnimated) return; // Prevent re-animation if already animated
     
     setHasAnimated(true)
     let start = 0
     const increment = percent / (duration * 60)
-    const interval = setInterval(() => {
+    intervalRef.current = setInterval(() => { // Assign to ref
       start += increment
       if (start >= percent) {
         setDisplay(percent)
-        clearInterval(interval)
+        clearInterval(intervalRef.current as NodeJS.Timeout) // Clear using ref
       } else {
         setDisplay(Math.floor(start))
       }
     }, 1000 / 60)
-    return () => clearInterval(interval)
-  }, [isVisible, percent, duration, hasAnimated])
+    return () => clearInterval(intervalRef.current as NodeJS.Timeout) // Clear using ref
+  }, [isVisible, percent, duration])
+
+  // New useEffect to handle interruption
+  useEffect(() => {
+    if (!isVisible && percent !== undefined && intervalRef.current) {
+      
+      setDisplay(percent);
+      clearInterval(intervalRef.current);
+      intervalRef.current = null; // Reset ref
+    }
+  }, [isVisible, percent])
 
   if (percent !== undefined) {
     return <span ref={ref}>{display}%</span>
