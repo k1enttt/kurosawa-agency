@@ -81,7 +81,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           })}
         </nav>
         {/* Mobile Navigation buttons */}
-        <div className={clsx(isNavOpen ? 'fixed' : 'hidden', 'inset-0 bg-black/80 md:hidden')}>
+        <div className={clsx(isNavOpen ? 'fixed' : 'hidden', 'inset-0 bg-black/80 lg:hidden')}>
           <button
             onClick={close}
             className="absolute top-0 right-0 mt-10 mr-10 p-2 bg-primary/80 rounded-lg"
@@ -142,7 +142,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         <div className="header-actions">
           <LanguageSwitcher />
           <SearchButton />
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <BurgerButton onClick={() => setIsNavOpen((open) => !open)} />
           </div>
           <Link
