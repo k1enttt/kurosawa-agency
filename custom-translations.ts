@@ -13,6 +13,7 @@ export const customTranslations = {
       posts: 'Posts',
       post: 'Post',
     },
+    contact: 'Contact',
   },
   vi: {
     news: 'Tin tức',
@@ -28,6 +29,7 @@ export const customTranslations = {
       posts: 'bài viết',
       post: 'bài viết',
     },
+    contact: 'Liên hệ',
   },
   ja: {
     news: 'ニュース',
@@ -43,5 +45,6 @@ export const customTranslations = {
       posts: '投稿',
       post: '役職',
     },
+    contact: 'お問い合わせ',
   },
 }
