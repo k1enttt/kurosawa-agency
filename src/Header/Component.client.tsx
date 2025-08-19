@@ -1,7 +1,6 @@
 'use client'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 import Link from 'next/link'
-import { customTranslations } from '../../custom-translations'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
@@ -13,20 +12,12 @@ import LanguageSwitcher from '@/components/LanguageSwitcher'
 import SearchButton from '@/components/SearchButton'
 import BurgerButton from './BurgerButton'
 import clsx from 'clsx'
-import { getLocaleFromSearchParams } from '@/utilities/getLocale'
 
 interface HeaderClientProps {
   data: Header
 }
 
-type Locale = 'vi' | 'en' | 'ja'
-
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
-  const [lang, setLang] = useState<Locale>('en')
-
-  useEffect(() => {
-    setLang(getLocaleFromSearchParams())
-  }, [])
   /* Storing the value in a useState to avoid hydration errors */
   const [theme, setTheme] = useState<string | null>(null)
   const { headerTheme, setHeaderTheme } = useHeaderTheme()
@@ -170,7 +161,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             href="/contact"
             className="px-4 ml-2 py-2 bg-primary text-white rounded hover:bg-primary-dark transition whitespace-nowrap"
           >
-            {customTranslations[lang]?.contact || 'Get a Quote'}
+            Contact
           </Link>
         </div>
       </div>
