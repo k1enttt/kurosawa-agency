@@ -13,15 +13,23 @@ export const MessageBlock: React.FC<MessageProps> = ({
   media,
 }) => {
   return (
+    // Block bao ngoài, đổi màu nền theo backgroundColor
     <div className={`${backgroundColor == 'dark' ? 'bg-muted' : 'bg-white'} dark:bg-gray-900`}>
       <div className="py-8 sm:py-16 container">
+        {/* Tiêu đề thông điệp */}
         <h2 className="mb-8 text-4xl tracking-tight font-bold divide-line">{heading}</h2>
+        {/* Grid chia layout: hình ảnh bên trái, nội dung bên phải */}
         <div className="grid md:grid-cols-3 grid-cols-1 gap-8 items-start">
-          <div className="w-full">
-            <Media resource={media} imgClassName="md:w-full w-1/3 rounded-lg" />
+          {/* Cột avatar */}
+          {/* Cột avatar lớn: chỉ hiển thị ở desktop/tablet */}
+          <div className="w-full hidden md:block">
+            {/* Hiển thị ảnh chân dung nếu có */}
+            <Media resource={media} imgClassName="w-full rounded-lg" />
           </div>
 
+          {/* Cột nội dung thông điệp và tác giả */}
           <div className="mt-4 md:mt-0 col-span-1 md:col-span-2">
+            {/* Icon SVG trang trí */}
             <div className="mb-6">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -43,6 +51,7 @@ export const MessageBlock: React.FC<MessageProps> = ({
                 </defs>
               </svg>
             </div>
+            {/* Nội dung thông điệp dạng rich text nếu có */}
             {message && (
               <RichText
                 className="mb-6 cta-heading cta-description md:text-justify text-left"
@@ -50,9 +59,19 @@ export const MessageBlock: React.FC<MessageProps> = ({
                 enableGutter={false}
               />
             )}
-            <div className="">
-              <div className="font-bold text-2xl">{author?.name}</div>
-              <div className="font-semibold text-sm text-muted-foreground">{author?.role}</div>
+            {/* Thông tin tác giả: avatar nhỏ tròn (mobile), tên và vai trò */}
+            <div className="flex items-center">
+              {/* Avatar nhỏ tròn chỉ hiển thị ở mobile, căn chỉnh trước tên và vai trò */}
+              {/* Avatar nhỏ tròn chỉ hiển thị ở mobile, dùng trường media, không render nếu không có media */}
+              {media ? (
+                <span className="inline-block md:hidden mr-3 align-middle">
+                  <Media resource={media} imgClassName="w-12 h-12 rounded-full object-cover" />
+                </span>
+              ) : null}
+              <div className="align-middle">
+                <div className="font-bold text-2xl">{author?.name}</div>
+                <div className="font-semibold text-sm text-muted-foreground">{author?.role}</div>
+              </div>
             </div>
           </div>
         </div>
