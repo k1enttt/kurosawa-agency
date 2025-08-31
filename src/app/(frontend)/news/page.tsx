@@ -71,7 +71,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
       <PageClient />
 
       <div
-        className="relative flex items-center justify-center text-white py-20 mb-8"
+        className="relative flex items-center justify-center text-white py-10 md:py-16 mb-8"
         data-theme="light"
       >
         <div className="container z-10 relative flex items-center justify-start">
