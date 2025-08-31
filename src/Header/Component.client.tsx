@@ -56,8 +56,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       className="relative top-0 z-20 w-full lg:sticky"
       {...(theme ? { 'data-theme': theme } : {})}
     >
+      {/* Wrapper cho toàn bộ nội dung header */}
       <div className="header flex items-center justify-between w-full">
-        {/* Logo */}
+        {/* Logo công ty hoặc chữ KCV nếu không có logo */}
         <Link href={'/'} className="header-logo-container">
           {logo ? (
             <Media alt="Logo cong ty" resource={logo} className="logo" size="100" />
@@ -65,7 +66,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             <div className="text-2xl font-bold">KCV</div>
           )}
         </Link>
-        {/* Desktop Navigation buttons */}
+        {/* Menu điều hướng cho desktop */}
         <nav className="header-nav">
           {(navItems ?? []).map(({ link }, i) => {
             let linkLabel = link.url ? link.url.split('/').filter(Boolean)[0] || '' : ''
@@ -80,6 +81,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                 key={i}
                 className={i === 0 ? 'ml-0' : i === (navItems?.length ?? 0) - 1 ? 'mr-0' : ''}
               >
+                {/* Link điều hướng từng trang */}
                 <CMSLink
                   {...link}
                   appearance="link"
@@ -89,8 +91,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             )
           })}
         </nav>
-        {/* Mobile Navigation buttons */}
+        {/* Menu điều hướng cho mobile, hiện khi mở burger menu */}
         <div className={clsx(isNavOpen ? 'fixed' : 'hidden', 'inset-0 bg-black/80 lg:hidden z-50')}>
+          {/* Nút đóng menu mobile */}
           <button
             onClick={close}
             className="absolute top-0 right-0 mt-10 mr-10 p-2 bg-primary/80 rounded-lg"
@@ -113,6 +116,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
               />
             </svg>
           </button>
+          {/* Danh sách các link menu cho mobile */}
           <div className="absolute h-full top-0 left-0 w-3/5 bg-white">
             <div className="flex flex-col my-6">
               {(navItems ?? []).map(({ link }, i) => {
@@ -130,6 +134,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                   pageName === linkLabel || (pageName === '' && linkLabel === 'home')
                 return (
                   <div key={i}>
+                    {/* Link điều hướng từng trang cho mobile */}
                     <CMSLink
                       {...link}
                       appearance="link"
@@ -143,20 +148,27 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
                 )
               })}
             </div>
+            <div className="pl-3">
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
 
-        {/* Action buttons */}
+        {/* Nhóm các nút chức năng bên phải header */}
         <div className="header-actions">
-          <div className="z-40">
+          {/* Nút chuyển đổi ngôn ngữ */}
+          <div className="z-40 md:block hidden">
             <LanguageSwitcher />
           </div>
+          {/* Nút tìm kiếm */}
           <div className="pl-2">
             <SearchButton />
           </div>
+          {/* Nút mở menu mobile (burger) */}
           <div className="pl-2 lg:hidden">
             <BurgerButton onClick={() => setIsNavOpen((open) => !open)} />
           </div>
+          {/* Nút liên hệ */}
           <Link
             href="/contact"
             className="px-4 ml-2 py-2 bg-primary text-white rounded hover:bg-primary-dark transition whitespace-nowrap"
