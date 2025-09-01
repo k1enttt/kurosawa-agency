@@ -8,12 +8,14 @@ const flagIcons: Record<string, string> = {
   en: 'gb', // English
   vi: 'vn', // Vietnamese
   ja: 'jp', // Japanese
+  zh: 'cn',
 }
 
 const languageOrder: Record<string, string[]> = {
-  vi: ['ja', 'en'],
-  en: ['ja', 'vi'],
-  ja: ['en', 'vi'],
+  vi: ['ja', 'en', 'zh'],
+  en: ['ja', 'vi', 'zh'],
+  ja: ['en', 'vi', 'zh'],
+  zh: ['vi', 'en', 'ja'],
 }
 
 const LanguageSwitcher = () => {

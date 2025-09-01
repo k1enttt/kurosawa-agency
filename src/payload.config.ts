@@ -83,6 +83,10 @@ export default buildConfig({
         label: 'English',
         code: 'en',
       },
+      {
+        label: 'Chinese',
+        code: 'zh',
+      },
     ],
     fallback: true,
     defaultLocale,

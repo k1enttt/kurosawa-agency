@@ -1,4 +1,7 @@
 - [X] Cập nhật layout mới của CEO Message ở trang About
 - [X] Giảm chiều cao header background của các trang chính
 - [X] Tăng kích thước logo ở Header
-- [ ] Thêm tiếng Trung
+- [X] Thêm tiếng Trung
+
+-- [X] Thêm tiếng Trung vào cấu hình Admin
+-- [X] Thêm tiếng Trung vào UI component

@@ -47,4 +47,20 @@ export const customTranslations = {
     },
     contact: 'お問い合わせ',
   },
+  zh: {
+    news: '新闻',
+    search: '搜索',
+    readMore: '阅读更多',
+    allCategories: '所有类别',
+    previous: '上一页',
+    next: '下一页',
+    morePages: '更多页面',
+    pageRange: {
+      showing: '显示',
+      of: '的',
+      posts: '帖子',
+      post: '帖子',
+    },
+    contact: '联系',
+  },
 }
