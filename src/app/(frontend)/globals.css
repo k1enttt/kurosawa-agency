@@ -281,7 +281,7 @@ html[data-theme='light'] {
 }
 
 .porto-hero-container {
-  @apply relative w-full text-white mb-0 md:mb-24;
+  @apply relative w-full text-white mb-0 md:mb-24 h-full md:h-[550px] overflow-hidden;
 }
 
 .porto-hero-text {
