@@ -20,7 +20,7 @@ export default function ServiceCardSlider({
   slidesPerView = 1,
   navigation = true,
 }: {
-  data: NonNullable<Config['collections']['pages']['hero']['servicesSlider']>['servicesList']
+  data: NonNullable<Config['collections']['pages']['hero']['slider']>['body']
 
   slidesPerView?: number
   navigation?: boolean
