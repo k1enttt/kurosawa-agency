@@ -192,16 +192,27 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
     mediaText?: string | null;
-    servicesSlider?: {
-      sliderHeading?: string | null;
-      servicesList?:
+    slider?: {
+      heading?: string | null;
+      body?:
         | {
-            serviceTitle?: string | null;
-            serviceDescription?: string | null;
-            serviceIcon?: (number | null) | Media;
-            serviceLink: {
+            title?: string | null;
+            description?: string | null;
+            icon?: (number | null) | Media;
+            link: {
+              type?: ('reference' | 'custom') | null;
+              newTab?: boolean | null;
+              reference?:
+                | ({
+                    relationTo: 'pages';
+                    value: number | Page;
+                  } | null)
+                | ({
+                    relationTo: 'posts';
+                    value: number | Post;
+                  } | null);
+              url?: string | null;
               label: string;
-              slug?: string | null;
             };
             id?: string | null;
           }[]
@@ -1578,21 +1589,24 @@ export interface PagesSelect<T extends boolean = true> {
             };
         media?: T;
         mediaText?: T;
-        servicesSlider?:
+        slider?:
           | T
           | {
-              sliderHeading?: T;
-              servicesList?:
+              heading?: T;
+              body?:
                 | T
                 | {
-                    serviceTitle?: T;
-                    serviceDescription?: T;
-                    serviceIcon?: T;
-                    serviceLink?:
+                    title?: T;
+                    description?: T;
+                    icon?: T;
+                    link?:
                       | T
                       | {
+                          type?: T;
+                          newTab?: T;
+                          reference?: T;
+                          url?: T;
                           label?: T;
-                          slug?: T;
                         };
                     id?: T;
                   };

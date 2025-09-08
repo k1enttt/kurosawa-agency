@@ -8,6 +8,7 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { linkGroup } from '@/fields/linkGroup'
+import { link } from '@/fields/link'
 
 export const hero: Field = {
   name: 'hero',
@@ -102,57 +103,44 @@ export const hero: Field = {
       localized: true,
     },
     {
-      name: 'servicesSlider',
+      name: 'slider',
       type: 'group',
       admin: {
         condition: (_, { type } = {}) => ['porto'].includes(type),
       },
       fields: [
         {
-          name: 'sliderHeading',
+          name: 'heading',
           type: 'text',
           label: 'Slider Heading',
           localized: true,
         },
         {
-          name: 'servicesList',
+          name: 'body',
           type: 'array',
           label: 'Services List',
           fields: [
             {
-              name: 'serviceTitle',
+              name: 'title',
               type: 'text',
               label: 'Service Title',
               localized: true,
             },
             {
-              name: 'serviceDescription',
+              name: 'description',
               type: 'textarea',
               label: 'Service Description',
               localized: true,
             },
             {
-              name: 'serviceIcon',
+              name: 'icon',
               type: 'upload',
               label: 'Service Icon',
               relationTo: 'media',
             },
-            {
-              name: 'serviceLink',
-              type: 'group',
-              fields: [
-                {
-                  name: 'label',
-                  type: 'text',
-                  required: true,
-                  localized: true,
-                },
-                {
-                  name: 'slug',
-                  type: 'text',
-                },
-              ],
-            },
+            link({
+              appearances: false,
+            }),
           ],
         },
       ],

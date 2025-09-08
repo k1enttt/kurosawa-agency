@@ -21,18 +21,20 @@ import Link from 'next/link'
 type PortoHeroType =
   | {
       children?: React.ReactNode
+      hero?: never
       media?: never
       mediaText?: never
-      servicesSlider?: never
+      slider?: never
     }
   | (Omit<Page['hero'], 'richText'> & {
       children?: never
+      hero?: Page['hero']
       media?: Page['hero']['media']
       mediaText?: Page['hero']['mediaText']
-      servicesSlider?: Page['hero']['servicesSlider']
+      slider?: Page['hero']['slider']
     })
 
-export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesSlider }) => {
+export const PortoHero: React.FC<PortoHeroType> = ({ hero, media, mediaText, slider }) => {
   const { setHeaderTheme } = useHeaderTheme()
   const swiperRef = useRef<SwiperRef>(null)
 
@@ -84,94 +86,96 @@ export const PortoHero: React.FC<PortoHeroType> = ({ media, mediaText, servicesS
           </h3>
         </div>
       </div>
-      <div className="porto-hero-slider">
-        {/* Slider heading */}
-        <div className="hero-slider-heading">
-          <div className="hero-slider-heading-background">
-            <div className="hero-slider-heading-content">
-              {/* Slider heading text */}
-              <h2>{servicesSlider?.sliderHeading}</h2>
-              {/* Slider navigators */}
-              <div className="hero-slider-navigator">
-                <div className="hero-slider-left-btn" onClick={scrollLeft}>
-                  <svg
-                    className="w-12 h-12 text-white"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="m14 8-4 4 4 4"
-                    />
-                  </svg>
-                </div>
-                <div className="hero-slider-right-btn" onClick={scrollRight}>
-                  <svg
-                    className="w-12 h-12 text-white"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="m10 16 4-4-4-4"
-                    />
-                  </svg>
+      {/* Services Slider */}
+      {slider && (
+        <div className="porto-hero-slider">
+          {/* Slider heading */}
+          <div className="hero-slider-heading">
+            <div className="hero-slider-heading-background">
+              <div className="hero-slider-heading-content">
+                {/* Slider heading text */}
+                <h2>{slider.heading}</h2>
+                {/* Slider navigators */}
+                <div className="hero-slider-navigator">
+                  <div className="hero-slider-left-btn" onClick={scrollLeft}>
+                    <svg
+                      className="w-12 h-12 text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="m14 8-4 4 4 4"
+                      />
+                    </svg>
+                  </div>
+                  <div className="hero-slider-right-btn" onClick={scrollRight}>
+                    <svg
+                      className="w-12 h-12 text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="m10 16 4-4-4-4"
+                      />
+                    </svg>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        {/* Desktop Services list */}
-        <div className="hero-slider-items-container">
-          {servicesSlider && servicesSlider.servicesList && (
-            <Swiper
-              ref={swiperRef}
-              slidesPerView={3}
-              spaceBetween={16}
-              loop={true}
-              navigation={false}
-              modules={[Navigation]}
-              className="mySwiper"
-            >
-              {servicesSlider.servicesList.map((item, index) => (
-                <SwiperSlide key={index}>
-                  <CardService data={item} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          )}
-        </div>
-        {/* Mobile services list */}
-        <div className="block md:hidden container py-4">
-          <div className="space-y-4 mb-4">
-            {servicesSlider &&
-              servicesSlider.servicesList &&
-              servicesSlider.servicesList.length > 0 &&
-              servicesSlider.servicesList.map((service, index) => {
-                if (index <= 2) return <CardService key={index} data={service} />
-              })}
+          {/* Services list on Desktop*/}
+          <div className="hero-slider-items-container">
+            {slider.body && (
+              <Swiper
+                ref={swiperRef}
+                slidesPerView={3}
+                spaceBetween={16}
+                loop={true}
+                navigation={false}
+                modules={[Navigation]}
+                className="mySwiper"
+              >
+                {slider.body.map((item, index) => (
+                  <SwiperSlide key={index}>
+                    <CardService data={item} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            )}
           </div>
-          <Link href={'/services'}>
-            <button className="p-3 w-full bg-primary text-primary-foreground rounded-lg hover:bg-primary/80 font-semibold">
-              EXPLORE MORE
-            </button>
-          </Link>
+          {/* Services list on Mobile */}
+          <div className="block md:hidden container py-4">
+            <div className="space-y-4 mb-4">
+              {slider.body &&
+                slider.body.length > 0 &&
+                slider.body.map((service, index) => {
+                  if (index <= 2) return <CardService key={index} data={service} />
+                })}
+            </div>
+            <Link href={'/services'}>
+              <button className="p-3 w-full bg-primary text-primary-foreground rounded-lg hover:bg-primary/80 font-semibold">
+                EXPLORE MORE
+              </button>
+            </Link>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }
